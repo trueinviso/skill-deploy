@@ -1,3 +1,9 @@
-Jobs
+- @jobs.each do |job|
+  %div
+    = job.name
+    = job.company_name
+    = job.location
+    = job.remote
 
-= link_to "log-out", destroy_user_session_path, method: :delete
+%div
+  = link_to "log-out", destroy_user_session_path, method: :delete
