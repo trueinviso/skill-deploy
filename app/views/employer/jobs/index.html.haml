@@ -1,0 +1,12 @@
+%h1 Job Postings
+
+- if @jobs.empty?
+  %p
+    Looks like you haven't posted any jobs yet.
+
+  = link_to "Post a Job", "#"
+
+- else
+  - @jobs.each do |job|
+    %div
+      = job.name

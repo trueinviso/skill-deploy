@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "jobs#show"
+  root to: "jobs#index"
 
   devise_for :users,
     path: "/",
@@ -7,9 +7,17 @@ Rails.application.routes.draw do
       # edit: "account/profile",
       sign_in:  "sign-in",
       sign_out: "sign-out",
-      sign_up:  "sign-up",
     },
     controllers: {
       registrations: "users/registrations",
     }
+
+  get "employer/sign-up", to: "employer/sign_up#new"
+  get "sign-up", to: "sign_up#new"
+
+  namespace :employer do
+    root to: "jobs#index"
+
+    resources :jobs
+  end
 end

@@ -46,10 +46,12 @@ ActiveRecord::Schema.define(version: 20180114175956) do
   end
 
   create_table "jobs", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name"
     t.string "company_name"
     t.string "location"
     t.boolean "remote"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|

@@ -1,0 +1,18 @@
+%h1
+  Welcome Back
+
+= form_for resource,
+  as: resource_name,
+  url: session_path(resource_name) do |f|
+
+  = f.email_field :email, placeholder: "*Email or Username"
+  = f.password_field :password, placeholder: "*Password"
+
+  = f.submit "Continue"
+
+  %div
+    Don't have an account?
+    = link_to "Create an account"
+  %div
+    = link_to "Forgot Password?"
+

@@ -1,9 +1,6 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    def create
-      byebug
-      super
-    end
+    protected
 
     def sign_up_params
       params
