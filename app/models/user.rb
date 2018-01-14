@@ -3,4 +3,13 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_one :user_profile, dependent: :destroy
+  has_many :user_permissions, dependent: :destroy
+
+  has_many :user_roles, dependent: :destroy
+  has_many :roles, through: :user_roles
+
+  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :user_roles
 end

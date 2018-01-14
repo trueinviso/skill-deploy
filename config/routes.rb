@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "jobs#show"
+
+  devise_for :users,
+    path: "/",
+    path_names: {
+      # edit: "account/profile",
+      sign_in:  "sign-in",
+      sign_out: "sign-out",
+      sign_up:  "sign-up",
+    },
+    controllers: {
+      registrations: "users/registrations",
+    }
 end

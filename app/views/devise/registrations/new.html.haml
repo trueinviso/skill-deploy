@@ -1,0 +1,22 @@
+= form_for(resource,
+  as: resource_name,
+  url: registration_path(resource_name)) do |f|
+
+  = f.fields_for :user_profile, UserProfile.new do |p|
+    = p.text_field :first_name
+    = p.text_field :last_name
+  = f.text_field :email
+  = f.text_field :username
+  = f.text_field :password
+  = f.text_field :password_confirmation
+
+  / Role should be safe since it just determines views not security
+  = f.fields_for :user_roles, UserRole.new do |r|
+    = r.hidden_field :role_id, value: Role.find_by(name: "Employer").id
+
+  = f.submit "Continue"
+
+  .login-or-registration__fine-print
+    By clicking "Continue" you agree to our
+    = link_to "terms and conditions", "#",
+      class: "login-or-registration__link"
