@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180114231307) do
+ActiveRecord::Schema.define(version: 20180115014447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,18 +23,22 @@ ActiveRecord::Schema.define(version: 20180114231307) do
     t.index ["user_id", "job_id"], name: "index_applied_fors_on_user_id_and_job_id", unique: true
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
+  create_table "employer_job_roles", force: :cascade do |t|
+    t.bigint "job_role_id"
+    t.bigint "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_categories_on_name"
+    t.index ["job_id"], name: "index_employer_job_roles_on_job_id"
+    t.index ["job_role_id"], name: "index_employer_job_roles_on_job_role_id"
   end
 
-  create_table "categorizations", force: :cascade do |t|
-    t.bigint "category_id"
+  create_table "employer_job_types", force: :cascade do |t|
+    t.bigint "job_type_id"
     t.bigint "job_id"
-    t.index ["category_id"], name: "index_categorizations_on_category_id"
-    t.index ["job_id"], name: "index_categorizations_on_job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_employer_job_types_on_job_id"
+    t.index ["job_type_id"], name: "index_employer_job_types_on_job_type_id"
   end
 
   create_table "favorite_jobs", force: :cascade do |t|
@@ -55,8 +59,10 @@ ActiveRecord::Schema.define(version: 20180114231307) do
 
   create_table "job_types", force: :cascade do |t|
     t.string "name", null: false
+    t.bigint "job_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_types_on_job_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -160,7 +166,9 @@ ActiveRecord::Schema.define(version: 20180114231307) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categorizations", "categories"
-  add_foreign_key "categorizations", "jobs"
+  add_foreign_key "employer_job_roles", "job_roles"
+  add_foreign_key "employer_job_roles", "jobs"
+  add_foreign_key "employer_job_types", "job_types"
+  add_foreign_key "employer_job_types", "jobs"
   add_foreign_key "taggings", "tags"
 end
