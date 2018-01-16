@@ -1,0 +1,19 @@
+.job-card
+  .small-12.medium-9.columns.job-card__left-panel
+    .small-12.job-card__name
+      = job.name
+    .visible-for-medium-up
+      .job-card__attributes
+        = job.job_roles.first.name
+      .job-card__attributes
+        = job.location
+      .job-card__attributes
+        = job.job_types.first.name
+
+  - if show_links
+    .small-12.medium-3.columns.job-card__right-panel
+      .small-12.job-card__links
+        = link_to "Apply", href: "#"
+      .small-12.job-card__links
+        = link_to "Like", href: "#"
+

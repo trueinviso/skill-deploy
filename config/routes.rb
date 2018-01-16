@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     },
     controllers: {
       registrations: "users/registrations",
+      sessions: "users/sessions",
     }
 
   get "employer/sign-up", to: "employer/sign_up#new"

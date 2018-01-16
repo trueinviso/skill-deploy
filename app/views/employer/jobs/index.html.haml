@@ -1,12 +1,26 @@
-%h1 Job Postings
+.jobs-index__wrapper.row
 
-- if @jobs.empty?
-  %p
-    Looks like you haven't posted any jobs yet.
+  - if @jobs.empty?
+    .align-center.align-vertical.row
+      .small-12.medium-9.columns
+        %h1.empty-heading Job Postings
 
-  = link_to "Post a Job", "#"
+        .sub-heading
+          Looks like you haven't posted any jobs yet.
 
-- else
-  - @jobs.each do |job|
-    %div
-      = job.name
+        .forms
+          .submit-field
+            = form_tag new_employer_job_path, method: :get do
+              = submit_tag "Post a Job"
+
+  - else
+    //------ Cards -------//
+    .jobs-index__card-list
+      %ul.small-block-grid-1
+        - @jobs.each do |job|
+          %li
+            - cache job do
+              = render partial: "shared/job",
+                locals: { job: job, show_links: false }
+
+/= render "shared/screen_modal"

@@ -1,0 +1,50 @@
+@import "variables_and_mixins"
+@import "fonts"
+
+.job-card
+  border-top: 6px solid $black
+  .job-card__name
+    font-size: 18px
+    font-weight: bold
+    font-style: normal
+    font-stretch: normal
+    line-height: 1.44
+    letter-spacing: normal
+    text-align: left
+    color: $black
+    padding-left: 0
+    margin-top: 14px
+    margin-bottom: 35px
+    @media (min-width: 480px)
+      font-size: 32px
+      line-height: 1.28
+
+  .job-card__attributes
+    margin-top: 23px
+    display: inline
+    padding-right: 8%
+    width: 20%
+    font-size: 14px
+    color: $black
+    font-weight: bold
+
+  .job-card__left-panel
+    padding-left: 0
+
+  .job-card__right-panel
+    padding-left: 0
+
+  .job-card__links
+    font-size: 18px
+    font-weight: bold
+    font-style: normal
+    font-stretch: normal
+    line-height: normal
+    letter-spacing: normal
+    text-align: left
+    a
+      color: $black
+
+  .job-card__links:first-of-type
+    margin-top: 14px
+    margin-bottom: 20px

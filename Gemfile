@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -6,10 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'awesome_print'
-gem 'devise'
+gem "awesome_print"
+gem "devise"
 gem "forgery"
-gem 'haml'
+gem "foundation-rails"
+gem "haml"
+gem "pundit"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 gem "seed-fu", "~> 2.3"

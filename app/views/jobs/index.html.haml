@@ -1,9 +1,23 @@
-- @jobs.each do |job|
-  %div
-    = job.name
-    = job.company_name
-    = job.location
-    = job.remote
+.jobs-index__wrapper.row
 
-%div
-  = link_to "log-out", destroy_user_session_path, method: :delete
+  //------ Sidebar ------//
+  .small-12.medium-3.columns.jobs-index__left-panel
+    = render partial: "shared/sidebar"
+
+  .small-12.medium-9.columns.jobs-index__right-panel
+
+    - if @current_role.present?
+      //------ Tags ------//
+      .jobs-index__tag-list
+        = render partial: "shared/tags", locals: { tags: @current_role.tags }
+
+    //------ Cards -------//
+    .jobs-index__card-list
+      %ul.small-block-grid-1
+        - @jobs.each do |job|
+          %li
+            - cache job do
+              = render partial: "shared/job",
+                locals: { job: job, show_links: true }
+
+/= render "shared/screen_modal"

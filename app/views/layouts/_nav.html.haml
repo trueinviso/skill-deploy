@@ -1,0 +1,10 @@
+.small-12.columns#nav
+  %h1.small-2.medium-2.columns.text-right
+    = link_to "Technopaths",
+      destroy_user_session_path,
+      { method: :delete }
+  - if current_user.present?
+    = render "layouts/nav_search"
+    = render "layouts/nav_links"
+  - else
+    = render "layouts/signed_out_sidebar"

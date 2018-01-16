@@ -1,0 +1,81 @@
+@import 'variables_and_mixins'
+@import 'fonts'
+
+.align-center
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+  clear: both
+
+.align-vertical
+  align-items: center
+
+.forms
+  h1
+    font-size: 32px
+    font-weight: bold
+    margin-bottom: 100px
+    .new-job-heading
+      margin-bottom: 27px
+  .login-text
+    font-size: 18px
+    font-weight: bold
+    color: $black
+    text-align: center
+    a
+      color: $black
+      &:hover
+        color: gray
+  .sub-heading
+    font-size: 18px
+    font-weight: bold
+    color: $black
+  .submit-field
+    input
+      width: 100%
+      color: $white
+      font-size: 18px
+      background-color: $black
+      font-weight: bold
+      height: 70px
+      margin-bottom: 50px
+      &:hover
+        cursor: pointer
+        background-color: $white
+        color: $black
+        border: solid 4px $black
+  .registration__fine-print, a
+    color: $silver
+    font-weight: bold
+    line-height: 2.11
+    margin-bottom: 100px
+    text-align: center
+  .text-field
+    padding: 0
+    input
+      box-shadow: none
+      border: none
+      border-bottom: solid 4px black
+      padding-left: 0
+      margin-bottom: 50px
+      font-size: 18px
+      font-weight: bold
+      color: $black
+    input::placeholder
+      font-size: 18px
+      font-weight: bold
+      color: $black
+    input[type="text"]
+      &:focus
+        box-shadow: none
+        background-color: $white
+
+    input[type="text"]::-webkit-input-placeholder,
+    input[type="text"]::-moz-placeholder,
+    input[type="text"]:-ms-input-placeholder,
+    input[type="text"]:-moz-placeholder
+      font-size: 18px
+      font-weight: bold
+      color: $black
+
+

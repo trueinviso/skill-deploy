@@ -1,35 +1,49 @@
-%h1 Post a Job Listing
+.align-center.align-vertical.row.forms
+  .small-12.medium-10.columns.wrapper
+    .row.align-center.align-vertical
+      .column.small-12
+        .row.align-center
+          .column.small-12.medium-10
 
-%p
-  Listings are subscription-based and are active until you've filled the position.
-  Every 30 days you will be charged $199 and your listing will be moved back to
-  the top and tagged as new.
+            %h1.new-job-heading Post a Job Listing
 
-= form_for(@job, url: employer_jobs_path(@job)) do |f|
-  = f.text_field :name
-  = f.text_field :company_name
-  / type here
+            .sub-heading
+              Listings are subscription-based and are active until you've filled the position.
+              Every 30 days you will be charged $199 and your listing will be moved back to
+              the top and tagged as new.
 
-  = f.text_field :location
-  = f.check_box :remote
-  = f.label :remote, "Remote"
+            = form_for(@job, url: employer_jobs_path(@job)) do |f|
+              .text-field
+                = f.text_field :name,
+                  placeholder: "*Job Title"
+              .text-field
+                = f.text_field :company_name,
+                  placeholder: "Company Name"
+              / type here
 
-  %div
-    Role
-    %div
-      Please select only one role per job listing
+              .text-field
+                = f.text_field :location,
+                  placeholder: "*Location"
+              = f.check_box :remote
+              .text-field
+                = f.label :remote, "Remote"
 
-    %div
-      Design
-    %div
-      Development
-    %div
-      Marketing
+              %div
+                Role
+                %div
+                  Please select only one role per job listing
 
-  %div
-    Payment Details
+                %div
+                  Design
+                %div
+                  Development
+                %div
+                  Marketing
 
-  = f.submit "Continue"
+              %div
+                Payment Details
 
-  %div
-    Your card payment will be processed upon submitting this form and begin your subscription.
+              = f.submit "Continue"
+
+              %div
+                Your card payment will be processed upon submitting this form and begin your subscription.

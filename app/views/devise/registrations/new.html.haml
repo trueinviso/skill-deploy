@@ -1,22 +1,48 @@
-= form_for(@user,
-  as: resource_name,
-  url: registration_path(resource_name)) do |f|
+.align-center.align-vertical.row.forms
+  .small-12.medium-10.columns.wrapper
+    .row.align-center.align-vertical
+      .column.small-12
+        .row.align-center
+          .column.small-12.medium-10
+            %h1
+              Welcome
 
-  = f.fields_for :user_profile, UserProfile.new do |p|
-    = p.text_field :first_name
-    = p.text_field :last_name
-  = f.text_field :email
-  = f.text_field :username
-  = f.text_field :password
-  = f.text_field :password_confirmation
+            .login-text
+              Fill out the form below to create an account
+              and post a job listing.
 
-  / Role should be safe since it just determines views not security
-  = f.fields_for :user_roles, UserRole.new do |r|
-    = r.hidden_field :role_id, value: Role.find_by(name: "Employer").id
+            = form_for(@user,
+              as: resource_name,
+              url: registration_path(resource_name)) do |f|
 
-  = f.submit "Continue"
+              = f.fields_for :user_profile, UserProfile.new do |p|
+                .text-field.small-6.columns
+                  = p.text_field :first_name,
+                    placeholder: "*First Name"
+                .text-field.small-5.columns.right
+                  = p.text_field :last_name,
+                    placeholder: "*Last Name"
+              .text-field
+                = f.text_field :email,
+                  placeholder: "*Email"
+              .text-field
+                = f.text_field :username,
+                  placeholder: "*Username"
+              .text-field
+                = f.text_field :password,
+                  placeholder: "*Password"
+              .text-field
+                = f.text_field :password_confirmation,
+                  placeholder: "*Password Confirmation"
 
-  .login-or-registration__fine-print
-    By clicking "Continue" you agree to our
-    = link_to "terms and conditions", "#",
-      class: "login-or-registration__link"
+              / Role should be safe since it just determines views not security
+              = f.fields_for :user_roles, UserRole.new do |r|
+                = r.hidden_field :role_id, value: Role.find_by(name: "Employer").id
+
+              .submit-field
+                = f.submit "Continue"
+
+              .registration__fine-print
+                By clicking "Continue" you agree to our
+                = link_to "terms and conditions", "#",
+                  class: "login-or-registration__link"
