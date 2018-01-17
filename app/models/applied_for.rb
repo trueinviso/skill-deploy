@@ -1,6 +1,6 @@
-class FavoriteScreen < ApplicationRecord
+class AppliedFor < ApplicationRecord
   belongs_to :user, touch: true
-  belongs_to :screen, touch: true
+  belongs_to :job, touch: true
 
-  validates :screen_id, uniqueness: { scope: :user_id }
+  validates :job_id, uniqueness: { scope: :user_id }
 end

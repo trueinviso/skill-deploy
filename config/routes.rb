@@ -18,8 +18,12 @@ Rails.application.routes.draw do
 
   resource :user_profile,
     only: [:edit, :update]
+
   resources :jobs,
     only: [:index]
+
+  resources :favorite_jobs,
+    only: [:index, :create]
 
   namespace :employer do
     root to: "jobs#index"

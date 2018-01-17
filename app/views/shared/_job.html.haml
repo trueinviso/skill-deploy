@@ -14,6 +14,8 @@
     .small-12.medium-3.columns.job-card__right-panel
       .small-12.job-card__links
         = link_to "Apply", href: "#"
-      .small-12.job-card__links
-        = link_to "Like", href: "#"
+      .small-12
+        = form_tag favorite_jobs_path do
+          = hidden_field_tag :job_id, job.id
+          .job-card__links= submit_tag "Like"
 
