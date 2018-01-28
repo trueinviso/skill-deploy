@@ -12,6 +12,8 @@ class Job < ApplicationRecord
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  accepts_nested_attributes_for :job_types
+
   def self.job_type_name(job_type_name)
     joins(:job_types)
       .where(

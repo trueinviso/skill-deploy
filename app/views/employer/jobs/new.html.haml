@@ -19,14 +19,24 @@
               .text-field
                 = f.text_field :company_name,
                   placeholder: "Company Name"
-              / type here
+
+              .job-type
+                *Job Type
+              .job-type-checkboxes
+                = f.collection_check_boxes(:job_type_ids,
+                  JobType.all,
+                  :id,
+                  :name) do |jt|
+                  = jt.label({ class: "check-box-label" }) do
+                    = jt.check_box({ class: "check-box" }) + jt.text
 
               .text-field
                 = f.text_field :location,
                   placeholder: "*Location"
-              = f.check_box :remote
-              .text-field
-                = f.label :remote, "Remote"
+              .remote-check-box
+                = f.label(:remote) do
+                  = f.check_box :remote
+                  %span Remote
 
               %div
                 Role
