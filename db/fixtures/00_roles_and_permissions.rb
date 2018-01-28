@@ -6,5 +6,5 @@ end
 
 Role.seed_once(:name) do |role|
   role.id = 2
-  role.name = "User"
+  role.name = "Job Seeker"
 end
