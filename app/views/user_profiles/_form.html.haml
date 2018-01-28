@@ -1,0 +1,26 @@
+= form_for user_profile, method: :put do |f|
+  - if user_profile.errors.any?
+    #error-explanation
+      %h2 #{pluralize(user_profile.errors.count, 'error')} prohibited your profile from being save:
+      %ul
+        - user_profile.errors.full_messages.each do |msg|
+          %li= msg
+
+  = f.text_field :location, placeholder: "Location"
+  = f.text_field :website, placeholder: "Website"
+  = f.text_field :bio, placeholder: "Bio"
+  %div
+    Social Profiles
+    %div
+      Please include full link to your social account, not just your username.
+    %div
+      = f.text_field :twitter, placeholder: "Twitter"
+      = f.text_field :facebook, placeholder: "Facebook"
+      = f.text_field :linked_in, placeholder: "LinkedIn"
+      = f.text_field :dribbble, placeholder: "Dribbble"
+      = f.text_field :github, placeholder: "Github"
+      = f.text_field :codepen, placeholder: "CodePen"
+      = f.text_field :medium, placeholder: "Medium"
+      = f.text_field :behance, placeholder: "Behance"
+      = f.text_field :instagram, placeholder: "Instagram"
+      = f.text_field :vimeo, placeholder: "Vimeo"

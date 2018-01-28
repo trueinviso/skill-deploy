@@ -4,4 +4,6 @@
       = render "shared/links"
     .forms.small-9.columns#partial
       .row#edit-user
-        = render "form", user_profile: @user_profile
+        = render "edit_registration",
+          resource: resource,
+          minimum_password_length: @minimum_password_length

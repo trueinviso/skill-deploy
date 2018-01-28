@@ -1,0 +1,17 @@
+.side-nav
+  .small-12.columns
+    = link_to "Your projects",
+      employer_jobs_path,
+      class: "#{'active-link' if employer_jobs_page?} profile-link"
+
+  .small-12.columns
+    = link_to "Your profile",
+      edit_user_registration_path,
+      class: "#{'active-link' if edit_profile_page?} profile-link"
+
+  /- if current_user.subscription.present?
+  .small-12.columns
+    = link_to "Billing details",
+      "#",
+      class: "billing-link"
+
