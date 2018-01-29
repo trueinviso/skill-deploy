@@ -1,7 +1,7 @@
 # types
 full_time = JobType.find_by(name: "Full Time")
 part_time = JobType.find_by(name: "Part Time")
-contract = JobType.find_by(name: "Contract/Freelance")
+contract = JobType.find_by(name: "Freelance")
 
 # roles
 design = JobRole.find_by(name: "Design")
