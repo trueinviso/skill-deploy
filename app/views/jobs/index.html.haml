@@ -1,16 +1,8 @@
 .jobs-index__wrapper.row
-
-  //------ Sidebar ------//
-  .small-12.medium-3.columns.jobs-index__left-panel
-    = render partial: "shared/sidebar"
-
-  .small-12.medium-9.columns.jobs-index__right-panel
-
-    - if @current_role.present?
-      //------ Tags ------//
-      .jobs-index__tag-list
-        = render partial: "shared/tags", locals: { tags: @current_role.tags }
-
+  .small-12.columns
+    .jobs-index__tag-list
+      = render partial: "shared/tags",
+        locals: { roles: @roles, types: @types }
     //------ Cards -------//
     .jobs-index__card-list
       %ul.small-block-grid-1
@@ -18,6 +10,6 @@
           %li
             - cache job do
               = render partial: "shared/job",
-                locals: { job: job, show_links: true }
+                locals: { job: job }
 
 /= render "shared/screen_modal"

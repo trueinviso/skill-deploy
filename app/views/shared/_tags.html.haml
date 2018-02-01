@@ -1,8 +1,12 @@
 .job-tags-list
   %ul
-    - tags.limit(4).each do |tag|
-      %li
-        = link_to tag.name,
-          jobs_path(tag_name: tag.name,
-            job_type_name: params[:job_type_name],
+    - roles.each do |role|
+      %li{ class: active_role_class(params, role) }
+        = link_to role.name,
+          jobs_path(job_type_name: params[:job_type_name],
+            job_role_name: role.name)
+    - types.each do |type|
+      %li{ class: active_type_class(params, type) }
+        = link_to type.name,
+          jobs_path(job_type_name: type.name,
             job_role_name: params[:job_role_name])

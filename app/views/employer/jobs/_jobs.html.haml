@@ -13,12 +13,18 @@
               = submit_tag "Post a Job"
 
   - else
+    .row
+      .jobs-index__heading.small-12.columns
+        .small-6.columns
+          %h2 Active Projects
+        .small-6.columns
+          = link_to "Start a project", new_employer_job_path
     //------ Cards -------//
     .jobs-index__card-list
       %ul.small-block-grid-1
         - jobs.each do |job|
           %li
             - cache job do
-              = render partial: "shared/job",
-                locals: { job: job, show_links: false }
+              = render partial: "job",
+                locals: { job: job }
 
