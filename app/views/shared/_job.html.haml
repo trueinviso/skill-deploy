@@ -11,4 +11,5 @@
   .small-12.medium-3.columns.job-card__right-panel
     = form_tag favorite_jobs_path, class: "right" do
       = hidden_field_tag :job_id, job.id
-      = submit_tag "Like", class: "job-card__links"
+      = button_tag type: "submit", class: "job-card__links" do
+        = embedded_svg("save-inactive.svg")

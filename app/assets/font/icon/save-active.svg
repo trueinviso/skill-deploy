@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>save - active</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="job-list-active-save-icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1221.000000, -220.000000)">
+        <g id="job-1" transform="translate(190.000000, 182.000000)" fill="#F95225">
+            <g id="bookmarks" transform="translate(1031.000000, 38.000000)">
+                <path d="M8,13.8139535 L0.533333333,18 C0.161066667,18 0,17.8953488 0,17.5813953 L0,1.25581395 C0,0.570976744 0.789066667,0 1.86666667,0 L14.1333333,0 C15.2106667,0 16,0.570976744 16,1.25581395 L16,17.5813953 C16,17.8953488 15.8389333,18 15.4666667,18 L8,13.8139535 Z" id="save---active"></path>
+            </g>
+        </g>
+    </g>
+</svg>

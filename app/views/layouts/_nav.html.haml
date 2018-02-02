@@ -1,6 +1,6 @@
 .small-12.columns#nav
-  %h1.small-2.medium-2.columns.text-right
-    = link_to "Technopaths",
+  .small-2.medium-2.columns.text-right.brand-container
+    = link_to embedded_svg("heyfam-mark.svg", class: "brand-icon"),
       destroy_user_session_path,
       { method: :delete }
   - if current_user.present?

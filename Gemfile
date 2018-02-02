@@ -9,7 +9,7 @@ end
 gem "awesome_print"
 gem "devise"
 gem "forgery"
-gem "foundation-rails"
+gem "foundation-rails", "~> 5.4"
 gem "haml"
 gem "pundit"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
