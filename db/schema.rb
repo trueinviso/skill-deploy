@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.string "behance"
     t.string "instagram"
     t.string "vimeo"
+    t.boolean "update_notifications", default: false
+    t.boolean "weekly_newsletter", default: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 

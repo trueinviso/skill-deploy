@@ -18,6 +18,8 @@ class CreateUserProfile < ActiveRecord::Migration[5.1]
       t.string :behance
       t.string :instagram
       t.string :vimeo
+      t.boolean :update_notifications, default: false
+      t.boolean :weekly_newsletter, default: false
     end
   end
 end
