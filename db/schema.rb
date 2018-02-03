@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115014447) do
+ActiveRecord::Schema.define(version: 20180203182546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "job_id"], name: "index_applied_fors_on_user_id_and_job_id", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.jsonb "file_data", default: {}
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
   create_table "employer_job_roles", force: :cascade do |t|

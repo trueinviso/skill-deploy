@@ -8,6 +8,13 @@
 
       = devise_error_messages!
 
+
+      = f.fields_for :user_profile_attributes do |p|
+        = p.file_field :thumbnail,
+          label: false,
+          input_html: { type: "file" }
+        /= thumb.hidden_field :thumbnail, value: thumb.object.cached_file_data
+
       .text-field
         = f.label :email
         = f.email_field :email, autofocus: true, autocomplete: "email"
