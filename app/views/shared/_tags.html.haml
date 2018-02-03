@@ -2,7 +2,7 @@
   job_role_name: params[:job_role_name])
 
 .job-tags-list
-  = react_component("TagList", { tags: tags.limit(4),
+  = react_component("FilterList", { roles: roles, types: types,
     link: link })
   /%ul
   /  - roles.each do |role|
