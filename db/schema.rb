@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115014447) do
+ActiveRecord::Schema.define(version: 20180203174732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.string "behance"
     t.string "instagram"
     t.string "vimeo"
+    t.boolean "update_notifications"
+    t.boolean "weekly_newsletter"
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
