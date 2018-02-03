@@ -6,5 +6,5 @@
     //------ Cards -------//
     .jobs-index__card-list#jobs-index
       = render partial: "jobs",
-        locals: { jobs: @jobs }
+        locals: { jobs: @jobs, favorites: @favorites }
 /= render "shared/screen_modal"

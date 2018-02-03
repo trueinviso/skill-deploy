@@ -7,6 +7,14 @@ module ApplicationHelper
     current_page?(edit_user_registration_path)
   end
 
+  def edit_social_profile_page?
+    current_page?(edit_profile_social_path)
+  end
+
+  def edit_notifications_page?
+    current_page?(edit_profile_notifications_path)
+  end
+
   def saved_jobs_page?
     current_page?(favorite_jobs_path)
   end

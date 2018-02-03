@@ -1,8 +1,7 @@
 .row
   .small-12.columns.wrapper
     .columns.small-3
-      = render "employer/shared/links"
+      = render "shared/links"
     .forms.small-9.columns#partial
       .row#edit-user
-        = render "jobs", jobs: @jobs
-/= render "shared/screen_modal"
+        = render "form", user_profile: @user_profile

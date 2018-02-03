@@ -2,11 +2,7 @@
 
   //------ Cards -------//
   .jobs-index__card-list
-    %ul.small-block-grid-1
-      - @favorite_jobs.each do |fav|
-        %li
-          - cache fav do
-            = render partial: "shared/job",
-              locals: { job: fav.job, show_links: true }
+    = render partial: "jobs/jobs",
+      locals: { jobs: @jobs, favorites: @favorites }
 
 /= render "shared/screen_modal"

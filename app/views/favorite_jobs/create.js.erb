@@ -1,0 +1,3 @@
+$("#job-<%= @job.id %>").html("<%= escape_javascript(render partial: "jobs/like_button", locals: { job: @job, file_name: @file_name }) %>");
+
+console.log($("#job-<%= @job.id %>"));
