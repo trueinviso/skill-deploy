@@ -1,0 +1,17 @@
+$("#tag-list").html(
+  "<%=
+    escape_javascript(
+      render partial: "shared/tags",
+        locals: { roles: @roles, types: @types }
+    )
+  %>"
+);
+
+$(".jobs-index__card-list").html(
+  "<%=
+    escape_javascript(
+      render partial: "jobs",
+        locals: { jobs: @jobs }
+    )
+  %>"
+);

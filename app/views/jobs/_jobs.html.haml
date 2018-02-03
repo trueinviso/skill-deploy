@@ -1,0 +1,6 @@
+%ul.small-block-grid-1
+  - jobs.each do |job|
+    %li
+      - cache job do
+        = render partial: "shared/job",
+          locals: { job: job }
