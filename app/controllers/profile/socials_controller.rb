@@ -1,6 +1,5 @@
 module Profile
   class SocialsController < ApplicationController
-
     def update
       user_profile = current_user.user_profile
       if user_profile.update(user_profile_params)
