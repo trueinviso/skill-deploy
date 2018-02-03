@@ -1,21 +1,14 @@
-.job-card
-  .small-12.medium-9.columns.job-card__left-panel
-    .small-12.job-card__name
-      = job.name
+.small-12.columns.job-card{ class: job_border_color(job) }
+  = link_to "#", class: "small-12 medium-9 columns" do
+    .job-card__description
+      %span.job-card__company-name= job.company_name
+      is looking for a
+      %span.job-card__name= job.name
     .visible-for-medium-up
       .job-card__attributes
-        = job.job_roles.first.name
-      .job-card__attributes
         = job.location
-      .job-card__attributes
-        = job.job_types.first.name
 
-  - if show_links
-    .small-12.medium-3.columns.job-card__right-panel
-      .small-12.job-card__links
-        = link_to "Apply", href: "#"
-      .small-12
-        = form_tag favorite_jobs_path do
-          = hidden_field_tag :job_id, job.id
-          .job-card__links= submit_tag "Like"
-
+  .small-12.medium-3.columns.job-card__right-panel
+    = form_tag favorite_jobs_path, class: "right" do
+      = hidden_field_tag :job_id, job.id
+      = submit_tag "Like", class: "job-card__links"

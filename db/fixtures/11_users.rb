@@ -1,5 +1,5 @@
 employer = Role.find_by(name: "Employer")
-user_role = Role.find_by(name: "User")
+user_role = Role.find_by(name: "Job Seeker")
 
 User.seed_once(:email) do |user|
   user.id = 1

@@ -1,7 +1,9 @@
 .small-4.columns.menu
-  %a.small-4.columns.item{ href: favorite_jobs_path }
-    Liked
+  %a.small-4.columns.item{ href: favorite_jobs_path,
+    class: "#{"active-link" if saved_jobs_page?}" }
+    Saved
   %a.small-4.columns.item{ href: "#" }
     Applied
-  %a.small-4.columns.item{ href: edit_user_profile_path }
+  %a.small-4.columns.item{ href: edit_user_profile_path,
+    class: "#{"active-link" if edit_profile_page?}" }
     Account
