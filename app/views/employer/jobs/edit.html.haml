@@ -1,35 +1,13 @@
-%h1 Post a Job Listing
+.align-center.forms
+  .column.small-12.medium-7
+    %h1 Start a project
 
-%p
-  Listings are subscription-based and are active until you've filled the position.
-  Every 30 days you will be charged $199 and your listing will be moved back to
-  the top and tagged as new.
+    .login-text
+      Listings are subscription-based and are active until you've filled the position.
+      Every 30 days you will be charged $199 and your listing will be moved back to
+      the top and tagged as new.
 
-= form_for(@job, url: new_employer_job_path(@job)) do |f|
-  = f.text_field :name
-  = f.text_field :company_name
-  / type here
+    .secondary-heading
+      Project Details
 
-  = f.text_field :location
-  = f.check_box :remote
-  = f.label :remote, "Remote"
-
-  %div
-    Role
-    %div
-      Please select only one role per job listing
-
-    %div
-      Design
-    %div
-      Development
-    %div
-      Marketing
-
-  %div
-    Payment Details
-
-  = f.submit "Update"
-
-  %div
-    Your card payment will be processed upon submitting this form and begin your subscription.
+    = render "form", job: @job

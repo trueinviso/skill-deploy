@@ -1,26 +1,45 @@
-= form_for user_profile, method: :put do |f|
-  - if user_profile.errors.any?
-    #error-explanation
-      %h2 #{pluralize(user_profile.errors.count, 'error')} prohibited your profile from being save:
-      %ul
-        - user_profile.errors.full_messages.each do |msg|
-          %li= msg
+.align-center.forms
+  .column.small-12.medium-10
+    .secondary-heading
+      Social profiles
 
-  = f.text_field :location, placeholder: "Location"
-  = f.text_field :website, placeholder: "Website"
-  = f.text_field :bio, placeholder: "Bio"
-  %div
-    Social Profiles
-    %div
-      Please include full link to your social account, not just your username.
-    %div
-      = f.text_field :twitter, placeholder: "Twitter"
-      = f.text_field :facebook, placeholder: "Facebook"
-      = f.text_field :linked_in, placeholder: "LinkedIn"
-      = f.text_field :dribbble, placeholder: "Dribbble"
-      = f.text_field :github, placeholder: "Github"
-      = f.text_field :codepen, placeholder: "CodePen"
-      = f.text_field :medium, placeholder: "Medium"
-      = f.text_field :behance, placeholder: "Behance"
-      = f.text_field :instagram, placeholder: "Instagram"
-      = f.text_field :vimeo, placeholder: "Vimeo"
+    = form_for user_profile, method: :put do |f|
+      - if user_profile.errors.any?
+        #error-explanation
+          %h2 #{pluralize(user_profile.errors.count, 'error')} prohibited your profile from being save:
+          %ul
+            - user_profile.errors.full_messages.each do |msg|
+              %li= msg
+
+      .text-field
+        = f.label :twitter
+        = f.text_field :twitter
+      .text-field
+        = f.label :facebook
+        = f.text_field :facebook
+      .text-field
+        = f.label :linked_in
+        = f.text_field :linked_in
+      .text-field
+        = f.label :dribbble
+        = f.text_field :dribbble
+      .text-field
+        = f.label :github
+        = f.text_field :github
+      .text-field
+        = f.label :codepen
+        = f.text_field :codepen
+      .text-field
+        = f.label :medium
+        = f.text_field :medium
+      .text-field
+        = f.label :behance
+        = f.text_field :behance
+      .text-field
+        = f.label :instagram
+        = f.text_field :instagram
+      .text-field
+        = f.label :vimeo
+        = f.text_field :vimeo
+      .small-12.medium-3.columns.submit-field.last
+        = f.submit "Save"

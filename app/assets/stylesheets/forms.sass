@@ -12,28 +12,15 @@
 
 .forms
   h1
-    font-size: 32px
-    font-weight: bold
-    margin-bottom: 100px
+    font-size: 38px
+    font-family: "Noto Sans", sans-serif
+  .secondary-heading
+    font-size: 24px
+    margin-bottom: 42px
   .new-job-heading
     margin-bottom: 27px
   .sub-heading
     margin-bottom: 81px
-  .job-type
-    font-size: 18px
-    font-weight: bold
-    margin-bottom: 20px
-  .job-type-checkboxes
-    margin-bottom: 51px
-    label
-      font-size: 18px
-      font-weight: bold
-      color: $black
-    input
-      margin-right: 12px
-      height: 20px
-      width: 20px
-      outline: solid 3px $black
   .remote-check-box
     span
       font-size: 18px
@@ -46,10 +33,11 @@
       outline: solid 3px $black
 
   .login-text
-    font-size: 18px
-    font-weight: bold
+    font-size: 16px
+    line-height: 1.63
+    text-align: left
     color: $black
-    text-align: center
+    margin-bottom: 76px
     a
       color: $black
       &:hover
@@ -59,19 +47,21 @@
     font-weight: bold
     color: $black
   .submit-field
+    padding: 0
     input
-      width: 100%
       color: $white
-      font-size: 18px
-      background-color: $black
-      font-weight: bold
-      height: 70px
+      font-size: 14px
+      background-color: $royal
+      height: 40px
       margin-bottom: 50px
+      padding: 8px 45px 13px 45px
+      border-radius: 4px
+      border: solid 2px $royal
       &:hover
         cursor: pointer
         background-color: $white
-        color: $black
-        border: solid 4px $black
+        color: $royal
+        border: solid 2px $royal
   .registration__fine-print, a
     color: $silver
     font-weight: bold
@@ -79,31 +69,34 @@
     margin-bottom: 100px
     text-align: center
   .text-field
-    padding: 0
+    padding: 0 !important
+    label
+      font-size: 12px
+      color: black
+      font-weight: bold
+      margin-bottom: 8px
     input
       box-shadow: none
-      border: none
-      border-bottom: solid 4px black
-      padding-left: 0
-      margin-bottom: 50px
-      font-size: 18px
-      font-weight: bold
+      border: solid 2px $iron
+      border-radius: 3px
+      margin-bottom: 35px
+      font-size: 14px
       color: $black
-    input::placeholder
-      font-size: 18px
-      font-weight: bold
-      color: $black
-    input[type="text"]
-      &:focus
-        box-shadow: none
-        background-color: $white
+    input:focus
+      border-color: $royal
+      box-shadow: none
+      background-color: $white
+    input[type="radio"],
+    input[type="checkbox"]
+      margin-right: 15px
+      background-color: $royal
+  .radio-label > label
+    font-size: 16px
+    font-weight: bold
+    height: 26px
+    margin-bottom: 26px
 
-    input[type="text"]::-webkit-input-placeholder,
-    input[type="text"]::-moz-placeholder,
-    input[type="text"]:-ms-input-placeholder,
-    input[type="text"]:-moz-placeholder
-      font-size: 18px
-      font-weight: bold
-      color: $black
+  .last
+    margin-bottom: 49px
 
 

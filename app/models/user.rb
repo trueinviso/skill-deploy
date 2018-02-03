@@ -14,4 +14,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
+
+  def role?(role)
+    roles.any? { |r| r.name.underscore.to_sym == role }
+  end
 end
