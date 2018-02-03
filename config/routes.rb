@@ -13,8 +13,19 @@ Rails.application.routes.draw do
       sessions: "users/sessions",
     }
 
-  get "employer/sign-up", to: "employer/sign_up#new"
+  devise_scope :user do
+    get "employer/registrations/edit" => "users/registrations#edit"
+  end
+
   get "sign-up", to: "sign_up#new"
+
+  namespace :profile do
+    resource :social,
+      only: [:edit, :update]
+
+    resource :notifications,
+      only: [:edit, :update]
+  end
 
   resource :user_profile,
     only: [:edit, :update]
@@ -29,5 +40,7 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
+    resource :profile,
+      only: [:edit, :update]
   end
 end

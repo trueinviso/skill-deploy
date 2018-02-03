@@ -1,9 +1,17 @@
 .row
   .small-12.columns.wrapper
     .columns.small-3
-      = render "shared/links"
+      - if current_user.role?(:employer)
+        = render "employer/shared/links"
+      - else
+        = render "shared/links"
     .forms.small-9.columns#partial
       .row#edit-user
-        = render "edit_registration",
-          resource: resource,
-          minimum_password_length: @minimum_password_length
+        - if current_user.role?(:employer)
+          = render "edit_employer_registration",
+            resource: resource,
+            minimum_password_length: @minimum_password_length
+        - else
+          = render "edit_registration",
+            resource: resource,
+            minimum_password_length: @minimum_password_length
