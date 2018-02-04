@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Unity::Engine, at: "/"
   root to: "jobs#index"
 
   devise_for :users,

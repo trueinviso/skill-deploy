@@ -16,6 +16,8 @@ gem "jquery-rails"
 gem "shrine"
 gem "roda"
 gem "jquery-fileupload-rails"
+
+gem "unity", path: "/Users/keithward/side_projects/engines/unity" # git: "git@github.com:trueinviso/unity.git"
 # required to use shrine validation plugin
 # gets width and height of an uploaded image
 gem "fastimage"
