@@ -8,6 +8,7 @@
   clear: both
 
 .align-vertical
+  display: flex
   align-items: center
 
 .forms
@@ -21,6 +22,58 @@
     margin-bottom: 27px
   .sub-heading
     margin-bottom: 81px
+  .profile-picture
+    border-radius: 50%
+    height: 84px
+    width: 84px
+  .no-padding
+    padding: 0
+  #profile-picture__uploader
+    height: 84px
+    margin-bottom: 50px
+  .profile-picture__wrapper
+    height: inherit
+    margin-right: 30px
+  .profile-picture__empty-wrapper
+    height: 84px
+    width: 84px
+    background: $iron
+    border-radius: 50%
+    .empty-photo-svg
+      width: 28px
+      height: 24px
+  .profile-picture__buttons-wrapper
+    height: 100%
+  .profile-picture__upload-button,
+  .profile-picture__delete-button
+    height: 50%
+    display: flex
+    margin-top: 20px
+    align-items: center
+    border-radius: 2px
+    border: solid 2px $concrete
+    &:hover
+      background: $concrete
+      label
+        color: $regent-gray
+    label
+      width: 100%
+      text-align: center
+      font-size: 12px
+
+  .profile-picture__delete-button
+    margin-left: 15px
+
+  .inputfile
+    cursor: inherit
+    font-size: 999px
+    filter: alpha(opacity=0)
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    right: 0
+    top: 0
+
   .remote-check-box
     span
       font-size: 18px
@@ -70,18 +123,21 @@
     text-align: center
   .text-field
     padding: 0 !important
+    margin-bottom: 35px !important
     label
       font-size: 12px
       color: black
       font-weight: bold
       margin-bottom: 8px
-    input
+    input, select
       box-shadow: none
       border: solid 2px $iron
       border-radius: 3px
-      margin-bottom: 35px
       font-size: 14px
       color: $black
+      background: $white
+    select
+      color: $pinkish-gray
     input:focus
       border-color: $royal
       box-shadow: none
@@ -90,13 +146,23 @@
     input[type="checkbox"]
       margin-right: 15px
       background-color: $royal
+  .instructions
+    font-size: 16px
+    font-weight: normal
+    color: $dusty-gray
+    line-height: 1.38
+  .checkbox-instructions
+    margin-left: 30px
   .radio-label > label
     font-size: 16px
     font-weight: bold
     height: 26px
     margin-bottom: 26px
-
+  .no-label-margin > label
+    margin-bottom: 0
   .last
     margin-bottom: 49px
+  .employee-profile-last
+    margin-bottom: 35px
 
 

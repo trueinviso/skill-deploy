@@ -1,0 +1,8 @@
+$("#profile-picture").html(
+  "<%=
+    escape_javascript(
+      render 'devise/registrations/image',
+        resource: @user
+    )
+  %>"
+);
