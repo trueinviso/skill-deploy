@@ -11,13 +11,18 @@
             - user_profile.errors.full_messages.each do |msg|
               %li= msg
 
-      .text-field.radio-label
+      .text-field.radio-label.no-label-margin
         = f.label :update_notifications do
           = f.check_box :update_notifications
           %span Send me updates about new products and features
-      .text-field.radio-label.last
+        .instructions.checkbox-instructions
+          Get occasional updates about new features and product enhancements
+      .text-field.radio-label.last.no-label-margin
         = f.label :weekly_newsletter do
           = f.check_box :weekly_newsletter
-          %span Sign me up for the weekly newsletter
+          %span
+            Sign me up for the weekly newsletter
+        .instructions.checkbox-instructions
+          Receive our weekly newsletter featuring the latest projects
       .small-12.medium-3.columns.submit-field
         = f.submit "Save"

@@ -1,9 +1,5 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    def update
-      byebug
-      super
-    end
 
     protected
 
@@ -20,10 +16,8 @@ module Users
           :current_password,
           :password,
           :password_confirmation,
-          user_profile_attributes: [
-            :first_name, :last_name, :thumbnail,
-          ],
-          # user_roles_attributes: [:role_id],
+          user_profile_attributes: [:first_name, :last_name],
+          thumbnail_attributes: [:file],
         )
     end
 

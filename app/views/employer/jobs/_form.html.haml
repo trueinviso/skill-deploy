@@ -1,39 +1,10 @@
 = form_for(job, url: employer_jobs_path(job)) do |f|
-  .text-field
-    = f.label :name, "Job Title"
-    = f.text_field :name
-  .text-field
-    = f.label :company_name
-    = f.text_field :company_name
+  = render "project_details", f: f
 
-  .text-field
-    = f.label :job_role_ids, "Job Role"
-  = f.collection_radio_buttons(:job_role_ids,
-    JobRole.all,
-    :id,
-    :name) do |jt|
-    .text-field.radio-label
-      = jt.label do
-        = jt.radio_button + jt.text
+  .secondary-heading
+    Contact Details
 
-  .text-field
-    = f.label :job_type_ids, "Job Type"
-  = f.collection_radio_buttons(:job_type_ids,
-    JobType.all,
-    :id,
-    :name) do |jt|
-    .text-field.radio-label
-      = jt.label do
-        = jt.radio_button + jt.text
-
-  .text-field
-    = f.label :location
-    = f.text_field :location
-  .text-field.radio-label
-    = f.label :remote do
-      = f.check_box :remote
-      %span Is this a remote position?
-
+  = render "contact_details", f: f
 
   .small-12.medium-3.columns.submit-field.last
     = f.submit "Start a project"

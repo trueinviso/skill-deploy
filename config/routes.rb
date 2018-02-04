@@ -30,6 +30,9 @@ Rails.application.routes.draw do
   resource :user_profile,
     only: [:edit, :update]
 
+  resource :thumbnail,
+    only: [:update, :destroy]
+
   resources :jobs,
     only: [:index]
 

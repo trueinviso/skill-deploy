@@ -1,4 +1,6 @@
 class ThumbnailUploader < PictureUploader
+  plugin :upload_endpoint
+
   Attacher.validate do
     next unless Rails.env.production?
 

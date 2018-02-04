@@ -1,5 +1,7 @@
 .align-center.forms
   .column.small-12.medium-10
+    .secondary-heading
+      Your Profile
 
     = form_for(resource,
       as: resource_name,
@@ -8,31 +10,51 @@
 
       = devise_error_messages!
 
+      #profile-picture__uploader.row
+        #profile-picture
+          = render partial: "image", locals: { resource: resource }
 
-      = f.fields_for :user_profile_attributes do |p|
-        = p.file_field :thumbnail,
-          label: false,
-          input_html: { type: "file" }
-        /= thumb.hidden_field :thumbnail, value: thumb.object.cached_file_data
+        .profile-picture__buttons-wrapper
+          .small-3.columns.profile-picture__upload-button
+            - thumbnail = f.object.thumbnail.present? ? f.object.thumbnail : Thumbnail.new
+            = f.fields_for :thumbnail_attributes, thumbnail do |t|
+              /= t.hidden_field :file, value: t.object.file_data, class: "hidden-file-field"
+              = t.label :file do
+                = t.file_field :file,
+                  class: "inputfile",
+                  data: { url: thumbnail_path }
+                %span Upload photo
+          .small-2.columns.profile-picture__delete-button.left{ data: { url: thumbnail_path } }
+            %label
+              Delete
 
-      .text-field
-        = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .small-12.columns
+        = render "personal_info", form: f
 
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div Currently waiting confirmation for: #{resource.unconfirmed_email}
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div Currently waiting confirmation for: #{resource.unconfirmed_email}
 
+        = f.fields_for f.object.user_profile do |p|
+          .text-field.row
+            = p.label :location
+            = p.text_field :location
+          .text-field.row
+            = p.label :website
+            = p.text_field :website
+          .text-field.row
+            = p.label :bio
+            = p.text_area :bio, rows: 10
 
-      .text-field
-        = f.label :password
-        = f.password_field :password, autocomplete: "off"
+        .text-field.row
+          = f.label :password, "New Password"
+          = f.password_field :password, autocomplete: "off"
 
-      .text-field
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, autocomplete: "off"
-      .text-field.last
-        = f.label :current_password
-        = f.password_field :current_password, autocomplete: "off"
+        .text-field.row
+          = f.label :password_confirmation, "New Password Confirmation"
+          = f.password_field :password_confirmation, autocomplete: "off"
+        .text-field.row
+          = f.label :current_password
+          = f.password_field :current_password, class: "employee-profile-last", autocomplete: "off"
 
-      .submit-field
-        = f.submit "Save"
+        .submit-field.row
+          = f.submit "Save"

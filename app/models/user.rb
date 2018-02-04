@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include HasAttachments
+  attachment :thumbnail
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -11,6 +14,7 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   has_many :jobs
+  has_many :subscriptions
 
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
