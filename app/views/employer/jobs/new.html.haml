@@ -11,3 +11,7 @@
       Project Details
 
     = render "form", job: @job
+%script{  src: "//cdnjs.cloudflare.com/ajax/libs/require.js/2.3.1/require.min.js" }
+
+:javascript
+  braintree_setup('#{@token}');

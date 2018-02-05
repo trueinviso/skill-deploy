@@ -158,11 +158,63 @@
     font-weight: bold
     height: 26px
     margin-bottom: 26px
+  .plan-label > label
+    margin-bottom: 11px
+  .plan-instructions
+    font-size: 16px
+  .plan-wrapper
+    overflow: auto
+    padding: 17px 0 31px 26px
+    border: solid 2px $concrete
+    margin-bottom: 30px
+    border-radius: 3px
+    &:last-child
+      margin-bottom: 70px
+  .active-plan
+    border: 2px solid #f9b500
+    background: rgba(249, 181, 0, 0.21)
   .no-label-margin > label
     margin-bottom: 0
   .last
     margin-bottom: 49px
   .employee-profile-last
     margin-bottom: 35px
+
+  #card-number,
+  #card-expire-month,
+  #card-expire-year,
+  #cvv-field
+    box-shadow: none
+    border: solid 2px $iron
+    border-radius: 3px
+    font-size: 14px
+    color: $black
+    background: $white
+    height: 48px
+    margin-bottom: 35px
+    padding: 5px !important
+    padding-left: 28px !important
+    &:focus
+      border-color: $royal
+      box-shadow: none
+      background-color: $white
+  .secondary-heading
+    font-size: 24px
+    margin-bottom: 35px
+
+  .row
+    label
+      font-size: 12px
+      color: black
+      font-weight: bold
+      margin-bottom: 8px
+      background: none
+      padding-left: 0
+
+    .text-field-padding
+      padding-left: 0 !important
+      padding-right: 13px !important
+    .cvv-padding
+      padding-right: 0px !important
 
 
