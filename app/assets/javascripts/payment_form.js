@@ -1,79 +1,92 @@
-//function braintree_setup(token){
-//  braintree.setup(token, 'custom', {
-//    id: "braintree-payment-form",
-//    hostedFields: {
-//      styles: {
-//        input: {
-//          color: '#181818',
-//          'font-size': '14px',
-//          'font-family': 'sans-serif',
-//        }
-//      },
-//      number: {
-//        selector: '#card-number',
-//        placeholder: "1234  4567  8910  9876",
-//      },
-//      expirationMonth: {
-//        selector: '#card-expire-month',
-//        placeholder: "January",
-//      },
-//      expirationYear: {
-//        selector: '#card-expire-year',
-//        placeholder: '2019',
-//      },
-//      cvv: {
-//        selector: '#cvv-field',
-//        placeholder: 'CVC',
-//      },
-//    },
-//  });
-//}
-function braintree_setup(token) {
-  require.config({
-    paths: {
-      braintreeClient: 'https://js.braintreegateway.com/web/3.29.0/js/client.min',
-      hostedFields: 'https://js.braintreegateway.com/web/3.29.0/js/hosted-fields.min'
-    }
-  });
+"use strict";
 
-  require(['braintreeClient', 'hostedFields'], function(client, hostedFields) {
-  client.create({
-    authorization: token,
-    }, function(err, clientInstance) {
-      if(err) {
-        console.error(err);
-        return;
+const BraintreePaymentForm  = (function() {
+  // get javascript required for drop in
+  function configureRequires() {
+    const btClient = "https://js.braintreegateway.com/web/3.29.0/js/client.min";
+    const hostedFields = "https://js.braintreegateway.com/web/3.29.0/js/hosted-fields.min";
+
+    require.config({
+      paths: {
+        braintreeClient: btClient,
+        hostedFields: hostedFields,
       }
-      hostedFields.create(
-        {
-          client: clientInstance,
-          styles: {
-            input: {
-              "font-size": "14px",
-              "font-family": "sans-serif",
-              color: "#181818",
-            },
-          },
-          fields: {
-            number: {
-              selector: "#card-number",
-              placeholder: "1234  4567  8910  9876",
-            },
-            expirationMonth: {
-              selector: "#card-expire-month",
-              placeholder: "12",
-            },
-            expirationYear: {
-              selector: "#card-expire-year",
-              placeholder: "2019",
-            },
-            cvv: {
-              selector: "#cvv-field",
-              placeholder: "CVV",
-            },
-          },
-        },
-      );
     });
-  });
-}
+  }
+
+  function styles() {
+    return {
+      input: {
+        "font-size": "16px",
+        "font-family": "sans-serif",
+        color: "#181818",
+      },
+    };
+  };
+
+  function number() {
+    return {
+      selector: "#card-number",
+      placeholder: "1234  4567  8910  9876",
+    };
+  };
+
+  function expirationMonth() {
+    return {
+      selector: "#card-expire-month",
+      placeholder: "12",
+    };
+  };
+
+  function expirationYear() {
+    return {
+      selector: "#card-expire-year",
+      placeholder: "2019",
+    };
+  };
+
+  function cvv() {
+    return {
+      selector: "#cvv-field",
+      placeholder: "CVV",
+    };
+  };
+
+  function fields() {
+    return {
+      number: number(),
+      expirationMonth: expirationMonth(),
+      expirationYear: expirationYear(),
+      cvv: cvv(),
+    }
+  };
+
+  function createHostedFields(hostedFields, clientInstance) {
+    return hostedFields.create(
+      {
+        client: clientInstance,
+        styles: styles(),
+        fields: fields(),
+      },
+    );
+  }
+
+  // create drop in
+  function embedDropin(token) {
+    configureRequires();
+
+    require(['braintreeClient', 'hostedFields'], (client, hostedFields) => {
+      client.create({ authorization: token }, (err, clientInstance) => {
+        if(err) {
+          console.error(err);
+          return;
+        }
+        createHostedFields(hostedFields, clientInstance)
+      });
+    });
+  }
+
+  return {
+    embedDropin: embedDropin,
+  };
+})();
