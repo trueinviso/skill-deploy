@@ -35,8 +35,14 @@ module Employer
         .permit(
           :name,
           :company_name,
+          :company_website,
           :location,
+          :experience,
           :remote,
+          :world_changing_text,
+          :description,
+          :contact_name,
+          :contact_email,
       )
     end
   end

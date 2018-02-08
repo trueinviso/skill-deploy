@@ -9,6 +9,7 @@
         = job.location
 
   .small-12.medium-3.columns.job-card__right-panel
-    = form_tag favorite_jobs_path, class: "right" do
-      = hidden_field_tag :job_id, job.id
-      = submit_tag "Like", class: "job-card__links"
+    - file_name = favorites.include?(job.id) ? "save-active.svg" : "save-inactive.svg"
+    %div{ id: "job-#{job.id}" }
+      = render partial: "jobs/like_button",
+        locals: { job: job, file_name: file_name }

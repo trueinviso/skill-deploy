@@ -2,7 +2,7 @@
   job_role_name: params[:job_role_name])
 
 .job-tags-list
-  = react_component("FilterList", { roles: roles, types: types,
+  /= react_component("FilterList", { roles: roles, types: types,
     link: link })
   /%ul
   /  - roles.each do |role|
@@ -15,3 +15,16 @@
   /      = link_to type.name,
   /        jobs_path(job_type_name: type.name,
   /          job_role_name: params[:job_role_name])
+  %ul
+    - roles.each do |role|
+      %li{ class: active_role_class(params, role) }
+        = link_to role.name,
+          jobs_path(job_type_name: params[:job_type_name],
+            job_role_name: role_name(params, role)),
+          remote: true
+    - types.each do |type|
+      %li{ class: active_type_class(params, type) }
+        = link_to type.name,
+          jobs_path(job_type_name: type_name(params, type),
+            job_role_name: params[:job_role_name]),
+          remote: true

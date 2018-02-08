@@ -1,59 +1,13 @@
-.align-center.align-vertical.row.forms
-  .small-12.medium-10.columns.wrapper
-    .row.align-center.align-vertical
-      .column.small-12
-        .row.align-center
-          .column.small-12.medium-10
+.align-center.forms
+  .column.small-12.medium-10.large-7
+    %h1 Start a project
 
-            %h1.new-job-heading Post a Job Listing
+    .login-text
+      Listings are subscription-based and are active until you've filled the position.
+      Every 30 days you will be charged $199 and your listing will be moved back to
+      the top and tagged as new.
 
-            .sub-heading
-              Listings are subscription-based and are active until you've filled the position.
-              Every 30 days you will be charged $199 and your listing will be moved back to
-              the top and tagged as new.
+    .secondary-heading
+      Project Details
 
-            = form_for(@job, url: employer_jobs_path(@job)) do |f|
-              .text-field
-                = f.text_field :name,
-                  placeholder: "*Job Title"
-              .text-field
-                = f.text_field :company_name,
-                  placeholder: "Company Name"
-
-              .job-type
-                *Job Type
-              .job-type-checkboxes
-                = f.collection_check_boxes(:job_type_ids,
-                  JobType.all,
-                  :id,
-                  :name) do |jt|
-                  = jt.label({ class: "check-box-label" }) do
-                    = jt.check_box({ class: "check-box" }) + jt.text
-
-              .text-field
-                = f.text_field :location,
-                  placeholder: "*Location"
-              .remote-check-box
-                = f.label(:remote) do
-                  = f.check_box :remote
-                  %span Remote
-
-              %div
-                Role
-                %div
-                  Please select only one role per job listing
-
-                %div
-                  Design
-                %div
-                  Development
-                %div
-                  Marketing
-
-              %div
-                Payment Details
-
-              = f.submit "Continue"
-
-              %div
-                Your card payment will be processed upon submitting this form and begin your subscription.
+    = render "form", job: @job

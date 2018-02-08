@@ -1,47 +1,60 @@
-%h2 Edit #{resource_name.to_s.humanize}
+.align-center.forms
+  .column.small-12.medium-10
+    .secondary-heading
+      Your Profile
 
-= form_for(resource,
-  as: resource_name,
-  url: registration_path(resource_name),
-  html: { method: :put }) do |f|
+    = form_for(resource,
+      as: resource_name,
+      url: registration_path(resource_name),
+      html: { method: :put }) do |f|
 
-  = devise_error_messages!
+      = devise_error_messages!
 
-  .field
-    = f.label :email
-    = f.email_field :email, autofocus: true, autocomplete: "email"
+      #profile-picture__uploader.row
+        #profile-picture
+          = render partial: "image", locals: { resource: resource }
 
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %div Currently waiting confirmation for: #{resource.unconfirmed_email}
+        .profile-picture__buttons-wrapper
+          .small-3.columns.profile-picture__upload-button
+            - thumbnail = f.object.thumbnail.present? ? f.object.thumbnail : Thumbnail.new
+            = f.fields_for :thumbnail_attributes, thumbnail do |t|
+              /= t.hidden_field :file, value: t.object.file_data, class: "hidden-file-field"
+              = t.label :file do
+                = t.file_field :file,
+                  class: "inputfile",
+                  data: { url: thumbnail_path }
+                %span Upload photo
+          .small-2.columns.profile-picture__delete-button.left{ data: { url: thumbnail_path } }
+            %label
+              Delete
 
+      .small-12.columns
+        = render "personal_info", form: f
 
-  .field
-    %i (leave blank if you don't want to change it)
-    = f.label :password
-    = f.password_field :password, autocomplete: "off"
-    - if minimum_password_length
-      %em
-        = minimum_password_length
-        characters minimum
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .field
-    %i (we need your current password to confirm your changes)
-    = f.label :current_password
-    = f.password_field :current_password, autocomplete: "off"
+        = f.fields_for f.object.user_profile do |p|
+          .text-field.row
+            = p.label :location
+            = p.text_field :location
+          .text-field.row
+            = p.label :website
+            = p.text_field :website
+          .text-field.row
+            = p.label :bio
+            = p.text_area :bio, rows: 10
 
-  .actions
-    = f.submit "Update"
+        .text-field.row
+          = f.label :password, "New Password"
+          = f.password_field :password, autocomplete: "off"
 
-%h3 Cancel my account
+        .text-field.row
+          = f.label :password_confirmation, "New Password Confirmation"
+          = f.password_field :password_confirmation, autocomplete: "off"
+        .text-field.row
+          = f.label :current_password
+          = f.password_field :current_password, class: "employee-profile-last", autocomplete: "off"
 
-%p
-  Unhappy?
-  = button_to "Cancel my account",
-    registration_path(resource_name),
-    data: { confirm: "Are you sure?" },
-    method: :delete
-
-= link_to "Back", :back
+        .submit-field.row
+          = f.submit "Save"

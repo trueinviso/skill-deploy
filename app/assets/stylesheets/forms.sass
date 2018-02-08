@@ -8,32 +8,72 @@
   clear: both
 
 .align-vertical
+  display: flex
   align-items: center
 
 .forms
   h1
-    font-size: 32px
-    font-weight: bold
-    margin-bottom: 100px
+    font-size: 38px
+    font-family: "Noto Sans", sans-serif
+  .secondary-heading
+    font-size: 24px
+    margin-bottom: 42px
   .new-job-heading
     margin-bottom: 27px
   .sub-heading
     margin-bottom: 81px
-  .job-type
-    font-size: 18px
-    font-weight: bold
-    margin-bottom: 20px
-  .job-type-checkboxes
-    margin-bottom: 51px
+  .profile-picture
+    border-radius: 50%
+    height: 84px
+    width: 84px
+  .no-padding
+    padding: 0
+  #profile-picture__uploader
+    height: 84px
+    margin-bottom: 50px
+  .profile-picture__wrapper
+    height: inherit
+    margin-right: 30px
+  .profile-picture__empty-wrapper
+    height: 84px
+    width: 84px
+    background: $iron
+    border-radius: 50%
+    .empty-photo-svg
+      width: 28px
+      height: 24px
+  .profile-picture__buttons-wrapper
+    height: 100%
+  .profile-picture__upload-button,
+  .profile-picture__delete-button
+    height: 50%
+    display: flex
+    margin-top: 20px
+    align-items: center
+    border-radius: 2px
+    border: solid 2px $concrete
+    &:hover
+      background: $concrete
+      label
+        color: $regent-gray
     label
-      font-size: 18px
-      font-weight: bold
-      color: $black
-    input
-      margin-right: 12px
-      height: 20px
-      width: 20px
-      outline: solid 3px $black
+      width: 100%
+      text-align: center
+      font-size: 12px
+
+  .profile-picture__delete-button
+    margin-left: 15px
+
+  .inputfile
+    cursor: inherit
+    font-size: 999px
+    filter: alpha(opacity=0)
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    right: 0
+    top: 0
+
   .remote-check-box
     span
       font-size: 18px
@@ -46,10 +86,11 @@
       outline: solid 3px $black
 
   .login-text
-    font-size: 18px
-    font-weight: bold
+    font-size: 16px
+    line-height: 1.63
+    text-align: left
     color: $black
-    text-align: center
+    margin-bottom: 76px
     a
       color: $black
       &:hover
@@ -59,19 +100,21 @@
     font-weight: bold
     color: $black
   .submit-field
+    padding: 0
     input
-      width: 100%
       color: $white
-      font-size: 18px
-      background-color: $black
-      font-weight: bold
-      height: 70px
+      font-size: 14px
+      background-color: $royal
+      height: 40px
       margin-bottom: 50px
+      padding: 8px 45px 13px 45px
+      border-radius: 4px
+      border: solid 2px $royal
       &:hover
         cursor: pointer
         background-color: $white
-        color: $black
-        border: solid 4px $black
+        color: $royal
+        border: solid 2px $royal
   .registration__fine-print, a
     color: $silver
     font-weight: bold
@@ -79,31 +122,47 @@
     margin-bottom: 100px
     text-align: center
   .text-field
-    padding: 0
-    input
+    padding: 0 !important
+    margin-bottom: 35px !important
+    label
+      font-size: 12px
+      color: black
+      font-weight: bold
+      margin-bottom: 8px
+    input, select
       box-shadow: none
-      border: none
-      border-bottom: solid 4px black
-      padding-left: 0
-      margin-bottom: 50px
-      font-size: 18px
-      font-weight: bold
+      border: solid 2px $iron
+      border-radius: 3px
+      font-size: 14px
       color: $black
-    input::placeholder
-      font-size: 18px
-      font-weight: bold
-      color: $black
-    input[type="text"]
-      &:focus
-        box-shadow: none
-        background-color: $white
-
-    input[type="text"]::-webkit-input-placeholder,
-    input[type="text"]::-moz-placeholder,
-    input[type="text"]:-ms-input-placeholder,
-    input[type="text"]:-moz-placeholder
-      font-size: 18px
-      font-weight: bold
-      color: $black
+      background: $white
+    select
+      color: $pinkish-gray
+    input:focus
+      border-color: $royal
+      box-shadow: none
+      background-color: $white
+    input[type="radio"],
+    input[type="checkbox"]
+      margin-right: 15px
+      background-color: $royal
+  .instructions
+    font-size: 16px
+    font-weight: normal
+    color: $dusty-gray
+    line-height: 1.38
+  .checkbox-instructions
+    margin-left: 30px
+  .radio-label > label
+    font-size: 16px
+    font-weight: bold
+    height: 26px
+    margin-bottom: 26px
+  .no-label-margin > label
+    margin-bottom: 0
+  .last
+    margin-bottom: 49px
+  .employee-profile-last
+    margin-bottom: 35px
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115014447) do
+ActiveRecord::Schema.define(version: 20180203182546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "job_id"], name: "index_applied_fors_on_user_id_and_job_id", unique: true
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "name"
+    t.string "attachable_type"
+    t.bigint "attachable_id"
+    t.jsonb "file_data", default: {}
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
   create_table "employer_job_roles", force: :cascade do |t|
@@ -52,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180115014447) do
   create_table "job_roles", force: :cascade do |t|
     t.bigint "job_id"
     t.string "name", null: false
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_job_roles_on_job_id"
@@ -60,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180115014447) do
   create_table "job_types", force: :cascade do |t|
     t.string "name", null: false
     t.bigint "job_id"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["job_id"], name: "index_job_types_on_job_id"
@@ -69,8 +82,14 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.bigint "user_id"
     t.string "name"
     t.string "company_name"
+    t.string "company_website"
+    t.integer "experience"
     t.string "location"
     t.boolean "remote"
+    t.text "world_changing_text"
+    t.text "description"
+    t.string "contact_name"
+    t.string "contact_email"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -136,6 +155,8 @@ ActiveRecord::Schema.define(version: 20180115014447) do
     t.string "behance"
     t.string "instagram"
     t.string "vimeo"
+    t.boolean "update_notifications", default: false
+    t.boolean "weekly_newsletter", default: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 

@@ -1,28 +1,21 @@
-.align-center.align-vertical.row.forms
-  .small-12.medium-8.columns.wrapper
-    .row.align-center.align-vertical
-      .column.small-12
-        .row.align-center
-          .column.small-12.medium-8
-            %h1
-              Welcome Back
+.align-center.align-vertical.forms
+  .column.small-12.medium-5
+    %h1
+      Welcome Back
 
-            = form_for resource,
-              as: resource_name,
-              url: session_path(resource_name) do |f|
+    .login-text
+      Sign in to access your account
 
-              .text-field
-                = f.text_field :email, placeholder: "*Email or Username"
-              .text-field
-                = f.password_field :password, placeholder: "*Password"
+    = form_for resource,
+      as: resource_name,
+      url: session_path(resource_name) do |f|
 
-              .submit-field
-                = f.submit "Continue"
+      .text-field
+        = f.label :email
+        = f.text_field :email
+      .text-field.last
+        = f.label :password
+        = f.password_field :password
 
-              .login-text
-                Don't have an account?
-                = link_to "Create an account",
-                  new_user_registration_path
-              .login-text
-                = link_to "Forgot Password?"
-
+      .submit-field
+        = f.submit "Continue"

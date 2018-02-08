@@ -9,10 +9,17 @@ end
 gem "awesome_print"
 gem "devise"
 gem "forgery"
-gem "foundation-rails"
+gem "foundation-rails", "~> 5.4"
 gem "haml"
 gem "pundit"
 gem "react-rails"
+gem "jquery-rails"
+gem "shrine"
+gem "roda"
+gem "jquery-fileupload-rails"
+# required to use shrine validation plugin
+# gets width and height of an uploaded image
+gem "fastimage"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 gem "seed-fu", "~> 2.3"
@@ -42,7 +49,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem 'rspec'
+  gem "rspec"
+  gem "shrine-memory"
 end
 
 group :development, :test do

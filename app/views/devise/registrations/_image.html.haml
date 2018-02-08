@@ -1,0 +1,8 @@
+.small-2.columns.profile-picture__wrapper
+  - if resource.thumbnail.present?
+    .profile-picture__empty-wrapper.align-center.align-vertical
+      - image_class = resource.thumbnail.file_data.empty? ? "empty-photo-svg" : "profile-picture"
+      = image_tag resource.thumbnail.file_url, class: image_class
+  - else
+    .profile-picture__empty-wrapper.align-center.align-vertical
+      = embedded_svg("empty_photo_state_icon_3x.svg", class: "empty-photo-svg")

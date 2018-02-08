@@ -27,6 +27,7 @@ JobRole.seed(:id,
   {
     id: 1,
     name: "Design",
+    description: "Designer for all mediums, Creative Directors, Design Managers, etc.",
     tags: [
       graphic_design,
       illustration,
@@ -39,6 +40,7 @@ JobRole.seed(:id,
   {
     id: 2,
     name: "Development",
+    description: "Front-end, Back-end Developers, Mobile Developers, etc.",
     tags: [
       mobile,
       front_end,
@@ -51,6 +53,7 @@ JobRole.seed(:id,
   {
     id: 3,
     name: "Marketing" ,
+    description: "Marketers for all mediums, Digital Marketers, Social Media, etc.",
     tags: [
       digital_marketing,
       growth,
