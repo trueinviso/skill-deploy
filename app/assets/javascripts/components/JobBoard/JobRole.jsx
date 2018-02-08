@@ -16,10 +16,10 @@ function JobRole(props) {
   }
 
   return(
-    <li className={active ? "active-role" : ""}>
-      <a href={link()} onClick={props.onClick}>
+    <a href={link()} onClick={props.onClick}>
+      <li className={active ? "active-role" : ""}>
         {props.role.name}
-      </a>
-    </li>
+      </li>
+    </a>
   );
 }

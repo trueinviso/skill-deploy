@@ -29,10 +29,10 @@ function JobType(props) {
   }
 
   return(
-    <li className={active ? activeClass(props.type.name) : ""}>
-      <a href={link()} onClick={props.onClick}>
+    <a href={link()} onClick={props.onClick}>
+      <li className={active ? activeClass(props.type.name) : ""}>
         {props.type.name}
-      </a>
-    </li>
+      </li>
+    </a>
   );
 }
