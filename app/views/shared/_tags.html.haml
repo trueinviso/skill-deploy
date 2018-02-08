@@ -1,17 +1,16 @@
-- link = jobs_path(job_type_name: params[:job_type_name],
-  job_role_name: params[:job_role_name])
+- link = jobs_path
 
 .job-tags-list
-  %ul
-    - roles.each do |role|
-      %li{ class: active_role_class(params, role) }
-        = link_to role.name,
-          jobs_path(job_type_name: params[:job_type_name],
-            job_role_name: role_name(params, role)),
-          remote: true
-    - types.each do |type|
-      %li{ class: active_type_class(params, type) }
-        = link_to type.name,
-          jobs_path(job_type_name: type_name(params, type),
-            job_role_name: params[:job_role_name]),
-          remote: true
+  = react_component("JobBoard", { roles: roles, types: types,
+    link: link })
+  /%ul
+  /  - roles.each do |role|
+  /    %li{ class: active_role_class(params, role) }
+  /      = link_to role.name,
+  /        jobs_path(job_type_name: params[:job_type_name],
+  /          job_role_name: role.name)
+  /  - types.each do |type|
+  /    %li{ class: active_type_class(params, type) }
+  /      = link_to type.name,
+  /        jobs_path(job_type_name: type.name,
+  /          job_role_name: params[:job_role_name])
