@@ -16,8 +16,7 @@ function JobFilters(props) {
 
 function JobRoleList(props) {
   function renderRole(link, role, onClick) {
-    const role_link = `${link}?job_role_name=${role.name}`
-    return <JobRole key={role.id} link={role_link} role={role} onClick={onClick} />
+    return <JobRole key={role.id} link={link} role={role} onClick={onClick} />
   }
 
   return(
@@ -27,22 +26,10 @@ function JobRoleList(props) {
   );
 }
 
-function JobRole(props) {
-  const active = window.location.href.indexOf(props.role.name) !== -1
-
-  return(
-    <li className={active ? "active-role" : ""}>
-      <a href={props.link} onClick={props.onClick}>
-        {props.role.name}
-      </a>
-    </li>
-  );
-}
 
 function JobTypeList(props) {
   function renderType(link, type, onClick) {
-    const type_link = `${link}?job_type_name=${type.name}`
-    return <JobType key={type.id} link={type_link} type={type} onClick={onClick} />
+    return <JobType key={type.id} link={link} type={type} onClick={onClick} />
   }
 
   return(
@@ -52,17 +39,6 @@ function JobTypeList(props) {
   );
 }
 
-function JobType(props) {
-  const active = window.location.href.indexOf(props.type.name) !== -1
-
-  return(
-    <li className={active ? "active" : ""}>
-      <a href={props.link} onClick={props.onClick}>
-        {props.type.name}
-      </a>
-    </li>
-  );
-}
 
 function Job(props) {
 }
