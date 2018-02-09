@@ -1,16 +1,41 @@
 class JobBoard extends React.Component {
   render() {
-    const { roles, types, link } = this.props
-    return <JobFilters roles={roles} types={types} link={link} />
+    const { roles, types, link, jobs, favorites } = this.props
+    return(
+      <div className="jobs-index__wrapper row">
+        <div className="small-12 columns">
+          <JobFilters roles={roles} types={types} link={link} />
+          <JobList jobs={jobs} favorites={favorites} />
+        </div>
+      </div>
+    );
   }
+}
+
+function JobList(props) {
+  function renderJob(job) {
+    return <Job key={job.id} job={job} />
+  }
+
+  return(
+   <div className="jobs-index__card-list" id="jobs-index">
+      <ul className="small-block-grid-1">
+        {props.jobs.map((job) => {
+          return renderJob(job)
+        })}
+      </ul>
+    </div>
+  );
 }
 
 function JobFilters(props) {
   return(
-    <ul>
-      <JobRoleList roles={props.roles} link={props.link} />
-      <JobTypeList types={props.types} link={props.link} />
-    </ul>
+    <div className="jobs-index__tag-list">
+      <ul>
+        <JobRoleList roles={props.roles} link={props.link} />
+        <JobTypeList types={props.types} link={props.link} />
+      </ul>
+    </div>
   );
 }
 
@@ -37,11 +62,4 @@ function JobTypeList(props) {
         return renderType(props.link, type, () => {})
       })
   );
-}
-
-
-function Job(props) {
-}
-
-class JobList extends React.Component {
 }
