@@ -1,3 +1,8 @@
+import "babel-polyfill"
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+
 function JobType(props) {
   const params = new URLSearchParams(window.location.search)
   const type_param = params.get("job_type_name")
@@ -16,7 +21,7 @@ function JobType(props) {
   }
 
   function activeClass(name) {
-    className = ""
+    let className = ""
     switch(name) {
       case "Full Time": className = "active-full-time"
                         break;
@@ -36,3 +41,5 @@ function JobType(props) {
     </a>
   );
 }
+
+export default JobType

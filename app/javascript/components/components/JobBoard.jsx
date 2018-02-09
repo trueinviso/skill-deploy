@@ -1,3 +1,10 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+import Job from './JobBoard/Job'
+import JobRole from './JobBoard/JobRole'
+import JobType from './JobBoard/JobType'
+
 class JobBoard extends React.Component {
   render() {
     const { roles, types, link, jobs, favorites } = this.props
@@ -63,3 +70,5 @@ function JobTypeList(props) {
       })
   );
 }
+
+export default JobBoard

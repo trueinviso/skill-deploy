@@ -1,3 +1,7 @@
+import "babel-polyfill"
+import React from 'react'
+import ReactDOM from 'react-dom'
+
 function JobRole(props) {
   const params = new URLSearchParams(window.location.search)
   const type_param = params.get("job_type_name")
@@ -23,3 +27,5 @@ function JobRole(props) {
     </a>
   );
 }
+
+export default JobRole
