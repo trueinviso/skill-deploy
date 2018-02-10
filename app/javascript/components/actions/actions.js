@@ -1,11 +1,9 @@
+const constants = {
+  SET_ACTIVE_ROLE: "SET_ACTIVE_ROLE",
+  SET_ACTIVE_TYPE: "SET_ACTIVE_TYPE"
+}
 
-//{
-//  type: constants.SET_ACTIVE_ROLE,
-//  payload: {
-//    name: "Development"
-//  }
-//}
-const setActiveRole = function setActiveRole(name) {
+function setActiveRole(name) {
   console.log("ACTIVE ROLE");
   return(
     {
@@ -17,7 +15,7 @@ const setActiveRole = function setActiveRole(name) {
   );
 }
 
-const setActiveType = function setActiveType(name) {
+function setActiveType(name) {
   return(
     {
       type: constants.SET_ACTIVE_TYPE,
@@ -27,3 +25,5 @@ const setActiveType = function setActiveType(name) {
     }
   );
 }
+
+export { setActiveRole, constants, setActiveType }

@@ -1,29 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function JobRole(props) {
-  const params = new URLSearchParams(window.location.search)
-  const type_param = params.get("job_type_name")
-  const role_param = params.get("job_role_name")
-  const active = role_param == props.role.name
-
-  function link() {
-    let link = `${props.link}?`
-    const amp = role_param == props.role.name ? "" : "&"
-
-    // if the role is in the url, then the next click turns this filter off
-    if(role_param !== props.role.name) link = `${link}job_role_name=${props.role.name}`
-    // add role to query params if it's present
-    if(type_param) link = `${link}${amp}job_type_name=${type_param}`
-    return link;
-  }
-
+const JobRole = ({ active, role, onClick }) => {
   return(
-    <a href={link()} onClick={props.onClick}>
+    <a
+      href=""
+      onClick={e => {
+        e.preventDefault()
+        onClick()
+      }}
+    >
       <li className={active ? "active-role" : ""}>
-        {props.role.name}
+        {role.name}
       </li>
     </a>
   );
 }
 
-export default JobRole
+JobRole.propTypes = {
+  active: PropTypes.bool.isRequired,
+  role: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
+}
+
+export { JobRole }

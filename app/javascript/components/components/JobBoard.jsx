@@ -1,20 +1,26 @@
 import React from 'react'
-
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import JobApp from '../reducers/reducers'
 import Job from './JobBoard/Job'
-import JobRole from './JobBoard/JobRole'
+import JobRoleLink from '../containers/JobRoleLink'
 import JobType from './JobBoard/JobType'
 import { setActiveRole, setActiveType } from '../actions/actions'
+
+let store = createStore(JobApp)
 
 class JobBoard extends React.Component {
   render() {
     const { roles, types, link, jobs, favorites } = this.props
     return(
-      <div className="jobs-index__wrapper row">
-        <div className="small-12 columns">
-          <JobFilters roles={roles} types={types} link={link} roleOnClick={setActiveRole}/>
-          <JobList jobs={jobs} favorites={favorites} />
+      <Provider store={store}>
+        <div className="jobs-index__wrapper row">
+          <div className="small-12 columns">
+            <JobFilters roles={roles} types={types} link={link} />
+            <JobList jobs={jobs} favorites={favorites} />
+          </div>
         </div>
-      </div>
+      </Provider>
     );
   }
 }
@@ -39,21 +45,21 @@ function JobFilters(props) {
   return(
     <div className="jobs-index__tag-list">
       <ul>
-        <JobRoleList roles={props.roles} link={props.link} />
-        <JobTypeList types={props.types} link={props.link} />
+        <JobRoleList roles={props.roles} />
+        <JobTypeList types={props.types} />
       </ul>
     </div>
   );
 }
 
 function JobRoleList(props) {
-  function renderRole(link, role, onClick) {
-    return <JobRole key={role.id} link={link} role={role} onClick={onClick} />
+  function renderRole(role) {
+    return <JobRoleLink key={role.id} role={role} />
   }
 
   return(
     props.roles.map((role) => {
-      return renderRole(props.link, role, props.roleOnClick)
+      return renderRole(role)
     })
   );
 }
