@@ -1,9 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 import Job from './JobBoard/Job'
 import JobRole from './JobBoard/JobRole'
 import JobType from './JobBoard/JobType'
+import { setActiveRole, setActiveType } from '../actions/actions'
 
 class JobBoard extends React.Component {
   render() {
@@ -11,7 +11,7 @@ class JobBoard extends React.Component {
     return(
       <div className="jobs-index__wrapper row">
         <div className="small-12 columns">
-          <JobFilters roles={roles} types={types} link={link} />
+          <JobFilters roles={roles} types={types} link={link} roleOnClick={setActiveRole}/>
           <JobList jobs={jobs} favorites={favorites} />
         </div>
       </div>
@@ -53,7 +53,7 @@ function JobRoleList(props) {
 
   return(
     props.roles.map((role) => {
-      return renderRole(props.link, role, () => {})
+      return renderRole(props.link, role, props.roleOnClick)
     })
   );
 }

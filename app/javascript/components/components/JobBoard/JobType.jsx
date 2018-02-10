@@ -1,7 +1,4 @@
-import "babel-polyfill"
 import React from 'react'
-import ReactDOM from 'react-dom'
-
 
 function JobType(props) {
   const params = new URLSearchParams(window.location.search)

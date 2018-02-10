@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 
 function Job(props) {
   function JobDescription() {
@@ -53,8 +52,12 @@ function Job(props) {
   function JobLikeButton() {
     return(
       <div id={"job-" + props.job.id}>
-        <input type="hidden" name="job_id" value={props.job.id} />
-        <SVG />
+        <form className="right" action="/favorite_jobs" method="post">
+          <input type="hidden" name="job_id" value={props.job.id} />
+          <button type="submit" className="job-card__links">
+            <SVG />
+          </button>
+        </form>
       </div>
     );
   }
