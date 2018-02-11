@@ -46,4 +46,10 @@ Rails.application.routes.draw do
     resource :profile,
       only: [:edit, :update]
   end
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :jobs, only: [:index]
+    end
+  end
 end
