@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => {
+    setActiveType: () => {
       dispatch(setActiveType(ownProps.type.name))
     }
   }

@@ -12,7 +12,7 @@ function JobApp(state = initialState, action) {
   }
 }
 
-function activeRole(state = {}, action) {
+function activeRole(state = initialState, action) {
   switch(action.type) {
     case constants.SET_ACTIVE_ROLE:
       return action.payload.name !== state.activeRole ? action.payload.name : ""
@@ -21,7 +21,7 @@ function activeRole(state = {}, action) {
   }
 }
 
-function activeType(state = {}, action) {
+function activeType(state = initialState, action) {
   switch(action.type) {
     case constants.SET_ACTIVE_TYPE:
       return action.payload.name !== state.activeType ? action.payload.name : ""

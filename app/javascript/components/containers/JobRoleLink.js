@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { setActiveRole } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("MAP ROLE TO PROPS")
   return {
     active: ownProps.role.name === state.activeRole
   }
@@ -13,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onClick: () => {
+    setActiveRole: () => {
       dispatch(setActiveRole(ownProps.role.name))
     }
   }
