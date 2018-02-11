@@ -4,8 +4,7 @@ import { createStore } from 'redux'
 import JobApp from '../reducers/reducers'
 import Job from './JobBoard/Job'
 import JobRoleLink from '../containers/JobRoleLink'
-import JobType from './JobBoard/JobType'
-import { setActiveRole, setActiveType } from '../actions/actions'
+import JobTypeLink from '../containers/JobTypeLink'
 
 let store = createStore(JobApp)
 
@@ -67,7 +66,7 @@ function JobRoleList(props) {
 
 function JobTypeList(props) {
   function renderType(link, type, onClick) {
-    return <JobType key={type.id} link={link} type={type} onClick={onClick} />
+    return <JobTypeLink key={type.id} type={type} />
   }
 
   return(

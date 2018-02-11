@@ -2,19 +2,18 @@
 
 import { JobType } from '../components/JobBoard/JobType'
 import { connect } from 'react-redux'
-import { setActiveRole } from '../actions/actions'
+import { setActiveType } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("MAP TYPE TO PROPS")
   return {
-    active: ownProps.role.name === state.activeType
+    active: ownProps.type.name === state.activeType
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch(setActiveType(ownProps.role.name))
+      dispatch(setActiveType(ownProps.type.name))
     }
   }
 }

@@ -1,42 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function JobType(props) {
-  const params = new URLSearchParams(window.location.search)
-  const type_param = params.get("job_type_name")
-  const role_param = params.get("job_role_name")
-  const active = type_param == props.type.name
-
-  function link() {
-    let link = `${props.link}?`
-    const amp = type_param == props.type.name ? "" : "&"
-
-    // if the type is in the url, then the next click turns this filter off
-    if(type_param !== props.type.name ) link = `${link}job_type_name=${props.type.name}`
-    // add role to query params if it's present
-    if(role_param) link = `${link}${amp}job_role_name=${role_param}`
-    return link;
-  }
-
-  function activeClass(name) {
-    let className = ""
-    switch(name) {
-      case "Full Time": className = "active-full-time"
-                        break;
-      case "Part Time": className = "active-part-time"
-                        break;
-      case "Freelance": className = "active-freelance"
-                        break;
-    }
-    return className
-  }
-
+const JobType = ({ active, type, onClick }) => {
   return(
-    <a href={link()} onClick={props.onClick}>
-      <li className={active ? activeClass(props.type.name) : ""}>
-        {props.type.name}
+    <a href=""
+      onClick={e => {
+        e.preventDefault()
+        onClick()
+      }}
+    >
+      <li className={active ? type.name.replace(/ +/g, '-').toLowerCase() : ""}>
+        {type.name}
       </li>
     </a>
   );
 }
 
-export default JobType
+JobType.propTypes = {
+  active: PropTypes.bool.isRequired,
+  type: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired
+}
+
+export { JobType }

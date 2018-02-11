@@ -4,7 +4,6 @@ const constants = {
 }
 
 function setActiveRole(name) {
-  console.log("ACTIVE ROLE");
   return(
     {
       type: constants.SET_ACTIVE_ROLE,
