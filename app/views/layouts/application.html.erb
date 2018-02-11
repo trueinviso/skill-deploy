@@ -3,6 +3,11 @@
   <head>
     <title>Technopaths</title>
     <%= csrf_meta_tags %>
+    <% if user_signed_in? %>
+      <meta content="<%= current_user.authentication_token %>" name="user-token"/>
+      <meta content="<%= current_user.email %>" name="user-email"/>
+    <% end %>
+
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>

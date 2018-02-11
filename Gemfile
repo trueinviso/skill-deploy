@@ -18,6 +18,8 @@ gem "shrine"
 gem "roda"
 gem "jquery-fileupload-rails"
 gem "webpacker"
+# Token authentication for API requests + CORS
+gem "simple_token_authentication", "~> 1.0"
 # required to use shrine validation plugin
 # gets width and height of an uploaded image
 gem "fastimage"
