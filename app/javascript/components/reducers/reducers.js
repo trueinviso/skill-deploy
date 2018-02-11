@@ -3,6 +3,8 @@ import { constants } from '../actions/actions'
 const initialState = {
   activeRole: "",
   activeType: "",
+  isFetching: false,
+  didInvalidate: false,
   jobs: []
 }
 
@@ -10,11 +12,11 @@ function JobApp(state = initialState, action) {
   return {
     activeRole: activeRole(state, action),
     activeType: activeType(state, action),
-    jobsByRole: requestJobsByRole(state, action)
+    jobs: requestJobs(state, action)
   }
 }
 
-function activeRole(state = initialState, action) {
+function activeRole(state = "", action) {
   const prevRole = state.activeRole
 
   switch(action.type) {
@@ -25,7 +27,7 @@ function activeRole(state = initialState, action) {
   }
 }
 
-function activeType(state = initialState, action) {
+function activeType(state = "", action) {
   const prevType = state.activeType
 
   switch(action.type) {
@@ -36,17 +38,18 @@ function activeType(state = initialState, action) {
   }
 }
 
-function requestJobsByRole(state = intialState, action) {
-  switch(action.type) {
-    case constants.REQUEST_JOBS_BY_ROLE,
-    case constants.INVALIDATE_REQUEST,
-    case constants.RECEIVE_JOBS,
-      return Object.assign({}, state, {
-        [action.jobsByRole.role]: jobs(state[action.jobsByRole.role], action)
-      })
-    default:
-      return state
-  }
+function requestJobs(state = [], action) {
+  //switch(action.type) {
+  //  case constants.REQUEST_JOBS,
+  //  case constants.INVALIDATE_REQUEST,
+  //  case constants.RECEIVE_JOBS,
+  //    return Object.assign({}, state, {
+  //      [action.jobsByRole.role]: jobs(state[action.jobsByRole.role], action)
+  //    })
+  //  default:
+  //    return state
+  //}
+  return state
 }
 
 function requestJobsByType(state = intialState, action) {
@@ -62,7 +65,7 @@ function jobs(
   state = {
     isFetching: false,
     didInvalidate: false,
-    items: []
+    jobs: []
   },
   action
 ) {
@@ -71,7 +74,7 @@ function jobs(
       return Object.assign({}, state, {
         didInvalidate: true
       })
-    case REQUEST_JOBS_BY_ROLE:
+    case REQUEST_JOBS_BY:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false

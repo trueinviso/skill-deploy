@@ -9,17 +9,18 @@ import JobListContainer from '../containers/JobListContainer'
 import JobRoleLink from '../containers/JobRoleLink'
 import JobTypeLink from '../containers/JobTypeLink'
 
-let store = createStore(JobApp)
-
 class JobBoard extends React.Component {
+
   render() {
     const { roles, types, link, jobs, favorites } = this.props
+    let store = createStore(JobApp, { items: jobs })
+
     return(
       <Provider store={store}>
         <div className="jobs-index__wrapper row">
           <div className="small-12 columns">
             <JobFilters roles={roles} types={types} link={link} />
-            <JobListContainer jobs={jobs} favorites={favorites} />
+            <JobListContainer favorites={favorites} />
           </div>
         </div>
       </Provider>

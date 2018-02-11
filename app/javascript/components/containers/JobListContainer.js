@@ -2,25 +2,17 @@
 
 import { JobList } from '../components/JobBoard/JobList'
 import { connect } from 'react-redux'
-import { requestJobsByRole, requestJobsByType } from '../actions/actions'
+import { setActiveRole } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   return {
-    jobs: ownProps.jobs
-  }
-}
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    onClick: () => {
-      dispatch(filterJobs(ownProps.jobs))
-    }
+    jobs: state.jobs.items
   }
 }
 
 const JobListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(JobList)
 
 export default JobListContainer

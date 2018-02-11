@@ -1,11 +1,10 @@
-import fetch from 'cross-fetch'
+//import fetch from 'cross-fetch'
 
 const constants = {
   SET_ACTIVE_ROLE: "SET_ACTIVE_ROLE",
   SET_ACTIVE_TYPE: "SET_ACTIVE_TYPE",
   INVALIDATE_REQUEST: "INVALIDATE_REQUEST",
-  REQUEST_JOBS_BY_ROLE: "REQUEST_JOBS_BY_ROLE",
-  REQUEST_JOBS_BY_TYPE: "REQUEST_JOBS_BY_TYPE",
+  REQUEST_JOBS: "REQUEST_JOBS",
   RECEIVE_JOBS: "RECEIVE_JOBS"
 }
 
@@ -65,6 +64,7 @@ const constants = {
 //}
 
 function requestJobsByRole(role) {
+  debugger
   return(
     {
       type: constants.REQUEST_JOBS_BY_ROLE,
@@ -118,18 +118,19 @@ function setActiveType(name) {
 }
 
 function fetchJobsByRole(role) {
-  return function(dispatch) {
-    dispatch(requestJobsByRole(role))
+  //return function(dispatch) {
+  //  dispatch(requestJobsByRole(role))
 
-    return fetch(`/jobs`)
-      .then(
-        response => response.json(),
-        error => console.log('An error occurred.', error)
-      )
-      .then(json =>
-        dispatch(receiveJobs(role, json))
-      )
-  }
+  //  return fetch(`/jobs`)
+  //    .then(
+  //      response => response.json(),
+  //      error => console.log('An error occurred.', error)
+  //    )
+  //    .then(json =>
+  //      dispatch(receiveJobs(role, json))
+  //    )
+  //}
+  return []
 }
 
 function shouldFetchJobsByRole(state, role) {
