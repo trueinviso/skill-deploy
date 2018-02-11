@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_token_authenticatable
+
   include HasAttachments
   attachment :thumbnail
 
