@@ -5,9 +5,8 @@ import { connect } from 'react-redux'
 import { setActiveRole } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
-    jobs: state.jobs.items
+    jobs: state.jobs.items || []
   }
 }
 

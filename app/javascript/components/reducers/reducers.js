@@ -39,25 +39,15 @@ function activeType(state = "", action) {
 }
 
 function requestJobs(state = [], action) {
-  //switch(action.type) {
-  //  case constants.REQUEST_JOBS,
-  //  case constants.INVALIDATE_REQUEST,
-  //  case constants.RECEIVE_JOBS,
-  //    return Object.assign({}, state, {
-  //      [action.jobsByRole.role]: jobs(state[action.jobsByRole.role], action)
-  //    })
-  //  default:
-  //    return state
-  //}
-  return state
-}
-
-function requestJobsByType(state = intialState, action) {
   switch(action.type) {
-    case constants.REQUEST_JOBS_BY_TYPE:
-      return action.payload.jobs
+    case constants.REQUEST_JOBS:
+    case constants.INVALIDATE_REQUEST:
+    case constants.RECEIVE_JOBS:
+      return Object.assign({}, state, {
+        [action.filter]: jobs(state[action.filter], action)
+      })
     default:
-      return state.jobs
+      return state
   }
 }
 
@@ -70,16 +60,16 @@ function jobs(
   action
 ) {
   switch(action.type) {
-    case INVALIDATE_REQUEST:
+    case constants.INVALIDATE_REQUEST:
       return Object.assign({}, state, {
         didInvalidate: true
       })
-    case REQUEST_JOBS_BY:
+    case constants.REQUEST_JOBS_BY:
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
       })
-    case RECEIVE_JOBS:
+    case constants.RECEIVE_JOBS:
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,

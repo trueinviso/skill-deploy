@@ -63,25 +63,11 @@ const constants = {
 //  }
 //}
 
-function requestJobsByRole(role) {
-  debugger
+function requestJobs(filter) {
   return(
     {
-      type: constants.REQUEST_JOBS_BY_ROLE,
-      jobsByRole: {
-        role: role
-      }
-    }
-  );
-}
-
-function requestJobsByType(type) {
-  return(
-    {
-      type: constants.REQUEST_JOBS_BY_TYPE,
-      jobsByType: {
-        type: type
-      }
+      type: constants.REQUEST_JOBS,
+      filter: filter.replace(/ +/g, '_').toLowerCase()
     }
   );
 }
@@ -117,24 +103,24 @@ function setActiveType(name) {
   );
 }
 
-function fetchJobsByRole(role) {
-  //return function(dispatch) {
-  //  dispatch(requestJobsByRole(role))
+function fetchJobs(filter) {
+  return function(dispatch) {
+    dispatch(requestJobs(filter))
+    dispatch(receiveJobs(filter, undefined))
 
-  //  return fetch(`/jobs`)
-  //    .then(
-  //      response => response.json(),
-  //      error => console.log('An error occurred.', error)
-  //    )
-  //    .then(json =>
-  //      dispatch(receiveJobs(role, json))
-  //    )
-  //}
-  return []
+    //return fetch(`/jobs`)
+    //  .then(
+    //    response => response.json(),
+    //    error => console.log('An error occurred.', error)
+    //  )
+    //  .then(json =>
+    //    dispatch(receiveJobs(filter, json))
+    //  )
+  }
 }
 
-function shouldFetchJobsByRole(state, role) {
-  const jobs = state.jobsByRole[role]
+function shouldFetchJobs(state, filter) {
+  const jobs = state.jobs[filter]
   if(!jobs) {
     return true
   } else if (jobs.isFetching) {
@@ -144,12 +130,12 @@ function shouldFetchJobsByRole(state, role) {
   }
 }
 
-function fetchJobsByRoleIfNeeded(role) {
+function fetchJobsIfNeeded(filter) {
   return (dispatch, getState) => {
-    if(shouldFetchJobsByRole(getState(), role)) {
-      return dispatch(fetchJobsByRole(role))
+    if(shouldFetchJobs(getState(), filter)) {
+      return dispatch(fetchJobs(filter))
     }
   }
 }
 
-export { setActiveRole, constants, setActiveType, fetchJobsByRoleIfNeeded }
+export { setActiveRole, constants, setActiveType, fetchJobsIfNeeded }

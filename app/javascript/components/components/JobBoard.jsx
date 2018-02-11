@@ -2,18 +2,17 @@ import 'babel-polyfill'
 
 import React from 'react'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import JobApp from '../reducers/reducers'
-import Job from './JobBoard/Job'
 import JobListContainer from '../containers/JobListContainer'
 import JobRoleLink from '../containers/JobRoleLink'
 import JobTypeLink from '../containers/JobTypeLink'
+import configureStore from '../store/configureStore'
 
 class JobBoard extends React.Component {
 
   render() {
     const { roles, types, link, jobs, favorites } = this.props
-    let store = createStore(JobApp, { items: jobs })
+    //let store = configureStore({ items: jobs })
+    let store = configureStore()
 
     return(
       <Provider store={store}>

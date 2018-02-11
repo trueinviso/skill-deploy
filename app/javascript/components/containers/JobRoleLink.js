@@ -2,7 +2,7 @@
 
 import { JobRole } from '../components/JobBoard/JobRole'
 import { connect } from 'react-redux'
-import { setActiveRole } from '../actions/actions'
+import { setActiveRole, fetchJobsIfNeeded } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(setActiveRole(ownProps.role.name))
+      dispatch(fetchJobsIfNeeded(ownProps.role.name))
     }
   }
 }
