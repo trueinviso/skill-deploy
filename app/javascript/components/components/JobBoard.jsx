@@ -1,11 +1,13 @@
+import 'babel-polyfill'
+
 import React from 'react'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import JobApp from '../reducers/reducers'
 import Job from './JobBoard/Job'
+import JobListContainer from '../containers/JobListContainer'
 import JobRoleLink from '../containers/JobRoleLink'
-import JobType from './JobBoard/JobType'
-import { setActiveRole, setActiveType } from '../actions/actions'
+import JobTypeLink from '../containers/JobTypeLink'
 
 let store = createStore(JobApp)
 
@@ -17,28 +19,12 @@ class JobBoard extends React.Component {
         <div className="jobs-index__wrapper row">
           <div className="small-12 columns">
             <JobFilters roles={roles} types={types} link={link} />
-            <JobList jobs={jobs} favorites={favorites} />
+            <JobListContainer jobs={jobs} favorites={favorites} />
           </div>
         </div>
       </Provider>
     );
   }
-}
-
-function JobList(props) {
-  function renderJob(job) {
-    return <Job key={job.id} job={job} />
-  }
-
-  return(
-   <div className="jobs-index__card-list" id="jobs-index">
-      <ul className="small-block-grid-1">
-        {props.jobs.map((job) => {
-          return renderJob(job)
-        })}
-      </ul>
-    </div>
-  );
 }
 
 function JobFilters(props) {
@@ -66,13 +52,13 @@ function JobRoleList(props) {
 
 
 function JobTypeList(props) {
-  function renderType(link, type, onClick) {
-    return <JobType key={type.id} link={link} type={type} onClick={onClick} />
+  function renderType(type) {
+    return <JobTypeLink key={type.id} type={type} />
   }
 
   return(
       props.types.map((type) => {
-        return renderType(props.link, type, () => {})
+        return renderType(type)
       })
   );
 }

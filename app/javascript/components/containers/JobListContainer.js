@@ -1,27 +1,27 @@
 //This is the container for the JobType and manages state
 
-import { JobRole } from '../components/JobBoard/JobRole'
+import { JobList } from '../components/JobBoard/JobList'
 import { connect } from 'react-redux'
-import { setActiveRole } from '../actions/actions'
+import { requestJobsByRole, requestJobsByType } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    active: ownProps.role.name === state.activeRole
+    jobs: ownProps.jobs
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
-      dispatch(setActiveRole(ownProps.role.name))
+      dispatch(filterJobs(ownProps.jobs))
     }
   }
 }
 
-const JobRoleLink = connect(
+const JobListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(JobRole)
+)(JobList)
 
-export default JobRoleLink
+export default JobListContainer
 
