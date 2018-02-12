@@ -28,13 +28,13 @@ class JobFilters extends React.Component {
 
   setActiveRole = (name) => {
     this.setState({
-      activeRole: name
+      activeRole: this.state.activeRole != name ? name : ""
     })
   }
 
   setActiveType = (name) => {
     this.setState({
-      activeType: name
+      activeType: this.state.activeType != name ? name : ""
     })
   }
 
