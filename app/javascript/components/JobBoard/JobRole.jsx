@@ -7,7 +7,7 @@ const JobRole = ({ active, role, setActiveRole }) => {
       href=""
       onClick={e => {
         e.preventDefault()
-        setActiveRole()
+        setActiveRole(role.name)
       }}
     >
       <li className={active ? "active-role" : ""}>
@@ -23,4 +23,4 @@ JobRole.propTypes = {
   setActiveRole: PropTypes.func.isRequired
 }
 
-export { JobRole }
+export default JobRole
