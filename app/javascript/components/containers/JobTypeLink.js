@@ -2,7 +2,7 @@
 
 import { JobType } from '../components/JobBoard/JobType'
 import { connect } from 'react-redux'
-import { setActiveType } from '../actions/actions'
+import { setActiveType, fetchJobsIfNeeded } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(setActiveType(ownProps.type.name))
+      dispatch(fetchJobsIfNeeded())
     }
   }
 }

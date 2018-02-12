@@ -6,6 +6,7 @@ import JobListContainer from '../containers/JobListContainer'
 import JobRoleLink from '../containers/JobRoleLink'
 import JobTypeLink from '../containers/JobTypeLink'
 import configureStore from '../store/configureStore'
+import { fetchJobsIfNeeded, fetchFavoriteJobs } from '../actions/actions'
 
 class JobBoard extends React.Component {
 
@@ -13,6 +14,8 @@ class JobBoard extends React.Component {
     const { roles, types, link, jobs, favorites } = this.props
     //let store = configureStore({ items: jobs })
     let store = configureStore()
+    store.dispatch(fetchJobsIfNeeded())
+    store.dispatch(fetchFavoriteJobs())
 
     return(
       <Provider store={store}>

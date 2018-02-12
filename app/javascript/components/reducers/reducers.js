@@ -1,84 +1,113 @@
 import { constants } from '../actions/actions'
+import { combineReducers } from 'redux'
 
-const initialState = {
-  activeRole: "",
-  activeType: "",
-  isFetching: false,
-  didInvalidate: false,
-  jobs: []
-}
-
-function JobApp(state = initialState, action) {
-  return {
-    activeRole: activeRole(state, action),
-    activeType: activeType(state, action),
-    jobs: requestJobs(state, action)
-  }
-}
+//const initialState = {
+//  activeRole: "",
+//  activeType: "",
+//  favoriteJobs: {
+//    isFetchingFavorites: false,
+//    lastUpdated: Date.now(),
+//    items: []
+//  },
+//  jobs: {
+//    isFetching: false,
+//    didInvalidate: false,
+//    lastUpdated: Date.now(),
+//    items: []
+//  }
+//}
 
 function activeRole(state = "", action) {
-  const prevRole = state.activeRole
-
   switch(action.type) {
     case constants.SET_ACTIVE_ROLE:
-      return prevRole != action.payload.name ? action.payload.name : ""
+      return state != action.payload.name ? action.payload.name : ""
     default:
-      return state.activeRole
+      return state
   }
 }
 
 function activeType(state = "", action) {
-  const prevType = state.activeType
-
   switch(action.type) {
     case constants.SET_ACTIVE_TYPE:
-      return prevType != action.payload.name ? action.payload.name : ""
+      return state != action.payload.name ? action.payload.name : ""
     default:
-      return state.activeType
+      return state
   }
 }
 
-function requestJobs(state = [], action) {
+function toggleFavoriteJob(state = { isFetching: false }, action) {
   switch(action.type) {
-    case constants.REQUEST_JOBS:
-    case constants.INVALIDATE_REQUEST:
-    case constants.RECEIVE_JOBS:
+    case constants.REQUEST_TOGGLE_FAVORITE_JOB:
       return Object.assign({}, state, {
-        [action.filter]: jobs(state[action.filter], action)
+        isFetching: true
+      })
+    case constants.RECEIVE_TOGGLE_FAVORITE_JOB:
+      return Object.assign({}, state, {
+        isFetching: false
       })
     default:
       return state
   }
 }
 
-function jobs(
-  state = {
+function favoriteJobs(state = {
     isFetching: false,
-    didInvalidate: false,
-    jobs: []
-  },
-  action
-) {
-  switch(action.type) {
-    case constants.INVALIDATE_REQUEST:
-      return Object.assign({}, state, {
-        didInvalidate: true
-      })
-    case constants.REQUEST_JOBS_BY:
-      return Object.assign({}, state, {
-        isFetching: true,
-        didInvalidate: false
-      })
-    case constants.RECEIVE_JOBS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: action.jobs,
-        lastUpdated: action.receivedAt
-      })
-    default:
-      return state
-  }
+    lastUpdated: Date.now(),
+    items: []
+  }, action)
+  {
+    switch(action.type) {
+      case constants.REQUEST_FAVORITE_JOBS:
+        return Object.assign({}, state, {
+          isFetching: true
+        })
+      case constants.RECEIVE_FAVORITE_JOBS:
+        debugger
+        return Object.assign({}, state, {
+          isFetching: false,
+          items: action.favoriteJobs,
+          lastUpdated: action.receivedAt
+        })
+      default:
+        return state
+    }
 }
+
+function jobs(state = {
+    didInvalidate: false,
+    isFetching: false,
+    lastUpdated: Date.now(),
+    items: []
+  }, action)
+  {
+    switch(action.type) {
+      case constants.REQUEST_JOBS:
+        return Object.assign({}, state, {
+          isFetching: true,
+          didInvalidate: false
+        })
+      case constants.INVALIDATE_REQUEST:
+        return Object.assign({}, state, {
+          didInvalidate: true
+        })
+      case constants.RECEIVE_JOBS:
+        return Object.assign({}, state, {
+          isFetching: false,
+          didInvalidate: false,
+          items: action.jobs,
+          lastUpdated: action.receivedAt
+        })
+      default:
+        return state
+    }
+}
+
+const JobApp = combineReducers({
+  activeRole,
+  activeType,
+  jobs,
+  favoriteJobs,
+  toggleFavoriteJob
+})
 
 export default JobApp

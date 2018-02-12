@@ -2,11 +2,12 @@
 
 import { JobList } from '../components/JobBoard/JobList'
 import { connect } from 'react-redux'
-import { setActiveRole } from '../actions/actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    jobs: state.jobs.items || []
+    jobs: state.jobs.items,
+    showSpinner: state.jobs.isFetching,
+    favorites: state.favoriteJobs.items
   }
 }
 

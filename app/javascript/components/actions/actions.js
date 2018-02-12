@@ -1,11 +1,16 @@
 //import fetch from 'cross-fetch'
+import heyfamFetch from '../../helpers/heyfamFetch'
 
 const constants = {
   SET_ACTIVE_ROLE: "SET_ACTIVE_ROLE",
   SET_ACTIVE_TYPE: "SET_ACTIVE_TYPE",
   INVALIDATE_REQUEST: "INVALIDATE_REQUEST",
   REQUEST_JOBS: "REQUEST_JOBS",
-  RECEIVE_JOBS: "RECEIVE_JOBS"
+  RECEIVE_JOBS: "RECEIVE_JOBS",
+  RECEIVE_FAVORITE_JOBS: "RECEIVE_FAVORITE_JOBS",
+  REQUEST_FAVORITE_JOBS: "REQUEST_FAVORITE_JOBS",
+  REQUEST_TOGGLE_FAVORITE_JOB: "REQUEST_TOGGLE_FAVORITE_JOB",
+  RECEIVE_TOGGLE_FAVORITE_JOB: "RECEIVE_TOGGLE_FAVORITE_JOB"
 }
 
 //{
@@ -63,20 +68,50 @@ const constants = {
 //  }
 //}
 
-function requestJobs(filter) {
+function requestJobs() {
   return(
     {
-      type: constants.REQUEST_JOBS,
-      filter: filter.replace(/ +/g, '_').toLowerCase()
+      type: constants.REQUEST_JOBS
     }
   );
 }
 
-function receiveJobs(filter, json) {
+function requestToggleFavoriteJob() {
+  return(
+    {
+      type: constants.REQUEST_TOGGLE_FAVORITE_JOB
+    }
+  );
+}
+
+function receiveToggleFavoriteJob() {
+  return(
+    {
+      type: constants.RECEIVE_TOGGLE_FAVORITE_JOB
+    }
+  );
+}
+
+
+
+function receiveFavoriteJobs(json = []) {
+  return {
+    type: constants.RECEIVE_FAVORITE_JOBS,
+    favoriteJobs: json
+  }
+}
+
+function requestFavoriteJobs(json = []) {
+  return {
+    type: constants.REQUEST_FAVORITE_JOBS,
+    favoriteJobs: json
+  }
+}
+
+function receiveJobs(json) {
   return {
     type: constants.RECEIVE_JOBS,
-    filter,
-    jobs: [],
+    jobs: json,
     receivedAt: Date.now()
   }
 }
@@ -103,39 +138,78 @@ function setActiveType(name) {
   );
 }
 
-function fetchJobs(filter) {
+function fetchJobs(state, options = {}) {
   return function(dispatch) {
-    dispatch(requestJobs(filter))
-    dispatch(receiveJobs(filter, undefined))
+    dispatch(requestJobs())
+    const url = "/api/v1/jobs?"
+    const queryParams = `job_type_name=${state.activeType}&job_role_name=${state.activeRole}`
 
-    //return fetch(`/jobs`)
-    //  .then(
-    //    response => response.json(),
-    //    error => console.log('An error occurred.', error)
-    //  )
-    //  .then(json =>
-    //    dispatch(receiveJobs(filter, json))
-    //  )
+    return heyfamFetch(url + queryParams, {}, options)
+      .then(json =>
+        dispatch(receiveJobs(json))
+      )
   }
 }
 
-function shouldFetchJobs(state, filter) {
-  const jobs = state.jobs[filter]
-  if(!jobs) {
-    return true
-  } else if (jobs.isFetching) {
+function fetchFavoriteJobs(state, options = {}) {
+  return function(dispatch) {
+    dispatch(requestFavoriteJobs())
+    return heyfamFetch(`api/v1/favorite_jobs`, {}, options)
+      .then(json =>
+        dispatch(receiveFavoriteJobs(json))
+      )
+  }
+}
+
+function toggleFavoriteJob(job_id) {
+  return function(dispatch) {
+    dispatch(requestToggleFavoriteJob())
+    return(heyfamFetch(
+      `api/v1/favorite_jobs?job_id=${job_id}`,
+      {},
+      { method: 'POST' }
+    ).then(json =>
+      dispatch(receiveToggleFavoriteJob()))
+  )}
+}
+
+function shouldFetchJobs(state) {
+  if (state.jobs.isFetching) {
     return false
   } else {
-    return jobs.didInvalidate
+    return true
   }
 }
 
-function fetchJobsIfNeeded(filter) {
+function shouldToggleFavoriteJob(state) {
+  if (state.toggleFavoriteJob.isFetching) {
+    return false
+  } else {
+    return true
+  }
+}
+
+function fetchJobsIfNeeded() {
   return (dispatch, getState) => {
-    if(shouldFetchJobs(getState(), filter)) {
-      return dispatch(fetchJobs(filter))
+    if(shouldFetchJobs(getState())) {
+      return dispatch(fetchJobs(getState()))
     }
   }
 }
 
-export { setActiveRole, constants, setActiveType, fetchJobsIfNeeded }
+function toggleFavoriteJobIfNeeded(job_id) {
+  return (dispatch, getState) => {
+    if (shouldToggleFavoriteJob(getState())) {
+      return dispatch(toggleFavoriteJob(job_id))
+    }
+  }
+}
+
+export {
+  setActiveRole,
+  constants,
+  setActiveType,
+  fetchJobsIfNeeded,
+  fetchFavoriteJobs,
+  toggleFavoriteJobIfNeeded
+}

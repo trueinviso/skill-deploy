@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onClick: () => {
       dispatch(setActiveRole(ownProps.role.name))
-      dispatch(fetchJobsIfNeeded(ownProps.role.name))
+      dispatch(fetchJobsIfNeeded())
     }
   }
 }
