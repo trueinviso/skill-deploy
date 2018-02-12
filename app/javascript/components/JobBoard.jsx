@@ -2,52 +2,68 @@ import React from 'react'
 import Job from './JobBoard/Job'
 import JobRole from './JobBoard/JobRole'
 import JobType from './JobBoard/JobType'
+import heyfamFetch from '../helpers/heyfamFetch'
+
+const API = "/api/v1/jobs"
 
 class JobBoard extends React.Component {
+  state = {
+    jobs: [],
+    activeRole: "",
+    activeType: ""
+  }
+
+  componentWillMount() {
+    heyfamFetch(API, {})
+      .then(json => this.setState({ jobs: json })
+    )
+  }
+
+  fetchJobs = (type, role) => {
+    const url = `${API}?job_type_name=${type}&job_role_name=${role}`
+    heyfamFetch(url, {})
+      .then(json => this.setState({ jobs: json })
+    )
+  }
+
+  setActiveRole = (name) => {
+    const nextRole = this.state.activeRole != name ? name : ""
+    this.setState({
+      activeRole: nextRole
+    })
+    this.fetchJobs(this.state.activeType, nextRole)
+  }
+
+  setActiveType = (name) => {
+    const nextType = this.state.activeType != name ? name : ""
+    this.setState({
+      activeType: nextType
+    })
+    this.fetchJobs(nextType, this.state.activeRole)
+  }
+
   render() {
-    const { roles, types, link, jobs, favorites } = this.props
+    const { roles, types, favorites } = this.props
     return(
       <div className="jobs-index__wrapper row">
         <div className="small-12 columns">
-          <JobFilters roles={roles} types={types} link={link} />
-          <JobList jobs={jobs} favorites={favorites} />
+          <JobFilters roles={roles} types={types} state={this.state} setActiveRole={this.setActiveRole} setActiveType={this.setActiveType} />
+          <JobList jobs={this.state.jobs} favorites={favorites} />
         </div>
       </div>
     );
   }
 }
 
-class JobFilters extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      activeRole: "",
-      activeType: ""
-    }
-  }
-
-  setActiveRole = (name) => {
-    this.setState({
-      activeRole: this.state.activeRole != name ? name : ""
-    })
-  }
-
-  setActiveType = (name) => {
-    this.setState({
-      activeType: this.state.activeType != name ? name : ""
-    })
-  }
-
-  render() {
-    return(
-      <div className="jobs-index__tag-list">
-        <ul>
-          <JobRoleList roles={this.props.roles} state={this.state} setActiveRole={this.setActiveRole} />
-          <JobTypeList types={this.props.types} state={this.state} setActiveType={this.setActiveType} />
-        </ul>
-      </div>
-    );
-  }
+function JobFilters(props) {
+  return(
+    <div className="jobs-index__tag-list">
+      <ul>
+        <JobRoleList roles={props.roles} state={props.state} setActiveRole={props.setActiveRole} />
+        <JobTypeList types={props.types} state={props.state} setActiveType={props.setActiveType} />
+      </ul>
+    </div>
+  );
 }
 
 function JobRoleList(props) {
