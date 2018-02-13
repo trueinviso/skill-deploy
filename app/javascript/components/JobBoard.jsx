@@ -10,7 +10,8 @@ class JobBoard extends React.Component {
   state = {
     jobs: [],
     activeRole: "",
-    activeType: ""
+    activeType: "",
+    isFetching: false
   }
 
   componentWillMount() {
@@ -21,9 +22,13 @@ class JobBoard extends React.Component {
 
   fetchJobs = (type, role) => {
     const url = `${API}?job_type_name=${type}&job_role_name=${role}`
-    heyfamFetch(url, {})
-      .then(json => this.setState({ jobs: json })
-    )
+
+    if(!this.state.isFetching) {
+      this.setState({ isFetching: true })
+      heyfamFetch(url, {})
+        .then(json => this.setState({ jobs: json, isFetching: false })
+      )
+    }
   }
 
   setActiveRole = (name) => {
@@ -48,7 +53,7 @@ class JobBoard extends React.Component {
       <div className="jobs-index__wrapper row">
         <div className="small-12 columns">
           <JobFilters roles={roles} types={types} state={this.state} setActiveRole={this.setActiveRole} setActiveType={this.setActiveType} />
-          <JobList jobs={this.state.jobs} favorites={favorites} />
+          <JobList jobs={this.state.jobs}  />
         </div>
       </div>
     );
