@@ -11,7 +11,7 @@ class JobLikeButton extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({ liked: this.props.job.favorite_jobs.length > 0 })
+    this.setState({ liked: this.props.job.liked })
   }
 
   addFavorite = () => {
@@ -19,26 +19,25 @@ class JobLikeButton extends React.Component {
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })
-      heyfamFetch(`${API}?job_id=${this.props.job.id}`, {}, options)
-        .then(json => this.setState({ liked: true, isFetching: false }))
+      heyfamFetch(`${API}?id=${this.props.job.id}`, {}, options)
+        .then(this.setState({ liked: true, isFetching: false }))
     }
   }
 
   removeFavorite = () => {
-    debugger
     const options = { method: "DELETE" }
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })
-      heyfamFetch(`${API}?job_id=${this.props.job.id}`, {}, options)
-        .then(json => this.setState({ liked: false, isFetching: false  }))
+      heyfamFetch(`${API}/${this.props.job.id}`, {}, options)
+        .then(this.setState({ liked: false, isFetching: false  }))
     }
   }
 
   render() {
     return(
       <div id={"job-" + this.props.job.id}
-        onClick={() => {this.state.liked ? this.addFavorite() : this.removeFavorite()}}
+        onClick={() => {this.state.liked ? this.removeFavorite() : this.addFavorite()}}
       >
         <div className="right">
           <button type="submit" className="job-card__links">
