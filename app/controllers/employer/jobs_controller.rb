@@ -6,6 +6,7 @@ module Employer
 
     def new
       @job = Job.new
+      @token = Unity::BraintreeGateway::Actions.generate_client_token
     end
 
     def create
