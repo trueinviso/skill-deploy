@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :jobs, only: [:index]
+      resources :favorite_jobs, only: [:create, :destroy]
     end
   end
 end

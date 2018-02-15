@@ -1,10 +1,8 @@
-.jobs-index__wrapper.row
-  .small-12.columns
-    .jobs-index__tag-list#tag-list
-      = render partial: "shared/tags",
-        locals: { roles: @roles, types: @types }
-    //------ Cards -------//
-    .jobs-index__card-list#jobs-index
-      = render partial: "jobs",
-        locals: { jobs: @jobs, favorites: @favorites }
+- link = jobs_path
+= react_component("JobBoard", { roles: @roles, types: @types,
+  link: link, jobs: @jobs, favorites: @favorites })
+//------ Cards -------//
+//.jobs-index__card-list#jobs-index
+//  = render partial: "jobs",
+//    locals: { jobs: @jobs, favorites: @favorites }
 /= render "shared/screen_modal"
