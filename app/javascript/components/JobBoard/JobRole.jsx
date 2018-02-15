@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const JobRole = ({ active, role, onClick }) => {
+const JobRole = ({ active, role, setActiveRole }) => {
   return(
     <a
       href=""
       onClick={e => {
         e.preventDefault()
-        onClick()
+        setActiveRole(role.name)
       }}
     >
       <li className={active ? "active-role" : ""}>
@@ -20,7 +20,7 @@ const JobRole = ({ active, role, onClick }) => {
 JobRole.propTypes = {
   active: PropTypes.bool.isRequired,
   role: PropTypes.object.isRequired,
-  onClick: PropTypes.func.isRequired
+  setActiveRole: PropTypes.func.isRequired
 }
 
-export { JobRole }
+export default JobRole

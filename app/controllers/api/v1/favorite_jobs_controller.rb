@@ -1,29 +1,34 @@
 module Api
   module V1
     class FavoriteJobsController < ApiController
-      def index
-        favorites = FavoriteJob
-          .where(user_id: current_user.id)
-
-        render json: favorites.to_json(only: :id)
+      def create
+        if favorite.present?
+          render status: 200, json: favorite if favorite.present?
+        else
+          fav = FavoriteJob.create!(
+            user_id: current_user.id,
+            job_id: params[:id],
+          )
+          render status: 200, json: fav
+        end
       end
 
-      def create
-        favorite = FavoriteJob.where(
-          user_id: current_user.id,
-          job_id: params[:job_id],
-        ).first
-
+      def destroy
         if favorite.present?
-          favorite.destroy
-          render json: { success: "Destroyed favorite" }
+          fav = favorite.destroy
+          render status: 200, json: fav
         else
-          FavoriteJob.create!(
-            user_id: current_user.id,
-            job_id: params[:job_id],
-          )
-          render json: { success: "Created favorite" }
+          render status: 400
         end
+      end
+
+      private
+
+      def favorite
+        @favorite ||= FavoriteJob.where(
+          user_id: current_user.id,
+          job_id: params[:id],
+        ).first
       end
     end
   end

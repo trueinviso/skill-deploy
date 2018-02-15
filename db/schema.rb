@@ -129,6 +129,30 @@ ActiveRecord::Schema.define(version: 20180211171829) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "unity_subscription_plans", force: :cascade do |t|
+    t.string "gateway_id", null: false
+    t.string "period", null: false
+    t.string "price", null: false
+    t.string "group_enrollment_add_on_price"
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unity_subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "subscription_plan_id"
+    t.string "gateway_id"
+    t.integer "gateway_status"
+    t.datetime "trial_ends_at"
+    t.boolean "group_enrolled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_plan_id"], name: "index_unity_subscriptions_on_subscription_plan_id"
+    t.index ["user_id"], name: "index_unity_subscriptions_on_user_id"
+  end
+
   create_table "user_permissions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "permission_id"
@@ -183,6 +207,8 @@ ActiveRecord::Schema.define(version: 20180211171829) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payment_token"
+    t.string "gateway_customer_id"
     t.string "authentication_token", limit: 30
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: "jobs#index"
+  mount Unity::Engine, at: "/"
 
   devise_for :users,
     path: "/",
@@ -50,7 +51,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :jobs, only: [:index]
-      resources :favorite_jobs, only: [:index, :create]
+      resources :favorite_jobs, only: [:create, :destroy]
     end
   end
 end

@@ -18,6 +18,7 @@ gem "shrine"
 gem "roda"
 gem "jquery-fileupload-rails"
 gem "webpacker"
+gem "unity", path: "/Users/keithward/side_projects/engines/unity" # git: "git@github.com:trueinviso/unity.git"
 # Token authentication for API requests + CORS
 gem "simple_token_authentication", "~> 1.0"
 # required to use shrine validation plugin
