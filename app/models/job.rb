@@ -12,8 +12,6 @@ class Job < ApplicationRecord
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
-  has_many :favorite_jobs
-
   accepts_nested_attributes_for :job_types
 
   def self.job_type_name(job_type_name)
