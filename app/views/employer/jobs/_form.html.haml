@@ -1,5 +1,14 @@
-= form_for(job, url: employer_jobs_path(job)) do |f|
+= form_for(job,
+  url: employer_jobs_path(job),
+  html: { id: "braintree-payment-form",
+  "data-validate": "data-validate",
+  "no-validate": "no-validate" }) do |f|
+
+  = hidden_field_tag :payment_method_nonce
   = render "project_details", f: f
+
+  = render "unity/subscriptions/plan_options"
+  = render "unity/payment_method/card_details"
 
   .secondary-heading
     Contact Details

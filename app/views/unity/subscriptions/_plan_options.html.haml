@@ -1,0 +1,14 @@
+.secondary-heading
+  Plan Options
+
+- Unity::SubscriptionPlan.all.each do |sp|
+  .plan-wrapper{ class: "#{'active-plan' if sp.id == 1 }" }
+    .columns.small-1
+      = radio_button_tag :plan_id, sp.gateway_id
+    .columns.small-11
+      .radio-label.plan-label
+        = label_tag(sp.gateway_id.to_sym, sp.name)
+      .plan-instructions
+        = sp.description
+
+
