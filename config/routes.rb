@@ -31,9 +31,6 @@ Rails.application.routes.draw do
   resource :user_profile,
     only: [:edit, :update]
 
-  resource :thumbnail,
-    only: [:update, :destroy]
-
   resources :jobs,
     only: [:index]
 
@@ -50,8 +47,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :jobs, only: [:index]
-      resources :favorite_jobs, only: [:create, :destroy]
+      resources :jobs,
+        only: [:index]
+      resources :favorite_jobs,
+        only: [:create, :destroy]
+      resource :thumbnail,
+        only: [:update, :destroy]
     end
   end
 end
