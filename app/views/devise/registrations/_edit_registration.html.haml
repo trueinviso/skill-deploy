@@ -10,23 +10,8 @@
 
       = devise_error_messages!
 
-      #profile-picture__uploader.row
-        #profile-picture
-          = render partial: "image", locals: { resource: resource }
-
-        .profile-picture__buttons-wrapper
-          .small-3.columns.profile-picture__upload-button
-            - thumbnail = f.object.thumbnail.present? ? f.object.thumbnail : Thumbnail.new
-            = f.fields_for :thumbnail_attributes, thumbnail do |t|
-              /= t.hidden_field :file, value: t.object.file_data, class: "hidden-file-field"
-              = t.label :file do
-                = t.file_field :file,
-                  class: "inputfile",
-                  data: { url: thumbnail_path }
-                %span Upload photo
-          .small-2.columns.profile-picture__delete-button.left{ data: { url: thumbnail_path } }
-            %label
-              Delete
+      - thumbnail = f.object.thumbnail_url
+      = react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
 
       .small-12.columns
         = render "personal_info", form: f

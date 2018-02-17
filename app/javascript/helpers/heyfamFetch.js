@@ -9,10 +9,14 @@ function csrfTokenHeader() {
   return {}
 }
 
+function appendJsonHeader(headers) {
+    headers.append("Accept", "application/json")
+    headers.append("Content-Type", "application/json")
+    return headers
+}
+
 function headers() {
   return new Headers({
-    Accept: "application/json",
-    "Content-Type": "application/json",
     ...csrfTokenHeader(),
     "X-User-Token": document
       .getElementsByName("user-token")[0]
@@ -25,9 +29,11 @@ function headers() {
 
 // caller needs to define promise to deal with
 // data returned from server
-const heyfamFetch = (url, data, options = {}) => {
+const heyfamFetch = (url, data, options = {}, type="json") => {
   options.credentials = "same-origin"
   options.headers = headers()
+  if(type === "json") appendJsonHeader(options.headers)
+  options.body = data
 
   return fetch(url, options)
     .then(
