@@ -50,9 +50,11 @@ Rails.application.routes.draw do
       resources :jobs,
         only: [:index]
       resources :favorite_jobs,
-        only: [:create, :destroy]
+        only: [:index, :create, :destroy]
       resource :thumbnail,
         only: [:update, :destroy]
+      resources :job_filters,
+        only: [:index]
     end
   end
 end

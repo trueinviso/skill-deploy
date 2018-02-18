@@ -4,24 +4,37 @@ import JobRole from './JobBoard/JobRole'
 import JobType from './JobBoard/JobType'
 import heyfamFetch from '../helpers/heyfamFetch'
 
-const API = "/api/v1/jobs"
+const jobsUrl = "/api/v1/jobs"
+const filtersUrl = "/api/v1/job_filters"
 
 class JobBoard extends React.Component {
   state = {
     jobs: [],
+    roles: [],
+    types: [],
     activeRole: "",
     activeType: "",
     isFetching: false
   }
 
   componentWillMount() {
-    heyfamFetch(API, {})
-      .then(json => this.setState({ jobs: json })
+    heyfamFetch(jobsUrl, {})
+      .then(json => { this.setState({ jobs: json })})
+      .then(() => {
+        heyfamFetch(filtersUrl, {})
+          .then(json => {
+            this.setState({
+              roles: json.roles,
+              types: json.types
+            })
+          }
+        )
+      }
     )
   }
 
   fetchJobs = (type, role) => {
-    const url = `${API}?job_type_name=${type}&job_role_name=${role}`
+    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}`
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })
@@ -48,11 +61,16 @@ class JobBoard extends React.Component {
   }
 
   render() {
-    const { roles, types, favorites } = this.props
     return(
       <div className="jobs-index__wrapper row">
         <div className="small-12 columns">
-          <JobFilters roles={roles} types={types} state={this.state} setActiveRole={this.setActiveRole} setActiveType={this.setActiveType} />
+          <JobFilters
+            roles={this.state.roles}
+            types={this.state.types}
+            state={this.state}
+            setActiveRole={this.setActiveRole}
+            setActiveType={this.setActiveType}
+          />
           <JobList jobs={this.state.jobs}  />
         </div>
       </div>
