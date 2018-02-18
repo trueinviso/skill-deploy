@@ -18,12 +18,13 @@ class SavedJobs extends React.Component {
     const jobItems = this.state.favorites.map((fav) => {
       return <Job key={fav.id} job={fav} />
     })
-    console.log(this.state.favorites)
 
     return(
       <div className="jobs-index__wrapper row">
         <div className="jobs-index__card-list">
-          {jobItems}
+					<ul className="small-block-grid-1">
+          	{jobItems}
+					</ul>
         </div>
       </div>
     );
