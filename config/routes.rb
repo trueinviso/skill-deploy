@@ -53,6 +53,8 @@ Rails.application.routes.draw do
         only: [:index, :create, :destroy]
       resource :thumbnail,
         only: [:update, :destroy]
+      resource :user,
+        only: [:show]
       resources :job_filters,
         only: [:index]
     end

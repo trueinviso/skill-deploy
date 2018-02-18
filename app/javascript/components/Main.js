@@ -4,14 +4,14 @@ import JobBoard from './JobBoard'
 import SavedJobs from './SavedJobs'
 import Profile from './Profile'
 
-function Main({ user }) {
+function Main() {
   return(
     <main>
       <Switch>
         <Route exact path='/' component={JobBoard} />
         <Route path='/jobs' component={JobBoard} />
         <Route path='/favorite_jobs' component={SavedJobs} />
-        <Route path='/profile' render={props => <Profile user={user} />} />
+        <Route path='/profile' component={Profile} />
       </Switch>
     </main>
   );

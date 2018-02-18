@@ -24,4 +24,12 @@ class User < ApplicationRecord
   def role?(role)
     roles.any? { |r| r.name.parameterize.underscore.to_sym == role }
   end
+
+  def build_json
+    {
+      email: email,
+      first_name: user_profile.first_name,
+      last_name: user_profile.first_name,
+    }
+  end
 end
