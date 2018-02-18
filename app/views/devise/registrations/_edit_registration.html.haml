@@ -10,8 +10,8 @@
 
       = devise_error_messages!
 
-      - thumbnail = f.object.thumbnail_url
-      = react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
+      /- thumbnail = f.object.thumbnail_url
+      /= react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
 
       .small-12.columns
         = render "personal_info", form: f

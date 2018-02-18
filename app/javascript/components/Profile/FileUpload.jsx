@@ -1,7 +1,7 @@
 import React from 'react'
-import ProfileImage from './Profile/ProfileImage'
-import ImageButtons from './Profile/ImageButtons'
-import heyfamFetch from '../helpers/heyfamFetch'
+import ProfileImage from './ProfileImage'
+import ImageButtons from './ImageButtons'
+import heyfamFetch from '../../helpers/heyfamFetch'
 
 const API = "/api/v1/thumbnail"
 

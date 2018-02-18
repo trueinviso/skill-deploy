@@ -9,7 +9,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <Nav />
-          <Main />
+          <Main user={this.props.user} />
         </div>
       </BrowserRouter>
     );
