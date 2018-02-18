@@ -1,9 +1,17 @@
 module Api
   module V1
     class FavoriteJobsController < ApiController
+      def index
+        jobs = JobsSerializer.build(
+          current_user,
+          FavoriteJobsQuery.new(current_user),
+        )
+        render status: 200, json: jobs
+      end
+
       def create
         if favorite.present?
-          render status: 200, json: favorite if favorite.present?
+          render status: 200, json: favorite
         else
           fav = FavoriteJob.create!(
             user_id: current_user.id,

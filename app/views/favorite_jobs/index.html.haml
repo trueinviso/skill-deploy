@@ -1,8 +1,9 @@
-.jobs-index__wrapper.row
-
-  //------ Cards -------//
-  .jobs-index__card-list
-    = render partial: "jobs/jobs",
-      locals: { jobs: @jobs, favorites: @favorites }
+= react_component("SavedJobs")
+//.jobs-index__wrapper.row
+//
+//  //------ Cards -------//
+//  .jobs-index__card-list
+//    = render partial: "jobs/jobs",
+//      locals: { jobs: @jobs, favorites: @favorites }
 
 /= render "shared/screen_modal"
