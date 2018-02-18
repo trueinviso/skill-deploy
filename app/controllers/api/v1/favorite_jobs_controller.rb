@@ -6,7 +6,6 @@ module Api
           current_user,
           FavoriteJobsQuery.new(current_user),
         )
-        byebug
         render status: 200, json: jobs
       end
 
