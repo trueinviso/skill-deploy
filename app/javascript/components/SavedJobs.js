@@ -5,17 +5,8 @@ import heyfamFetch from '../helpers/heyfamFetch'
 const API = "/api/v1/favorite_jobs"
 
 class SavedJobs extends React.Component {
-  state = {
-    favorites: []
-  }
-
-  componentWillMount() {
-    heyfamFetch(API, {})
-      .then(json => this.setState({favorites: json }))
-  }
-
   render() {
-    const jobItems = this.state.favorites.map((fav) => {
+    const jobItems = this.props.favorites.map((fav) => {
       return <Job key={fav.id} job={fav} />
     })
 
