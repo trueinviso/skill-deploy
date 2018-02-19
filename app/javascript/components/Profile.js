@@ -46,7 +46,7 @@ function FormContainer({ match }) {
   );
 }
 
-function SubView({ match }) {
+function SubView({ match, history }) {
   return(
     <div className="align-center forms">
       <div className="column small-12 medium-10">
