@@ -16,14 +16,26 @@ class JobBoard extends React.Component {
       types: [],
       activeRole: "",
       activeType: "",
-      search: this.props.history.location.search,
+      search: this.props.location.search,
       isFetching: false
     }
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.location.search !== prevProps.location.search) {
+      this.setState(
+        {
+          search: this.props.location.search,
+          activeRole: "",
+          activeType: ""
+        },
+        () => this.fetchJobs(this.state.activeType, this.state.activeRole)
+      )
+    }
+  }
+
   componentWillMount() {
-    const search = new URLSearchParams(this.state.search).get("search")
-    const url = `${jobsUrl}?search=${search}`
+    const url = `${jobsUrl}?search=${this.parseSearchParam()}`
     heyfamFetch(url, {})
       .then(json => { this.setState({ jobs: json })})
       .then(() => {
@@ -39,8 +51,12 @@ class JobBoard extends React.Component {
     )
   }
 
+  parseSearchParam() {
+    return new URLSearchParams(this.state.search).get("search") || ""
+  }
+
   fetchJobs = (type, role) => {
-    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}&search=${this.state.search}`
+    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}&search=${this.parseSearchParam()}`
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })
