@@ -8,7 +8,10 @@ const constants = {
   RECEIVE_JOBS: "RECEIVE_JOBS",
 
   //====== Nav Link Actions ======//
-  SET_ACTIVE_NAV_LINK: "SET_ACTIVE_NAV_LINK"
+  SET_ACTIVE_NAV_LINK: "SET_ACTIVE_NAV_LINK",
+
+  //====== Nav Link Actions ======//
+  SET_SEARCH: "SET_SEARCH"
 }
 
 export {

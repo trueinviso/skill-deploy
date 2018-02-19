@@ -15,16 +15,24 @@ class JobBoard extends React.Component {
 
   componentWillMount() {
     this.props.resetActiveNavLink()
-    this.loadFilters()
+    this.loadData()
   }
 
-  loadFilters() {
+  componentWillUnmount() {
+    this.props.resetSearch()
+    this.props.resetActiveRole()
+    this.props.resetActiveType()
+  }
+
+  loadData() {
     heyfamFetch(filtersUrl, {})
-      .then(json => { this.setState({
-        roles: json.roles,
-        types: json.types
+      .then(
+        json => { this.setState({
+          roles: json.roles,
+          types: json.types
+        })
       })
-    })
+      .then(() => this.props.loadJobs())
   }
 
   render() {

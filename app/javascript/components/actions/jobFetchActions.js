@@ -22,7 +22,13 @@ function shouldFetchJobs(state) {
 function fetchJobs(state, options = {}) {
   const type = `job_type_name=${state.activeType}`
   const role = `job_role_name=${state.activeRole}`
-  const url = `${API}?${type}&${role}`
+  let search = ""
+
+  if(state.search && state.search !== "") {
+    search = `search=${state.search}`
+  }
+
+  const url = `${API}?${type}&${role}&${search}`
 
   return function(dispatch) {
     dispatch(requestJobs())
