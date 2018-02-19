@@ -16,26 +16,35 @@ class JobBoard extends React.Component {
       types: [],
       activeRole: "",
       activeType: "",
-      search: this.props.location.search,
+      search: this.parseSearchParam(),
       isFetching: false
     }
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.location.search !== prevProps.location.search) {
-      this.setState(
-        {
-          search: this.props.location.search,
-          activeRole: "",
-          activeType: ""
-        },
-        () => this.fetchJobs(this.state.activeType, this.state.activeRole)
-      )
+    if(this.urlChanged(prevProps)) {
+      this.refreshJobs()
     }
   }
 
+  urlChanged(prevProps) {
+    if(!this.props.location) return false
+    return this.props.location.search !== prevProps.location.search
+  }
+
+  refreshJobs() {
+    this.setState(
+      {
+        search: this.parseSearchParam(),
+        activeRole: "",
+        activeType: ""
+      },
+      () => this.fetchJobs(this.state.activeType, this.state.activeRole)
+    )
+  }
+
   componentWillMount() {
-    const url = `${jobsUrl}?search=${this.parseSearchParam()}`
+    const url = `${jobsUrl}?search=${this.state.search}`
     heyfamFetch(url, {})
       .then(json => { this.setState({ jobs: json })})
       .then(() => {
@@ -52,11 +61,12 @@ class JobBoard extends React.Component {
   }
 
   parseSearchParam() {
-    return new URLSearchParams(this.state.search).get("search") || ""
+    if(!this.props.location) return ""
+    return new URLSearchParams(this.props.location.search).get("search") || ""
   }
 
   fetchJobs = (type, role) => {
-    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}&search=${this.parseSearchParam()}`
+    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}&search=${this.state.search}`
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })
@@ -82,9 +92,14 @@ class JobBoard extends React.Component {
     this.fetchJobs(nextType, this.state.activeRole)
   }
 
+  clearSearch = () => {
+    this.props.history.push({ pathname: '/jobs' })
+  }
+
   render() {
     return(
       <div className="jobs-index__wrapper row">
+        <JobSearchLabel search={this.state.search} clearSearch={this.clearSearch}/>
         <div className="small-12 columns">
           <JobFilters
             roles={this.state.roles}
@@ -98,6 +113,28 @@ class JobBoard extends React.Component {
       </div>
     );
   }
+}
+
+function JobSearchLabel(props) {
+  function renderLabel() {
+    if(props.search && props.search != "") {
+      return(
+        <div className="small-12 columns jobs-index__search-result" onClick={props.clearSearch}>
+          <ul>
+            <div>
+              <li>
+                {props.search}
+                <span className="erase-query">x</span>
+              </li>
+            </div>
+          </ul>
+        </div>
+      )
+    } else {
+      return ""
+    }
+  }
+  return renderLabel()
 }
 
 function JobFilters(props) {

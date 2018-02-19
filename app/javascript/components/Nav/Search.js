@@ -20,7 +20,7 @@ class Search extends React.Component {
       <div className="small-6 columns" id="search-form">
         <form onSubmit={this.submitHandler}>
           <div className="search-field">
-            <input type="text" placeholder="Search" id="search-field" />
+            <input type="text" placeholder="Search" id="search" />
             <span className="search-icon">&#9906;</span>
           </div>
           <input type="submit" value="Search" id="search-submit" />

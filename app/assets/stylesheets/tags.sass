@@ -1,7 +1,8 @@
 @import "variables_and_mixins"
 @import "fonts"
 
-.jobs-index__tag-list
+.jobs-index__tag-list,
+.jobs-index__search-result
   ul
     list-style-type: none
     margin-left: 0px
@@ -33,3 +34,16 @@
     .active-freelance
       background-color: $orange
       color: $white
+
+.jobs-index__search-result
+  ul
+    li
+      border-color: $royal
+      padding: 8px 35px 10px 35px
+      &:hover
+        cursor: pointer
+  .erase-query
+    margin-left: 12px
+    position: absolute
+    top: 15px
+    font-size: 20px
