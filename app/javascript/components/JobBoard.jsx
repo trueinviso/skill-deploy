@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import React from 'react'
 import Job from './JobBoard/Job'
 import JobRole from './JobBoard/JobRole'

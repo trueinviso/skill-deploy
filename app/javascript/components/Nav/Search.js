@@ -11,7 +11,7 @@ class Search extends React.Component {
     e.preventDefault()
     this.props.history.push({
       pathname: '/jobs',
-      search: `?search=${document.getElementById("search-field").value}`
+      search: `?search=${document.getElementById("search").value}`
     })
   }
 
