@@ -6,10 +6,7 @@ const JobType = ({ active, type, setActiveType }) => {
 
   return(
     <a href=""
-      onClick={e => {
-        e.preventDefault()
-        setActiveType(type.name)
-      }}
+      onClick={setActiveType}
     >
       <li className={active ? className : ""}>
         {type.name}
@@ -24,4 +21,4 @@ JobType.propTypes = {
   setActiveType: PropTypes.func.isRequired
 }
 
-export default JobType
+export { JobType }

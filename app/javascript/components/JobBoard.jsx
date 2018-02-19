@@ -1,115 +1,44 @@
 import 'babel-polyfill'
 import React from 'react'
 import Job from './JobBoard/Job'
-import JobRole from './JobBoard/JobRole'
-import JobType from './JobBoard/JobType'
+import JobRoleLink from './containers/JobRoleLink'
+import JobTypeLink from './containers/JobTypeLink'
 import heyfamFetch from '../helpers/heyfamFetch'
 
-const jobsUrl = "/api/v1/jobs"
 const filtersUrl = "/api/v1/job_filters"
 
 class JobBoard extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      jobs: [],
-      roles: [],
-      types: [],
-      activeRole: "",
-      activeType: "",
-      search: this.parseSearchParam(),
-      isFetching: false
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if(this.urlChanged(prevProps)) {
-      this.refreshJobs()
-    }
-  }
-
-  urlChanged(prevProps) {
-    if(!this.props.location) return false
-    return this.props.location.search !== prevProps.location.search
-  }
-
-  refreshJobs() {
-    this.setState(
-      {
-        search: this.parseSearchParam(),
-        activeRole: "",
-        activeType: ""
-      },
-      () => this.fetchJobs(this.state.activeType, this.state.activeRole)
-    )
+  state = {
+    roles: [],
+    types: []
   }
 
   componentWillMount() {
-    const url = `${jobsUrl}?search=${this.state.search}`
-    heyfamFetch(url, {})
-      .then(json => { this.setState({ jobs: json })})
-      .then(() => {
-        heyfamFetch(filtersUrl, {})
-          .then(json => {
-            this.setState({
-              roles: json.roles,
-              types: json.types
-            })
-          }
-        )
-      }
-    )
+    this.props.resetActiveNavLink()
+    this.loadFilters()
   }
 
-  parseSearchParam() {
-    if(!this.props.location) return ""
-    return new URLSearchParams(this.props.location.search).get("search") || ""
-  }
-
-  fetchJobs = (type, role) => {
-    const url = `${jobsUrl}?job_type_name=${type}&job_role_name=${role}&search=${this.state.search}`
-
-    if(!this.state.isFetching) {
-      this.setState({ isFetching: true })
-      heyfamFetch(url, {})
-        .then(json => this.setState({ jobs: json, isFetching: false })
-      )
-    }
-  }
-
-  setActiveRole = (name) => {
-    const nextRole = this.state.activeRole != name ? name : ""
-    this.setState({
-      activeRole: nextRole
+  loadFilters() {
+    heyfamFetch(filtersUrl, {})
+      .then(json => { this.setState({
+        roles: json.roles,
+        types: json.types
+      })
     })
-    this.fetchJobs(this.state.activeType, nextRole)
-  }
-
-  setActiveType = (name) => {
-    const nextType = this.state.activeType != name ? name : ""
-    this.setState({
-      activeType: nextType
-    })
-    this.fetchJobs(nextType, this.state.activeRole)
-  }
-
-  clearSearch = () => {
-    this.props.history.push({ pathname: '/jobs' })
   }
 
   render() {
+    const { jobs } = this.props
+
     return(
       <div className="jobs-index__wrapper row">
-        <JobSearchLabel search={this.state.search} clearSearch={this.clearSearch}/>
+        <JobSearchLabel search="" />
         <div className="small-12 columns">
           <JobFilters
             roles={this.state.roles}
             types={this.state.types}
-            state={this.state}
-            setActiveRole={this.setActiveRole}
-            setActiveType={this.setActiveType}
           />
-          <JobList jobs={this.state.jobs}  />
+          <JobList jobs={jobs}  />
         </div>
       </div>
     );
@@ -142,50 +71,44 @@ function JobFilters(props) {
   return(
     <div className="jobs-index__tag-list">
       <ul>
-        <JobRoleList roles={props.roles} state={props.state} setActiveRole={props.setActiveRole} />
-        <JobTypeList types={props.types} state={props.state} setActiveType={props.setActiveType} />
+        <JobRoleList roles={props.roles} />
+        <JobTypeList types={props.types} />
       </ul>
     </div>
   );
 }
 
 function JobRoleList(props) {
-  function renderRole(role, setActiveRole) {
-    const active = role.name === props.state.activeRole
+  function renderRole(role) {
     return(
-      <JobRole
+      <JobRoleLink
         key={role.id}
         role={role}
-        active={active}
-        setActiveRole={setActiveRole}
       />
     );
   }
 
   return(
     props.roles.map((role) => {
-      return renderRole(role, props.setActiveRole)
+      return renderRole(role)
     })
   );
 }
 
 
 function JobTypeList(props) {
-  function renderType(type, setActiveType) {
-    const active = type.name === props.state.activeType
+  function renderType(type) {
     return(
-      <JobType
+      <JobTypeLink
         key={type.id}
         type={type}
-        active={active}
-        setActiveType={setActiveType}
       />
     );
   }
 
   return(
     props.types.map((type) => {
-      return renderType(type, props.setActiveType)
+      return renderType(type)
     })
   );
 }
@@ -206,4 +129,4 @@ function JobList(props) {
   );
 }
 
-export default JobBoard
+export { JobBoard }

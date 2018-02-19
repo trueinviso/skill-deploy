@@ -1,6 +1,6 @@
 import React from 'react'
 import BrandIcon from './Nav/BrandIcon'
-import Links from './Nav/Links'
+import NavLink from './containers/NavLink'
 import Search from './Nav/Search'
 
 function Nav() {
@@ -8,7 +8,7 @@ function Nav() {
     <div className="small-12 columns" id="nav">
       <BrandIcon />
       <Search />
-      <Links />
+      <NavLink />
     </div>
   );
 }
