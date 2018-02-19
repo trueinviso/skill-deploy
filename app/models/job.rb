@@ -37,4 +37,12 @@ class Job < ApplicationRecord
         tag_name: tag_name,
     )
   end
+
+  def self.search(search)
+    where("name ILIKE :search OR " \
+      "location ILIKE :search OR " \
+      "company_name ILIKE :search",
+      search: "%#{search}%"
+    )
+  end
 end
