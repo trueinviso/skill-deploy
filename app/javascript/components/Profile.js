@@ -1,6 +1,7 @@
 import React from 'react'
-import { Link, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import Form from './Profile/Form'
+import SideNav from './Profile/SideNav'
 
 const API = '/api/v1/users'
 
@@ -20,50 +21,20 @@ class Profile extends React.Component {
   }
 
   render() {
+    const props = {
+      ...this.state,
+      setActiveLink: this.setActiveLink
+    }
+
     return(
       <div className="row">
         <div className="small-12 columns wrapper">
-          <SideNav {...this.state} setActiveLink={this.setActiveLink} />
+          <SideNav {...props } />
           <FormContainer match={this.state.match} />
         </div>
       </div>
-
     );
   }
-}
-
-function SideNav({ match, activeLink, setActiveLink }) {
-  function classNames(name) {
-    return `profile-link ${activeLink == name ? "active-link" : ""}`
-  }
-
-  return(
-    <div className="small-3 columns">
-      <div className="side-nav">
-        <div className="small-12 columns">
-          <Link
-            onClick={() => setActiveLink("")}
-            className={classNames("")}
-            to={`${match.path}`}>Profile
-          </Link>
-        </div>
-        <div className="small-12 columns">
-          <Link
-            onClick={() => setActiveLink("social")}
-            className={classNames("social")}
-            to={`${match.path}/social/edit`}>Social Profiles
-          </Link>
-        </div>
-        <div className="small-12 columns">
-          <Link
-            onClick={() => setActiveLink("notifications")}
-            className={classNames("notifications")}
-            to={`${match.path}/notifications/edit`}>Notifications
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
 }
 
 function FormContainer({ match }) {

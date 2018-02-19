@@ -8,6 +8,7 @@ function Notifications({ user }) {
       </div>
       <EmailUpdates user={user} />
       <WeeklyNewsletter user={user} />
+      <SubmitField />
     </div>
   );
 }
@@ -36,6 +37,14 @@ function WeeklyNewsletter({ user }) {
       <div className="instructions checkbox-instructions">
         Receive our weekly newsletter featuring the latest projects
       </div>
+    </div>
+  );
+}
+
+function SubmitField() {
+  return(
+    <div className="submit-field">
+      <button>Save</button>
     </div>
   );
 }

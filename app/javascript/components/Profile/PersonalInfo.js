@@ -6,12 +6,17 @@ function PersonalInfo({ user }) {
       <div className="secondary-heading">
         Profile
       </div>
-      <UserProfileFields user={user} />
-      <EmailField user={user} />
-      <LocationField user={user} />
-      <WebsiteField user={user} />
-      <BioField user={user} />
-      <PasswordFields user={user} />
+      <div className="row">
+        <UserProfileFields user={user} />
+      </div>
+      <div className="row">
+        <EmailField user={user} />
+        <LocationField user={user} />
+        <WebsiteField user={user} />
+        <BioField user={user} />
+        <PasswordFields user={user} />
+        <SubmitField />
+      </div>
     </div>
   );
 }
@@ -100,6 +105,14 @@ function PasswordFields({ user }) {
           <input type="text" value="" />
         </label>
       </div>
+    </div>
+  );
+}
+
+function SubmitField() {
+  return(
+    <div className="submit-field">
+      <button>Save</button>
     </div>
   );
 }

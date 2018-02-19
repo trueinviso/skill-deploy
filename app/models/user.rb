@@ -28,8 +28,19 @@ class User < ApplicationRecord
   def build_json
     {
       email: email,
+      bio: user_profile.bio,
       first_name: user_profile.first_name,
-      last_name: user_profile.first_name,
+      last_name: user_profile.last_name,
+      twitter: user_profile.twitter,
+      facebook: user_profile.facebook,
+      linked_in: user_profile.linked_in,
+      dribbble: user_profile.dribbble,
+      github: user_profile.github,
+      codepen: user_profile.codepen,
+      medium: user_profile.medium,
+      behance: user_profile.behance,
+      instagram: user_profile.instagram,
+      vimeo: user_profile.vimeo,
     }
   end
 end
