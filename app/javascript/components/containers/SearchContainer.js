@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       dispatch(setActiveRole("")),
       dispatch(setActiveType("")),
       dispatch(fetchJobsIfNeeded())
+      document.getElementById("search").value = ""
       ownProps.history.push({ pathname: '/jobs' })
     }
   }

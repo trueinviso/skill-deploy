@@ -3,6 +3,7 @@ import React from 'react'
 import Job from './JobBoard/Job'
 import JobRoleLink from './containers/JobRoleLink'
 import JobTypeLink from './containers/JobTypeLink'
+import JobSearchLabelContainer from './containers/JobSearchLabelContainer'
 import heyfamFetch from '../helpers/heyfamFetch'
 
 const filtersUrl = "/api/v1/job_filters"
@@ -40,7 +41,7 @@ class JobBoard extends React.Component {
 
     return(
       <div className="jobs-index__wrapper row">
-        <JobSearchLabel search="" />
+        <JobSearchLabelContainer />
         <div className="small-12 columns">
           <JobFilters
             roles={this.state.roles}
@@ -51,28 +52,6 @@ class JobBoard extends React.Component {
       </div>
     );
   }
-}
-
-function JobSearchLabel(props) {
-  function renderLabel() {
-    if(props.search && props.search != "") {
-      return(
-        <div className="small-12 columns jobs-index__search-result" onClick={props.clearSearch}>
-          <ul>
-            <div>
-              <li>
-                {props.search}
-                <span className="erase-query">x</span>
-              </li>
-            </div>
-          </ul>
-        </div>
-      )
-    } else {
-      return ""
-    }
-  }
-  return renderLabel()
 }
 
 function JobFilters(props) {
