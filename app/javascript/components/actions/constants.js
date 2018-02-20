@@ -11,7 +11,16 @@ const constants = {
   SET_ACTIVE_NAV_LINK: "SET_ACTIVE_NAV_LINK",
 
   //====== Nav Link Actions ======//
-  SET_SEARCH: "SET_SEARCH"
+  SET_SEARCH: "SET_SEARCH",
+
+  //====== Upload Thumbnail Actions ======//
+  RECEIVE_THUMBNAIL: "RECEIVE_THUMBNAIL",
+  UPLOADING_THUMBNAIL: "UPLOADING_THUMBNAIL",
+  DESTROYING_THUMBNAIL: "DESTROYING_THUMBNAIL",
+
+  //====== User Actions ======//
+  RECEIVE_USER: "RECEIVE_USER",
+  FETCHING_USER: "FETCHING_USER"
 }
 
 export {

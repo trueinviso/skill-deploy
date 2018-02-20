@@ -1,33 +1,33 @@
 import React from 'react'
 
-function Social({ handler, state }) {
+function Social({ user, handler }) {
   return(
     <div>
       <div className="secondary-heading">
         Social Profiles
       </div>
-      <Twitter state={state} handler={handler} />
-      <Facebook state={state} handler={handler} />
-      <LinkedIn state={state} handler={handler} />
-      <Dribbble state={state} handler={handler} />
-      <Github state={state} handler={handler} />
-      <CodePen state={state} handler={handler} />
-      <Medium state={state} handler={handler} />
-      <Behance state={state} handler={handler} />
-      <Instagram state={state} handler={handler} />
-      <Vimeo state={state} handler={handler} />
+      <Twitter user={user} handler={handler} />
+      <Facebook user={user} handler={handler} />
+      <LinkedIn user={user} handler={handler} />
+      <Dribbble user={user} handler={handler} />
+      <Github user={user} handler={handler} />
+      <CodePen user={user} handler={handler} />
+      <Medium user={user} handler={handler} />
+      <Behance user={user} handler={handler} />
+      <Instagram user={user} handler={handler} />
+      <Vimeo user={user} handler={handler} />
       <SubmitField />
     </div>
   );
 }
 
-function Twitter({ handler, state }) {
+function Twitter({ handler, user }) {
   return(
     <div className="text-field">
       <label>
         Twitter
         <input type="text"
-          value={ state.twitter || "" }
+          value={ user.twitter || "" }
           onChange={ handler }
           id="twitter"
         />
@@ -36,13 +36,13 @@ function Twitter({ handler, state }) {
   );
 }
 
-function Facebook({ state, handler }) {
+function Facebook({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Facebook
         <input
-          value={ state.facebook || "" }
+          value={ user.facebook || "" }
           onChange={ handler }
           id="facebook"
         />
@@ -51,13 +51,13 @@ function Facebook({ state, handler }) {
   );
 }
 
-function LinkedIn({ state, handler }) {
+function LinkedIn({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         LinkedIn
         <input
-          value={ state.linked_in || "" }
+          value={ user.linked_in || "" }
           onChange={ handler }
           id="linked_in"
         />
@@ -66,13 +66,13 @@ function LinkedIn({ state, handler }) {
   );
 }
 
-function Dribbble({ state, handler }) {
+function Dribbble({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Dribbble
         <input
-          value={ state.dribbble || "" }
+          value={ user.dribbble || "" }
           onChange={ handler }
           id="dribbble"
         />
@@ -81,13 +81,13 @@ function Dribbble({ state, handler }) {
   );
 }
 
-function Github({ state, handler }) {
+function Github({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Github
         <input
-          value={ state.github || "" }
+          value={ user.github || "" }
           onChange={ handler }
           id="github"
         />
@@ -96,13 +96,13 @@ function Github({ state, handler }) {
   );
 }
 
-function CodePen({ state, handler }) {
+function CodePen({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Codepen
         <input
-          value={ state.codepen || "" }
+          value={ user.codepen || "" }
           onChange={ handler }
           id="codepen"
         />
@@ -111,13 +111,13 @@ function CodePen({ state, handler }) {
   );
 }
 
-function Medium({ state, handler }) {
+function Medium({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Medium
         <input
-          value={ state.medium || "" }
+          value={ user.medium || "" }
           onChange={ handler }
           id="medium"
         />
@@ -126,13 +126,13 @@ function Medium({ state, handler }) {
   );
 }
 
-function Behance({ state, handler }) {
+function Behance({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Behance
         <input
-          value={ state.behance || "" }
+          value={ user.behance || "" }
           onChange={ handler }
           id="behance"
         />
@@ -141,13 +141,13 @@ function Behance({ state, handler }) {
   );
 }
 
-function Instagram({ state, handler }) {
+function Instagram({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Instagram
         <input
-          value={ state.instagram || "" }
+          value={ user.instagram || "" }
           onChange={ handler }
           id="instagram"
         />
@@ -156,13 +156,13 @@ function Instagram({ state, handler }) {
   );
 }
 
-function Vimeo({ state, handler }) {
+function Vimeo({ user, handler }) {
   return(
     <div className="text-field">
       <label>
         Vimeo
         <input
-          value={ state.vimeo || "" }
+          value={ user.vimeo || "" }
           onChange={ handler }
           id="vimeo"
         />

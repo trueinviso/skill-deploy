@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Form from './Profile/Form'
+import ProfileFormContainer from './containers/ProfileFormContainer'
 import SideNav from './Profile/SideNav'
 
 const API = '/api/v1/users'
@@ -50,7 +50,7 @@ function SubView({ match, history }) {
   return(
     <div className="align-center forms">
       <div className="column small-12 medium-10">
-        <Form sectionName={match.params.sectionName} />
+        <ProfileFormContainer sectionName={match.params.sectionName} />
       </div>
     </div>
   );

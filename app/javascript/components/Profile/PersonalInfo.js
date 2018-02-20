@@ -1,12 +1,14 @@
 import React from 'react'
+import FileUploadContainer from '../containers/FileUploadContainer'
 
-function PersonalInfo({ user }) {
+function PersonalInfo({ user, emptyPhoto }) {
   return(
     <div>
-      <div className="secondary-heading">
+      <div className="secondary-heading row">
         Profile
       </div>
       <div className="row">
+        <FileUploadContainer user={user} emptyPhoto={emptyPhoto} />
         <UserProfileFields user={user} />
       </div>
       <div className="row">

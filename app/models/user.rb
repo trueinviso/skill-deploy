@@ -41,6 +41,7 @@ class User < ApplicationRecord
       behance: user_profile.behance,
       instagram: user_profile.instagram,
       vimeo: user_profile.vimeo,
+      thumbnail: thumbnail_url,
     }
   end
 end
