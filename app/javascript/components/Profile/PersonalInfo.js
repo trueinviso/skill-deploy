@@ -29,13 +29,13 @@ function UserProfileFields({ user }) {
       <div className="text-field small-6 column no-margin-bottom">
         <label>
           First Name
-          <input type="text" value={user.first_name || ""} />
+          <input type="text" defaultValue={user.first_name || ""} />
         </label>
       </div>
       <div className="text-field small-5 column right no-margin-bottom">
         <label>
           Last Name
-          <input type="text" value={user.last_name || ""} />
+          <input type="text" defaultValue={user.last_name || ""} />
         </label>
       </div>
     </div>
@@ -47,7 +47,7 @@ function EmailField({ user }) {
     <div className="text-field">
       <label>
         Email
-        <input type="text" value={user.email || ""} />
+        <input type="text" defaultValue={user.email || ""} />
       </label>
     </div>
   );
@@ -58,7 +58,7 @@ function LocationField({ user }) {
     <div className="text-field">
       <label>
         Location
-        <input type="text" value={user.location || ""} />
+        <input type="text" defaultValue={user.location || ""} />
       </label>
     </div>
   );
@@ -69,7 +69,7 @@ function WebsiteField({ user }) {
     <div className="text-field">
       <label>
         Website
-        <input type="text" value={user.website || ""} />
+        <input type="text" defaultValue={user.website || ""} />
       </label>
     </div>
   );
@@ -80,7 +80,7 @@ function BioField({ user }) {
     <div className="text-field">
       <label>
         Bio
-        <input type="text" value={user.bio || ""} />
+        <input type="text" defaultValue={user.bio || ""} />
       </label>
     </div>
   );
@@ -92,19 +92,19 @@ function PasswordFields({ user }) {
       <div className="text-field">
         <label>
           Password
-          <input type="text" value="" />
+          <input type="text" defaultValue="" />
         </label>
       </div>
       <div className="text-field">
         <label>
           Password Confirmation
-          <input type="text" value="" />
+          <input type="text" defaultValue="" />
         </label>
       </div>
       <div className="text-field">
         <label>
           Current Password
-          <input type="text" value="" />
+          <input type="text" defaultValue="" />
         </label>
       </div>
     </div>

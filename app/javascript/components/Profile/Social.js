@@ -27,7 +27,7 @@ function Twitter({ handler, user }) {
       <label>
         Twitter
         <input type="text"
-          value={ user.twitter || "" }
+          defaultValue={ user.twitter || "" }
           onChange={ handler }
           id="twitter"
         />
@@ -42,7 +42,7 @@ function Facebook({ user, handler }) {
       <label>
         Facebook
         <input
-          value={ user.facebook || "" }
+          defaultValue={ user.facebook || "" }
           onChange={ handler }
           id="facebook"
         />
@@ -57,7 +57,7 @@ function LinkedIn({ user, handler }) {
       <label>
         LinkedIn
         <input
-          value={ user.linked_in || "" }
+          defaultValue={ user.linked_in || "" }
           onChange={ handler }
           id="linked_in"
         />
@@ -72,7 +72,7 @@ function Dribbble({ user, handler }) {
       <label>
         Dribbble
         <input
-          value={ user.dribbble || "" }
+          defaultValue={ user.dribbble || "" }
           onChange={ handler }
           id="dribbble"
         />
@@ -87,7 +87,7 @@ function Github({ user, handler }) {
       <label>
         Github
         <input
-          value={ user.github || "" }
+          defaultValue={ user.github || "" }
           onChange={ handler }
           id="github"
         />
@@ -102,7 +102,7 @@ function CodePen({ user, handler }) {
       <label>
         Codepen
         <input
-          value={ user.codepen || "" }
+          defaultValue={ user.codepen || "" }
           onChange={ handler }
           id="codepen"
         />
@@ -117,7 +117,7 @@ function Medium({ user, handler }) {
       <label>
         Medium
         <input
-          value={ user.medium || "" }
+          defaultValue={ user.medium || "" }
           onChange={ handler }
           id="medium"
         />
@@ -132,7 +132,7 @@ function Behance({ user, handler }) {
       <label>
         Behance
         <input
-          value={ user.behance || "" }
+          defaultValue={ user.behance || "" }
           onChange={ handler }
           id="behance"
         />
@@ -147,7 +147,7 @@ function Instagram({ user, handler }) {
       <label>
         Instagram
         <input
-          value={ user.instagram || "" }
+          defaultValue={ user.instagram || "" }
           onChange={ handler }
           id="instagram"
         />
@@ -162,7 +162,7 @@ function Vimeo({ user, handler }) {
       <label>
         Vimeo
         <input
-          value={ user.vimeo || "" }
+          defaultValue={ user.vimeo || "" }
           onChange={ handler }
           id="vimeo"
         />

@@ -12,9 +12,6 @@ class Form extends React.Component {
   //inputHandler(e) {
   //  this.setState({ [e.target.id]: e.target.value })
   //}
-  componentWillMount() {
-    this.props.loadUser()
-  }
 
   emptyPhoto() {
     return this.props.user.data.thumbnail.includes("empty_photo_state_icon")

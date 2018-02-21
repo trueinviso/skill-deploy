@@ -17,7 +17,7 @@ function EmailUpdates({ user }) {
   return(
     <div className="text-field radio-label no-label-margin">
       <label>
-        <input type="checkbox" value={user.update_notifications || ""} />
+        <input type="checkbox" defaultValue={user.update_notifications || ""} />
         <span>Send me updates about new products and features</span>
       </label>
       <div className="instructions checkbox-instructions">
@@ -31,7 +31,7 @@ function WeeklyNewsletter({ user }) {
   return(
     <div className="text-field radio-label no-label-margin">
       <label>
-        <input type="checkbox" value={user.weekly_newsletter || ""} />
+        <input type="checkbox" defaultValue={user.weekly_newsletter || ""} />
         <span>Sign me up for the weekly newsletter</span>
       </label>
       <div className="instructions checkbox-instructions">
