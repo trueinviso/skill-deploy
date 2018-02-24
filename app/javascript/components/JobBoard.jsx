@@ -7,21 +7,32 @@ import heyfamFetch from '../helpers/heyfamFetch'
 const API = "/api/v1/jobs"
 
 class JobBoard extends React.Component {
-  state = {
-    jobs: [],
-    activeRole: "",
-    activeType: "",
-    isFetching: false
+  constructor(props) {
+    super(props)
+    const url = new URL(location.href)
+    const search = url.searchParams.get("search")
+
+    this.state = {
+      jobs: [],
+      activeRole: "",
+      activeType: "",
+      isFetching: false,
+      search: search
+    }
   }
 
-  componentWillMount() {
-    heyfamFetch(API, {})
-      .then(json => this.setState({ jobs: json })
+  componentDidMount() {
+    const url = `${API}?search=${this.state.search}`
+
+    heyfamFetch(url, {})
+      .then(json => this.setState({
+        jobs: json,
+      })
     )
   }
 
   fetchJobs = (type, role) => {
-    const url = `${API}?job_type_name=${type}&job_role_name=${role}`
+    const url = `${API}?job_type_name=${type}&job_role_name=${role}&search=${this.state.search}`
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })

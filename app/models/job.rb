@@ -39,9 +39,9 @@ class Job < ApplicationRecord
   end
 
   def self.search(search)
-    where("name ILIKE :search OR " \
-      "location ILIKE :search OR " \
-      "company_name ILIKE :search",
+    where("jobs.name ILIKE :search OR " \
+          "jobs.location ILIKE :search OR " \
+          "jobs.company_name ILIKE :search",
       search: "%#{search}%"
     )
   end
