@@ -11,6 +11,10 @@ class JobsController < ApplicationController
     end
   end
 
+  def show
+    @job = Job.find_by(id: params[:id])
+  end
+
   private
 
   def jobs

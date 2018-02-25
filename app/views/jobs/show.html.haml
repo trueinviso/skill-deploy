@@ -1,0 +1,39 @@
+.row.forms
+  .small-12.columns.wrapper
+    .row
+      .small-2.columns
+        .submit-field.inverted
+          = link_to "All Listings", jobs_path
+
+    .row
+      .medium-7.columns.job-card
+        .job-card__description
+          %span.job-card__company-name
+            #{@job.company_name} is looking for a #{@job.name}
+
+        %label
+          How are we changing the world?
+        %p="#{@job.world_changing_text}"
+
+        %label
+          Job Description
+        %p="#{@job.description}"
+
+      .medium-3.columns.job-card
+        .submit-field
+          = link_to "Apply", "#"
+
+        .submit-field.inverted
+          = link_to "Company Website",
+            @job.company_website
+
+        %label Job Type
+        %p="#{@job.job_types.pluck(:name).join(", ")}"
+
+        %label Location
+        %p="#{@job.location}"
+
+        %label Preferred Experience
+        %p="#{@job.experience}+ years"
+
+

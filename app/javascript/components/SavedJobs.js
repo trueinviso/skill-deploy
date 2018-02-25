@@ -1,13 +1,10 @@
 import React from 'react'
 import Job from './JobBoard/Job'
-import heyfamFetch from '../helpers/heyfamFetch'
-
-const API = "/api/v1/favorite_jobs"
 
 class SavedJobs extends React.Component {
   render() {
-    const jobItems = this.props.favorites.map((fav) => {
-      return <Job key={fav.id} job={fav} />
+    const jobItems = this.props.jobs.map((job) => {
+      return <Job key={job.id} job={job} />
     })
 
     return(

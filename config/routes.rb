@@ -32,10 +32,13 @@ Rails.application.routes.draw do
     only: [:edit, :update]
 
   resources :jobs,
-    only: [:index]
+    only: [:index, :show]
 
   resources :favorite_jobs,
-    only: [:index, :create]
+    only: [:index]
+
+  resources :applied_fors,
+    only: [:index]
 
   namespace :employer do
     root to: "jobs#index"
