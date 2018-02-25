@@ -10,7 +10,7 @@
   .small-12.medium-3.columns.job-card__right-panel
     .small-12.job-card__links
       = link_to "Edit",
-        "#",
+        edit_employer_job_path(job.id),
         class: "employer-edit"
       = link_to "Delete",
         "#",

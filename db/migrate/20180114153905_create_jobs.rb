@@ -12,6 +12,7 @@ class CreateJobs < ActiveRecord::Migration[5.1]
       t.text :description
       t.string :contact_name
       t.string :contact_email
+      t.timestamps null: false
     end
   end
 end

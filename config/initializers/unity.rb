@@ -9,3 +9,5 @@ Unity::BraintreeGateway.configure_braintree(
   public_key: ENV["BT_PUBLIC_KEY"],
   private_key: ENV["BT_PRIVATE_KEY"],
 )
+
+Unity.allow_multiple_subscriptions = true

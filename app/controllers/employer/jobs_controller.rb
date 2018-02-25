@@ -10,11 +10,11 @@ module Employer
     end
 
     def create
-      @job = Job.new(create_params.merge!(user_id: current_user.id))
-      if @job.save
+      job = JobCreator.call!(current_user, valid_params)
+      if job && job.save
         redirect_to employer_jobs_path
       else
-        render "new"
+        render :new
       end
     end
 
@@ -26,25 +26,41 @@ module Employer
       @job = Job.find(params[:id])
     end
 
+    def update
+      @job = Job.find(params[:id])
+      if @job.update(valid_params[:job])
+        redirect_to [:employer, :jobs]
+      else
+        render :edit
+      end
+    end
+
     def destroy
     end
 
     private
 
-    def create_params
-      params.require(:job)
+    def valid_params
+      params
         .permit(
-          :name,
-          :company_name,
-          :company_website,
-          :location,
-          :experience,
-          :remote,
-          :world_changing_text,
-          :description,
-          :contact_name,
-          :contact_email,
-      )
+          :id,
+          :payment_method_nonce,
+          :plan_id,
+          job: [
+            :company_name,
+            :company_website,
+            :contact_email,
+            :contact_name,
+            :description,
+            :experience,
+            :job_role_ids,
+            :job_type_ids,
+            :location,
+            :name,
+            :remote,
+            :world_changing_text,
+          ],
+        )
     end
   end
 end

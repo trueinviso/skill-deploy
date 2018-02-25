@@ -90,6 +90,8 @@ ActiveRecord::Schema.define(version: 20180211171829) do
     t.text "description"
     t.string "contact_name"
     t.string "contact_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

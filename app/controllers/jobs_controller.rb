@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   def index
-    @jobs = jobs
+    @jobs = jobs.sort { |x, y| y.created_at <=> x.created_at }
     @roles = JobRole.all
     @types = JobType.all
     @favorites = FavoriteJob.where(user_id: current_user.id).pluck(:job_id)
