@@ -20,8 +20,7 @@
         %p="#{@job.description}"
 
       .medium-3.columns.job-card
-        .submit-field
-          = link_to "Apply", "#"
+        = react_component("ApplyButton", { job: @job })
 
         .submit-field.inverted
           = link_to "Company Website",
