@@ -22,7 +22,8 @@ class JobBoard extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${API}?search=${this.state.search}`
+    const search = this.state.search || ""
+    const url = `${API}?search=${search}`
 
     heyfamFetch(url, {})
       .then(json => this.setState({
@@ -32,7 +33,8 @@ class JobBoard extends React.Component {
   }
 
   fetchJobs = (type, role) => {
-    const url = `${API}?job_type_name=${type}&job_role_name=${role}&search=${this.state.search}`
+    const search = this.state.search || ""
+    const url = `${API}?job_type_name=${type}&job_role_name=${role}&search=${search}`
 
     if(!this.state.isFetching) {
       this.setState({ isFetching: true })

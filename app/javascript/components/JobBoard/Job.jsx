@@ -42,7 +42,7 @@ function Job(props) {
   return(
     <li>
       <div className={`small-12 columns job-card ${borderColor()}`}>
-        <a href="#" className="snall-12 medium-9 columns">
+        <a href={`jobs/${props.job.id}`} className="snall-12 medium-9 columns">
           <JobDescription />
           <JobLocation />
         </a>
