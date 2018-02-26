@@ -140,7 +140,6 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
-    pg (0.21.0)
     public_suffix (3.0.1)
     puma (3.11.0)
     pundit (1.1.0)
@@ -216,6 +215,7 @@ GEM
     selenium-webdriver (3.8.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
+    sequel (5.5.0)
     shrine (2.9.0)
       down (~> 4.1)
     shrine-memory (0.3.0)
@@ -282,7 +282,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   mini_magick (>= 4.3.5)
-  pg (~> 0.21)
   puma (~> 3.7)
   pundit
   rails (~> 5.1.4)
@@ -292,6 +291,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   seed-fu (~> 2.3)
   selenium-webdriver
+  sequel
   shrine
   shrine-memory
   simple_token_authentication (~> 1.0)

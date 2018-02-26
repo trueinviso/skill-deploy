@@ -18,6 +18,7 @@ gem "image_processing"
 gem "mini_magick", ">=4.3.5"
 gem "aws-sdk-s3"
 gem "roda"
+gem "sequel"
 gem "webpacker"
 gem "unity", git: "https://github.com/trueinviso/unity.git"
 # path: "/Users/keithward/side_projects/engines/unity"
@@ -29,8 +30,6 @@ gem "fastimage"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 gem "seed-fu", "~> 2.3"
-# Use pg as the database for Active Record
-gem 'pg', '~> 0.21'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
