@@ -16,7 +16,8 @@ gem "react-rails"
 gem "shrine"
 gem "roda"
 gem "webpacker"
-gem "unity", path: "/Users/keithward/side_projects/engines/unity" # git: "git@github.com:trueinviso/unity.git"
+gem "unity", git: "git@github.com:trueinviso/unity.git"
+# path: "/Users/keithward/side_projects/engines/unity"
 # Token authentication for API requests + CORS
 gem "simple_token_authentication", "~> 1.0"
 # required to use shrine validation plugin

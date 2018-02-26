@@ -23,6 +23,10 @@ module ApplicationHelper
     current_page?(applied_fors_path)
   end
 
+  def employer_billing_page?
+    current_page?(edit_employer_billing_path)
+  end
+
   def embedded_svg filename, options={}
     file = File.read(Rails.root.join('app', 'assets', 'font', 'icon', filename))
     doc = Nokogiri::HTML::DocumentFragment.parse file

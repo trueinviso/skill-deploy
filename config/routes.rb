@@ -46,6 +46,9 @@ Rails.application.routes.draw do
     resources :jobs
     resource :profile,
       only: [:edit, :update]
+    resource :billing,
+      controller: :billing,
+      only: [:edit, :update]
   end
 
   namespace :api, defaults: { format: :json } do

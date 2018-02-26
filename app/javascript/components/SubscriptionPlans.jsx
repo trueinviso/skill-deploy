@@ -17,6 +17,7 @@ class SubscriptionPlans extends React.Component {
         plans={this.props.plans}
         activePlan={this.state.activePlan}
         setActivePlan={this.setActivePlan}
+        hideRadio={this.props.hideRadio}
       />
     );
   }
@@ -31,25 +32,25 @@ function Plans(props) {
         plan={plan}
         active={active}
         setActivePlan={props.setActivePlan}
+        hideRadio={props.hideRadio}
       />
     );
   })
 
   return(
     <div>
-      <Header title="Plan Options" />
+      <Header title={props.title} />
       {planItems}
     </div>
   );
 }
 
-function Plan({ plan, active, setActivePlan }) {
-  return(
-    <div
-      className={`plan-wrapper ${active ? "active-plan" : ""}`}
-      onClick={ () => { setActivePlan(plan.gateway_id) } }
-    >
-      <div className="columns small-1">
+function Plan({ plan, active, setActivePlan, hideRadio }) {
+  function RadioButton() {
+    if(hideRadio === true) {
+      return <div></div>
+    } else {
+      return(
         <input
           type="radio"
           name="plan_id"
@@ -57,6 +58,16 @@ function Plan({ plan, active, setActivePlan }) {
           checked={active ? "checked" : ""}
           readOnly
         />
+      );
+    }
+  }
+  return(
+    <div
+      className={`plan-wrapper ${active ? "active-plan" : ""}`}
+      onClick={ () => { setActivePlan(plan.gateway_id) } }
+    >
+      <div className="columns small-1">
+        <RadioButton />
       </div>
       <div className="columns small-11">
         <div className="radio-label plan-label">
@@ -71,11 +82,15 @@ function Plan({ plan, active, setActivePlan }) {
 }
 
 function Header(props) {
-  return(
-    <div className="secondary-heading">
-      {props.title}
-    </div>
-  );
+  if(props.title) {
+    return(
+      <div className="secondary-heading">
+        {props.title}
+      </div>
+    );
+  } else {
+    return <div></div>
+  }
 }
 
 export default SubscriptionPlans

@@ -9,9 +9,9 @@
       edit_user_registration_path,
       class: "#{'active-link' if edit_profile_page?} profile-link"
 
-  /- if current_user.subscription.present?
-  .small-12.columns
-    = link_to "Billing details",
-      "#",
-      class: "billing-link"
+  - if current_user.gateway_customer_id.present?
+    .small-12.columns
+      = link_to "Billing details",
+        edit_employer_billing_path,
+        class: "#{'active-link' if employer_billing_page?} profile-link"
 

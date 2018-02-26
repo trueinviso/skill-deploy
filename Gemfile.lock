@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/keithward/side_projects/engines/unity
+GIT
+  remote: git@github.com:trueinviso/unity.git
+  revision: bb2108c4d4592452406912a60c4e295e01d369e1
   specs:
     unity (0.1.0)
       braintree (~> 2.78)
