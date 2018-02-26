@@ -1,8 +1,7 @@
 .small-12.columns#nav
   .small-2.medium-2.columns.text-right.brand-container
-    = link_to embedded_svg("heyfam-mark.svg", class: "brand-icon"),
-      destroy_user_session_path,
-      { method: :delete }
+    = link_to embedded_svg("heyfam-mark.svg", class: "brand-icon"), root_path
+    = button_to "Logout" , destroy_user_session_path, method: :delete
   - if current_user.present? && current_user.role?(:job_seeker)
     = render "layouts/nav_search"
     = render "layouts/nav_links"
