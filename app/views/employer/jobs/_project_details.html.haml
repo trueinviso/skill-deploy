@@ -11,11 +11,12 @@
 
 .text-field
   = f.label :job_roles, "Role"
+
 = f.collection_radio_buttons(:job_role_ids,
   JobRole.all,
   :id,
   :name_with_description,
-  { checked: job.job_roles.first.id }) do |jr|
+  { checked: job.job_roles.first&.id }) do |jr|
   .text-field.radio-label
     = jr.label do
       = jr.radio_button + raw(jr.text)
@@ -27,7 +28,7 @@
   JobType.all,
   :id,
   :name_with_description,
-  { checked: job.job_types.first.id }) do |jt|
+  { checked: job.job_types.first&.id }) do |jt|
   .text-field.radio-label
     = jt.label do
       = jt.radio_button + raw(jt.text)
