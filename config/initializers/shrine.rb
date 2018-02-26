@@ -26,12 +26,12 @@ else
 
   cache_storage = Shrine::Storage::S3.new(
     prefix: "cache",
-    upload_options: { acl: "public-read" }, **s3_options
+    upload_options: { acl: ["public-read", "public-write"] }, **s3_options
   )
 
   store_storage = Shrine::Storage::S3.new(
     prefix: "store",
-    upload_options: { acl: "public-read" }, **s3_options
+    upload_options: { acl: ["public-read", "public-write" }, **s3_options
   )
 
   Shrine.storages = {
