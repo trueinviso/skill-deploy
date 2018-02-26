@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include BasicAuth
+
   protect_from_forgery with: :exception
   include Pundit
 
