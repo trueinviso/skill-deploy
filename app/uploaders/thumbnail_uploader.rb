@@ -1,10 +1,12 @@
+require "image_processing/mini_magick"
+
 class ThumbnailUploader < PictureUploader
+  include ImageProcessing::MiniMagick
   plugin :upload_endpoint
+  plugin :processing
 
-  Attacher.validate do
-    next unless Rails.env.production?
-
-    validate_max_size(48)
+  process(:store) do |io, context|
+    resize_to_limit!(io.download, 800, 800) { |cmd| cmd.auto_orient }
   end
 
   def default_image_name
