@@ -6,6 +6,7 @@
 
   = render "project_details", f: f, job: job
 
+  / pass stripe plans here
   = react_component("SubscriptionPlans", { plans: Unity::SubscriptionPlan.all })
 
   - if current_user.gateway_customer_id.nil?

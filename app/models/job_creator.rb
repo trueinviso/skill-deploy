@@ -26,6 +26,7 @@ class JobCreator
   end
 
   def create_subscription
+    # create stripe subscription here
     Unity::BraintreeGateway::Actions.create_customer_subscription(
       user,
       subscription_params,
