@@ -7,7 +7,7 @@ module Employer
     def new
       @job = Job.new
       # generate stripe token here
-      @token = Unity::BraintreeGateway::Actions.generate_client_token
+      # @token = Unity::BraintreeGateway::Actions.generate_client_token
     end
 
     def create
