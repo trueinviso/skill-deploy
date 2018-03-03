@@ -10,10 +10,9 @@ class PaymentForm extends React.Component {
     e.preventDefault()
     if(submit) submit.disabled = true
     this.props.stripe.createToken({ name: 'Keith Ward' }).then(({token}) => {
-      const nonceElement = document.getElementById(
-        "payment_method_nonce"
-      )
-      nonceElement.value = token.id
+      console.log(token)
+      const sourceElement = document.getElementById("source")
+      sourceElement.value = token.id
       form.submit()
     })
   }
@@ -26,7 +25,7 @@ class PaymentForm extends React.Component {
   render() {
     return(
       <div>
-        <input type="hidden" name="payment_method_nonce" id="payment_method_nonce" />
+        <input type="hidden" name="source" id="source" />
         <CardSection />
       </div>
     );

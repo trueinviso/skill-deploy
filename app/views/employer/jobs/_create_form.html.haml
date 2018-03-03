@@ -6,10 +6,11 @@
 
   = render "project_details", f: f, job: job
 
-  / pass stripe plans here
-  /= react_component("SubscriptionPlans", { plans: Unity::SubscriptionPlan.all })
+  - if show_plan_list?
+    = react_component("SubscriptionPlans", { plans: SubscriptionPlan.all })
 
-  = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
+  - if show_payment_form?
+    = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
 
   .secondary-heading
     Contact Details
