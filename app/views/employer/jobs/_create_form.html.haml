@@ -10,12 +10,12 @@
     = react_component("SubscriptionPlans", { plans: SubscriptionPlan.all })
 
   - if show_payment_form?
-    = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
+    .secondary-heading
+      Payment Details
+    .text-field
+      = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
 
-  .secondary-heading
-    Contact Details
-
-  = render "contact_details", f: f
+      %span.instructions We reserve the right to remove jobs at our discretion.  Aside from jobs we remove, listings can not be refunded.  All prices are USD.
 
   .small-12.medium-3.columns.submit-field.last
     = f.submit "Start a project"

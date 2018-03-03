@@ -33,12 +33,7 @@ class PaymentForm extends React.Component {
 }
 
 function CardSection() {
-  return(
-    <label>
-      Card details
-      <CardElement />
-    </label>
-  );
+  return <CardElement />
 }
 
 export default injectStripe(PaymentForm)
