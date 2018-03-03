@@ -6,7 +6,6 @@ module Employer
 
     def new
       @job = Job.new
-      @token = Unity::BraintreeGateway::Actions.generate_client_token
     end
 
     def create
@@ -44,7 +43,7 @@ module Employer
       params
         .permit(
           :id,
-          :payment_method_nonce,
+          :source,
           :plan_id,
           job: [
             :company_name,

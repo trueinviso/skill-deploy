@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211171829) do
+ActiveRecord::Schema.define(version: 20180301183433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,27 @@ ActiveRecord::Schema.define(version: 20180211171829) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "subscription_plans", force: :cascade do |t|
+    t.string "gateway_id", null: false
+    t.string "period", null: false
+    t.string "price", null: false
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "subscription_plan_id"
+    t.string "gateway_id"
+    t.integer "gateway_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_plan_id"], name: "index_subscriptions_on_subscription_plan_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.bigint "tag_id"
     t.string "taggable_type"
@@ -129,30 +150,6 @@ ActiveRecord::Schema.define(version: 20180211171829) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "unity_subscription_plans", force: :cascade do |t|
-    t.string "gateway_id", null: false
-    t.string "period", null: false
-    t.string "price", null: false
-    t.string "group_enrollment_add_on_price"
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "unity_subscriptions", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "subscription_plan_id"
-    t.string "gateway_id"
-    t.integer "gateway_status"
-    t.datetime "trial_ends_at"
-    t.boolean "group_enrolled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subscription_plan_id"], name: "index_unity_subscriptions_on_subscription_plan_id"
-    t.index ["user_id"], name: "index_unity_subscriptions_on_user_id"
   end
 
   create_table "user_permissions", force: :cascade do |t|

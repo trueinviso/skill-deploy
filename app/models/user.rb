@@ -24,4 +24,12 @@ class User < ApplicationRecord
   def role?(role)
     roles.any? { |r| r.name.parameterize.underscore.to_sym == role }
   end
+
+  def paying_subscriber?
+    subscriptions.any?
+  end
+
+  def unlimited?
+    subscriptions.any? { |s| s.active? && s.unlimited? }
+  end
 end

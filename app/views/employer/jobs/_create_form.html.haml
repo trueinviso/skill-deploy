@@ -1,15 +1,16 @@
 = form_for(job,
   url: employer_jobs_path(job),
-  html: { id: "braintree-payment-form",
+  html: { id: "stripe-payment-form",
   "data-validate": "data-validate",
   "no-validate": "no-validate" }) do |f|
 
   = render "project_details", f: f, job: job
 
-  = react_component("SubscriptionPlans", { plans: Unity::SubscriptionPlan.all })
+  - if show_plan_list?
+    = react_component("SubscriptionPlans", { plans: SubscriptionPlan.all })
 
-  - if current_user.gateway_customer_id.nil?
-    = react_component("PaymentForm", { token: token })
+  - if show_payment_form?
+    = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
 
   .secondary-heading
     Contact Details
@@ -18,3 +19,5 @@
 
   .small-12.medium-3.columns.submit-field.last
     = f.submit "Start a project"
+
+%script{ src: "https://js.stripe.com/v3/" }

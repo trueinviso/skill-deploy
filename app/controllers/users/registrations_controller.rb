@@ -1,5 +1,6 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    after_action :create_stripe_customer, only: [:create]
 
     protected
 
@@ -19,6 +20,11 @@ module Users
           user_profile_attributes: [:first_name, :last_name],
           thumbnail_attributes: [:file],
         )
+    end
+
+    def create_stripe_customer
+      return if resource.errors.any?
+      CustomerCreator.create!(resource)
     end
 
     def sign_up_params

@@ -12,4 +12,12 @@ module JobsHelper
       ""
     end
   end
+
+  def show_plan_list?
+    !current_user.unlimited?
+  end
+
+  def show_payment_form?
+    !current_user.paying_subscriber?
+  end
 end

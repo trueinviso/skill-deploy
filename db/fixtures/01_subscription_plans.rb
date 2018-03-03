@@ -1,4 +1,4 @@
-Unity::SubscriptionPlan.seed(:id) do |sp|
+SubscriptionPlan.seed(:id) do |sp|
   sp.id = 2
   sp.gateway_id = "heyfam_single_project"
   sp.period = "1"
@@ -9,7 +9,7 @@ Unity::SubscriptionPlan.seed(:id) do |sp|
     "This plan does not renew."
 end
 
-Unity::SubscriptionPlan.seed(:id) do |sp|
+SubscriptionPlan.seed(:id) do |sp|
   sp.id = 1
   sp.gateway_id = "heyfam_unlimited_monthly"
   sp.period = "1"

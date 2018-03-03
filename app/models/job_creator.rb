@@ -14,11 +14,7 @@ class JobCreator
 
   def execute
     result = create_subscription
-    if result.success?
-      build_job
-    else
-      false
-    end
+    build_job
   end
 
   def build_job
@@ -26,7 +22,7 @@ class JobCreator
   end
 
   def create_subscription
-    Unity::BraintreeGateway::Actions.create_customer_subscription(
+    SubscriptionCreator.create!(
       user,
       subscription_params,
     )
@@ -34,7 +30,7 @@ class JobCreator
 
   def subscription_params
     plan_id = params.delete(:plan_id)
-    payment_method_nonce = params.delete(:payment_method_nonce)
-    { plan_id: plan_id, payment_method_nonce: payment_method_nonce }
+    source = params.delete(:source)
+    { plan_id: plan_id, source: source }
   end
 end
