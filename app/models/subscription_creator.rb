@@ -51,11 +51,11 @@ class SubscriptionCreator
   end
 
   def validate_arguments!(user, params)
-    raise UnauthorizedUserSubscriptionCreateError unless user.role?(:employer)
+    raise ActiveUnlimitedSubscriptionError < StandardError if user.unlimited?
     raise NullCustomerGatewayIdError < StandardError unless user.gateway_customer_id.present?
     raise NullPlanIdError < StandardError unless params.fetch(:plan_id).present?
     raise NullSourceError < StandardError unless params.fetch(:source).present?
-    raise ActiveUnlimitedSubscriptionError < StandardError if user.unlimited?
+    raise UnauthorizedUserSubscriptionCreateError unless user.role?(:employer)
   end
 
   class ActiveUnlimitedSubscriptionError < StandardError; end
