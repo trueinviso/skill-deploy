@@ -54,7 +54,9 @@ class SubscriptionCreator
     raise ActiveUnlimitedSubscriptionError < StandardError if user.unlimited?
     raise NullCustomerGatewayIdError < StandardError unless user.gateway_customer_id.present?
     raise NullPlanIdError < StandardError unless params.fetch(:plan_id).present?
-    raise NullSourceError < StandardError unless params.fetch(:source).present?
+    unless params.fetch(:source).present? || user.paying_subscriber?
+      raise NullSourceError < StandardError
+    end
     raise UnauthorizedUserSubscriptionCreateError unless user.role?(:employer)
   end
 
