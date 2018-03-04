@@ -1,5 +1,49 @@
-.row
-  .small-12.columns.secondary-heading
-    Subscription Plan
+- if !view_component.plans.empty?
+  .row
+    .secondary-heading
+      Subscription Plan
 
-= react_component("SubscriptionPlans", { plans: @plans, hideRadio: true })
+  .row.billing-details-wrapper
+    = react_component("SubscriptionPlans",
+      { plans: view_component.plans, hideRadio: true })
+    .small-8.columns.renewal-message
+      - if view_component.cancel_at_period_end
+        Your Monthly Subscription will expire on
+        %span.bold
+          #{view_component.expiration_date}.
+      - else
+        Your Monthly Subscription will renew on
+        %span.bold
+          #{view_component.expiration_date}
+        for
+        %span.bold
+          $#{view_component.price}.
+
+    - if !view_component.cancel_at_period_end
+      .small-4.columns.submit-field.inverted
+        .right
+          = button_to "Cancel Subscription",
+            employer_billing_path,
+            method: :delete
+
+.row#card-on-file
+  .secondary-heading
+    Card on file
+.row.billing-details-wrapper
+  .card-details
+    .small-4.columns.plan-wrapper.active-plan.card-on-file
+      #{view_component.card_brand} ....#{view_component.card_last4}
+    = react_component("ShowPaymentFormLink")
+    .small-12.columns.renewal-message.expiration-date
+      Expires on #{view_component.card_expiration_date}
+
+  = form_tag employer_billing_path,
+    method: :put,
+    id: "stripe-payment-form" do
+
+    = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
+
+    .small-12.medium-3.columns.submit-field
+      = submit_tag "Save"
+
+%script{ src: "https://js.stripe.com/v3/" }

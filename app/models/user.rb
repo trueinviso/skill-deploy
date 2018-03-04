@@ -32,4 +32,12 @@ class User < ApplicationRecord
   def unlimited?
     subscriptions.any? { |s| s.active? && s.unlimited? }
   end
+
+  def unlimited_subscription
+    subs = subscriptions.select { |s| s.active? && s.unlimited? }
+    raise MultipleUnlimitedError if subs.count > 1
+    subs.first
+  end
+
+  class MultipleUnlimitedError < StandardError; end
 end

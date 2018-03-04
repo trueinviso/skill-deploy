@@ -47,7 +47,7 @@ Rails.application.routes.draw do
       only: [:edit, :update]
     resource :billing,
       controller: :billing,
-      only: [:edit, :update]
+      only: [:edit, :update, :destroy]
   end
 
   namespace :api, defaults: { format: :json } do
