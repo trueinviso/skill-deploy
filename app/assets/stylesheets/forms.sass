@@ -135,7 +135,7 @@
       display: inline-block
       margin-bottom: 23px
   .submit-field.inverted
-    a
+    a, input
       background-color: $white
       color: $black
       border: solid 2px $concrete
@@ -183,8 +183,6 @@
     font-weight: bold
     height: 26px
     margin-bottom: 26px
-  .plan-label > label
-    margin-bottom: 11px
   .plan-instructions
     font-size: 16px
   .plan-wrapper
@@ -241,3 +239,40 @@
       padding-right: 13px !important
     .cvv-padding
       padding-right: 0px !important
+
+  //Billing Details styles
+  .plan-label > label
+    margin-bottom: 11px
+    font-size: 16px
+  .renewal-message
+    font-size: 12px
+    margin-top: 10px
+    padding-left: 0
+  .expiration-date
+    margin-top: 15px
+  .bold
+    font-weight: bold
+  .billing-details-wrapper
+    padding-bottom: 69px
+    border-bottom: solid 1px $black-squeeze
+    margin-bottom: 40px !important
+  .billing-details-wrapper .plan-wrapper
+    padding-left: 0
+    &:last-child
+      margin-bottom: 11px
+  .billing-details-wrapper #stripe-payment-form
+    display: none
+  .card-on-file
+    text-align: center
+    padding-left: 0
+    padding-top: 20px
+    padding-bottom: 18px
+    margin-bottom: 0
+  .show-payment-form-link
+    padding-top: 20px
+    font-size: 12px
+    a
+      color: $black
+      font-weight: normal
+    .change
+      color: $royal
