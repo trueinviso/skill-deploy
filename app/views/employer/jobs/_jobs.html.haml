@@ -1,16 +1,16 @@
 .jobs-index__wrapper
   - if jobs.empty?
     .align-center.align-vertical.row
+      .jobs-index__empty-image
+        = image_tag("empty_state_graphic")
       .small-12.medium-9.columns
-        %h1.empty-heading Job Postings
+        .jobs-index__sub-heading
+          Looks like you don't have any live projects yet.
+          Gather your project details and start your project.
 
-        .sub-heading
-          Looks like you haven't posted any jobs yet.
-
-        .forms
-          .submit-field
-            = form_tag new_employer_job_path, method: :get do
-              = submit_tag "Post a Job"
+      .forms.small-12.medium-5.columns
+        .submit-field
+          = link_to "Start a project", new_employer_job_path
 
   - else
     .row
