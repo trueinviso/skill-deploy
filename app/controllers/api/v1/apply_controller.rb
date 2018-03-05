@@ -2,6 +2,8 @@ module Api
   module V1
     class ApplyController < ApiController
       def create
+        authorize applied_for
+
         if applied_for.present?
           render status: 200, json: applied_for
         else
