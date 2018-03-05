@@ -12,9 +12,6 @@ class Receptionist
   def direct
     if current_user.nil?
       [:new, :user, :session]
-    elsif current_user.roles.size > 1
-      # [:receptionist]
-      [:root]
     else
       direct_by_role(current_user.roles.first)
     end
@@ -24,10 +21,6 @@ class Receptionist
     return [:root] unless role.present?
 
     case role.name.downcase.parameterize.underscore.to_sym
-    # when :administrator
-    #   [:admin, :root]
-    # when :developer
-    #   [:admin, :root]
     when :employer
       [:employer_jobs]
     when :job_seeker
