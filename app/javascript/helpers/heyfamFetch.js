@@ -1,4 +1,3 @@
-
 function csrfTokenHeader() {
   const csrfMetaTag = document.querySelector("meta[name=csrf-token]")
 
@@ -27,13 +26,18 @@ function headers() {
   })
 }
 
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0 &&
+    obj.constructor === Object
+}
+
 // caller needs to define promise to deal with
 // data returned from server
 const heyfamFetch = (url, data, options = {}, type="json") => {
   options.credentials = "same-origin"
   options.headers = headers()
   if(type === "json") appendJsonHeader(options.headers)
-  options.body = data
+  if(!isEmpty(data)) options.body = data
 
   return fetch(url, options)
     .then(
