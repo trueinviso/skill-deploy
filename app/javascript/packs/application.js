@@ -9,6 +9,7 @@
 // Support component names relative to this directory:
 import "babel-polyfill"
 import "whatwg-fetch"
+import "url-polyfill"
 var componentRequireContext = require.context("components", true)
 var ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)

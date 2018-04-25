@@ -1,6 +1,15 @@
 @import 'variables_and_mixins'
 @import 'fonts'
 
+%body--xsmall
+  font-size: 12px
+  line-height: 12px
+
+.error-message
+  @extend %body--xsmall
+  color: $red
+  margin-bottom: 5px
+
 .align-center
   display: flex
   flex-flow: row wrap

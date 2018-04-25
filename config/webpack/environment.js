@@ -10,4 +10,6 @@ environment.plugins.prepend(
   })
 )
 
+environment.config.set("devtool", "cheap-module-source-map")
+
 module.exports = environment

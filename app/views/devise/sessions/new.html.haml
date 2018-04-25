@@ -12,10 +12,14 @@
 
       .text-field
         = f.label :email
-        = f.text_field :email
+        = f.text_field :email,
+          onfocusout: "validateEmail();"
+        .error-message#user_email-error
       .text-field.last
         = f.label :password
-        = f.password_field :password
+        = f.password_field :password,
+          onfocusout: "validatePassword();"
+        .error-message#user_password-error
 
       .submit-field
         = f.submit "Continue"
