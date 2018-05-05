@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root to: "jobs#index"
 
+  mount Unity::Engine => "/"
+
   devise_for :users,
     path: "/",
     path_names: {

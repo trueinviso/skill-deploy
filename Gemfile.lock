@@ -1,3 +1,13 @@
+PATH
+  remote: /Users/keithward/side_projects/engines/unity
+  specs:
+    unity (0.1.0)
+      braintree (~> 2.88)
+      haml (~> 5.0)
+      rails (~> 5.2.0)
+      sass-rails
+      stripe (~> 3.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -65,6 +75,8 @@ GEM
       execjs (~> 2.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    braintree (2.88.0)
+      builder (>= 2.0.0)
     builder (3.2.3)
     byebug (10.0.2)
     capybara (2.18.0)
@@ -308,10 +320,10 @@ DEPENDENCIES
   simple_token_authentication (~> 1.0)
   spring
   spring-watcher-listen (~> 2.0.0)
-  stripe
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
+  unity!
   web-console (>= 3.3.0)
   webpacker
 

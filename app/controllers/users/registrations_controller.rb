@@ -23,8 +23,9 @@ module Users
     end
 
     def create_stripe_customer
+      return if Unity.config.braintree?
       return if resource.errors.any?
-      CustomerCreator.create!(resource)
+      Unity::StripeGateway::CustomerCreator.call!(resource)
     end
 
     def sign_up_params
