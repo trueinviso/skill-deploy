@@ -1,49 +1,46 @@
 // Registration javascript
-function validateSubdomain() {
-  return validator.validate_presence('#user_account_attributes_subdomain') &&
-    validator.validate_subdomain_format('#user_account_attributes_subdomain');
+function validateSubdomain(id) {
+  return validator.validate_presence(id) &&
+    validator.validate_subdomain_format(id);
 }
 
-function validateFirstName() {
-  return validator.validate_presence('#user_first_name');
+function validatePresence(id) {
+  return validator.validate_presence(id);
 }
 
-function validateLastName() {
-  return validator.validate_presence('#user_last_name');
+function validateEmail(id) {
+  return validator.validate_presence(id) &&
+    validator.validate_email_format(id);
 }
 
-function validateEmail() {
-  return validator.validate_presence('#user_email') &&
-    validator.validate_email_format('#user_email');
+function validatePassword(id) {
+  return validator.validate_presence(id) &&
+    validator.validate_min_length(id, 6);
 }
 
-function validateCompany() {
-  return validator.validate_presence('#user_account_attributes_company');
-}
-
-function validatePassword() {
-  return validator.validate_presence('#user_password') &&
-    validator.validate_min_length('#user_password', 6);
-}
-
-function validatePasswordConfirmation() {
-  return validator.validate_presence('#user_password_confirmation') &&
-    validator.validate_min_length('#user_password_confirmation', 6);
-}
-
-function validatePasswordsMatch() {
-  return validator.validate_passwords_match('#user_password', '#user_password_confirmation');
+function validatePasswordsMatch(first, second) {
+  return validator.validate_passwords_match(first, second);
 }
 
 function validRegistration() {
-  return validateFirstName() &&
-    validateLastName() &&
-    validateEmail() &&
-    validatePassword() &&
-    validatePasswordConfirmation() &&
-    validatePasswordsMatch() &&
-    validateCompany() &&
-    validateSubdomain();
+  inputs = document.querySelectorAll(
+    'input[type=text], input[type=password], input[type=email]'
+  );
+  for(i = 0; i < inputs.length; i++) {
+    input = inputs[i]
+    switch(input.type) {
+      case "email":
+        if(!validateEmail('#' + input.id)) return false;
+        break;
+      case "password":
+        if(!validatePassword('#' + input.id)) return false;
+        break;
+      default:
+        if(!validatePresence('#' + input.id)) return false;
+        break;
+    }
+  }
+  return validatePasswordsMatch('#user_password', '#user_password_confirmation');
 }
 
 

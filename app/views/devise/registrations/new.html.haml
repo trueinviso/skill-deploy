@@ -17,32 +17,32 @@
             = p.label :first_name
             = p.text_field :first_name,
               id: "user_first_name",
-              onfocusout: "validateFirstName();"
+              onfocusout: "validatePresence('#user_first_name');"
             .error-message#user_first_name-error
           .text-field.small-5.columns
             = p.label :last_name
             = p.text_field :last_name,
               id: "user_last_name",
-              onfocusout: "validateLastName();"
+              onfocusout: "validatePresence('#user_last_name');"
             .error-message#user_last_name-error
       .row
         .text-field
           = f.label :email
-          = f.text_field :email,
+          = f.email_field :email,
             id: "user_email",
-            onfocusout: "validateEmail();"
+            onfocusout: "validateEmail('#user_email');"
           .error-message#user_email-error
         .text-field
           = f.label :password
           = f.password_field :password,
             id: "user_password",
-            onfocusout: "validatePassword();"
+            onfocusout: "validatePassword('#user_password');"
           .error-message#user_password-error
         .text-field
           = f.label :password_confirmation
           = f.password_field :password_confirmation,
             id: "user_password_confirmation",
-            onfocusout: "validatePasswordConfirmation();validatePasswordsMatch();"
+            onfocusout: "validatePassword('#user_password_confirmation');validatePasswordsMatch('#user_password', '#user_password_confirmation');"
           .error-message#user_password_confirmation-error
 
         / Role should be safe since it just determines views not security
@@ -50,4 +50,5 @@
           = r.hidden_field :role_id, value: Role.find_by(name: "Employer").id
 
         .small-12.medium-3.columns.submit-field.last
-          = f.submit "Continue"
+          = f.submit "Continue",
+            data: { disable_with: false }
