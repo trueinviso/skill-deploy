@@ -1,0 +1,28 @@
+.subscription.form__centered
+  .subscription__content
+    .form__secondary-heading
+      Payment Details
+
+    = form_for :subscription,
+      url: unity.subscription_path,
+      method: :create,
+      html: { id: "braintree-payment-form",
+      "data-validate": "data-validate",
+      "no-validate": "no-validate" } do |f|
+
+      = hidden_field_tag :authenticity_token, form_authenticity_token
+
+      .subscription__plan
+        %span.subscription__plan-title Unlimited Monthly
+        %span.subscription__plan-description (automatically recurring)
+        %span.subscription__plan-price $199
+
+      .form__centered
+        = render "unity/payment_method/card_details", f: f
+
+        .subscription__terms
+          All sales are final and all prices are USD
+
+        = f.submit "Submit Payment",
+          class: "button",
+          data: { disable_with: "Please wait..." }

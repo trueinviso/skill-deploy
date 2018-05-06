@@ -1,7 +1,10 @@
-.small-9.columns.text-right.signed-out-text
+/.small-9.columns.text-right.signed-out-text
+.signed-out
   - if @login_path
-    Don't have an account?
-    = link_to "Sign up", new_user_registration_path
+    .signed-out__no-account
+      Don't have an account?
+      = link_to "Sign up", new_user_registration_path
   - else
-    Already have an account?
-    = link_to "Sign in", new_user_session_path
+    .signed-out__have-account
+      Already have an account?
+      = link_to "Sign in", new_user_session_path
