@@ -2,9 +2,9 @@
   .brand-container
     = link_to embedded_svg("heyfam-mark.svg", class: "brand-icon"),
       main_app.root_path
-    /= button_to "Logout" ,
-    /  main_app.destroy_user_session_path,
-    /  method: :delete
+    = button_to "Logout" ,
+      main_app.destroy_user_session_path,
+      method: :delete
   - if current_user.present? && current_user.role?(:job_seeker)
     = render "layouts/nav_search"
     = render "layouts/nav_links"
