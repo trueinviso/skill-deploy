@@ -56,7 +56,7 @@ class FileUpload extends React.Component {
 
   render() {
     return (
-      <div id="profile-picture__uploader" className="row">
+      <div className="profile-picture__uploader">
         <div id="profile-picture">
           <ProfileImage
             thumbnail={this.state.thumbnail}
