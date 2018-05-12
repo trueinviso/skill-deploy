@@ -2,8 +2,13 @@
   .form__secondary-heading
     Welcome Back
 
-  .form__description
-    Sign in to access your account
+  .registration__content
+    = link_to "Sign in with Google",
+      user_google_oauth2_omniauth_authorize_path,
+      class: "registration__oauth"
+
+    .registration__or
+      or
 
   .registration__content
     = form_for resource,

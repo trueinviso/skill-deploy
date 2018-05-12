@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       sign_out: "sign-out",
     },
     controllers: {
+      omniauth_callbacks: "users/omniauth_callbacks",
       registrations: "users/registrations",
       sessions: "users/sessions",
     }

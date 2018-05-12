@@ -1,4 +1,6 @@
 .jobs-index__wrapper {
+  @extend %clearfix;
+  clear: both;
   h1 {
     font-size: 32px;
     color: $black;
@@ -10,10 +12,17 @@
     @extend %flex--horizontally-centered;
     ul {
       @include make-col(8);
+      margin-left: 0;
     }
     li {
       margin-bottom: 46px;
     }
+  }
+
+  .secondary-heading {
+    @include make-col-offset(2);
+    font-size: 24px;
+    margin-bottom: 42px;
   }
 
   .jobs-index__left-panel {

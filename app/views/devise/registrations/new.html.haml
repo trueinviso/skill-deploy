@@ -8,7 +8,7 @@
 
   .registration__content
     = link_to "Sign up with Google",
-      "#",
+      user_google_oauth2_omniauth_authorize_path,
       class: "registration__oauth"
 
     .registration__or

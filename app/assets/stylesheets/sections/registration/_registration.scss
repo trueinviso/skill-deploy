@@ -2,6 +2,7 @@
   @extend %clearfix;
   @extend %flex-col--centered;
   min-height: calc(100vh - 70px);
+  clear: both;
   position: relative;
 
   .form__description {
