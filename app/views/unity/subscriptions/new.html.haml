@@ -11,6 +11,7 @@
       "no-validate": "no-validate" } do |f|
 
       = hidden_field_tag :authenticity_token, form_authenticity_token
+      = hidden_field_tag :plan_id, "heyfam_unlimited_monthly"
 
       .subscription__plan
         %span.subscription__plan-title Unlimited Monthly

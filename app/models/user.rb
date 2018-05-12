@@ -17,10 +17,24 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   has_many :jobs
-  has_many :subscriptions
+
+  ########### Unity Gateway Models
+  has_one :subscription,
+    class_name: "Unity::Subscription"
+  has_one :payment_method,
+    class_name: "Unity::PaymentMethod"
+  has_one :gateway_customer,
+    class_name: "Unity::GatewayCustomer"
+  #################################
 
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
+
+  def active_paid_subscriber?
+    return false if gateway_customer.blank?
+    return false if subscription.blank?
+    subscription.active?
+  end
 
   def assign_role(role)
     name = role.to_s.humanize.split.map(&:capitalize).join(' ')
