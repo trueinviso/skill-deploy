@@ -1,21 +1,12 @@
 = form.fields_for form.object.user_profile do |p|
-  .form__double-field
-    .form__half-field
-      = p.label :first_name,
-        class: "form__label"
-      = p.text_field :first_name,
-        class: "form__input"
+  .row
+    .text-field.small-6.columns.no-margin-bottom
+      = p.label :first_name
+      = p.text_field :first_name
 
-    .form__half-field
-      = p.label :last_name,
-        class: "form__label"
-      = p.text_field :last_name,
-        class: "form__input"
-
-.form__field
-  = form.label :email,
-    class: "form__label"
-  = form.email_field :email,
-    autofocus: true,
-    autocomplete: "email",
-    class: "form__input"
+    .text-field.small-5.columns.right.no-margin-bottom
+      = p.label :last_name
+      = p.text_field :last_name
+.text-field.row
+  = form.label :email
+  = form.email_field :email, autofocus: true, autocomplete: "email"

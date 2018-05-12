@@ -1,10 +1,10 @@
-.menu
-  %a{ href: favorite_jobs_path,
+.small-4.columns.menu
+  %a.small-4.columns.item{ href: favorite_jobs_path,
     class: "#{"active-link" if saved_jobs_page?}" }
     Saved
-  %a{ href: applied_fors_path,
+  %a.small-4.columns.item{ href: applied_fors_path,
     class: "#{"active-link" if applied_fors_page?}" }
     Applied
-  %a{ href: edit_user_registration_path,
+  %a.small-4.columns.item{ href: edit_user_registration_path,
     class: "#{"active-link" if edit_profile_page?}" }
     Account

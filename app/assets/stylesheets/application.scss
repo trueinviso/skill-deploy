@@ -46,3 +46,13 @@
 @import "sections/nav/*";
 @import "sections/registration/*";
 @import "sections/subscription/*";
+
+/* OLD STYLES - Styles for pages not refactored yet
+========================================================================== */
+@import "card";
+@import "defaults";
+@import "forms";
+@import "fonts";
+@import "foundation_and_overrides";
+@import "nav";
+@import "profile_links";
