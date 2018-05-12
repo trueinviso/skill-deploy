@@ -3,12 +3,11 @@ html * {
   outline: none;
 }
 
-body {
-  margin: 0;
+a {
+	text-decoration: none;
 }
 
-a {
-  color: $black;
-  font-size: 14px;
-  text-decoration: none;
+ul, ol {
+  list-style-type: none;
+  padding: 0;
 }

@@ -63,11 +63,9 @@ class JobBoard extends React.Component {
   render() {
     const { roles, types, favorites } = this.props
     return(
-      <div className="jobs-index__wrapper row">
-        <div className="small-12 columns">
-          <JobFilters roles={roles} types={types} state={this.state} setActiveRole={this.setActiveRole} setActiveType={this.setActiveType} />
-          <JobList jobs={this.state.jobs}  />
-        </div>
+      <div className="jobs-index__wrapper">
+        <JobFilters roles={roles} types={types} state={this.state} setActiveRole={this.setActiveRole} setActiveType={this.setActiveType} />
+        <JobList jobs={this.state.jobs}  />
       </div>
     );
   }
@@ -132,7 +130,7 @@ function JobList(props) {
 
   return(
    <div className="jobs-index__card-list" id="jobs-index">
-      <ul className="small-block-grid-1">
+      <ul>
         {props.jobs.map((job) => {
           return renderJob(job)
         })}

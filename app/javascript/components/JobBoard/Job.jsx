@@ -17,10 +17,8 @@ function Job(props) {
 
   function JobLocation() {
     return(
-      <div className="visible-for-medium-up">
-        <div className="job-card__attributes">
-          {props.job.location}
-        </div>
+      <div className="job-card__attributes">
+        {props.job.location}
       </div>
     );
   }
@@ -41,12 +39,14 @@ function Job(props) {
 
   return(
     <li>
-      <div className={`small-12 columns job-card ${borderColor()}`}>
-        <a href={`jobs/${props.job.id}`} className="snall-12 medium-9 columns">
-          <JobDescription />
-          <JobLocation />
-        </a>
-        <div className="small-12 medium-3 columns job-card__right-panel">
+      <div className={`job-card ${borderColor()}`}>
+        <div className="job-card__left-panel">
+          <a href={`jobs/${props.job.id}`}>
+            <JobDescription />
+            <JobLocation />
+          </a>
+        </div>
+        <div className="job-card__right-panel">
           <JobLikeButton job={props.job} />
         </div>
       </div>

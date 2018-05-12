@@ -4,7 +4,7 @@
     "yarn": ">=0.25.2"
   },
   "dependencies": {
-    "@rails/webpacker": "^3.2.1",
+    "@rails/webpacker": "3.5",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
@@ -25,6 +25,6 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.11.1"
+    "webpack-dev-server": "2.11.2"
   }
 }
