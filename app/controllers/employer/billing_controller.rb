@@ -1,7 +1,10 @@
 module Employer
   class BillingController < ApplicationController
+    layout "unity/application", only: [:edit]
+
     def edit
       authorize BillingController
+      @token = Unity.config.client_token
       @view_component = BillingComponent.new(current_user)
     end
 

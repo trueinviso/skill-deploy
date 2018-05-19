@@ -30,20 +30,26 @@
   .secondary-heading
     Card on file
 .row.billing-details-wrapper
-  .card-details
+  .card-summary
     .small-4.columns.plan-wrapper.active-plan.card-on-file
       #{view_component.card_brand} ....#{view_component.card_last4}
-    = react_component("ShowPaymentFormLink")
+    .small-8.columns.show-payment-form-link
+      %span.change{ onClick: "togglePaymentForm()" }
+        change
     .small-12.columns.renewal-message.expiration-date
       Expires on #{view_component.card_expiration_date}
+  .card-details
+    = form_for :payment_method,
+      url: unity.payment_method_path,
+      method: :put,
+      html: { id: "braintree-payment-form",
+      "data-validate":"data-validate",
+      "no-validate": "no-validate" } do |f|
 
-  = form_tag employer_billing_path,
-    method: :put,
-    id: "stripe-payment-form" do
+      = render "unity/payment_method/card_details", f: f
 
-    = react_component("StripeInitializer", { apiKey: ENV.fetch("STRIPE_PUBLISHABLE_KEY") })
-
-    .small-12.medium-3.columns.submit-field
-      = submit_tag "Save"
-
-%script{ src: "https://js.stripe.com/v3/" }
+      = f.submit "Update Payment Method",
+        data: { disable_with: "Please wait..." }
+    .small-8.columns.show-payment-form-link
+      %span{ onClick: "togglePaymentForm()" }
+        cancel
