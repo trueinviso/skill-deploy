@@ -62,8 +62,14 @@ Rails.application.routes.draw do
       resource :apply,
         controller: :apply,
         only: [:create]
+      resources :user,
+        controller: :user,
+        only: [:index]
       resource :thumbnail,
         only: [:update, :destroy]
+      resources :job_filters,
+        controller: :job_filters,
+        only: [:index]
     end
   end
 end
