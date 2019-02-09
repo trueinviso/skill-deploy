@@ -35,8 +35,9 @@ module Employer
     end
 
     def plans
-      unlimited_monthly_subscription
-        .map(&:subscription_plan)
+      Unity::SubscriptionPlan.where(
+        gateway_id: "heyfam_unlimited_monthly",
+      )
     end
 
     def price
@@ -45,28 +46,14 @@ module Employer
 
     def stripe_customer
       @stripe_customer ||= Stripe::Customer.retrieve(
-        user.gateway_customer_id
+        user.gateway_customer.gateway_id
       )
     end
 
     def subscription
-      return nil if unlimited_monthly_subscription.empty?
-
-      if unlimited_monthly_subscription.count > 1
-        raise MultipleUnlimitedSubscriptions
-      end
-
       @subscription ||= Stripe::Subscription.retrieve(
-        unlimited_monthly_subscription.first.gateway_id
+        user.subscription.gateway_id
       )
     end
-
-    def unlimited_monthly_subscription
-      @unlimited_monthly_plan ||= user
-        .subscriptions
-        .select { |s| s.active? && s.unlimited? }
-    end
-
-    class MultipleUnlimitedSubscriptions < StandardError; end
   end
 end

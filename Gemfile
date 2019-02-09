@@ -18,8 +18,11 @@ gem "image_processing"
 gem "mini_magick", ">=4.3.5"
 gem "aws-sdk-s3"
 gem "roda"
-gem "stripe"
 gem "webpacker"
+gem "mq-sass"
+gem "omniauth-google-oauth2"
+# gem 'unity', git: "git@github.com:trueinviso/unity.git"
+gem 'unity', path: "/Users/keithward/side_projects/engines/unity"
 # path: "/Users/keithward/side_projects/engines/unity"
 # Token authentication for API requests + CORS
 gem "simple_token_authentication", "~> 1.0"
@@ -27,7 +30,7 @@ gem "simple_token_authentication", "~> 1.0"
 # gets width and height of an uploaded image
 gem "fastimage"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
 gem "seed-fu", "~> 2.3"
 # Use pg as the database for Active Record
 gem 'pg', '~> 0.21'

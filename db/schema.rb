@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180301183433) do
+ActiveRecord::Schema.define(version: 2018_05_12_213750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,51 @@ ActiveRecord::Schema.define(version: 20180301183433) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "unity_gateway_customers", force: :cascade do |t|
+    t.string "gateway_id"
+    t.integer "gateway_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_unity_gateway_customers_on_user_id"
+  end
+
+  create_table "unity_payment_methods", force: :cascade do |t|
+    t.string "gateway_id"
+    t.integer "gateway_type"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_unity_payment_methods_on_user_id"
+  end
+
+  create_table "unity_subscription_plans", force: :cascade do |t|
+    t.string "gateway_id"
+    t.string "period"
+    t.string "price"
+    t.string "group_enrollment_add_on_price"
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "unity_subscriptions", force: :cascade do |t|
+    t.string "gateway_id"
+    t.integer "gateway_status"
+    t.integer "gateway_type"
+    t.boolean "group_enrolled"
+    t.bigint "subscription_plan_id"
+    t.datetime "trial_ends_at"
+    t.datetime "cancellation_date"
+    t.datetime "marked_for_cancellation_at"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subscription_plan_id"], name: "index_unity_subscriptions_on_subscription_plan_id"
+    t.index ["user_id"], name: "index_unity_subscriptions_on_user_id"
+  end
+
   create_table "user_permissions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "permission_id"
@@ -209,6 +254,8 @@ ActiveRecord::Schema.define(version: 20180301183433) do
     t.string "payment_token"
     t.string "gateway_customer_id"
     t.string "authentication_token", limit: 30
+    t.string "provider"
+    t.string "uid"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

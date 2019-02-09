@@ -1,0 +1,8 @@
+= hidden_field_tag :gateway_type, Unity.config.gateway_type
+= hidden_field_tag :payment_method_nonce
+
+#card-errors
+#card-element
+%script{ src: "https://js.stripe.com/v3/" }
+:javascript
+  stripe_dropin_setup("#{@token}")

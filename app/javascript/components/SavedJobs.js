@@ -8,9 +8,9 @@ class SavedJobs extends React.Component {
     })
 
     return(
-      <div className="jobs-index__wrapper row">
+      <div className="jobs-index__wrapper">
         <div className="jobs-index__card-list">
-					<ul className="small-block-grid-1">
+					<ul>
           	{jobItems}
 					</ul>
         </div>
