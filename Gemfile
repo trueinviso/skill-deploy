@@ -9,7 +9,7 @@ end
 gem "awesome_print"
 gem "devise"
 gem "forgery"
-gem "foundation-rails", "~> 5.4"
+# gem "foundation-rails", "~> 5.4"
 gem "haml"
 gem "pundit"
 gem "react-rails"

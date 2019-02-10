@@ -18,40 +18,9 @@
 
 @import "mq-sass";
 
-/* BASE - Base Variable file along with starting point Mixins and Placeholders.
-========================================================================== */
+@import "reset";
+@import "default";
+@import "colors";
 @import "base/breakpoints";
-@import "base/colors";
-@import "base/defaults";
-@import "base/errors";
-@import "base/fonts";
-@import "base/html-icons";
-@import "base/typography";
-@import "base/util/functions";
-@import "base/util/grid";
-@import "base/util/placeholders";
-@import "base/util/variables";
-
-/* COMPONENTS - Re-usable site elements.
-========================================================================== */
-
-@import "components/buttons/*";
-@import "components/dropdown";
-
-/* SECTIONS - Structure and layout files.
-========================================================================== */
-
-@import "sections/form/*";
-@import "sections/jobs/*";
-@import "sections/nav/*";
-@import "sections/registration/*";
-@import "sections/subscription/*";
-
-/* OLD STYLES - Styles for pages not refactored yet
-========================================================================== */
-@import "defaults";
-@import "forms";
-@import "fonts";
-@import "foundation_and_overrides";
-@import "nav";
-@import "profile_links";
+@import "common.blocks/*";
+@import "desktop.blocks/*";
