@@ -1,0 +1,8 @@
+@import "colors";
+
+.nav {
+  position: relative;
+  border-bottom: 3px solid $color-light-concrete;
+  background-color: $color-white;
+  height: 57px;
+}
