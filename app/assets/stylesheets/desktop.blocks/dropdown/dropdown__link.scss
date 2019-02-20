@@ -1,0 +1,13 @@
+.dropdown__link {
+  @media only screen and (min-width: $breakpoint-medium) {
+    padding: 0;
+    line-height: 2.38;
+    color: $color-greyish;
+    font-style: normal;
+    font-stretch: normal;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+}

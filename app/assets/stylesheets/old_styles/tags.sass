@@ -1,0 +1,35 @@
+@import "variables_and_mixins"
+@import "fonts"
+
+.jobs-index__tag-list
+  ul
+    list-style-type: none
+    margin-left: 0px
+    margin-bottom: 42px
+    overflow-x: auto
+    white-space: nowrap
+    width: auto
+
+
+    li
+      display: inline-block
+      margin-top: 12px
+      margin-right: 15px
+      border: solid 2px $concrete
+      border-radius: 2px
+      padding: 10px 35px
+      color: $black
+      font-size: 14px
+
+    .active-role
+      background-color: $pomegranite
+      color: $white
+    .active-full-time
+      background-color: $royal
+      color: $white
+    .active-part-time
+      background-color: $peachy-pink
+      color: $white
+    .active-freelance
+      background-color: $orange
+      color: $white

@@ -1,0 +1,19 @@
+.nav {
+  .menu {
+    @extend %flex-row-4;
+    @extend %flex--horizontally-centered;
+    height: 50px;
+    a {
+      @extend %flex--vertically-centered;
+      color: $black;
+      font-size: 14px;
+      height: 55px;
+      padding: 0px 15px;
+      text-decoration: none;
+    }
+
+    .active-link {
+      color: $royal;
+    }
+  }
+}

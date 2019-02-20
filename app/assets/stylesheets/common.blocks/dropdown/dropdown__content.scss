@@ -1,0 +1,8 @@
+.dropdown__content {
+  display: none;
+  width: 100%;
+  position: absolute;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  background-color: $color-white;
+}

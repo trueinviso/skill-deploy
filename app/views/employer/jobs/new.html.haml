@@ -1,13 +1,6 @@
-.align-center.forms
-  .column.small-12.medium-10.large-7
-    %h1 Start a project
+.create-listing-page-desktop-container
+  .create-listing-page
+    .header.create-listing-page__header
+      Create a new listing
 
-    .login-text
-      Listings are subscription-based and are active until you've filled the position.
-      Every 30 days you will be charged $199 and your listing will be moved back to
-      the top and tagged as new.
-
-    .secondary-heading
-      Project Details
-
-    = render "create_form", job: @job, token: @token
+      = render "create_form", job: @job, token: @token

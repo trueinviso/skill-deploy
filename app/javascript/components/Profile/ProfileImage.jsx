@@ -2,15 +2,13 @@ import React from 'react'
 
 function ProfileImage({ thumbnail, emptyPhoto }) {
   function Image() {
-    const className = emptyPhoto() ? "empty-photo-svg" : "profile-picture"
+    const className = emptyPhoto() ? "image_empty" : "image_present"
     return <img src={thumbnail} className={className} />
   }
 
   return(
-    <div className="small-2 columns profile-picture__wrapper">
-      <div className="profile-picture__empty-wrapper align-center align-vertical">
-        <Image />
-      </div>
+    <div className="image create-listing-page__image">
+      <Image />
     </div>
   );
 }

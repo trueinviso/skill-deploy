@@ -1,17 +1,14 @@
-.job-card{ class: job_border_color(job) }
-  .small-12.medium-9.columns.job-card__left-panel
-    .small-12.job-card__description
-      #{job.company_name} is looking for a
-      %span.job-card__name= job.name
-    .visible-for-medium-up
-      .job-card__attributes
-        = job.location
+.employer-job-card
+  = render "image", resource: job
+  .employer-job-card__titles
+    .header.employer-job-card__header= job.name
+    .employer-job-card__company-name= job.company_name
 
-  .small-12.medium-3.columns.job-card__right-panel
-    .small-12.job-card__links
-      = link_to "Edit",
-        edit_employer_job_path(job.id),
-        class: "employer-edit"
-      = link_to "Delete",
-        "#",
-        class: "employer-edit"
+  .employer-job-card__button-list
+    %a{ href: edit_employer_job_path(job.id) }
+      %button.button.button_theme_white.employer-job-card__button
+        Edit
+
+    %a{ href: "#" }
+      %button.button.button_theme_white.employer-job-card__button
+        Delete

@@ -1,0 +1,24 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 46px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: $color-concrete;
+
+  &::after {
+    position: absolute;
+    content: "";
+    top: 20px;
+    right: 21px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: $color-beige transparent transparent transparent;
+  }
+
+  &:active .dropdown__content {
+    display: block;
+  }
+}

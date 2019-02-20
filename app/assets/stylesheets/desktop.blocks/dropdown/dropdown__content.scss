@@ -1,0 +1,7 @@
+.dropdown__content {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: block;
+    position: inherit;
+    box-shadow: none;
+  }
+}

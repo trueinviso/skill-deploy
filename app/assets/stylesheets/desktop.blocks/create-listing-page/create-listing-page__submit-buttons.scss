@@ -1,0 +1,8 @@
+.create-listing-page__submit-buttons {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: grid;
+    grid-gap: 9px;
+    grid-template-columns: 194px 167px;
+    margin-top: 40px;
+  }
+}

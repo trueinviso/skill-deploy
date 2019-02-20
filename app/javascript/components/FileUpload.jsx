@@ -56,17 +56,15 @@ class FileUpload extends React.Component {
 
   render() {
     return (
-      <div className="profile-picture__uploader">
-        <div id="profile-picture">
-          <ProfileImage
-            thumbnail={this.state.thumbnail}
-            emptyPhoto={this.emptyPhoto}
-          />
-          <ImageButtons
-            onChange={this.onChange}
-            deleteFile={this.deleteFile}
-          />
-        </div>
+      <div id="profile-picture" className="file-upload">
+        <ProfileImage
+          thumbnail={this.state.thumbnail}
+          emptyPhoto={this.emptyPhoto}
+        />
+        <ImageButtons
+          onChange={this.onChange}
+          deleteFile={this.deleteFile}
+        />
       </div>
     )
   }

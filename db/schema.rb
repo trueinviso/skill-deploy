@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_12_213750) do
+ActiveRecord::Schema.define(version: 2019_02_11_015640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 2018_05_12_213750) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
+  end
+
+  create_table "employer_job_experiences", force: :cascade do |t|
+    t.bigint "job_experience_id"
+    t.bigint "job_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_experience_id"], name: "index_employer_job_experiences_on_job_experience_id"
+    t.index ["job_id"], name: "index_employer_job_experiences_on_job_id"
   end
 
   create_table "employer_job_roles", force: :cascade do |t|
@@ -60,6 +69,15 @@ ActiveRecord::Schema.define(version: 2018_05_12_213750) do
     t.index ["user_id", "job_id"], name: "index_favorite_jobs_on_user_id_and_job_id", unique: true
   end
 
+  create_table "job_experiences", force: :cascade do |t|
+    t.bigint "job_id"
+    t.string "name", null: false
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_job_experiences_on_job_id"
+  end
+
   create_table "job_roles", force: :cascade do |t|
     t.bigint "job_id"
     t.string "name", null: false
@@ -83,15 +101,16 @@ ActiveRecord::Schema.define(version: 2018_05_12_213750) do
     t.string "name"
     t.string "company_name"
     t.string "company_website"
-    t.integer "experience"
     t.string "location"
     t.boolean "remote"
-    t.text "world_changing_text"
     t.text "description"
     t.string "contact_name"
     t.string "contact_email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "twitter"
+    t.string "facebook"
+    t.string "instagram"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -261,6 +280,8 @@ ActiveRecord::Schema.define(version: 2018_05_12_213750) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "employer_job_experiences", "job_experiences"
+  add_foreign_key "employer_job_experiences", "jobs"
   add_foreign_key "employer_job_roles", "job_roles"
   add_foreign_key "employer_job_roles", "jobs"
   add_foreign_key "employer_job_types", "job_types"

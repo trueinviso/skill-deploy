@@ -1,0 +1,7 @@
+.create-listing-page__button {
+  @media only screen and (min-width: $breakpoint-medium) {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

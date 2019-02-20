@@ -1,0 +1,290 @@
+@import 'variables_and_mixins'
+@import 'fonts'
+
+%body--xsmall
+  font-size: 12px
+  line-height: 12px
+
+.error-message
+  @extend %body--xsmall
+  color: $red
+  margin-bottom: 5px
+
+.align-center
+  display: flex
+  flex-flow: row wrap
+  justify-content: center
+  clear: both
+
+.align-vertical
+  display: flex
+  align-items: center
+
+.StripeElement
+  box-shadow: none
+  border: solid 2px $iron
+  border-radius: 3px
+  font-size: 14px
+  color: $black
+  background: $white
+  height: 40px
+  padding: 10px 12px
+  margin-bottom: 40px
+
+.forms
+  h1
+    font-size: 38px
+    font-family: "Noto Sans", sans-serif
+  .secondary-heading
+    font-size: 24px
+    margin-bottom: 42px
+  .new-job-heading
+    margin-bottom: 27px
+  .sub-heading
+    margin-bottom: 81px
+  .profile-picture
+    border-radius: 50%
+    height: 84px
+    width: 84px
+  .no-padding
+    padding: 0
+  #profile-picture__uploader
+    height: 84px
+    margin-bottom: 50px
+  .profile-picture__wrapper
+    height: inherit
+    margin-right: 30px
+    padding: 0
+  .profile-picture__empty-wrapper
+    height: 84px
+    width: 84px
+    background: $iron
+    border-radius: 50%
+    .empty-photo-svg
+      width: 28px
+      height: 24px
+  .profile-picture__buttons-wrapper
+    height: 100%
+  .profile-picture__upload-button,
+  .profile-picture__delete-button
+    height: 50%
+    display: flex
+    margin-top: 20px
+    align-items: center
+    border-radius: 2px
+    border: solid 2px $concrete
+    &:hover
+      background: $concrete
+      cursor: pointer
+      label
+        color: $regent-gray
+    label
+      width: 100%
+      text-align: center
+      font-size: 12px
+      padding: 10px 0 2px 0
+
+  .profile-picture__delete-button
+    margin-left: 15px
+
+  .inputfile
+    cursor: inherit
+    font-size: 999px
+    filter: alpha(opacity=0)
+    opacity: 0
+    overflow: hidden
+    position: absolute
+    right: 0
+    top: 0
+
+  .remote-check-box
+    span
+      font-size: 18px
+      color: $black
+      font-weight: bold
+    input
+      margin-right: 12px
+      height: 20px
+      width: 20px
+      outline: solid 3px $black
+
+  .login-text
+    font-size: 16px
+    line-height: 1.63
+    text-align: left
+    color: $black
+    margin-bottom: 76px
+    a
+      color: $black
+      &:hover
+        color: gray
+  .sub-heading
+    font-size: 18px
+    font-weight: bold
+    color: $black
+  .submit-field
+    padding: 0
+    input, a
+      color: $white
+      font-size: 14px
+      background-color: $royal
+      height: 40px
+      margin-bottom: 50px
+      padding: 8px 45px 13px 45px
+      border-radius: 4px
+      border: solid 2px $royal
+      &:hover
+        cursor: pointer
+        background-color: $white
+        color: $royal
+        border: solid 2px $royal
+    a
+      width: 100%
+      height: 40px
+      padding: 3px 0 13px 0
+      display: inline-block
+      margin-bottom: 23px
+  .submit-field.inverted
+    a, input
+      background-color: $white
+      color: $black
+      border: solid 2px $concrete
+
+  .registration__fine-print, a
+    color: $silver
+    font-weight: bold
+    line-height: 2.11
+    margin-bottom: 100px
+    text-align: center
+  .text-field
+    padding: 0 !important
+    margin-bottom: 35px !important
+    label
+      font-size: 12px
+      color: black
+      font-weight: bold
+      margin-bottom: 8px
+    input, select
+      box-shadow: none
+      border: solid 2px $iron
+      border-radius: 3px
+      font-size: 14px
+      color: $black
+      background: $white
+    select
+      color: $pinkish-gray
+    input:focus
+      border-color: $royal
+      box-shadow: none
+      background-color: $white
+    input[type="radio"],
+    input[type="checkbox"]
+      margin-right: 15px
+      background-color: $royal
+  .instructions
+    font-size: 16px
+    font-weight: normal
+    color: $dusty-gray
+    line-height: 1.38
+  .checkbox-instructions
+    margin-left: 30px
+  .radio-label > label
+    font-size: 16px
+    font-weight: bold
+    height: 26px
+    margin-bottom: 26px
+  .plan-instructions
+    font-size: 16px
+  .plan-wrapper
+    overflow: auto
+    padding: 17px 0 31px 26px
+    border: solid 2px $concrete
+    margin-bottom: 30px
+    border-radius: 3px
+    &:last-child
+      margin-bottom: 70px
+  .card-details
+    display: none
+  .active-plan
+    border: 2px solid #f9b500
+    background: rgba(249, 181, 0, 0.21)
+  .no-label-margin > label
+    margin-bottom: 0
+  .last
+    margin-bottom: 49px
+  .employee-profile-last
+    margin-bottom: 35px
+
+  #card-number,
+  #card-expire-month,
+  #card-expire-year,
+  #cvv-field
+    box-shadow: none
+    border: solid 2px $iron
+    border-radius: 3px
+    font-size: 14px
+    color: $black
+    background: $white
+    height: 48px
+    margin-bottom: 35px
+    padding: 5px !important
+    padding-left: 28px !important
+    &:focus
+      border-color: $royal
+      box-shadow: none
+      background-color: $white
+  .secondary-heading
+    font-size: 24px
+    margin-bottom: 35px
+
+  .row
+    label
+      font-size: 12px
+      color: black
+      font-weight: bold
+      margin-bottom: 8px
+      background: none
+      padding-left: 0
+
+    .text-field-padding
+      padding-left: 0 !important
+      padding-right: 13px !important
+    .cvv-padding
+      padding-right: 0px !important
+
+  //Billing Details styles
+  .plan-label > label
+    margin-bottom: 11px
+    font-size: 16px
+  .renewal-message
+    font-size: 12px
+    margin-top: 10px
+    padding-left: 0
+  .expiration-date
+    margin-top: 15px
+  .bold
+    font-weight: bold
+  .billing-details-wrapper
+    padding-bottom: 69px
+    border-bottom: solid 1px $black-squeeze
+    margin-bottom: 40px !important
+  .billing-details-wrapper .plan-wrapper
+    padding-left: 0
+    &:last-child
+      margin-bottom: 11px
+  .billing-details-wrapper #stripe-payment-form
+    display: none
+  .card-on-file
+    text-align: center
+    padding-left: 0
+    padding-top: 20px
+    padding-bottom: 18px
+    margin-bottom: 0
+  .show-payment-form-link
+    padding-top: 20px
+    font-size: 12px
+    a
+      color: $black
+      font-weight: normal
+    .change
+      color: $royal
