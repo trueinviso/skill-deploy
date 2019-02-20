@@ -1,21 +1,24 @@
 module Employer
   class JobsController < ApplicationController
-    before_action :guard_user_subscribed!
+    # before_action :guard_user_subscribed!
 
     def index
       @jobs = policy_scope([:employer, Job])
-      authorize [:employer, @jobs]
+      @view_component = Employer::JobsComponent
+      # TODO: Add employer role to user when they sign up
+      # authorize [:employer, @jobs]
     end
 
     def new
-      authorize [:employer, Job]
+      # authorize [:employer, Job]
       @job = Job.new
     end
 
     def create
-      authorize [:employer, Job]
-      job = JobCreator.call!(current_user, valid_params)
-      if job && job.save
+      # authorize [:employer, Job]
+      byebug
+      job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
+      if job.save
         redirect_to employer_jobs_path
       else
         render :new
@@ -25,12 +28,12 @@ module Employer
     def edit
       # obv need policy for this
       @job = Job.find(params[:id])
-      authorize [:employer, @job]
+      # authorize [:employer, @job]
     end
 
     def update
       @job = Job.find(params[:id])
-      authorize [:employer, @job]
+      # authorize [:employer, @job]
       if @job.update(valid_params[:job])
         redirect_to [:employer, :jobs]
       else
@@ -55,21 +58,19 @@ module Employer
       params
         .permit(
           :id,
-          :source,
-          :plan_id,
           job: [
             :company_name,
             :company_website,
             :contact_email,
             :contact_name,
             :description,
-            :experience,
             :job_role_ids,
             :job_type_ids,
+            :job_experience_ids,
             :location,
             :name,
             :remote,
-            :world_changing_text,
+            thumbnail_attributes: [:file],
           ],
         )
     end

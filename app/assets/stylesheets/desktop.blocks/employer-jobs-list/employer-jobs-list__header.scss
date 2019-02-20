@@ -1,0 +1,11 @@
+.employer-jobs-list__header {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: inline-block;
+    font-size: $font-size-large;
+    color: $color-tundora;
+    line-height: 1.36;
+    font-style: normal;
+    font-weight: normal;
+    font-stretch: normal;
+  }
+}

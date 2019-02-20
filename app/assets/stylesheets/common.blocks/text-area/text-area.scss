@@ -1,0 +1,13 @@
+.text-area {
+  border: none;
+  border-radius: 3px;
+  font-size: $font-size-normal;
+  padding: 0 20px;
+  margin-top: 8px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: $color-concrete;
+  height: 240px;
+  width: 100%;
+}

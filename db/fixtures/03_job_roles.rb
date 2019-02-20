@@ -62,4 +62,16 @@ JobRole.seed(:id,
       management,
     ]
   },
+  {
+    id: 4,
+    name: "Photography" ,
+    description: "Photographers",
+    tags: [
+      digital_marketing,
+      growth,
+      social_media,
+      content,
+      management,
+    ]
+  },
 )

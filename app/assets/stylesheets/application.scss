@@ -21,6 +21,8 @@
 @import "reset";
 @import "default";
 @import "colors";
+@import "fonts";
+@import "dimensions";
 @import "base/breakpoints";
-@import "common.blocks/*";
-@import "desktop.blocks/*";
+@import "common.blocks/**/*";
+@import "desktop.blocks/**/*";

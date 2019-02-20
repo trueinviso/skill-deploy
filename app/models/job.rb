@@ -9,10 +9,20 @@ class Job < ApplicationRecord
   has_many :employer_job_roles, dependent: :destroy
   has_many :job_roles, through: :employer_job_roles
 
+  has_many :employer_job_experiences,
+    dependent: :destroy
+  has_many :job_experiences,
+    through: :employer_job_experiences
+
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  include HasAttachments
+  attachment :thumbnail
+
   accepts_nested_attributes_for :job_types
+
+  validates_inclusion_of :remote, in: [true, false]
 
   def self.job_type_name(job_type_name)
     joins(:job_types)

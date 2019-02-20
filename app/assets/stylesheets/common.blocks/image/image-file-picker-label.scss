@@ -1,0 +1,14 @@
+.image-file-picker-label {
+  padding-top: 13px;
+  padding-bottom: 15px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid $color-silver;
+  border-radius: 4px;
+  width: 100%;
+  text-align: center;
+  font-size: $font-size-normal;
+  font-family: $font-primary;
+  font-weight: bold;
+  color: $color-dark-grey;
+}

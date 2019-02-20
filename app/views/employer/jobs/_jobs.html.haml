@@ -8,23 +8,12 @@
           Looks like you don't have any live projects yet.
           Gather your project details and start your project.
 
-      .forms.small-12.medium-5.columns
-        .submit-field
-          = link_to "Start a project", new_employer_job_path
-
   - else
-    .row
-      .jobs-index__heading.small-12.columns
-        .small-6.columns
-          %h2 Active Projects
-        .small-6.columns
-          = link_to "Start a project", new_employer_job_path
     //------ Cards -------//
-    .jobs-index__card-list
-      %ul.small-block-grid-1
-        - jobs.each do |job|
-          %li
-            - cache job do
-              = render partial: "job",
-                locals: { job: job }
+    %ul
+      - jobs.each do |job|
+        %li
+          - cache job do
+            = render partial: "job",
+              locals: { job: job }
 

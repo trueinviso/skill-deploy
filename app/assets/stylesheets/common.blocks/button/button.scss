@@ -1,0 +1,15 @@
+.button {
+  border-radius: 4px;
+  border: none;
+  height: 46px;
+  width: 100%;
+  font-family: $font-primary;
+  font-size: $font-size-normal;
+  font-weight: bold;
+  font-stretch: normal;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

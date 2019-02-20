@@ -1,0 +1,86 @@
+.full-time {
+  border-top: 4px solid $royal;
+}
+
+.part-time {
+  border-top: 4px solid $peachy-pink;
+}
+
+.contract {
+  border-top: 4px solid $orange;
+}
+
+.right {
+  float: right;
+}
+
+.job-card {
+  display: flex;
+  .right {
+    margin-right: 10px;
+  }
+  .job-card__description,
+  .job-card__company-name {
+    color: $black;
+    font-size: 18px;
+    margin-bottom: 19px;
+    margin-top: 18px;
+
+    @include mq($breakpoint-small) {
+      font-size: 24px;
+    }
+  }
+
+  .job-card__name {
+    font-weight: $bold;
+    margin-bottom: 35px;
+  }
+
+  .job-card__attributes {
+    color: $black;
+    display: none;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 8%;
+    width: 20%;
+
+    @include mq($breakpoint-medium) {
+      display: inline;
+    }
+  }
+
+  .job-card__left-panel {
+    @include make-col(9);
+  }
+
+  .job-card__right-panel {
+    @include make-col(3);
+  }
+
+  .job-card__links {
+    background: $white;
+    border: none;
+    font-size: 12px;
+
+    .employer-edit {
+      color: $black;
+      width: 60px;
+      height: 40px;
+      border-radius: 2px;
+      border: solid 2px $ten-grey;
+      padding: 10px;
+    }
+
+    input {
+      background-color: $white;
+      border: none;
+      font-size: 18px;
+      font-weight: $bold;
+    }
+  }
+
+  .job-card__links:first-of-type {
+    margin-top: 18px;
+    margin-bottom: 20px;
+  }
+}

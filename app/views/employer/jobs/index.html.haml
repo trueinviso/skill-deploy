@@ -1,9 +1,16 @@
-.row
-  .small-12.columns.wrapper
-    .columns.small-3
-      = render "employer/shared/links"
-    .forms.small-9.columns#partial
-      .row#edit-user
-        = render "jobs", jobs: @jobs
-= link_to "Subscribe", unity.new_subscription_path
+.employer-jobs-list
+  .employer-jobs-list__left-column
+    = render "employer/shared/links",
+      selected: @view_component.header
+
+  .employer-jobs-list__right-column
+    .employer-admin-header
+      .employer-jobs-list__header
+        = @view_component.header
+      %a{ href: new_employer_job_path }
+        %button.button.button_theme_primary.employer-jobs-list__button
+          Post a listing
+
+    = render "jobs", jobs: @jobs
+/= link_to "Subscribe", unity.new_subscription_path
 /= render "shared/screen_modal"

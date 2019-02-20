@@ -1,0 +1,6 @@
+.employer-admin-header {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: grid;
+    grid-template-columns: 1fr 167px;
+  }
+}

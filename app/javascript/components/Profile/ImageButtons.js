@@ -2,26 +2,34 @@ import React from 'react'
 
 function ImageButtons({ onChange, deleteFile }) {
   return(
-    <div className="profile-picture__buttons-wrapper">
-      <div className="small-3 columns profile-picture__upload-button">
+    <div>
+      <label
+        className="image-file-picker-label create-listing-page__image-file-picker-label"
+      >
         <input
           type="file"
           onChange={onChange}
-          className="inputfile"
+          className="file-picker-input"
           name="file"
           id="profileUploadPicker"
         />
-        <label>Upload photo</label>
-      </div>
-      <div
-        className="small-2 columns profile-picture__delete-button left"
-        onClick={deleteFile}
-      >
-        <label>Delete</label>
-      </div>
+        Upload a photo
+      </label>
+      <div className="instruction-text create-listing-page__instruction-text">
+          Upload your company logo. This photo will
+          be publicly visible to all Heyfam users.
+       </div>
     </div>
   );
 }
+/*
+      TODO: Conditional delete button, allow for passing of custom css classes
+      <div
+        className=""
+        onClick={deleteFile}
+      >
+        <label>Delete</label>
+      </div> */
 
 
 export default ImageButtons

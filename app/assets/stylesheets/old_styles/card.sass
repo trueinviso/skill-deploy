@@ -1,0 +1,67 @@
+@import "variables_and_mixins"
+@import "fonts"
+
+.full-time
+  border-top: 4px solid $royal
+.part-time
+  border-top: 4px solid $peachy-pink
+.contract
+  border-top: 4px solid $orange
+
+.job-card
+  .job-card__description, .job-card__company-name
+    font-size: 18px
+    margin-top: 18px
+    margin-bottom: 19px
+    color: $black
+    @media (min-width: 480px)
+      font-size: 24px
+      line-height: 1.28
+  .job-card__name
+    font-weight: bold
+    font-style: normal
+    font-stretch: normal
+    line-height: 1.44
+    letter-spacing: normal
+    text-align: left
+    color: $black
+    padding-left: 0
+    margin-bottom: 35px
+  .job-card__attributes
+    display: inline
+    padding-right: 8%
+    width: 20%
+    font-size: 14px
+    color: $black
+    font-weight: bold
+
+  .job-card__left-panel
+    padding-left: 0
+
+  .job-card__right-panel
+    padding-left: 0
+
+  .job-card__links
+    font-size: 12px
+    font-style: normal
+    font-stretch: normal
+    line-height: normal
+    letter-spacing: normal
+    text-align: left
+    background: $white
+    .employer-edit
+      color: $black
+      width: 60px
+      height: 40px
+      border-radius: 2px
+      border: solid 2px $concrete
+      padding: 10px
+    input
+      background-color: $white
+      border: none
+      font-size: 18px
+      font-weight: bold
+
+  .job-card__links:first-of-type
+    margin-top: 18px
+    margin-bottom: 20px
