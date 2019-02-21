@@ -1,0 +1,50 @@
+.job
+  .job__left-panel
+    %a{ href: "#" }
+      %button.button.button_theme_white.job__gig-button.job__preview-gig-button
+        All gigs
+
+    .image.job__image
+      = image_tag job.thumbnail_url
+
+    %a{ href: "#" }
+      %button.button.button_theme_primary.job__button
+        Apply for this gig
+
+    %a{ href: job.company_website }
+      %button.button.button_theme_white.job__button
+        Website
+
+    .job__social-links-list
+      = render "jobs/social_links",
+        job: job
+
+  .job__right-panel
+    .header.job__header
+      = job.name
+
+    .job__company-name
+      = job.company_name
+
+
+    .job-tags
+      %button.button.button_theme_grey.job-tags__button
+        = job.job_roles.first&.name
+      %button.button.button_theme_grey.job-tags__button
+        = job.job_types.first&.name
+      %button.button.button_theme_grey.job-tags__button
+        = job.location
+      - if job.remote
+        %button.button.button_theme_grey.job-tags__button
+          Remote
+
+    .job__description-header
+      About the gig
+
+    .job__description
+      = job.description
+
+    %a{ href: "#" }
+      %button.button.button_theme_primary.job__button.job__right-panel-button
+        Apply for this gig
+

@@ -8,6 +8,8 @@
   font-weight: bold;
   font-stretch: normal;
   text-align: center;
+  background-color: $color-white;
+  -webkit-appearance: none;
 
   &:hover {
     cursor: pointer;

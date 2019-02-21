@@ -55,4 +55,12 @@ class Job < ApplicationRecord
       search: "%#{search}%"
     )
   end
+
+  def social_links
+    {
+      instagram: instagram,
+      facebook: facebook,
+      twitter: twitter,
+    }
+  end
 end

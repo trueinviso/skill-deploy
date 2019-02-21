@@ -1,0 +1,9 @@
+.job__gig-button {
+  @media only screen and (min-width: $breakpoint-medium) {
+    position: absolute;
+    display: block;
+    top: -60px;
+    left: 0px;
+    width: 115px;
+  }
+}

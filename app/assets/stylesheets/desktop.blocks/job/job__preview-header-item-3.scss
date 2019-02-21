@@ -1,0 +1,6 @@
+.job__preview-header-item-3 {
+  @media only screen and (min-width: $breakpoint-medium) {
+    grid-column-start: 3;
+    justify-self: end;
+  }
+}

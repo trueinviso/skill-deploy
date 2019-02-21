@@ -1,0 +1,3 @@
+- job.social_links.each do |key, href|
+  - next if href.blank?
+  %a{ href: href, target: "_blank", class: "fa fa-#{key} social-link" }

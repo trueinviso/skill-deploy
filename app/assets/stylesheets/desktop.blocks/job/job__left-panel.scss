@@ -1,0 +1,9 @@
+.job__left-panel {
+  @media only screen and (min-width: $breakpoint-medium) {
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    padding: 53px 50px 61px 50px;
+    background-color: $color-white;
+  }
+}

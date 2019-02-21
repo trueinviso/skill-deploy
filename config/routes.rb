@@ -51,6 +51,12 @@ Rails.application.routes.draw do
     resource :billing,
       controller: :billing,
       only: [:edit, :update, :destroy]
+
+    namespace :preview do
+      resources :job,
+        controller: :jobs,
+        only: [:show]
+    end
   end
 
   namespace :api, defaults: { format: :json } do

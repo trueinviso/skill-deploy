@@ -1,0 +1,16 @@
+.job__preview
+  .job__preview-content
+    .header.job__preview-header.job__preview-header-item-2
+      Listing preview
+
+    %a.job__preview-header-item-3{ href: "#" }
+      %button.button.button_theme_black.job__preview-button
+        Post listing
+
+    %a.job__preview-header-item-1{ href: "#" }
+      %button.button.button_theme_white.job__preview-button
+        Edit listing
+
+  = render "jobs/job",
+    job: @job,
+    view_component: @view_component
