@@ -4,9 +4,19 @@ class ThumbnailUploader < PictureUploader
   include ImageProcessing::MiniMagick
   plugin :upload_endpoint
   plugin :processing
+  plugin :versions
 
   process(:store) do |io, context|
-    resize_to_limit!(io.download, 800, 800) { |cmd| cmd.auto_orient }
+    original = io.download
+    pipeline = ImageProcessing::MiniMagick.source(original)
+
+    size_800 = pipeline.resize_to_limit!(800, 800)
+    size_500 = pipeline.resize_to_limit!(500, 500)
+    size_300 = pipeline.resize_to_limit!(300, 300)
+
+    original.close!
+
+    { original: io, large: size_800, medium: size_500, small: size_300 }
   end
 
   def default_image_name

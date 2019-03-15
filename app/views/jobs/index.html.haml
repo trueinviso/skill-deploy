@@ -1,1 +1,9 @@
-= react_component("JobBoard", { roles: @roles, types: @types })
+.jobs-list
+  = render "types_filter"
+  = render "roles_filter"
+
+  = render "jobs",
+    jobs: @jobs,
+    favorites: @favorites
+/= link_to "Subscribe", unity.new_subscription_path
+/= render "shared/screen_modal"

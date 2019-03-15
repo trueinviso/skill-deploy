@@ -1,15 +1,10 @@
-.small-12.columns.job-card{ class: job_border_color(job) }
-  = link_to "#", class: "small-12 medium-9 columns" do
-    .job-card__description
-      %span.job-card__company-name= job.company_name
-      is looking for a
-      %span.job-card__name= job.name
-    .visible-for-medium-up
-      .job-card__attributes
-        = job.location
-
-  .small-12.medium-3.columns.job-card__right-panel
-    - file_name = favorites.include?(job.id) ? "save-active.svg" : "save-inactive.svg"
-    %div{ id: "job-#{job.id}" }
-      = render partial: "jobs/like_button",
-        locals: { job: job, file_name: file_name }
+.job-card
+  - file_name = favorites.include?(job.id) ? "save-active.svg" : "save-inactive.svg"
+  .job-card__first-row
+    = render "employer/jobs/image", resource: job
+    .job-card__favorite-icon
+      = render "like_button",
+        job: job,
+        file_name: file_name
+  .header.job-card__header= job.name
+  .job-card__company-name= job.company_name
