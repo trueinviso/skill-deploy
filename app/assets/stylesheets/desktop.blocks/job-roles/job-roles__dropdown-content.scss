@@ -1,4 +1,5 @@
-.dropdown {
+.job-roles__dropdown-content {
   @media only screen and (min-width: $breakpoint-medium) {
+    display: flex;
   }
 }

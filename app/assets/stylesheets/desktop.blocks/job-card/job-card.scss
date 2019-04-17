@@ -1,0 +1,13 @@
+.job-card {
+  @media only screen and (min-width: $breakpoint-medium) {
+    grid-template-columns: 75px auto 15px;
+
+    -ms-grid-columns: 75px auto 15px;
+  }
+}
+
+.job-card:first-of-type {
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 14px;
+  }
+}

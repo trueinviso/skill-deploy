@@ -1,0 +1,5 @@
+.border-bottom-container {
+  @media only screen and (min-width: $breakpoint-medium) {
+    border-bottom: 1px solid $color-pale;
+  }
+}

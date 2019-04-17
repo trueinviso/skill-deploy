@@ -1,15 +1,15 @@
 .dropdown.employer-jobs-list__dropdown
-  .dropdown__button{ onclick: "toggleDropdown()" }
+  .dropdown__button.employer-jobs-list__dropdown__button{ onclick: "dropdown.toggle()" }
     = selected || "Select"
   .dropdown__content
     = link_to "Manage listings",
       employer_jobs_path,
-      class: "dropdown__link"
+      class: "dropdown__link employer-jobs-list__dropdown__link"
 
     = link_to "Your profile",
       edit_user_registration_path,
-      class: "dropdown__link"
+      class: "dropdown__link employer-jobs-list__dropdown__link"
 
     = link_to "Billing details",
       edit_employer_billing_path,
-      class: "dropdown__link"
+      class: "dropdown__link employer-jobs-list__dropdown__link"

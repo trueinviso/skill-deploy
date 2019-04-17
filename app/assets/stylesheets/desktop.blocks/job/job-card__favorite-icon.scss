@@ -1,0 +1,6 @@
+.job-card__favorite-icon {
+  @media only screen and (min-width: $breakpoint-medium) {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+}

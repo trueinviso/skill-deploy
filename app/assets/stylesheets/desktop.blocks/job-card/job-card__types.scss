@@ -1,0 +1,12 @@
+.job-card__types {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: grid;
+    display: -ms-grid;
+
+    grid-template-columns: repeat(4, 117px);
+    -ms-grid-columns: 117px 117px 117px 117px;
+
+    grid-column-start: 2;
+    grid-gap: 10px;
+  }
+}
