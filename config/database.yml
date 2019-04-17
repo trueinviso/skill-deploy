@@ -5,17 +5,13 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  database: techno_development
+  username: <%= ENV["POSTGRES_USERNAME"] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['DB_USER_POSTGRES_USERNAME'] %>
-  host:     <%= ENV['DB_USER_POSTGRES_HOST'] || 'localhost' %>
-  port:     <%= ENV['DB_USER_POSTGRES_PORT'] || '5432' %>
-  timeout: 5000
 
 development:
   <<: *default
-  database: techno_development
-  host: localhost
+  url: postgres://<%= ENV["POSTGRES_HOST"] || 'localhost' %>:<%= ENV["POSTGRES_PORT"] || '5432' %>/techno_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,7 +19,6 @@ development:
 test:
   <<: *default
   database: techno_test
-  host: localhost
 
 production:
   <<: *default

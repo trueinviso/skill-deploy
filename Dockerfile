@@ -2,7 +2,6 @@ FROM ruby:2.5.0
 MAINTAINER Keith Ward <keith.ward.dev@gmail.com>
 
 ARG ssh_prv_key
-ARG NPM_TOKEN
 
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 
@@ -36,7 +35,6 @@ WORKDIR $INSTALL_PATH
 
 COPY Gemfile* ./
 
-# RUN bundle config git.allow_insecure true
 RUN bundle install --binstubs
 
 COPY package.json yarn.lock ./
@@ -45,6 +43,6 @@ RUN yarn install
 
 COPY . .
 
-RUN bin/webpack
-
 RUN rm /root/.ssh/id_rsa
+
+RUN bin/webpack

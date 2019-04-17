@@ -22,8 +22,8 @@ gem "webpacker"
 gem "mq-sass"
 gem "omniauth-google-oauth2"
 gem "font-awesome-rails"
-# gem 'unity', git: "git@github.com:trueinviso/unity.git"
-gem 'unity', path: "/Users/keithward/side_projects/engines/unity"
+gem 'unity', git: "git@github.com:trueinviso/unity.git"
+# gem 'unity', path: "/Users/keithward/side_projects/engines/unity"
 # path: "/Users/keithward/side_projects/engines/unity"
 # Token authentication for API requests + CORS
 gem "simple_token_authentication", "~> 1.0"
@@ -31,7 +31,7 @@ gem "simple_token_authentication", "~> 1.0"
 # gets width and height of an uploaded image
 gem "fastimage"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.3'
 gem "seed-fu", "~> 2.3"
 # Use pg as the database for Active Record
 gem 'pg', '~> 0.21'

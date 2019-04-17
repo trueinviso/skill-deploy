@@ -1,26 +1,26 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    ports:
-      - "5432:5432"
+  postgres:
+    image: postgres:10.7
+    restart: always
     volumes:
       - ./web-data:/var/lib/postgresql/data
   web:
     image: heyfam:latest
+    restart: always
     build: .
-    command: ["./wait-for-it.sh", "db:5432", "--", "bash", "-c", "./entrypoint.sh && rm -f tmp/pids/server.pid && bundle exec rails s -e development -p 3000 -b '0.0.0.0'"]
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "bash", "-c", "rm -f tmp/pids/server.pid && bundle exec rails s -e development -p 3000 -b '0.0.0.0'"]
     volumes:
       - .:/root/src/app
     ports:
       - "3000:3000"
     environment:
-      - DB_USER_POSTGRES_USERNAME=postgres
-      - DB_USER_POSTGRES_HOST=db
-      - DB_USER_POSTGRES_PORT=5432
+      - POSTGRES_USERNAME=postgres
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
       - RAILS_ENV=development
       - RACK_ENV=development
+      - NODE_ENV=development
     depends_on:
-      - db
+      - postgres
     stdin_open: true
-    # tty: true
