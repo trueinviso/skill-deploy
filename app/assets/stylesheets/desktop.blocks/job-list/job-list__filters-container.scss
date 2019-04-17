@@ -1,0 +1,23 @@
+.jobs-list__filters-container {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: grid;
+    display: -ms-grid;
+
+    -ms-grid-columns: 197px 1fr;
+    -ms-grid-rows: 71px;
+
+    grid-template-columns: 197px 1fr;
+    grid-template-rows: 71px;
+
+    grid-gap: 10px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 75vw;
+
+    @media only screen and (max-width: 875px) {
+      width: 90vw;
+    }
+  }
+}

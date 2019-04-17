@@ -1,10 +1,15 @@
 .job-card
   - file_name = favorites.include?(job.id) ? "save-active.svg" : "save-inactive.svg"
-  .job-card__first-row
-    = render "employer/jobs/image", resource: job
-    .job-card__favorite-icon
-      = render "like_button",
-        job: job,
-        file_name: file_name
-  .header.job-card__header= job.name
-  .job-card__company-name= job.company_name
+  = render "image", resource: job
+  .job-card__favorite-icon
+    = render "like_button",
+      job: job,
+      file_name: file_name
+  .job-card__details
+    .header.job-card__header= job.name
+    .job-card__company-name= job.company_name
+  .job-card__types
+    - job.job_types.each do |type|
+      .button.button_theme_grey.job-card__button
+        = type.name
+

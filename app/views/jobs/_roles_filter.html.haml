@@ -1,15 +1,23 @@
-.dropdown.jobs-list__dropdown.jobs-list__roles-dropdown
-  .dropdown__button{ onclick: "toggleDropdown()" }
+.dropdown.dropdown_white.dropdown_desktop-hidden.jobs-list__dropdown{ onclick: "dropdown.toggle()" }
+  .dropdown__button.dropdown__button_hidden
     = "All Role Types"
-  .dropdown__content
-    = link_to "Manage listings",
-      employer_jobs_path,
-      class: "dropdown__link"
+  .dropdown__content.dropdown__content_inline-buttons
+    = link_to "Full Time",
+      "#",
+      class: "dropdown__link dropdown__link_button",
+      remote: true
 
-    = link_to "Your profile",
-      edit_user_registration_path,
-      class: "dropdown__link"
+    = link_to "Part Time",
+      "#",
+      class: "dropdown__link dropdown__link_button",
+      remote: true
 
-    = link_to "Billing details",
-      edit_employer_billing_path,
-      class: "dropdown__link"
+    = link_to "Contract",
+      "#",
+      class: "dropdown__link dropdown__link_button",
+      remote: true
+
+    = link_to "Freelance",
+      "#",
+      class: "dropdown__link dropdown__link_button",
+      remote: true

@@ -1,10 +1,4 @@
 .dropdown {
   @media only screen and (min-width: $breakpoint-medium) {
-    height: auto;
-    background-color: $color-white;
-
-    &::after {
-      border: none;
-    }
   }
 }

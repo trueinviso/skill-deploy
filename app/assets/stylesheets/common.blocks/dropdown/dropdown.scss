@@ -7,17 +7,6 @@
   cursor: pointer;
   background-color: $color-concrete;
 
-  &::after {
-    position: absolute;
-    content: "";
-    top: 20px;
-    right: 21px;
-    width: 0;
-    height: 0;
-    border: 6px solid transparent;
-    border-color: $color-beige transparent transparent transparent;
-  }
-
   &:active .dropdown__content {
     display: block;
   }

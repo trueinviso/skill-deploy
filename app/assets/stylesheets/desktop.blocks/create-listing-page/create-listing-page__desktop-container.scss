@@ -1,0 +1,5 @@
+.create-listing-page__desktop-container {
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin: 79px auto 147px auto;
+  }
+}

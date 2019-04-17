@@ -1,0 +1,17 @@
+.jobs-list__dropdown:first-of-type {
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 12px;
+  }
+}
+
+.jobs-list__dropdown:last-of-type {
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 12px;
+  }
+}
+
+.jobs-list__dropdown {
+  @media only screen and (min-width: $breakpoint-medium) {
+    height: 43px;
+  }
+}

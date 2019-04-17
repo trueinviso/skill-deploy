@@ -1,5 +1,10 @@
 .employer-jobs-list__dropdown {
   @media only screen and (min-width: $breakpoint-medium) {
     margin-top: 0;
+    background-color: $color-white;
+
+    &::after {
+      border: none;
+    }
   }
 }

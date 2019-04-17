@@ -17,6 +17,8 @@ class Job < ApplicationRecord
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  has_rich_text :description
+
   include HasAttachments
   attachment :thumbnail
 
