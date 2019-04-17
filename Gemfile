@@ -31,7 +31,7 @@ gem "simple_token_authentication", "~> 1.0"
 # gets width and height of an uploaded image
 gem "fastimage"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 6.0.0.beta3'
 gem "seed-fu", "~> 2.3"
 # Use pg as the database for Active Record
 gem 'pg', '~> 0.21'
