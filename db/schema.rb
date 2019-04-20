@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_17_200505) do
+ActiveRecord::Schema.define(version: 2019_04_20_170507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,12 +101,10 @@ ActiveRecord::Schema.define(version: 2019_04_17_200505) do
   end
 
   create_table "job_experiences", force: :cascade do |t|
-    t.bigint "job_id"
     t.string "name", null: false
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["job_id"], name: "index_job_experiences_on_job_id"
   end
 
   create_table "job_roles", force: :cascade do |t|
@@ -163,6 +161,22 @@ ActiveRecord::Schema.define(version: 2019_04_17_200505) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "social_media_profiles", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "behance"
+    t.string "codepen"
+    t.string "dribbble"
+    t.string "facebook"
+    t.string "github"
+    t.string "instagram"
+    t.string "linked_in"
+    t.string "medium"
+    t.string "twitter"
+    t.string "vimeo"
+    t.string "website"
+    t.index ["user_id"], name: "index_social_media_profiles_on_user_id"
   end
 
   create_table "subscription_plans", force: :cascade do |t|
@@ -247,6 +261,33 @@ ActiveRecord::Schema.define(version: 2019_04_17_200505) do
     t.index ["user_id"], name: "index_unity_subscriptions_on_user_id"
   end
 
+  create_table "user_job_experiences", force: :cascade do |t|
+    t.bigint "job_experience_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_experience_id"], name: "index_user_job_experiences_on_job_experience_id"
+    t.index ["user_id"], name: "index_user_job_experiences_on_user_id"
+  end
+
+  create_table "user_job_roles", force: :cascade do |t|
+    t.bigint "job_role_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_role_id"], name: "index_user_job_roles_on_job_role_id"
+    t.index ["user_id"], name: "index_user_job_roles_on_user_id"
+  end
+
+  create_table "user_job_types", force: :cascade do |t|
+    t.bigint "job_type_id"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_type_id"], name: "index_user_job_types_on_job_type_id"
+    t.index ["user_id"], name: "index_user_job_types_on_user_id"
+  end
+
   create_table "user_permissions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "permission_id"
@@ -261,18 +302,7 @@ ActiveRecord::Schema.define(version: 2019_04_17_200505) do
     t.string "first_name"
     t.string "last_name"
     t.string "location"
-    t.string "website"
     t.text "bio"
-    t.string "twitter"
-    t.string "facebook"
-    t.string "linked_in"
-    t.string "dribbble"
-    t.string "github"
-    t.string "codepen"
-    t.string "medium"
-    t.string "behance"
-    t.string "instagram"
-    t.string "vimeo"
     t.boolean "update_notifications", default: false
     t.boolean "weekly_newsletter", default: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
@@ -319,4 +349,6 @@ ActiveRecord::Schema.define(version: 2019_04_17_200505) do
   add_foreign_key "employer_job_types", "job_types"
   add_foreign_key "employer_job_types", "jobs"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "user_job_experiences", "job_experiences"
+  add_foreign_key "user_job_experiences", "users"
 end

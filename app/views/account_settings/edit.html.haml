@@ -1,0 +1,31 @@
+.text-field
+  = f.label :email
+  = f.email_field :email,
+    onfocusout: "validateEmail('#user_email');",
+    autofocus: true,
+    autocomplete: "email"
+  .error-message#user_email-error
+
+- if devise_mapping.confirmable? && resource.pending_reconfirmation?
+  %div Currently waiting confirmation for: #{resource.unconfirmed_email}
+
+
+.text-field
+  = f.label :password
+  = f.password_field :password,
+    onfocusout: "validatePassword();",
+    autocomplete: "off"
+  .error-message#user_password-error
+
+.text-field
+  = f.label :password_confirmation
+  = f.password_field :password_confirmation,
+    autocomplete: "off",
+    onfocusout: "validatePasswordConfirmation();validatePasswordsMatch();"
+  .error-message#user_password_confirmation-error
+.text-field.last
+  = f.label :current_password
+  = f.password_field :current_password,
+    autocomplete: "off",
+    onfocusout: "validatePresence('#user_current_password');"
+  .error-message#user_current_password-error

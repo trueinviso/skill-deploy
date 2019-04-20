@@ -1,0 +1,19 @@
+.radio-label {
+  display: block;
+  padding: 13px 62px;
+  margin-top: 8px;
+  background-color: $color-white;
+  color: $color-dark-grey;
+  border: 1px solid $color-silver;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: $font-primary;
+  font-size: $font-size-normal;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  height: 46px;
+  cursor: pointer;
+}

@@ -1,0 +1,7 @@
+.radio-button-list {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: grid;
+    grid-gap: 9px;
+    grid-template-columns: 138px 138px 138px 138px;
+  }
+}

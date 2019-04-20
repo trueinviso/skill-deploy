@@ -1,44 +1,118 @@
-.align-center.forms
-  .column.small-12.medium-10
+= form_for(resource,
+  as: resource_name,
+  url: registration_path(resource_name),
+  html: { method: :put }) do |f|
 
-    = form_for(resource,
-      as: resource_name,
-      url: registration_path(resource_name),
-      html: { method: :put }) do |f|
+  = devise_error_messages!
 
-      = devise_error_messages!
+  - thumbnail = f.object.thumbnail_url
+  = react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
 
-      .text-field
-        = f.label :email
-        = f.email_field :email,
-          onfocusout: "validateEmail('#user_email');",
-          autofocus: true,
-          autocomplete: "email"
-        .error-message#user_email-error
+  = f.fields_for :user_profile, UserProfile.new do |p|
+    .form
+      = p.label :first_name,
+        "First Name *",
+        class: "label"
+      = p.text_field :first_name,
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_first_name",
+        onfocusout: "validatePresence('#user_first_name');"
+      .error-message#user_first_name-error
 
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div Currently waiting confirmation for: #{resource.unconfirmed_email}
+      = p.label :last_name,
+        "Last Name *",
+        class: "label"
+      = p.text_field :last_name,
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_last_name",
+        onfocusout: "validatePresence('#user_last_name');"
+      .error-message#user_last_name-error
 
+      = p.label :bio,
+        "Bio *",
+        class: "label"
+      = p.text_area :bio,
+        class: "text-area registrations-edit__text-area",
+        id: "user_bio",
+        onfocusout: "validatePresence('#user_bio');"
+      .error-message#user_bio-error
 
-      .text-field
-        = f.label :password
-        = f.password_field :password,
-          onfocusout: "validatePassword();",
-          autocomplete: "off"
-        .error-message#user_password-error
+      .instruction-text.registrations-edit__instruction-text
+        This is your chance to tell potential clients and collaborators
+        about yourself and the kinds of projects you're looking for.
 
-      .text-field
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation,
-          autocomplete: "off",
-          onfocusout: "validatePasswordConfirmation();validatePasswordsMatch();"
-        .error-message#user_password_confirmation-error
-      .text-field.last
-        = f.label :current_password
-        = f.password_field :current_password,
-          autocomplete: "off",
-          onfocusout: "validatePresence('#user_current_password');"
-        .error-message#user_current_password-error
+      = p.label :location,
+        "Current Location *",
+        class: "label"
+      = p.text_field :location,
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_location",
+        onfocusout: "validatePresence('#user_location');"
+      .error-message#user_location-error
 
-      .submit-field
-        = f.submit "Save"
+  .sub-heading.registrations-edit__sub-heading
+    Preferences and skills
+
+  = f.label :job_role_ids, "What type of Creative are you? *", class: "label"
+  .radio-button-list.registrations-edit__radio-button-list
+    = f.collection_radio_buttons(:job_role_ids,
+      JobRole.all,
+      :id,
+      :name,
+      { checked: resource.job_roles.first&.id }) do |jr|
+      = jr.radio_button(class: "radio-button")
+      = jr.label(class: "radio-label")
+    .instruction-text.creative-selection__instruction-text
+      Choose up to two
+
+  = f.label :job_experiences, "Experience Level *", class: "label"
+  .radio-button-list.registrations-edit__radio-button-list
+    = f.collection_radio_buttons(:job_experience_ids,
+      JobExperience.all,
+      :id,
+      :name,
+      { checked: resource.job_experiences.first&.id }) do |jt|
+      = jt.radio_button(class: "radio-button")
+      = jt.label(class: "radio-label")
+
+  = f.label :job_types, "What type(s) of work are you interested in? *", class: "label"
+  .radio-button-list.registrations-edit__radio-button-list
+    = f.collection_radio_buttons(:job_type_ids,
+      JobType.all,
+      :id,
+      :name,
+      { checked: resource.job_types.first&.id }) do |jt|
+      = jt.radio_button(class: "radio-button")
+      = jt.label(class: "radio-label")
+
+  .sub-heading.registrations-edit__sub-heading
+    Links
+
+  = f.fields_for :social_media_profile, SocialMediaProfile.new do |p|
+    .form
+      = p.label :website,
+        "Website *",
+        class: "label"
+      = p.text_field :website,
+        class: "input input_theme_normal registrations-edit__input"
+
+      = p.label :twitter,
+        "Twitter *",
+        class: "label"
+      = p.text_field :twitter,
+        class: "input input_theme_normal registrations-edit__input"
+
+      = p.label :facebook,
+        "Facebook *",
+        class: "label"
+      = p.text_field :facebook,
+        class: "input input_theme_normal registrations-edit__input"
+
+      = p.label :instagram,
+        "Instagram *",
+        class: "label"
+      = p.text_field :instagram,
+        class: "input input_theme_normal registrations-edit__input"
+
+  = f.submit "Save changes",
+    class: "button button_theme_primary"
