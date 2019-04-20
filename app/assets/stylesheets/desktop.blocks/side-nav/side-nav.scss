@@ -1,5 +1,5 @@
-.dropdown__content {
+.side-nav {
   @media only screen and (min-width: $breakpoint-medium) {
-    display: none;
+    display: block;
   }
 }
