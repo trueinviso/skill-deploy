@@ -42,6 +42,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
 
+  accepts_nested_attributes_for :work_experiences,
+    reject_if: :all_blank,
+    allow_destroy: true
+
   def active_paid_subscriber?
     return false if gateway_customer.blank?
     return false if subscription.blank?

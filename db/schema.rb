@@ -303,8 +303,11 @@ ActiveRecord::Schema.define(version: 2019_04_20_232311) do
     t.string "last_name"
     t.string "location"
     t.text "bio"
+    t.string "headline"
     t.boolean "update_notifications", default: false
     t.boolean "weekly_newsletter", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 

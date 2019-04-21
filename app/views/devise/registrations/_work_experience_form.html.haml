@@ -1,0 +1,17 @@
+.sub-heading.registrations-edit__sub-heading
+  Work experience
+
+%div{ data: { controller: "nested-form" }}
+  %template{ data: { target: "nested-form.template" }}
+    = form.fields_for :work_experiences,
+      WorkExperience.new,
+      child_index: "NEW_RECORD" do |wexp|
+      = render "work_experience_fields", form: wexp
+
+  = form.fields_for :work_experiences, WorkExperience.new do |wexp|
+    = render "work_experience_fields", form: wexp
+
+  .button.button_theme_white.registrations-edit__add-experience-button{ data: { target: "nested-form.links" }}
+    = link_to "Add more experience",
+      "#",
+      data: { action: "click->nested-form#create" }

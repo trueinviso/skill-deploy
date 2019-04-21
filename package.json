@@ -22,6 +22,7 @@
     "react-spinners": "^0.2.6",
     "react-stripe-elements": "^1.4.1",
     "react_ujs": "^2.4.3",
+    "stimulus": "^1.1.1",
     "trix": "^1.0.0",
     "url-polyfill": "^1.0.13",
     "whatwg-fetch": "^2.0.3"

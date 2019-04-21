@@ -1,0 +1,41 @@
+= form.fields_for :user_profile, UserProfile.new do |p|
+  .form
+    = p.label :first_name,
+      "First Name *",
+      class: "label"
+    = p.text_field :first_name,
+      class: "input input_theme_normal registrations-edit__input",
+      id: "user_first_name",
+      onfocusout: "validatePresence('#user_first_name');"
+    .error-message#user_first_name-error
+
+    = p.label :last_name,
+      "Last Name *",
+      class: "label"
+    = p.text_field :last_name,
+      class: "input input_theme_normal registrations-edit__input",
+      id: "user_last_name",
+      onfocusout: "validatePresence('#user_last_name');"
+    .error-message#user_last_name-error
+
+    = p.label :bio,
+      "Bio *",
+      class: "label"
+    = p.text_area :bio,
+      class: "text-area registrations-edit__text-area",
+      id: "user_bio",
+      onfocusout: "validatePresence('#user_bio');"
+    .error-message#user_bio-error
+
+    .instruction-text.registrations-edit__instruction-text
+      This is your chance to tell potential clients and collaborators
+      about yourself and the kinds of projects you're looking for.
+
+    = p.label :location,
+      "Current Location *",
+      class: "label"
+    = p.text_field :location,
+      class: "input input_theme_normal registrations-edit__input registrations-edit__location",
+      id: "user_location",
+      onfocusout: "validatePresence('#user_location');"
+    .error-message#user_location-error

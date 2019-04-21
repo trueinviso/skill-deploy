@@ -1,0 +1,29 @@
+= content_tag :div do
+  = form.label :title,
+    "Title",
+    class: "label"
+  = form.text_field :title,
+    class: "input input_theme_normal registrations-edit__input"
+
+  = form.label :company,
+    "Company",
+    class: "label"
+  = form.text_field :company,
+    class: "input input_theme_normal registrations-edit__input"
+
+  = form.label :start,
+    "Start",
+    class: "label"
+  = form.date_field :start,
+    class: "dropdown registrations-edit__dropdown"
+
+  = form.label :end,
+    "End",
+    class: "label"
+  = form.date_field :end,
+    class: "dropdown registrations-edit__dropdown"
+
+  = form.check_box :current_role,
+    class: "radio-button"
+  = form.label :current_role,
+    class: "radio-label"
