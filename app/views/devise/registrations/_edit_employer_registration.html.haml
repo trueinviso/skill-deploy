@@ -1,44 +1,18 @@
-.align-center.forms
-  .column.small-12.medium-10
+= form_for(resource,
+  as: resource_name,
+  url: registration_path(resource_name),
+  html: { method: :put }) do |f|
 
-    = form_for(resource,
-      as: resource_name,
-      url: registration_path(resource_name),
-      html: { method: :put }) do |f|
+  = devise_error_messages!
 
-      = devise_error_messages!
+  - thumbnail = f.object.thumbnail_url
+  = react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
 
-      .text-field
-        = f.label :email
-        = f.email_field :email,
-          onfocusout: "validateEmail('#user_email');",
-          autofocus: true,
-          autocomplete: "email"
-        .error-message#user_email-error
+  = render "user_profile_form", form: f
+  = render "preferences_and_skills_form", form: f
+  = render "skills_form", form: f
+  = render "work_experience_form", form: f
+  = render "social_media_links_form", form: f
 
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div Currently waiting confirmation for: #{resource.unconfirmed_email}
-
-
-      .text-field
-        = f.label :password
-        = f.password_field :password,
-          onfocusout: "validatePassword();",
-          autocomplete: "off"
-        .error-message#user_password-error
-
-      .text-field
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation,
-          autocomplete: "off",
-          onfocusout: "validatePasswordConfirmation();validatePasswordsMatch();"
-        .error-message#user_password_confirmation-error
-      .text-field.last
-        = f.label :current_password
-        = f.password_field :current_password,
-          autocomplete: "off",
-          onfocusout: "validatePresence('#user_current_password');"
-        .error-message#user_current_password-error
-
-      .submit-field
-        = f.submit "Save"
+  = f.submit "Save changes",
+    class: "button button_theme_primary"

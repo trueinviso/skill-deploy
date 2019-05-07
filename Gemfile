@@ -23,7 +23,7 @@ gem "mq-sass"
 gem "omniauth-google-oauth2"
 gem "font-awesome-rails"
 # gem 'unity', git: "git@github.com:trueinviso/unity.git"
-gem 'unity', path: "/Users/keithward/side_projects/engines/unity"
+gem 'unity', path: "./unity"
 # path: "/Users/keithward/side_projects/engines/unity"
 # Token authentication for API requests + CORS
 gem "simple_token_authentication", "~> 1.0"

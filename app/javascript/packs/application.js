@@ -16,3 +16,4 @@ ReactRailsUJS.useContext(componentRequireContext)
 
 require("trix")
 require("@rails/actiontext")
+import "controllers"

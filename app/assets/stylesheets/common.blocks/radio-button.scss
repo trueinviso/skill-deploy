@@ -1,0 +1,8 @@
+.radio-button {
+  display: none;
+
+  &:checked + label {
+    background-color: $color-dark-grey;
+    color: $color-white;
+  }
+}

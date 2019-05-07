@@ -11,10 +11,22 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
   has_one :user_profile, dependent: :destroy
+  has_one :social_media_profile, dependent: :destroy
   has_many :user_permissions, dependent: :destroy
 
   has_many :user_roles, dependent: :destroy
   has_many :roles, through: :user_roles
+
+  has_many :user_job_types, dependent: :destroy
+  has_many :job_types, through: :user_job_types
+
+  has_many :user_job_roles, dependent: :destroy
+  has_many :job_roles, through: :user_job_roles
+
+  has_many :user_job_experiences, dependent: :destroy
+  has_many :job_experiences, through: :user_job_experiences
+
+  has_many :work_experiences
 
   has_many :jobs
 
@@ -29,6 +41,10 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
+
+  accepts_nested_attributes_for :work_experiences,
+    reject_if: :all_blank,
+    allow_destroy: true
 
   def active_paid_subscriber?
     return false if gateway_customer.blank?
