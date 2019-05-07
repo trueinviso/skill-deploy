@@ -18,6 +18,15 @@
       onfocusout: "validatePresence('#user_last_name');"
     .error-message#user_last_name-error
 
+    = p.label :headline,
+      "Headline *",
+      class: "label"
+    = p.text_field :headline,
+      class: "input input_theme_normal registrations-edit__input",
+      id: "user_headline",
+      onfocusout: "validatePresence('#user_last_name');"
+    .error-message#user_headline-error
+
     = p.label :bio,
       "Bio *",
       class: "label"
