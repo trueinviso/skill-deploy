@@ -15,7 +15,12 @@ class Skills extends PureComponent {
   componentDidMount() {
     if (this.ref.current) {
       this.choices = new Choices(this.ref.current, config);
-      console.log(this.choices);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.choices) {
+      this.choices.destroy();
     }
   }
 
