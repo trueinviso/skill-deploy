@@ -1,0 +1,49 @@
+@import "react-datepicker/dist/react-datepicker.css";
+
+.react-datepicker-wrapper {
+  width: 100%;
+}
+.react-datepicker {
+  &__day {
+    &--selected {
+      background-color: $color-primary;
+    }
+  }
+
+  &__input-container {
+    width: 100%;
+    height: 46px;
+    border-radius: 4px;
+    line-height: 46px;
+    background: $color-concrete;
+
+    &:after {
+      height: 100%;
+      position: absolute;
+      content: "";
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACNklEQVRIid2VsUocYRSFvzNsYWkRJKQUEXGWWWcREZGwdV4gVQhWYiWSKk+QatnSwiKEkMIibZCQIkUQkTADPzuw+ABWPkFY9qSYHR2NK7sBG0833Ln3u+fe/5+RMY+t6NEJTwrSqD8UIXsBGgJXcZKOZinUD3mEeQZuNFvty3rs2kkR8mXQEXYPWJq1W8GyRA9xVIT8Vr76IYuANUwX0bE9FDpDvI6T9HJCzWsVIYsMz2V9BdYNDfBPSQeYELfSUYRZBA4RHQxCDWDb9pciZGtFyCfurYxpTXAMbCIaKkMd4NCwCBBZngPmbYNK36VHbYO6tlcfMNIEuqBNY+zanTPziDmASGgA7EsK4yAIZBq2O5KO+yFfqTsqQhYVIVsFH2NeAg0JhMrcsta+YACg6sYXId/GfEQsVSAbJMCcId4BZ+M2t2y6kjaqd2sNXtjsNFvpadWU6p+VfsheCfUwy9eJpYaYDLEHRJhDoG0cSQKDMZIGwEGcpCf1ZN39dhUh3wB6wNaNFSpbl8YNoYVq/pKwjaRfmIO4lf6+u7h/IGNQG/hk07zN4PZybxQkduKknd0XvPd4xkmaAbsS58CIm92UnVXHUIxApxK7kwATIWPQqfEu+Efp1uXcqxNUwr5L7MVJ+2xSHZgwrrqKkK8AnzHr1MYldI54EyfpxYMFHnJSczSweQs+wQyBP5K+IXamAUzlpNLY0XvDSPBhWsBMEIB+yBaERnGSXk2dNCvkf/V0fr9PB/IXim71ph47VR4AAAAASUVORK5CYII=);
+      background-repeat: no-repeat;
+      background-size: 15px;
+      background-position: 100% 50%;
+      right: 5%;
+      width: 20px;
+      z-index: 1;
+    }
+
+    & > input {
+      background: transparent;
+      outline: none;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 15px;
+      width: 95%;
+
+      @include placeholder {
+        color: $color-beige;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
+}

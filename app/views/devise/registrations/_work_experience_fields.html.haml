@@ -5,7 +5,8 @@
   %div
     = link_to "Remove",
       "#",
-      data: { action: "click->nested-form#destroy" }
+      data: { action: "click->nested-form#destroy" },
+      :class => "button button--danger"
   = form.label :title,
     "Title",
     class: "label"
@@ -18,17 +19,10 @@
   = form.text_field :company,
     class: "input input_theme_normal registrations-edit__input"
 
-  = form.label :start,
-    "Start",
-    class: "label"
-  = form.date_field :start,
-    class: "dropdown registrations-edit__dropdown"
 
-  = form.label :end,
-    "End",
-    class: "label"
-  = form.date_field :end,
-    class: "dropdown registrations-edit__dropdown"
+  =react_component('DatePickerDropdown',{label:'Start',name:'start',className:'registrations-edit__input'})
+
+  =react_component('DatePickerDropdown',{label:'End',name:'end',className:'registrations-edit__input'})
 
   = form.check_box :current_role,
     class: "radio-button"
