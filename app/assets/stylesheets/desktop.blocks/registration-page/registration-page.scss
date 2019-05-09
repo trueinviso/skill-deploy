@@ -2,5 +2,55 @@
   @media only screen and (min-width: $breakpoint-medium) {
     width: 373px;
     margin: 108px auto auto auto;
+
+    &__content {
+      margin-left: 100px;
+      width: 60%;
+    }
+    &__heading {
+      font-size: 22px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      color: $color-tundora;
+      margin-bottom: 65px;
+    }
+
+    &__profile-form {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &__work-experiences {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 30px;
+
+      &--inline {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+    }
+    &__form-field {
+      width: 100%;
+      padding: 0 10px;
+
+      &--half {
+        width: 45%;
+      }
+
+      &--fourth {
+        width: 25%;
+      }
+    }
   }
 }

@@ -2,6 +2,12 @@
   @media only screen and (min-width: $breakpoint-medium) {
     display: grid;
     grid-gap: 9px;
-    grid-template-columns: 138px 138px 138px 138px;
+    grid-template-columns: repeat(auto-fill, minmax(138px, 1fr));
+    // grid-template-columns: 138px 138px 138px 138px;
+    grid-auto-flow: row;
+
+    &--wrap {
+      grid-column-start: 1;
+    }
   }
 }

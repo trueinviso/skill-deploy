@@ -18,6 +18,12 @@
     color: white;
   }
 
+  &--small {
+    @media only screen and (min-width: $breakpoint-medium) {
+      width: 167px;
+    }
+  }
+
   &:hover {
     cursor: pointer;
   }
