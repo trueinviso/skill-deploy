@@ -37,7 +37,7 @@
       font-size: 14px;
       font-weight: 600;
       padding-left: 15px;
-      width: 90%;
+      width: calc(100% - 20px);
 
       @include placeholder {
         color: $color-beige;
