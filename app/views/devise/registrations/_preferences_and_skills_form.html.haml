@@ -10,7 +10,7 @@
     { checked: resource.job_roles.first&.id }) do |jr|
     = jr.radio_button(class: "radio-button")
     = jr.label(class: "radio-label")
-  .instruction-text.creative-selection__instruction-text
+  .instruction-text.creative-selection__instruction-text.radio-button-list--wrap
     Choose up to two
 
 = form.label :job_experiences, "Experience Level *", class: "label"

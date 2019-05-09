@@ -3,10 +3,10 @@
 
 %div{ data: { controller: "nested-form" }}
   %template{ data: { target: "nested-form.template" }}
-    = form.fields_for :work_experiences,
-      WorkExperience.new,
-      child_index: "NEW_RECORD" do |wexp|
-      = render "work_experience_fields", form: wexp
+  = form.fields_for :work_experiences,
+    WorkExperience.new,
+    child_index: "NEW_RECORD" do |wexp|
+    = render "work_experience_fields", form: wexp
 
   = form.fields_for :work_experiences, WorkExperience.new do |wexp|
     = render "work_experience_fields", form: wexp
