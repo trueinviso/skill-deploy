@@ -1,6 +1,16 @@
 .sub-heading.registrations-edit__sub-heading
   Preferences and skills
 
+= form.label :job_role_ids, "Where do you want to work? *", class: "label"
+.radio-button-list.registrations-edit__radio-button-list
+  = form.collection_radio_buttons(:job_types,
+    JobRole.all,
+    :id,
+    :name,
+    { checked: resource.job_roles.first&.id }) do |jr|
+    = jr.radio_button(class: "radio-button")
+    = jr.label(class: "radio-label")
+
 = form.label :job_role_ids, "What type of Creative are you? *", class: "label"
 .radio-button-list.registrations-edit__radio-button-list
   = form.collection_radio_buttons(:job_role_ids,
