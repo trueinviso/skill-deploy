@@ -1,36 +1,3 @@
-= content_tag :div,
-  class: "registration-page__work-experiences nested-fields",
-  data: { new_record: form.object.new_record? } do
 
-  .registration-page__form-field
-    = link_to "Remove",
-    "#",
-    data: { action: "click->nested-form#destroy" },
-    :class => "button button--danger registrations-edit__input"
-
-  .registration-page__form-field.registration-page__form-field--half
-    = form.label :title,
-      "Title",
-      class: "label"
-    = form.text_field :title,
-      class: "input input_theme_normal registrations-edit__input"
-  .registration-page__form-field.registration-page__form-field--half
-    = form.label :company,
-      "Company",
-      class: "label"
-    = form.text_field :company,
-      class: "input input_theme_normal registrations-edit__input"
-  .registration-page__work-experiences--inline
-    .registration-page__form-field.registration-page__form-field--fourth
-      =react_component('DatePickerDropdown',{label:'Start',name:'start',className:'registrations-edit__input'})
-    .registration-page__form-field.registration-page__form-field--fourth
-      =react_component('DatePickerDropdown',{label:'End',name:'end',className:'registrations-edit__input'})
-
-    .registration-page__form-field.registration-page__form-field--fourth
-      = form.check_box :current_role,
-        class: "radio-button"
-      = form.label :current_role,
-        class: "radio-label registrations-edit__input"
-
-  = form.hidden_field :_destroy
+=react_component('Profile/WorkExperienceForm',{formName:'user[work_experiences_attributes]'},{class:'registration-page__work-experiences'})
 

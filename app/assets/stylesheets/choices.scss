@@ -7,6 +7,7 @@
     margin-right: auto;
     width: 100%;
     padding: 5px;
+    padding-right: 5px;
   }
 
   &__input {
@@ -83,7 +84,6 @@
       display: block;
     }
   }
-
 }
 .choices-helper-text {
   display: block;

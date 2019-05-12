@@ -11,7 +11,7 @@ class WorkExperienceForm extends PureComponent {
   };
 
   state = {
-    fields: []
+    fields: [this]
   };
 
   onAddNewField = e => {
@@ -121,7 +121,7 @@ class WorkExperienceForm extends PureComponent {
                 </label>
               </div>
             </div>
-            <div className="registration-page__form-field">
+            <div className="registration-page__form-field ">
               <button
                 onClick={this.onRemove(index)}
                 className="button button--danger registrations-edit__input"

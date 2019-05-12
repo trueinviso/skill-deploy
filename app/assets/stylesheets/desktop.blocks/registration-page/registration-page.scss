@@ -4,10 +4,13 @@
     margin: 108px auto auto auto;
 
     &__content {
-      margin-left: 100px;
-      width: 60%;
+      margin-left: 90px;
+      width: 650px;
     }
+    
+
     &__heading {
+      display: block;
       font-size: 22px;
       font-weight: normal;
       font-style: normal;
@@ -15,41 +18,92 @@
       line-height: 1.36;
       letter-spacing: normal;
       color: $color-tundora;
-      margin-bottom: 65px;
     }
 
     &__profile-form {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
+      width: 612px;
     }
 
     &__work-experiences {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: baseline;
       margin-bottom: 30px;
+
+      .button {
+        width: 605px;
+      }
+
+      &__section {
+        margin-bottom: 25px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: baseline;
+      }
 
       &--inline {
         width: 100%;
         display: flex;
         justify-content: flex-start;
         align-items: flex-end;
+        margin-bottom: 30px;
+        margin-top: 10px;
       }
     }
+
     &__form-field {
       width: 100%;
-      padding: 0 10px;
+      margin-right: 21px;
+      margin-top: 0;
+      
+
+      // padding-right: 21px;
+      // &:not(:last-child) {
+      // padding-right: 21px;
+      // }
+      //
 
       &--half {
         width: 45%;
+        min-width: 285px;
+
+        &:nth-child(even) {
+          padding-right: 0;
+        }
       }
 
       &--fourth {
         width: 25%;
+        &:not(:last-child) {
+          margin-right: 10px;
+          // padding-right: 10px;
+        }
+      }
+
+      label {
+        display: block;
+        &[for="user_user_profile_attributes_headline"] {
+          margin-top: 31px;
+        }
+        &[for="user_user_profile_attributes_bio"] {
+          margin-top: 38px;
+        }
+        &[for="user_user_profile_attributes_location"] {
+          margin-top: 36px;
+        }
+      }
+    }
+
+    &--link-section {
+      & > input {
+        width: 605px;
+      }
+
+      & + .button {
+        margin-top: 60px;
       }
     }
   }

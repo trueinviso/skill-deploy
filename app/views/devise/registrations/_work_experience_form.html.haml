@@ -1,4 +1,4 @@
-.sub-heading.registrations-edit__sub-heading
+.registrations-edit__sub-heading
   Work experience
 
 %div{ data: { controller: "nested-form" }}
@@ -11,7 +11,7 @@
   = form.fields_for :work_experiences, WorkExperience.new do |wexp|
     = render "work_experience_fields", form: wexp
 
-  .button.button_theme_white.registrations-edit__add-experience-button{ data: { target: "nested-form.links" }}
+  -# .button.button_theme_white.registrations-edit__add-experience-button{ data: { target: "nested-form.links" }}
     = link_to "Add more experience",
       "#",
       data: { action: "click->nested-form#create" }

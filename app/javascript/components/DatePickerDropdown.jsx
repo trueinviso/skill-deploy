@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
+import React, { PureComponent, createRef } from "react";
 import DatePicker from "react-datepicker";
 
 const dateFormat = "MMM YYYY";
@@ -9,7 +9,8 @@ class DatePickerDropdown extends PureComponent {
     label: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     placeholder: PropTypes.string,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onChange: PropTypes.func
   };
 
   static defaultProps = {
@@ -20,28 +21,35 @@ class DatePickerDropdown extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      date: ''
+      date: ""
     };
+
+    this.ref = createRef();
   }
 
   handleChange = date =>
-    this.setState({
-      date
-    });
+    this.setState(
+      {
+        date
+      },
+      () => {
+        this.props.onChange && this.props.onChange(this.state.date);
+      }
+    );
 
   render() {
     const { label, name, placeholder, className } = this.props;
     const { date } = this.state;
     return (
-      <div className={className}>
+      <div className={className} ref={this.ref}>
         <label className="label">{label}</label>
         <DatePicker
           selected={date}
+          name={name}
           placeholderText={placeholder}
           onChange={this.handleChange}
           dateFormat={dateFormat}
         />
-        <input type="hidden" name={name} value={date} />
       </div>
     );
   }
