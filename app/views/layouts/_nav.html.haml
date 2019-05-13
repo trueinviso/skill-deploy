@@ -1,5 +1,5 @@
 %nav.nav{:class => ("nav--logged-out" unless current_user.present?)}
-  %button.menu-toggle
+  %button.menu-toggle#menuToggler
     =embedded_svg("menu.svg")
   = link_to embedded_svg("logo.svg"),
     root_path,

@@ -1,6 +1,15 @@
 @import "colors";
 
 .nav {
+  .menu-toggle {
+    width: 25px;
+    height: 25px;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -12,7 +21,7 @@
   height: 57px;
   padding-left: 15px;
   padding-right: 15px;
-  
+
   &--logged-out {
     justify-content: center;
   }
@@ -25,6 +34,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin-left: 40px;
 
     &__item {
       line-height: 40px;
@@ -47,6 +57,52 @@
         border: 1px dashed $color-beige;
         background-color: $color-concrete;
         text-align: center;
+      }
+    }
+  }
+
+  &__offcanvas {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    border-right: 1px solid $color-light-concrete;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+
+    @media screen and (max-height: 450px) {
+      padding-top: 15px;
+    }
+    &__menu {
+      height: 100%;
+
+      &__item {
+        & > .close {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
+        & > a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: #818181;
+          display: block;
+          transition: 0.3s;
+          @media screen and (max-height: 450px) {
+            font-size: 18px;
+          }
+        }
       }
     }
   }
