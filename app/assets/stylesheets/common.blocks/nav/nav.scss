@@ -1,8 +1,53 @@
 @import "colors";
 
 .nav {
-  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
   border-bottom: 1px solid $color-light-concrete;
   background-color: $color-white;
   height: 57px;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  &--logged-out {
+    justify-content: center;
+  }
+
+  &__search {
+    display: none;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    &__item {
+      line-height: 40px;
+      &:not(:last-child) {
+        margin-right: 40px;
+      }
+
+      & > a {
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        font-weight: 600;
+        color: #000000;
+      }
+
+      &__profile {
+        width: 40px;
+        height: 40px;
+        border-radius: 4px;
+        border: 1px dashed $color-beige;
+        background-color: $color-concrete;
+        text-align: center;
+      }
+    }
+  }
 }

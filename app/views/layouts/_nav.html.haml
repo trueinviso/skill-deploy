@@ -1,11 +1,14 @@
-.nav
-  = link_to embedded_svg("heyfam-mark.svg",
-    class: "nav__brand-icon_logged-out"),
-    root_path
-  - if current_user.present?
+%nav.nav{:class => ("nav--logged-out" unless current_user.present?)}
+  %button.menu-toggle
+    =embedded_svg("menu.svg")
+  = link_to embedded_svg("logo.svg"),
+    root_path,
+    class: "nav--brand"
+  -# - if current_user.present?
     = button_to "Logout" , destroy_user_session_path, method: :delete
-  //- if current_user.present? && current_user.role?(:job_seeker)
-  //  = render "layouts/nav_search"
-  //  = render "layouts/nav_links"
-  //- elsif !current_user.present?
-  //  = render "layouts/signed_out_sidebar"
+
+  - if current_user.present?
+    = render "layouts/nav_search"
+    = render "layouts/nav_links"
+  - elsif !current_user.present?
+    = render "layouts/signed_out_sidebar"
