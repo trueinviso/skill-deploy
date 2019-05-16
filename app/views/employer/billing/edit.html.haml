@@ -1,6 +1,7 @@
 .row.align-center
-  .columns.small-3
-    = render "employer/shared/links"
+  / .columns.small-3
+    / = render "employer/shared/links",
+    /   selected: @view_component.selected
   .forms.small-9.columns#partial
     #edit-billing
       = render "billing_details",
