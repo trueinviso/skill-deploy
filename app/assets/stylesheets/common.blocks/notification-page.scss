@@ -1,6 +1,6 @@
 .notification-page {
-  margin-left: 14px;
-  margin-right: 14px;
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right-m;
 
   @media only screen and (min-width: $breakpoint-medium) {
     margin-top: 58px;
@@ -51,14 +51,14 @@
     }
 
     & > label {
-      font-size: 14px;
+      font-size: $font-size-normal;
       font-weight: bold;
       line-height: 2.14;
       color: $color-tundora;
       margin-bottom: 14px;
       display: block;
       @media only screen and (min-width: $breakpoint-medium) {
-        font-size: 16px;
+        font-size: $font-size-medium;
         font-weight: normal;
         line-height: 1.5;
         color: $color-brown-grey;
