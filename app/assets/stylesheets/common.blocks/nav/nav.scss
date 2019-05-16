@@ -45,7 +45,7 @@
       & > a {
         height: 20px;
         line-height: 20px;
-        font-size: 16px;
+        font-size: $font-size-medium;
         font-weight: 600;
         color: #000000;
       }
@@ -100,7 +100,7 @@
           display: block;
           transition: 0.3s;
           @media screen and (max-height: 450px) {
-            font-size: 18px;
+            font-size: $font-size-medium;
           }
         }
       }
