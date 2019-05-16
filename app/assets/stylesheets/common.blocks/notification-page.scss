@@ -27,19 +27,27 @@
 
   &--form {
     margin-top: 39px;
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-top: 58px;
+    }
   }
 
-  .notification-field {
+  &--field {
     display: flex;
     flex-direction: column;
+
+    &:not(:nth-of-type(1)) {
+      margin-top: 50px;
+    }
+
     @media only screen and (min-width: $breakpoint-medium) {
       flex-direction: row;
       align-items: baseline;
       justify-content: space-between;
-    }
 
-    &:not(:first-child) {
-      margin-top: 50px;
+      &:not(:nth-of-type(1)) {
+        margin-top: 0;
+      }
     }
 
     & > label {
@@ -54,7 +62,9 @@
         font-weight: normal;
         line-height: 1.5;
         color: $color-brown-grey;
-        margin-bottom: 26px;
+        &:not(:last-child) {
+          margin-bottom: 26px;
+        }
 
         & + div {
           align-self: end;

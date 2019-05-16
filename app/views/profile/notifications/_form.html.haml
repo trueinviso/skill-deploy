@@ -11,12 +11,12 @@
             - user_profile.errors.full_messages.each do |msg|
               %li= msg
 
-    .notification-field
+    .notification-page--field
       %label.toggle-label
         Updates about new products and features
       =react_component('Toggle',{name:'user_profile[update_notifications]'})
 
-    .notification-field
+    .notification-page--field
       %label.toggle-label
         Receive our weekly newsletter featuring the latest projects
       =react_component('Toggle',{name:'user_profile[weekly_newsletter]'})
