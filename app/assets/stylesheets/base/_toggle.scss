@@ -9,6 +9,13 @@
   cursor: pointer;
   transition: all 0.15s ease;
 
+<<<<<<< HEAD
+=======
+  &--active {
+    transition: all 0.15s ease;
+    // background-color: #946cdf;
+  }
+>>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
 
   &--disabled {
     cursor: not-allowed;
