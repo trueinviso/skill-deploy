@@ -44,6 +44,10 @@ module Employer
       subscription.plan.amount / 100
     end
 
+    def selected
+      "Billing details"
+    end
+
     def stripe_customer
       @stripe_customer ||= Stripe::Customer.retrieve(
         user.gateway_customer.gateway_id
