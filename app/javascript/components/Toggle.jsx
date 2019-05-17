@@ -42,10 +42,6 @@ class Toggle extends React.PureComponent {
         onClick={!disabled ? this.onToggle : noop}
         className={this.getClassNames([
           "toggle",
-<<<<<<< HEAD
-=======
-          on && "toggle--active",
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
           disabled && "toggle--disabled"
         ])}
       >

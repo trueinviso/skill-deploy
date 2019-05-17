@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-.notification-page--content  
-  .page-heading
-    Notifications
-  = user_profile = UserProfile.new
-=======
 .notification-page--content
   .page-heading
     Notifications
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
   .notification-page--form
     = form_for user_profile, url: profile_notifications_path, method: :put do |f|
       - if user_profile.errors.any?
@@ -17,25 +10,13 @@
             - user_profile.errors.full_messages.each do |msg|
               %li= msg
 
-<<<<<<< HEAD
     .notification-page--field
-      %label.toggle-label
-        Updates about new products and features
-      =react_component('Toggle',{name:'user_profile[update_notifications]'})
-
-    .notification-page--field
-      %label.toggle-label
-        Receive our weekly newsletter featuring the latest projects
-      =react_component('Toggle',{name:'user_profile[weekly_newsletter]'})
-  
-=======
-    .notification-field
       %label.toggle-label
         Updates about new products and features
       = react_component("Toggle", { name: "user_profile[update_notifications]" })
 
-    .notification-field
+    .notification-page--field
       %label.toggle-label
         Receive our weekly newsletter featuring the latest projects
       = react_component("Toggle", { name: "user_profile[weekly_newsletter]" })
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
+

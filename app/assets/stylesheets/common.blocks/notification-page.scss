@@ -1,11 +1,6 @@
 .notification-page {
-<<<<<<< HEAD
   margin-left: $mobile-margin-left;
-  margin-right: $mobile-margin-right-m;
-=======
-  margin-left: 14px;
-  margin-right: 14px;
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
+  margin-right: $mobile-margin-right;
 
   @media only screen and (min-width: $breakpoint-medium) {
     margin-top: 58px;
@@ -32,72 +27,42 @@
 
   &--form {
     margin-top: 39px;
-<<<<<<< HEAD
-    @media only screen and (min-width: $breakpoint-medium) {
-      margin-top: 58px;
-    }
   }
 
   &--field {
     display: flex;
     flex-direction: column;
-
     &:not(:nth-of-type(1)) {
       margin-top: 50px;
     }
-
-=======
-  }
-
-  .notification-field {
-    display: flex;
-    flex-direction: column;
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
     @media only screen and (min-width: $breakpoint-medium) {
       flex-direction: row;
       align-items: baseline;
       justify-content: space-between;
-<<<<<<< HEAD
-
       &:not(:nth-of-type(1)) {
         margin-top: 0;
       }
     }
+    
+
+    
 
     & > label {
       font-size: $font-size-normal;
-=======
-    }
-
-    &:not(:first-child) {
-      margin-top: 50px;
-    }
-
-    & > label {
-      font-size: 14px;
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
       font-weight: bold;
       line-height: 2.14;
       color: $color-tundora;
       margin-bottom: 14px;
       display: block;
       @media only screen and (min-width: $breakpoint-medium) {
-<<<<<<< HEAD
         font-size: $font-size-medium;
         font-weight: normal;
         line-height: 1.5;
         color: $color-brown-grey;
+        margin-bottom: 26px;
         &:not(:last-child) {
           margin-bottom: 26px;
         }
-=======
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 1.5;
-        color: $color-brown-grey;
-        margin-bottom: 26px;
->>>>>>> 86a92711afcf262b3150c36b2381058ba1c0208d
-
         & + div {
           align-self: end;
         }
