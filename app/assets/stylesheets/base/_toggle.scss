@@ -1,0 +1,63 @@
+.toggle {
+  position: relative;
+  overflow: hidden;
+  width: 50px;
+  height: 26px;
+  border-radius: 17px;
+  background-color: #c7e1e1;
+  color: $color-primary;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &--disabled {
+    cursor: not-allowed;
+  }
+
+  &__pointer {
+    position: absolute;
+
+    top: 0;
+    bottom: 0;
+    right: 2px;
+    margin: auto 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 17px;
+    background-color: $color-primary;
+    transition: all 0.15s ease;
+    box-shadow: 0 0 1px 1px rgba(139, 139, 139, 0.25);
+   
+    &--active {
+      left: 2px;
+      right: unset;
+      transition: all 0.15s ease;
+      box-shadow: none;
+    }
+    
+    &:after,
+    &:before {
+      position: absolute;
+      font-size: 10px;
+      font-weight: 600;
+      top: 0;
+      bottom: 0;
+      line-height: 20px;
+      z-index: 2;
+      width: 20px;
+      margin: auto;
+      height: 20px;
+      color: #078c8d;
+      display: block;
+      color: $color-primary;
+    }
+
+    &:after {
+      content: "Yes";
+      right: -25px;
+    }
+    &:before {
+      content: "No";
+      left: -20px;
+    }
+  }
+}

@@ -1,28 +1,22 @@
-.align-center.forms
-  .column.small-12.medium-10
-    .secondary-heading
-      Notifications
-
+.notification-page--content
+  .page-heading
+    Notifications
+  .notification-page--form
     = form_for user_profile, url: profile_notifications_path, method: :put do |f|
       - if user_profile.errors.any?
         #error-explanation
-          %h2 #{pluralize(user_profile.errors.count, 'error')} prohibited your profile from being save:
+          %h2 #{pluralize(user_profile.errors.count, "error")} prohibited your profile from being save:
           %ul
             - user_profile.errors.full_messages.each do |msg|
               %li= msg
 
-      .text-field.radio-label.no-label-margin
-        = f.label :update_notifications do
-          = f.check_box :update_notifications
-          %span Send me updates about new products and features
-        .instructions.checkbox-instructions
-          Get occasional updates about new features and product enhancements
-      .text-field.radio-label.last.no-label-margin
-        = f.label :weekly_newsletter do
-          = f.check_box :weekly_newsletter
-          %span
-            Sign me up for the weekly newsletter
-        .instructions.checkbox-instructions
-          Receive our weekly newsletter featuring the latest projects
-      .small-12.medium-3.columns.submit-field
-        = f.submit "Save"
+    .notification-page--field
+      %label.toggle-label
+        Updates about new products and features
+      = react_component("Toggle", { name: "user_profile[update_notifications]" })
+
+    .notification-page--field
+      %label.toggle-label
+        Receive our weekly newsletter featuring the latest projects
+      = react_component("Toggle", { name: "user_profile[weekly_newsletter]" })
+

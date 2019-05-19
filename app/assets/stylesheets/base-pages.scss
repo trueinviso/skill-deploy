@@ -1,0 +1,14 @@
+.page-heading {
+  display: none;
+  height: 30px;
+  font-size: 22px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: $color-tundora;
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: block;
+  }
+}

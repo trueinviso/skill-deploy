@@ -1,0 +1,72 @@
+.notification-page {
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 58px;
+    margin-left: 0;
+    margin-right: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: baseline;
+  }
+
+  .employer-jobs-list__dropdown {
+    margin-bottom: 0;
+  }
+
+  &--content {
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-left: 90px;
+      width: 500px;
+    }
+  }
+
+  &--form {
+    margin-top: 39px;
+  }
+
+  &--field {
+    display: flex;
+    flex-direction: column;
+    &:not(:nth-of-type(1)) {
+      margin-top: 50px;
+    }
+    @media only screen and (min-width: $breakpoint-medium) {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      &:not(:nth-of-type(1)) {
+        margin-top: 0;
+      }
+    }
+    
+
+    
+
+    & > label {
+      font-size: $font-size-normal;
+      font-weight: bold;
+      line-height: 2.14;
+      color: $color-tundora;
+      margin-bottom: 14px;
+      display: block;
+      @media only screen and (min-width: $breakpoint-medium) {
+        font-size: $font-size-medium;
+        font-weight: normal;
+        line-height: 1.5;
+        color: $color-brown-grey;
+        margin-bottom: 26px;
+        &:not(:last-child) {
+          margin-bottom: 26px;
+        }
+        & + div {
+          align-self: end;
+        }
+      }
+    }
+  }
+}

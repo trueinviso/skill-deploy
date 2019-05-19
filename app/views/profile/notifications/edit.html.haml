@@ -1,7 +1,9 @@
-.row
-  .small-12.columns.wrapper
-    .columns.small-3
+.container
+  .notification-page
+    - if current_user.role?(:employer)
+      = render "employer/shared/links",
+        selected: "Notification"
+    - else
       = render "shared/links"
-    .forms.small-9.columns#partial
-      .row#edit-user
-        = render "form", user_profile: @user_profile
+      
+    = render "form", user_profile: UserProfile.new
