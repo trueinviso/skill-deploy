@@ -1,3 +1,18 @@
+@import "base/breakpoints";
+@import "dimensions";
+
 body {
   font-family: "Noto Sans", sans-serif;
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    width: 1123px;
+    margin-left: 191px;
+    margin-right: auto;
+  }
 }

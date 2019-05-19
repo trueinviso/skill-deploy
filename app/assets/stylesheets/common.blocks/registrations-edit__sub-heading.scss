@@ -1,3 +1,16 @@
 .registrations-edit__sub-heading {
+  margin-top: 100px;
   margin-bottom: 30px;
+  font-size: 22px;
+  ont-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.36;
+  letter-spacing: normal;
+  color: $color-tundora;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 150px;
+    margin-bottom: 38px;
+  }
 }
