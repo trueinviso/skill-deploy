@@ -9,11 +9,6 @@
   cursor: pointer;
   transition: all 0.15s ease;
 
-  &--active {
-    transition: all 0.15s ease;
-    // background-color: #946cdf;
-  }
-
   &--disabled {
     cursor: not-allowed;
   }
