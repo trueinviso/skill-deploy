@@ -1,3 +1,9 @@
 .registrations-edit__radio-button-list {
   margin-bottom: 30px;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-bottom: 38px;
+  }
+
+
 }

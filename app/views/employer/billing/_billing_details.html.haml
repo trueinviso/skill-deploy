@@ -1,55 +1,6 @@
-- if !view_component.plans.empty?
-  .row
-    .secondary-heading
-      Subscription Plan
-
-  .row.billing-details-wrapper
-    = react_component("SubscriptionPlans",
-      { plans: view_component.plans, hideRadio: true })
-    .small-8.columns.renewal-message
-      - if view_component.cancel_at_period_end
-        Your Monthly Subscription will expire on
-        %span.bold
-          #{view_component.expiration_date}.
-      - else
-        Your Monthly Subscription will renew on
-        %span.bold
-          #{view_component.expiration_date}
-        for
-        %span.bold
-          $#{view_component.price}.
-
-    - if !view_component.cancel_at_period_end
-      .small-4.columns.submit-field.inverted
-        .right
-          = button_to "Cancel Subscription",
-            unity.subscription_path,
-            method: :delete
-
-.row#card-on-file
+.row
   .secondary-heading
-    Card on file
-.row.billing-details-wrapper
-  .card-summary
-    .small-4.columns.plan-wrapper.active-plan.card-on-file
-      #{view_component.card_brand} ....#{view_component.card_last4}
-    .small-8.columns.show-payment-form-link
-      %span.change{ onClick: "togglePaymentForm()" }
-        change
-    .small-12.columns.renewal-message.expiration-date
-      Expires on #{view_component.card_expiration_date}
-  .card-details
-    = form_for :payment_method,
-      url: unity.payment_method_path,
-      method: :put,
-      html: { id: "braintree-payment-form",
-      "data-validate":"data-validate",
-      "no-validate": "no-validate" } do |f|
+    Subscription Plan
 
-      = render "unity/payment_method/card_details", f: f
+  = render "unity/subscriptions/create_form"
 
-      = f.submit "Update Payment Method",
-        data: { disable_with: "Please wait..." }
-    .small-8.columns.show-payment-form-link
-      %span{ onClick: "togglePaymentForm()" }
-        cancel

@@ -1,8 +1,9 @@
-.small-6.columns#search-form
+.nav__search#search-form
   = form_tag jobs_path, method: "get" do
-    .search-field
+    .nav__search__field
+      %span.search-icon &#9906;
       = text_field_tag :search,
         params[:search],
         placeholder: "Search"
-      %span.search-icon &#9906;
+      
     = submit_tag "Search", id: "search-submit"

@@ -1,5 +1,35 @@
 .registration-page {
-  margin-top: 46px;
-  margin-left: 14px;
-  margin-right: 14px;
+  margin-top: 58px;
+
+  &__profile-form {
+    margin-top: 50px;
+  }
+
+  &__form-field {
+      margin-top: 30px;
+  }
+
+  &__heading {
+    display: none;
+  }
+
+  &__work-experiences {
+    margin-bottom: 30px;
+    &--inline {
+      margin-bottom: 30px;
+    }
+  }
+
+  &--link-section {
+    & > input {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    }
+
+    & + .button {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
 }

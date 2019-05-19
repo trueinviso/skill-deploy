@@ -1,0 +1,9 @@
+.registrations-edit {
+  @media only screen and (min-width: $breakpoint-medium) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    margin-top: 58px;
+  }
+}
