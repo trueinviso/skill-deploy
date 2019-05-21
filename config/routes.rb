@@ -30,8 +30,8 @@ Rails.application.routes.draw do
       only: [:edit, :update]
   end
 
-  resource :user_profile,
-    only: [:edit, :update]
+  resource :profile,
+    only: [:edit, :update, :show]
 
   resources :jobs,
     only: [:index, :show]

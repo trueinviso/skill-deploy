@@ -1,4 +1,4 @@
-class UserProfilesController < ApplicationController
+class ProfilesController < ApplicationController
   def create
     byebug
   end
@@ -13,6 +13,10 @@ class UserProfilesController < ApplicationController
   end
 
   def edit
+    @user_profile = current_user.user_profile
+  end
+
+  def show
     @user_profile = current_user.user_profile
   end
 
