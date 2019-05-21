@@ -1,13 +1,1 @@
-.border-bottom-container
-  .jobs-list__filters-container
-    = render "types_filter"
-    = render "roles_filter"
-
-.desktop-container.job-list__desktop-container
-  .jobs-list
-
-    = render "jobs",
-      jobs: @jobs,
-      favorites: @favorites
-  /= link_to "Subscribe", unity.new_subscription_path
-  /= render "shared/screen_modal"
+= react_component("Job/JobPage", { initialJobs:@jobs.as_json(methods: :job_types) , favorites:@favorites })    

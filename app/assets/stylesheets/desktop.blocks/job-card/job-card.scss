@@ -1,13 +1,12 @@
 .job-card {
-  @media only screen and (min-width: $breakpoint-medium) {
+  
+  @include desktop {
     grid-template-columns: 75px auto 15px;
-
     -ms-grid-columns: 75px auto 15px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid $color-beige;
+    margin: 0;
   }
 }
 
-.job-card:first-of-type {
-  @media only screen and (min-width: $breakpoint-medium) {
-    margin-top: 14px;
-  }
-}

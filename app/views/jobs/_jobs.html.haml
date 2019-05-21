@@ -1,6 +1,3 @@
-%ul
-  - jobs.each do |job|
-    %li
-      - cache job do
-        = render partial: "shared/job",
-          locals: { job: job, favorites: favorites }
+
+= react_component("Job/JobList", { initialJobs:jobs.as_json(methods: :job_types) , favorites:@favorites })
+
