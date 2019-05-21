@@ -1,42 +1,49 @@
+.sub-header.hidden-mobile
+  %a{ href: "/" }
+    %span.button.button_theme_white.job__gig-button.job__preview-gig-button
+      %i.fa.fa-arrow-left
+      All gigs
 %div.job
-  .job__preview-image
-    - if @job.thumbnail.present?
-      - image_class = @job.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
-      = image_tag @job.thumbnail.file_url, class: image_class
-    - else
-      = embedded_svg("empty_photo_state_icon_3x.svg")
-  %a{ href: "#" }
-    %span.button.button_theme_primary.job__button
-      Apply for this gig
-  %a{ href: @job.company_website }
-    %span.button.button_theme_white.job__button
-      Website
-  .job__social-links-list
-    = render "jobs/social_links",
-      job: @job
-  %hr
+  .job__left-panel
+    .job__preview-image
+      - if @job.thumbnail.present?
+        - image_class = @job.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
+        = image_tag @job.thumbnail.file_url, class: image_class
+      - else
+        = embedded_svg("empty_photo_state_icon_3x.svg")
+    .job__button_group
+      %a{ href: "#" }
+        %span.button.button_theme_primary
+          Apply for this gig
+      %a{ href: @job.company_website }
+        %span.button.button_theme_white
+          Website
+      .job__social-links-list
+        = render "jobs/social_links",
+          job: @job
+    %hr.hidden-desktop
+  .job__right-panel
+    %h1.job__heading
+      = @job.name
+    %h2.job__sub-heading
+      =@job.company_name
 
-  %h1.job__heading
-    = @job.name
-  %h2.job__sub-heading
-    =@job.company_name
+    .job__tags
+      %button.button.button_theme_grey.job__tags__button
+        = @job.job_roles.first&.name
+      %button.button.button_theme_grey.job__tags__button
+        = @job.job_types.first&.name
+      %button.button.button_theme_grey.job__tags__button
+        = @job.location
+        - if @job.remote
+          %button.button.button_theme_grey.job__tags__button
+            Remote
 
-  .job__tags
-    %button.button.button_theme_grey.job__tags__button
-      = @job.job_roles.first&.name
-    %button.button.button_theme_grey.job__tags__button
-      = @job.job_types.first&.name
-    %button.button.button_theme_grey.job__tags__button
-      = @job.location
-      - if @job.remote
-        %button.button.button_theme_grey.job__tags__button
-          Remote
-
-  %hr
-  %h3.job__description__header
-    About the gig
-  .job__description
-    =@job.description
-  %a{ href: "#" }
-    %span.button.button_theme_primary.job__button
-      Apply for this gig
+    %hr.hidden-desktop
+    %h3.job__description__header
+      About the gig
+    .job__description
+      =@job.description
+    %a{ href: "#" }
+      %span.button.button_theme_primary.job__button
+        Apply for this gig
