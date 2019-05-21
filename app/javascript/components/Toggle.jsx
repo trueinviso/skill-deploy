@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classnames from "classnames";
 
 const noop = () => {};
 
@@ -29,8 +30,6 @@ class Toggle extends React.PureComponent {
       }
     );
 
-  getClassNames = classNames => classNames.filter(Boolean).join(" ");
-
   render() {
     const { disabled, name } = this.props;
     const { on } = this.state;
@@ -40,13 +39,10 @@ class Toggle extends React.PureComponent {
         role="switch"
         aria-checked={on}
         onClick={!disabled ? this.onToggle : noop}
-        className={this.getClassNames([
-          "toggle",
-          disabled && "toggle--disabled"
-        ])}
+        className={classnames(["toggle", disabled && "toggle--disabled"])}
       >
         <div
-          className={this.getClassNames([
+          className={classnames([
             "toggle__pointer",
             on && "toggle__pointer--active"
           ])}
