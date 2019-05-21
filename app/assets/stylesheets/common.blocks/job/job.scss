@@ -1,2 +1,95 @@
 .job {
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  margin-top: 11px;
+  margin-bottom: 50px;
+
+  &__heading {
+    margin-top: 49px;
+    margin-bottom: 7px;
+    font-size: $font-size-xlarge;
+    color: $color-dark-grey;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+  }
+
+  &__sub-heading {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: $color-tundora;
+    font-size: 18px;
+  }
+
+  &__preview-image {
+    width: 292px;
+    height: 292px;
+    border-radius: 4px;
+    border: 1px dashed #d4d2ce;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 33px;
+  }
+
+  &__social-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  &__tags {
+    margin-top: 23px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__button {
+      margin-top: 11px;
+      height: 34px;
+      line-height: 34px;
+      padding: 0 24px 0 24px;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__description {
+    font-family: $font-primary;
+    font-size: $font-size-normal;
+    color: $color-brown-grey;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    margin-bottom: 59px;
+    &__header {
+      margin-top: 29px;
+      margin-bottom: 20px;
+      font-size: $font-size-normal;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.57;
+      letter-spacing: normal;
+      color: $color-tundora;
+    }
+  }
 }
