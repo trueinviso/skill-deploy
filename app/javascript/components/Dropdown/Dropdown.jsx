@@ -20,7 +20,7 @@ const Dropdown = ({
       onClick={onTrigger}
       className={classNames([
         "dropdown__button",
-        isOpen && "dropdown--open",
+        { "dropdown--open": isOpen },
         buttonClassName
       ])}
     >
@@ -61,8 +61,5 @@ Dropdown.propTypes = {
 Dropdown.defaultProps = {
   placeholder: "Open dropdown"
 };
-//  selectedPlaylistIndex: number.isRequired,
-//  handlePlaylistSwitch: func.isRequired,
-//}
 
 export default withDropdown(Dropdown);

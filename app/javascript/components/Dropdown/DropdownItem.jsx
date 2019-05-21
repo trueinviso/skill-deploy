@@ -7,7 +7,7 @@ const DropdownItem = ({ isSelected, onClick, value, label }) => (
     onClick={() => onClick({ value, label })}
     className={classNames([
       "dropdown__item",
-      isSelected && "dropdown__item--selected"
+      { "dropdown__item--selected": isSelected }
     ])}
   >
     <span>{label}</span>

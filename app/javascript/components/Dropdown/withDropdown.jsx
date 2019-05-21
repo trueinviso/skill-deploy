@@ -36,14 +36,16 @@ function withDropdown(WrappedComponent) {
 
     _onWindowClick = e => {
       const dropdownElement = findDOMNode(this);
-      if (
-        e.target !== dropdownElement &&
-        !dropdownElement.contains(e.target) &&
-        this.state.isOpen
-      ) {
-        this.onClose();
-      }
+      if (this.isDropdownOpen(dropdownElement, e))
+        this.closeDropdownElement();
     };
+
+    closeDropdownElement = () => this.onClose();
+
+    isDropdownOpen = (dropdownElement, e) =>
+      e.target !== dropdownElement &&
+      !dropdownElement.contains(e.target) &&
+      this.state.isOpen
 
     onClose = () => this.setState({ isOpen: false });
 
