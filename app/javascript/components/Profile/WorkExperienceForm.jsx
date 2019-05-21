@@ -2,17 +2,20 @@ import PropTypes from "prop-types";
 import React, { PureComponent, Fragment } from "react";
 import DatePicker from "../DatePickerDropdown";
 import FormField from "./../shared/FormField";
-import getUniqKey from './../../helpers/genUniqKey'
-
+import getUniqKey from "./../../helpers/genUniqKey";
 
 class WorkExperienceForm extends PureComponent {
   static propTypes = {
     formName: PropTypes.string.isRequired
   };
 
-  state = {
-    fields: [this]
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      fields: [this.createField()]
+    };
+  }
 
   onAddNewField = e => {
     e.preventDefault();
@@ -58,7 +61,6 @@ class WorkExperienceForm extends PureComponent {
 
   render() {
     const { fields } = this.state;
-    console.log("fields", fields);
 
     return (
       <Fragment>
