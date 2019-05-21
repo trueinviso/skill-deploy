@@ -1,5 +1,8 @@
 .border-bottom-container {
-  @media only screen and (min-width: $breakpoint-medium) {
+  margin-bottom: 50px;
+  margin-top: 27px;
+  @include desktop {
     border-bottom: 1px solid $color-pale;
+    margin: 0;
   }
 }

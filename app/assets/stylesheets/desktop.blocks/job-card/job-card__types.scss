@@ -1,5 +1,5 @@
 .job-card__types {
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     display: grid;
     display: -ms-grid;
 
@@ -8,5 +8,11 @@
 
     grid-column-start: 2;
     grid-gap: 10px;
+  }
+
+  & > .button {
+    line-height: 36px;
+    height: 36px;
+    padding: 0;
   }
 }
