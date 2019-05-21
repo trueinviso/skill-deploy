@@ -1,2 +1,172 @@
 .job {
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  margin-top: 11px;
+  margin-bottom: 50px;
+
+  @media only screen and (min-width: $breakpoint-medium) {
+    margin-top: 15px;
+    position: relative;
+    top: -67px;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-gap: 27px;
+    align-items: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__left-panel {
+    @media only screen and (min-width: $breakpoint-medium) {
+      width: 400px;
+      height: 610px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      padding: 53px 50px 61px;
+    }
+  }
+
+  &__right-panel {
+    @media only screen and (min-width: $breakpoint-medium) {
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      // padding: 0 60px 89px;
+      padding: 0 86px 89px 61px;
+    }
+  }
+
+  &__gig-button {
+    width: 115px;
+    height: 46px;
+    line-height: 46px;
+    font-size: $font-size-normal;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    text-align: center;
+  }
+
+  &__heading {
+    margin-top: 49px;
+    margin-bottom: 7px;
+    font-size: $font-size-xlarge;
+    color: $color-dark-grey;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-top: 62px;
+      margin-bottom: 1px;
+      font-size: 28px;
+    }
+  }
+
+  &__sub-heading {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: $color-tundora;
+    @media only screen and (min-width: $breakpoint-medium) {
+      font-size: $font-size-large;
+    }
+  }
+
+  &__preview-image {
+    width: 292px;
+    height: 292px;
+    border-radius: 4px;
+    border: 1px dashed #d4d2ce;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 33px;
+  }
+
+  &__social-links-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 50px;
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-bottom: 0;
+  }
+  }
+
+  &__tags {
+    margin-top: 23px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-bottom: 70px;
+    }
+
+    &__button {
+      margin-top: 11px;
+      height: 34px;
+      line-height: 34px;
+      padding: 0 24px 0 24px;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__description {
+    font-family: $font-primary;
+    font-size: $font-size-normal;
+    color: $color-brown-grey;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    margin-bottom: 59px;
+    @media only screen and (min-width: $breakpoint-medium) {
+      margin-bottom: 67px;
+    }
+
+    &__header {
+      margin-top: 29px;
+      margin-bottom: 20px;
+      font-size: $font-size-normal;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.57;
+      letter-spacing: normal;
+      color: $color-tundora;
+      @media only screen and (min-width: $breakpoint-medium) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__button {
+    @media only screen and (min-width: $breakpoint-medium) {
+      width: 210px;
+    }
+  }
+  &__button_group {
+    display: grid;
+    grid-gap: 15px;
+  }
 }
