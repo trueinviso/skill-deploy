@@ -1,0 +1,18 @@
+.profile-page__user-info
+    %h1.heading.heading--xlarge.heading--color-grey
+        =@user_profile.first_name
+        =@user_profile.last_name
+    %h3.profile-page__user-info__headline=@user_profile.headline
+    %p.profile-page__user-info__bio=@user_profile.bio
+    =render('profiles/job_roles')
+    %hr
+    =render('profiles/work_experience')
+    %hr
+    .profile-page__work-preferences
+        %h4.profile-page__heading
+            Work Preferences
+        =render('profiles/job_types')
+    %hr
+    .profile-page__skills
+        %h4.profile-page__heading
+            Skills
