@@ -1,3 +1,4 @@
+.sub-header.hidden-mobile
 .profile-page
     .profile-page__left-section
         .profile-page__image
@@ -6,6 +7,12 @@
                 = image_tag @job.thumbnail.file_url, class: image_class
             - else
                 = embedded_svg("empty_photo_state_icon_3x.svg")
+        %section.profile-page__detail-section.hidden-mobile
+            %h1.heading.heading--xlarge.heading--color-grey.text-center
+                =@user_profile.first_name
+                =@user_profile.last_name
+            %h3.profile-page__user-info__headline.text-center=@user_profile.headline
+            %span.profile-page__detail-section__location=@user_profile.location
         .buttons-group.profile-page__buttons-group       
             %a{ href: "#" }
                 %span.button.button_theme_primary
@@ -18,6 +25,6 @@
                 = render "profiles/social_links",
                     current_user: @current_user
         %hr.hidden-desktop
-
+    .profile-page__rigth-section
         = render 'profiles/user_data'
         -# %h2=
