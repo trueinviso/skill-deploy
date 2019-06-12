@@ -1,0 +1,194 @@
+.subscription-details {
+  margin-top: 46px;
+  margin-left: 18px;
+  margin-right: 12px;
+  margin-bottom: 50px;
+
+  @include desktop {
+    margin-left: 200px;
+    margin-right: 185px;
+    margin-top: 74px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__info {
+    margin-right: 120px;
+    margin-top: 60px;
+
+    &__heading {
+      font-size: $font-size-xxlarge;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.32;
+      letter-spacing: normal;
+      color: $color-dark-grey;
+    }
+
+    &__sub-heading {
+      font-size: $font-size-medium;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.56;
+      letter-spacing: normal;
+      color: $color-brown-grey;
+      margin-top: 9px;
+    }
+
+    &__list {
+      margin-top: 75px;
+      counter-reset: section;
+      margin-left: 39px;
+      &__item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        &:not(:first-child) {
+          margin-top: 62px;
+        }
+
+        &::before {
+          counter-increment: section;
+          content: counter(section);
+          width: 29px;
+          height: 29px;
+          background-color: #d2a764;
+          display: inline-block;
+          border-radius: 100%;
+          line-height: 30px;
+          text-align: center;
+          color: $color-white;
+          margin-right: 11px;
+          font-size: $font-size-small;
+        }
+
+        h4 {
+          font-size: $font-size-normal;
+          color: $color-dark-grey;
+          font-weight: 600;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: normal;
+        }
+        span {
+          display: inline-block;
+          margin-top: 7px;
+          font-size: $font-size-normal;
+          color: $color-brown-grey;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+        }
+      }
+    }
+  }
+
+  .secondary-heading {
+    margin-bottom: 56px;
+    @include desktop {
+      margin-bottom: 54px;
+    }
+  }
+
+  .page-heading {
+    display: block;
+    margin-bottom: 36px;
+    margin-top: 79.5px;
+
+    @include desktop {
+      margin-top: 88.5px;
+    }
+  }
+
+  &__form-section {
+    @include desktop {
+      width: 535px;
+      border-radius: 6px;
+      border: solid 1px $color-beige;
+      padding: 60px 43px 71.5px 57px;
+
+      .button {
+        width: 370px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      form {
+        text-align: center;
+      }
+    }
+  }
+
+  &__plan {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-title,
+    &-price {
+      font-size: $font-size-normal;
+      color: $color-tundora;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.14;
+    }
+
+    &-description {
+      font-size: $font-size-normal;
+      color: $color-brown-grey;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      margin-top: 7px;
+      margin-bottom: 28px;
+
+      @include desktop {
+        width: 255px;
+      }
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: 13.5px;
+
+    @include desktop {
+      margin-top: 16.5px;
+    }
+    & > span {
+      font-size: $font-size-normal;
+      color: $color-dark-grey;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+    }
+  }
+  &__terms-text {
+    font-size: $font-size-small;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.08;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-greyish;
+    margin-bottom: 29.5px;
+    margin-top: 16px;
+  }
+}
