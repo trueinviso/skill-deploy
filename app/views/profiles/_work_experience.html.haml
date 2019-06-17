@@ -5,11 +5,10 @@
         - current_user.work_experiences.order(:end).each do |work|
             %li.profile-page__work-expirience__list__item
                 %strong
-                    =work.title
+                    = work.title
                     at
-                    =work.company
+                    = work.company
                 %span   
-                    =work.start.strftime('%B %Y') 
+                    = work.start.strftime('%B %Y') 
                     %span -
                     = work.current_role? ? 'Current' : work.end.strftime('%B %Y')
-

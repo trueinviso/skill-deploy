@@ -1,14 +1,14 @@
-%nav.nav{:class => ("nav--logged-out" unless current_user.present?)}
+%nav.nav{:class => ('nav--logged-out' unless current_user.present?)}
   %button.menu-toggle#menuToggler
-    =embedded_svg("menu.svg")
-  = link_to embedded_svg("logo.svg"),
+    = embedded_svg('menu.svg')
+  = link_to embedded_svg('logo.svg'),
     root_path,
-    class: "nav--brand"
+    class: 'nav--brand'
   -# - if current_user.present?
-    = button_to "Logout" , destroy_user_session_path, method: :delete
+    = button_to 'Logout' , destroy_user_session_path, method: :delete
 
   - if current_user.present?
-    = render "layouts/nav_search"
-    = render "layouts/nav_links"
+    = render 'layouts/nav_search'
+    = render 'layouts/nav_links'
   - elsif !current_user.present?
-    = render "layouts/signed_out_sidebar"
+    = render 'layouts/signed_out_sidebar'
