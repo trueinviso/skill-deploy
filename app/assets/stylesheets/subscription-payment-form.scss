@@ -3,10 +3,14 @@
   border-radius: 4px;
   background: $color-concrete;
   padding-left: 20px;
-  padding-right: 15px;
+
   padding-top: 13px;
   padding-bottom: 15px;
   max-width: 430px;
+
+  @include desktop {
+    padding-right: 15px;
+  }
 
   & > div {
     line-height: 46px;
