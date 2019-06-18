@@ -1,4 +1,4 @@
-.dropdown.employer-jobs-list__dropdown
+.dropdown.employer-jobs-list__dropdown.hidden-desktop
   .dropdown__button.employer-jobs-list__dropdown__button{ onclick: "dropdown.toggle()" }
     = selected || "Select"
   .dropdown__content
@@ -21,7 +21,7 @@
       class: "side-nav__link"
 
     = link_to "Saved projects",
-      "#",
+      favorite_jobs_path,
       class: "side-nav__link"
 
     = link_to "Account settings",

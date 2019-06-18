@@ -4,7 +4,7 @@ import activeIcon from "./../../../assets/font/icon/save-active.svg";
 import inactiveIcon from "./../../../assets/font/icon/save-inactive.svg";
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg";
 
-const JobListItem = ({ id, company_name, name, job_types, isFavorite }) => {
+const JobListItem = ({ id, company_name, name, job_types, liked }) => {
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
@@ -17,10 +17,7 @@ const JobListItem = ({ id, company_name, name, job_types, isFavorite }) => {
         </div>
         <div className="job-card__favorite-icon">
           <button>
-            <img
-              src={isFavorite ? activeIcon : inactiveIcon}
-              alt="favorite-icon"
-            />
+            <img src={liked ? activeIcon : inactiveIcon} alt="favorite-icon" />
           </button>
         </div>
         <div className="job-card__details">
@@ -30,7 +27,7 @@ const JobListItem = ({ id, company_name, name, job_types, isFavorite }) => {
         <div className="job-card__types">
           {job_types.map(jobType => (
             <div
-              key={jobType.id}
+              key={jobType.id || jobType.name}
               className="button button_theme_grey job-card__button"
             >
               {jobType.name}
@@ -57,6 +54,6 @@ JobListItem.propTypes = {
   twitter: string,
   updated_at: string,
   user_id: number,
-  isFavorite: bool
+  liked: bool
 };
 export default JobListItem;
