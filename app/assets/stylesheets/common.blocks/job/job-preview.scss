@@ -1,0 +1,52 @@
+.job-preview {
+  &__heading {
+    font-size: 28px;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: center;
+    color: $color-tundora;
+    text-align: center;
+    margin-bottom: 31px;
+  }
+
+  &__header {
+    height: 310px;
+    background-color: $color-pale;
+    padding-right: 14px;
+    padding-left: 14px;
+    padding-top: 35px;
+
+    @include desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-right: 95px;
+      padding-left: 95px;
+      padding-top: 51px;
+      height: 217px;
+    }
+  }
+
+  &__button {
+    padding: 0;
+    &:not(:first-child) {
+      margin-top: 14px;
+    }
+
+    @include desktop {
+      width: 178px;
+      margin-top: 0;
+    }
+  }
+
+  &__content {
+    & > div {
+      margin-top: 0;
+      position: relative;
+      top: -50px;
+    }
+  }
+}

@@ -1,16 +1,18 @@
-.job__preview
-  .job__preview-content
-    .header.job__preview-header.job__preview-header-item-2
+.job_preview
+  .job-preview__header
+    .job-preview__heading.hidden-desktop
       Listing preview
 
-    %a.job__preview-header-item-3{ href: "#" }
-      %button.button.button_theme_black.job__preview-button
-        Post listing
+    %a.button.button_theme_black.job-preview__button{ href: "#" }
+      Post listing
 
-    %a.job__preview-header-item-1{ href: "#" }
-      %button.button.button_theme_white.job__preview-button
-        Edit listing
+    .job-preview__heading.hidden-mobile
+      Listing preview
 
-  = render "jobs/job",
+
+    %a.button.button_theme_white.job-preview__button{ href: "#" }
+      Edit listing
+  .job-preview__content
+    = render "jobs/job",
     job: @job,
     view_component: @view_component
