@@ -2,7 +2,7 @@
   - if jobs.empty?
     .align-center.align-vertical.row
       .jobs-index__empty-image
-        = image_tag("empty_state_graphic")
+        = image_tag( 'empty_state_graphic' )
       .small-12.medium-9.columns
         .jobs-index__sub-heading
           Looks like you don't have any live projects yet.
@@ -14,6 +14,6 @@
       - jobs.each do |job|
         %li
           - cache job do
-            = render partial: "job",
+            = render partial: 'job',
               locals: { job: job }
 

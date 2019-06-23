@@ -16,3 +16,12 @@ body {
     margin-right: auto;
   }
 }
+
+.buttons-group {
+  display: grid;
+  grid-gap: 15px;
+}
+
+.text-center{
+  text-align: center
+}

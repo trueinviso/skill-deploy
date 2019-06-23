@@ -11,10 +11,10 @@
       = devise_error_messages!
 
       - thumbnail = f.object.thumbnail_url
-      = react_component("FileUpload", { thumbnail: thumbnail, resource: resource })
+      = react_component('FileUpload', { thumbnail: thumbnail, resource: resource })
 
       .small-12.columns
-        = render "personal_info", form: f
+        = render 'personal_info', form: f
 
         - if devise_mapping.confirmable? && resource.pending_reconfirmation?
           %div Currently waiting confirmation for: #{resource.unconfirmed_email}
@@ -31,15 +31,17 @@
             = p.text_area :bio, rows: 10
 
         .text-field.row
-          = f.label :password, "New Password"
-          = f.password_field :password, autocomplete: "off"
+          = f.label :password, 'New Password'
+          = f.password_field :password, autocomplete: 'off'
 
         .text-field.row
-          = f.label :password_confirmation, "New Password Confirmation"
-          = f.password_field :password_confirmation, autocomplete: "off"
+          = f.label :password_confirmation, 'New Password Confirmation'
+          = f.password_field :password_confirmation, autocomplete: 'off'
         .text-field.row
           = f.label :current_password
-          = f.password_field :current_password, class: "employee-profile-last", autocomplete: "off"
+          = f.password_field :current_password,   
+            class: 'employee-profile-last', 
+            autocomplete: 'off'
 
         .submit-field.row
-          = f.submit "Save"
+          = f.submit 'Save'

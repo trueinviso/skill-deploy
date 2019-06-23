@@ -1,8 +1,8 @@
 .job-card
-  - file_name = favorites.include?(job.id) ? "save-active.svg" : "save-inactive.svg"
-  = render "image", resource: job
+  - file_name = favorites.include?(job.id) ? 'save-active.svg' : 'save-inactive.svg'
+  = render 'image', resource: job
   .job-card__favorite-icon
-    = render "like_button",
+    = render 'like_button',
       job: job,
       file_name: file_name
   .job-card__details

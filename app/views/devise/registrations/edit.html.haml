@@ -1,16 +1,16 @@
 .container
   .registrations-edit
     - if current_user.role?(:employer)
-      = render "employer/shared/links",
-        selected: "Your profile"
+      = render 'employer/shared/links',
+        selected: 'Your profile'
     - else
-      = render "shared/links"
+      = render 'shared/links'
 
     - if current_user.role?(:employer)
-      = render "edit_employer_registration",
+      = render 'edit_employer_registration',
         resource: resource,
         minimum_password_length: @minimum_password_length
     - else
-      = render "edit_registration",
+      = render 'edit_registration',
         resource: resource,
         minimum_password_length: @minimum_password_length

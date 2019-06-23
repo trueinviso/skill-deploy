@@ -6,7 +6,8 @@ class JobList extends PureComponent {
   static propTypes = {
     initialJobs: PropTypes.arrayOf(PropTypes.object),
     favorites: PropTypes.array,
-    filters: PropTypes.object
+    filters: PropTypes.object,
+    className: PropTypes.string
   };
 
   static defaultProps = {
@@ -19,15 +20,15 @@ class JobList extends PureComponent {
 
   render() {
     const { jobs } = this.state;
-    const { favorites } = this.props;
+    const { favorites, className } = this.props;
 
     return (
-      <ul>
+      <ul className={className}>
         {jobs.map(job => (
           <JobListItem
             key={job.id}
+            liked={favorites.includes(job.id)}
             {...job}
-            isFavorite={favorites.includes(job.id)}
           />
         ))}
       </ul>

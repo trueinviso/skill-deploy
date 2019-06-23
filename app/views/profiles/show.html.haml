@@ -1,11 +1,31 @@
-= @user_profile.first_name
-= @user_profile.last_name
-= @user_profile.headline
-= @user_profile.bio
-= current_user.job_roles
-= @user_profile.location
-= current_user.work_experiences
-= current_user.job_types
-= current_user.social_media_profile.facebook
-= current_user.social_media_profile.twitter
-= current_user.social_media_profile.instagram
+.sub-header.hidden-mobile
+.profile-page
+  .profile-page__left-section
+    .profile-page__image
+      - if current_user.thumbnail.present?
+        - image_class = @job.thumbnail.file_data.empty? ? '' : 'image_present'
+        = image_tag @job.thumbnail.file_url, class: image_class
+      - else
+        = embedded_svg('empty_photo_state_icon_3x.svg')
+    %section.profile-page__detail-section.hidden-mobile
+      %h1.heading.heading--xlarge.heading--color-grey.text-center
+        = @user_profile.first_name
+        = @user_profile.last_name
+      %h3.profile-page__user-info__headline.text-center
+        = @user_profile.headline
+        %span.profile-page__detail-section__location
+          = @user_profile.location
+    .buttons-group.profile-page__buttons-group
+      %a{ href: '#' }
+        %span.button.button_theme_primary
+          Start conversation
+
+      %a{ href: current_user.social_media_profile&.website }
+        %span.button.button_theme_white
+          Website
+      .profie-page_social-list
+        = render 'profiles/social_links'
+    %hr.hidden-desktop
+  .profile-page__right-section
+    = render 'profiles/user_data',
+      user_profile: @user_profile
