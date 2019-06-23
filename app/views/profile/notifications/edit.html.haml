@@ -1,9 +1,9 @@
 .container
   .notification-page
     - if current_user.role?(:employer)
-      = render "employer/shared/links",
-        selected: "Notification"
+      = render 'employer/shared/links',
+        selected: 'Notification'
     - else
-      = render "shared/links"
-      
-    = render "form", user_profile: UserProfile.new
+      = render 'shared/links'
+
+    = render 'form', user_profile: UserProfile.new

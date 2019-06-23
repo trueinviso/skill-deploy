@@ -1,5 +1,5 @@
 .employer-job-card
-  = render "image", resource: job
+  = render 'image', resource: job
   .employer-job-card__titles
     .header.employer-job-card__header= job.name
     .employer-job-card__company-name= job.company_name
@@ -9,6 +9,6 @@
       %button.button.button_theme_white.employer-job-card__button
         Edit
 
-    %a{ href: "#" }
+    %a{ href: '#' }
       %button.button.button_theme_white.employer-job-card__button
         Delete

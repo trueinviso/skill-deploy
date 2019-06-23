@@ -1,6 +1,6 @@
 .employer-jobs-list
   .employer-jobs-list__left-column
-    = render "employer/shared/links",
+    = render 'employer/shared/links',
       selected: @view_component.header
 
   .employer-jobs-list__right-column
@@ -11,6 +11,6 @@
         %button.button.button_theme_primary.employer-jobs-list__button
           Post a listing
 
-    = render "jobs", jobs: @jobs
-/= link_to "Subscribe", unity.new_subscription_path
-/= render "shared/screen_modal"
+    = render 'jobs', jobs: @jobs
+/= link_to 'Subscribe', unity.new_subscription_path
+/= render 'shared/screen_modal'
