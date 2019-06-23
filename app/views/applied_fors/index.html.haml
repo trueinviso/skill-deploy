@@ -1,5 +1,9 @@
-.jobs-index__wrapper
-  .secondary-heading
-    Applied Projects
+.favorite-jobs
+  .left-section
+    = render "employer/shared/links",
+        selected: "Saved projects"
+  .right-section
+    .favorite-jobs__heading.hidden-mobile
+      Applied projects
 
-= react_component('SavedJobs', { jobs: @jobs })
+    = react_component("Job/FavoriteJobPage", { initialJobs:@jobs.as_json(methods: :job_types) })
