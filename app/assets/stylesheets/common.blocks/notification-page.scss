@@ -1,6 +1,6 @@
 .notification-page {
   margin-top: 27px;
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     margin-top: 58px;
     margin-left: 0;
     margin-right: 0;
@@ -17,7 +17,7 @@
   }
 
   &--content {
-    @media only screen and (min-width: $breakpoint-medium) {
+    @include desktop {
       margin-left: 90px;
       width: 500px;
     }
@@ -33,7 +33,7 @@
     &:not(:nth-of-type(1)) {
       margin-top: 50px;
     }
-    @media only screen and (min-width: $breakpoint-medium) {
+    @include desktop {
       flex-direction: row;
       align-items: baseline;
       justify-content: space-between;
@@ -49,7 +49,7 @@
       color: $color-tundora;
       margin-bottom: 14px;
       display: block;
-      @media only screen and (min-width: $breakpoint-medium) {
+      @include desktop {
         font-size: $font-size-medium;
         font-weight: normal;
         line-height: 1.5;
