@@ -1,35 +1,34 @@
 %ul.nav__menu
   %li.nav__menu__item.hidden-mobile
     %a{ href: favorite_jobs_path,
-      class: "#{"active-link" if saved_jobs_page?}" }
+      class: "#{'active-link' if saved_jobs_page?}" }
       Saved
   %li.nav__menu__item.hidden-mobile
     %a{ href: applied_fors_path,
-      class: "#{"active-link" if applied_fors_page?}" }
+      class: "#{'active-link' if applied_fors_page?}" }
       Applied
   %li.nav__menu__item.hidden-mobile
     %a{ href: edit_user_registration_path,
-      class: "#{"active-link" if edit_profile_page?}" }
+      class: "#{'active-link' if edit_profile_page?}" }
       Account
   %li.nav__menu__item
     .nav__menu__item__profile
       = image_tag 'empty_photo_state_icon.png', alt: 'profile', height: '20', width: '20', class: ''
 
-.nav__offcanvas#offcanvas        
+.nav__offcanvas#offcanvas     
   %ul.nav__offcanvas__menu
     %li.nav__offcanvas__menu__item
       %a.close#closeMenu
         &times;
     %li.nav__offcanvas__menu__item
       %a{ href: favorite_jobs_path,
-        class: "#{"active-link" if saved_jobs_page?}" }
+        class: "#{'active-link' if saved_jobs_page?}" }
         Saved
     %li.nav__offcanvas__menu__item
       %a{ href: applied_fors_path,
-        class: "#{"active-link" if applied_fors_page?}" }
+        class: "#{'active-link' if applied_fors_page?}" }
         Applied
     %li.nav__offcanvas__menu__item
       %a{ href: edit_user_registration_path,
-        class: "#{"active-link" if edit_profile_page?}" }
+        class: "#{'active-link' if edit_profile_page?}" }
         Account
-        

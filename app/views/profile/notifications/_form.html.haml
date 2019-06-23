@@ -5,7 +5,7 @@
     = form_for user_profile, url: profile_notifications_path, method: :put do |f|
       - if user_profile.errors.any?
         #error-explanation
-          %h2 #{pluralize(user_profile.errors.count, "error")} prohibited your profile from being save:
+          %h2 #{pluralize(user_profile.errors.count, 'error')} prohibited your profile from being save:
           %ul
             - user_profile.errors.full_messages.each do |msg|
               %li= msg
@@ -13,10 +13,10 @@
     .notification-page--field
       %label.toggle-label
         Updates about new products and features
-      = react_component("Toggle", { name: "user_profile[update_notifications]" })
+      = react_component('Toggle', { name: 'user_profile[update_notifications]' })
 
     .notification-page--field
       %label.toggle-label
         Receive our weekly newsletter featuring the latest projects
-      = react_component("Toggle", { name: "user_profile[weekly_newsletter]" })
+      = react_component('Toggle', { name: 'user_profile[weekly_newsletter]' })
 

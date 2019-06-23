@@ -3,9 +3,9 @@
     Welcome Back
 
   //.registration__content
-  //  = link_to "Sign in with Google",
+  //  = link_to 'Sign in with Google',
   //    user_google_oauth2_omniauth_authorize_path,
-  //    class: "registration__oauth"
+  //    class: 'registration__oauth'
 
   //  .registration__or
   //    or
@@ -16,26 +16,26 @@
 
     .form
       = f.label :email,
-        class: "label"
+        class: 'label'
       = f.text_field :email,
-        class: "input input_theme_normal registration-page__input",
-        onfocusout: "validateEmail();"
+        class: 'input input_theme_normal registration-page__input',
+        onfocusout: 'validateEmail();'
       .error-message#user_email-error
       = f.label :password,
-        class: "label"
+        class: 'label'
       = f.password_field :password,
-        class: "input input_theme_normal registration-page__input",
-        onfocusout: "validatePassword();"
+        class: 'input input_theme_normal registration-page__input',
+        onfocusout: 'validatePassword();'
       .error-message#user_password-error
 
-    = f.submit "Continue",
-      class: "button button_theme_primary registration-page__button"
+    = f.submit 'Continue',
+      class: 'button button_theme_primary registration-page__button'
 
-  = link_to "Forgot password?", "#",
-    class: "link link_theme_primary"
+  = link_to 'Forgot password?', '#',
+    class: 'link link_theme_primary'
 
   .form__heading
     Don't have an account?
-    = link_to "Sign up",
+    = link_to 'Sign up',
       new_user_registration_path,
-      class: "link link_theme_primary"
+      class: 'link link_theme_primary'

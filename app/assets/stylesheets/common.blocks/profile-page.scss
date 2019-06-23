@@ -1,0 +1,241 @@
+.profile-page {
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  margin-top: 11px;
+
+  @include desktop {
+    margin-top: 15px;
+    position: relative;
+    top: -67px;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-gap: 27px;
+    align-items: flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &__left-section {
+    @include desktop {
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      height: 785px;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      padding: 53px 50px 64px;
+    }
+  }
+
+  &__right-section {
+    @include desktop {
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      background-color: #ffffff;
+      padding: 0 157px 89px 62px;
+    }
+  }
+
+  &__heading {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: $color-tundora;
+  }
+
+  &__image {
+    width: 100%;
+    height: 292px;
+    border-radius: 4px;
+    border: 1px dashed #d4d2ce;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 33px;
+
+    @include desktop {
+      width: 292px;
+      margin-bottom: 43.5px;
+    }
+  }
+
+  &__button {
+    height: 34px;
+    line-height: 34px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  &__buttons-group {
+    text-align: center;
+    margin-bottom: 50px;
+    @include desktop {
+      margin-top: 42px;
+    }
+  }
+
+  &__user-info {
+    margin-top: 49px;
+
+    @include desktop {
+      margin-top: 62px;
+    }
+
+    &__headline {
+      height: 48px;
+      font-size: 18px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      color: $color-tundora;
+      margin-top: 7px;
+      margin-bottom: 27px;
+
+      @include desktop {
+        margin-top: 1px;
+        margin-bottom: 22px;
+      }
+    }
+
+    &__bio {
+      font-size: $font-size-medium;
+      color: $color-brown-grey;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+
+      margin-bottom: 28px;
+
+      @include desktop {
+        margin-bottom: 43px;
+      }
+    }
+
+    &__roles-list {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-bottom: 41px;
+      @include desktop {
+        margin-bottom: 30px;
+      }
+
+      &__item {
+        display: inline-block;
+        margin-bottom: 30px;
+        min-width: 100px;
+        &:not(:last-child) {
+          margin-right: 17px;
+        }
+      }
+    }
+  }
+
+  &__work-expirience {
+    margin-top: 29px;
+    margin-bottom: 50px;
+
+    @include desktop {
+      margin-top: 49px;
+      margin-bottom: 57px;
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      margin-top: 30px;
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        &:not(:last-child) {
+          margin-bottom: 33px;
+        }
+
+        & > strong {
+          font-size: $font-size-normal;
+          font-weight: bold;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.57;
+          letter-spacing: normal;
+          color: $color-tundora;
+          margin-bottom: 7px;
+        }
+        & > span {
+          font-size: $font-size-normal;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.43;
+          letter-spacing: normal;
+          color: $color-brown-grey;
+        }
+      }
+    }
+  }
+
+  &__work-preferences {
+    margin-top: 29px;
+    margin-bottom: 50px;
+
+    @include desktop {
+      margin-top: 57px;
+      margin-bottom: 58px;
+    }
+
+    &__list {
+      margin-top: 37px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      & > li {
+        &:not(:last-child) {
+          margin-right: 9px;
+        }
+        margin-bottom: 7px;
+      }
+    }
+  }
+
+  &__skills {
+    margin-top: 29px;
+    margin-bottom: 50px;
+    @include desktop {
+      margin-top: 57px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__detail-section {
+    & > h3 {
+      margin-bottom: 8px;
+      margin-top: 8px;
+      height: auto;
+    }
+    &__location {
+      text-align: center;
+      color: $color-brown-grey;
+      font-size: $font-size-normal;
+      display: block;
+    }
+
+  }
+}

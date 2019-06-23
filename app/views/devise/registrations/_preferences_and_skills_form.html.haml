@@ -1,44 +1,44 @@
 .registrations-edit__sub-heading
   Preferences and skills
 
-= form.label :job_role_ids, "Where do you want to work? *", class: "label"
+= form.label :job_role_ids, 'Where do you want to work? *', class: 'label'
 .radio-button-list.registrations-edit__radio-button-list
   = form.collection_radio_buttons(:job_types,
     JobRole.all,
     :id,
     :name,
     { checked: resource.job_roles.first&.id }) do |jr|
-    = jr.radio_button(class: "radio-button")
-    = jr.label(class: "radio-label")
+    = jr.radio_button(class: 'radio-button')
+    = jr.label(class: 'radio-label')
 
-= form.label :job_role_ids, "What type of Creative are you? *", class: "label"
+= form.label :job_role_ids, 'What type of Creative are you? *', class: 'label'
 .radio-button-list.registrations-edit__radio-button-list
   = form.collection_radio_buttons(:job_role_ids,
     JobRole.all,
     :id,
     :name,
     { checked: resource.job_roles.first&.id }) do |jr|
-    = jr.radio_button(class: "radio-button")
-    = jr.label(class: "radio-label")
+    = jr.radio_button(class: 'radio-button')
+    = jr.label(class: 'radio-label')
   .instruction-text.creative-selection__instruction-text.radio-button-list--wrap
     Choose up to two
 
-= form.label :job_experiences, "Experience Level *", class: "label"
+= form.label :job_experiences, 'Experience Level *', class: 'label'
 .radio-button-list.registrations-edit__radio-button-list
   = form.collection_radio_buttons(:job_experience_ids,
     JobExperience.all,
     :id,
     :name,
     { checked: resource.job_experiences.first&.id }) do |jt|
-    = jt.radio_button(class: "radio-button")
-    = jt.label(class: "radio-label")
+    = jt.radio_button(class: 'radio-button')
+    = jt.label(class: 'radio-label')
 
-= form.label :job_types, "What type(s) of work are you interested in? *", class: "label"
+= form.label :job_types, 'What type(s) of work are you interested in? *', class: 'label'
 .radio-button-list.registrations-edit__radio-button-list
   = form.collection_radio_buttons(:job_type_ids,
     JobType.all,
     :id,
     :name,
     { checked: resource.job_types.first&.id }) do |jt|
-    = jt.radio_button(class: "radio-button")
-    = jt.label(class: "radio-label")
+    = jt.radio_button(class: 'radio-button')
+    = jt.label(class: 'radio-label')
