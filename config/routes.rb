@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get "sign-up", to: "sign_up#new"
 
+  resource :join_us, only: :show, path: "join-us"
+
   namespace :profile do
     resource :social,
       only: [:edit, :update]
