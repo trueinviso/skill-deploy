@@ -13,9 +13,9 @@
       Account
   %li.nav__menu__item
     .nav__menu__item__profile
-      = image_tag 'empty_photo_state_icon.png', alt: 'profile', height: '20', width: '20', class: ''
+      = image_tag current_user.thumbnail_url, alt: 'profile', height: '20', width: '20', class: ''
 
-.nav__offcanvas#offcanvas     
+.nav__offcanvas#offcanvas
   %ul.nav__offcanvas__menu
     %li.nav__offcanvas__menu__item
       %a.close#closeMenu

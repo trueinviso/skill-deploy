@@ -41,10 +41,10 @@ module HasAttachments
 
   private
 
-  def define_type_url_getter(type)
+  def define_type_url_getter(type, size = :small)
     self.class.send(:define_method, "#{type}_url") do
       if send(type)
-        send(type).file_url
+        send(type).file_url(size)
       else
         send("build_#{type}").file_url
       end
