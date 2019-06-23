@@ -1,0 +1,4 @@
+%ul.profile-page__work-preferences__list
+    - @current_user.job_types.each do |job_type|
+        %li
+            %span.button.button.button_theme_grey.profile-page__button= job_type.name

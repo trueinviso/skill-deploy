@@ -1,19 +1,19 @@
 .dropdown.dropdown_white.jobs-list__dropdown
-  .dropdown__button{ onclick: "dropdown.toggle()" }
-    = "All Creative Types"
+  .dropdown__button{ onclick: 'dropdown.toggle()' }
+    = 'All Creative Types'
   .dropdown__content
-    = link_to "Design",
+    = link_to 'Design',
       employer_jobs_path,
-      class: "dropdown__link"
+      class: 'dropdown__link'
 
-    = link_to "Development",
+    = link_to 'Development',
       edit_user_registration_path,
-      class: "dropdown__link"
+      class: 'dropdown__link'
 
-    = link_to "Marketing",
+    = link_to 'Marketing',
       edit_employer_billing_path,
-      class: "dropdown__link"
+      class: 'dropdown__link'
 
-    = link_to "Photography",
+    = link_to 'Photography',
       edit_employer_billing_path,
-      class: "dropdown__link"
+      class: 'dropdown__link'

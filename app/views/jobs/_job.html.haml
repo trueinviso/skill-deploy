@@ -1,13 +1,13 @@
 .job
   .job__left-panel
-    %a{ href: "#" }
+    %a{ href: '#' }
       %button.button.button_theme_white.job__gig-button.job__preview-gig-button
         All gigs
 
     .image.job__image
       = image_tag job.thumbnail_url
 
-    %a{ href: "#" }
+    %a{ href: '#' }
       %button.button.button_theme_primary.job__button
         Apply for this gig
 
@@ -16,7 +16,7 @@
         Website
 
     .job__social-links-list
-      = render "jobs/social_links",
+      = render 'jobs/social_links',
         job: job
 
   .job__right-panel
@@ -44,7 +44,7 @@
     .job__description
       = job.description
 
-    %a{ href: "#" }
+    %a{ href: '#' }
       %button.button.button_theme_primary.job__button.job__right-panel-button
         Apply for this gig
 

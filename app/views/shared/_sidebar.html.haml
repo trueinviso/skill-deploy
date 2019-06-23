@@ -2,16 +2,16 @@
   = form_tag jobs_path, method: :get do
     = select_tag(:job_role_name,
       options_from_collection_for_select(JobRole.all,
-        "name",
-        "name",
+        'name',
+        'name',
         selected: params[:job_role_name]),
-      { prompt: "Role",
-      onchange: "this.form.submit();" })
+      { prompt: 'Role',
+      onchange: 'this.form.submit();' })
 
     = select_tag(:job_type_name,
       options_from_collection_for_select(JobType.all,
-        "name",
-        "name",
+        'name',
+        'name',
         selected: params[:job_type_name]),
-      { prompt: "Job Type",
-      onchange: "this.form.submit();" })
+      { prompt: 'Job Type',
+      onchange: 'this.form.submit();' })
