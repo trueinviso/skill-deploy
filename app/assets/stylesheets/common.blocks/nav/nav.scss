@@ -57,6 +57,11 @@
         border: 1px dashed $color-beige;
         background-color: $color-concrete;
         text-align: center;
+
+        &--no-border {
+          border: none;
+          background-color: transparent;
+        }
       }
     }
   }

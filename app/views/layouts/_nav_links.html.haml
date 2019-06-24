@@ -12,7 +12,7 @@
       class: "#{'active-link' if edit_profile_page?}" }
       Account
   %li.nav__menu__item
-    .nav__menu__item__profile
+    .nav__menu__item__profile{class: [current_user.thumbnail.present? && "nav__menu__item__profile--no-border"] }
       = image_tag current_user.thumbnail_url, alt: 'profile', height: '20', width: '20', class: ''
 
 .nav__offcanvas#offcanvas

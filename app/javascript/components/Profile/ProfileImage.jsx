@@ -1,16 +1,34 @@
-import React from 'react'
+import PropTypes from "prop-types";
+import React from "react";
+import classNames from "classnames";
 
-function ProfileImage({ thumbnail, emptyPhoto }) {
-  function Image() {
-    const className = emptyPhoto() ? "image_empty" : "image_present"
-    return <img src={thumbnail} className={className} />
-  }
+const basePropTypes = {
+  thumbnail: PropTypes.string,
+  emptyPhoto: PropTypes.func
+};
 
-  return(
-    <div className="image create-listing-page__image">
-      <Image />
+function Image({ thumbnail, emptyPhoto }) {
+  return (
+    <img
+      src={thumbnail}
+      className={classNames([emptyPhoto() ? "image_empty" : "image__present"])}
+    />
+  );
+}
+
+function ProfileImage(props) {
+  return (
+    <div
+      className={classNames("image create-listing-page__image", {
+        "image--no-border": props.emptyPhoto() === false
+      })}
+    >
+      <Image {...props} />
     </div>
   );
 }
 
-export default ProfileImage
+Image.propTypes = basePropTypes;
+ProfileImage.propTypes = basePropTypes;
+
+export default ProfileImage;

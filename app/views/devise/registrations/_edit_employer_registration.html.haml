@@ -9,7 +9,7 @@
         = devise_error_messages!
 
         - thumbnail = f.object.thumbnail_url
-        = react_component( 'FileUpload', { thumbnail: thumbnail, resource: resource } )
+        = react_component( 'FileUpload', { thumbnail: thumbnail, resource: resource,name:"user[thumbnail_attributes][file]"} )
 
         = render 'user_profile_form', form: f
         = render 'preferences_and_skills_form', form: f

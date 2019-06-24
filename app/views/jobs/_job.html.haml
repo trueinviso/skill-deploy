@@ -1,9 +1,9 @@
 .job
   .job__left-panel
-    .job__preview-image
-      - if job.thumbnail.present?
-        - image_class = job.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
-        = image_tag job.thumbnail.file_url, class: image_class
+    .job__preview-image{class: [current_user.thumbnail.present? && "job__preview-image--avatar"] }
+      - if @job.thumbnail.present?
+        - image_class = @job.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
+        = image_tag @job.thumbnail.file_url, class: image_class
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group

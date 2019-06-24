@@ -1,4 +1,4 @@
-.employer-job-card__image
+.employer-job-card__image{class: [resource.thumbnail.present? && "employer-job-card__image--avatar"] }
   - if resource.thumbnail.present?
     - image_class = resource.thumbnail.file_data.empty? ? 'employer-job-card__image_empty' : 'image_present'
     = image_tag resource.thumbnail.file_url, class: image_class
