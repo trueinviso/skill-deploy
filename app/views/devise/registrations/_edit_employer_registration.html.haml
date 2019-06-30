@@ -1,5 +1,5 @@
 .registration-page__content
-    %h1{ :class => 'registration-page__heading' }= 'Your profile'
+    %h1{ :class => "registration-page__heading" }= "Your profile"
 
     = form_for(resource,
         as: resource_name,
@@ -9,13 +9,13 @@
         = devise_error_messages!
 
         - thumbnail = f.object.thumbnail_url
-        = react_component( 'FileUpload', { thumbnail: thumbnail, resource: resource,name:"user[thumbnail_attributes][file]"} )
+        = react_component("FileUpload", { thumbnail: thumbnail, resource: resource, type: "user", name:"user[thumbnail_attributes][file]"})
 
-        = render 'user_profile_form', form: f
-        = render 'preferences_and_skills_form', form: f
-        = render 'skills_form', form: f
-        = render 'work_experience_form', form: f
-        = render 'social_media_links_form', form: f
+        = render "user_profile_form", form: f
+        = render "preferences_and_skills_form", form: f
+        = render "skills_form", form: f
+        = render "work_experience_form", form: f
+        = render "social_media_links_form", form: f
 
-        = f.submit 'Save changes',
-            class: 'button button_theme_primary button--small'
+        = f.submit "Save changes",
+            class: "button button_theme_primary button--small"

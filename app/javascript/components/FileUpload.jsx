@@ -4,19 +4,22 @@ import ProfileImage from "./Profile/ProfileImage";
 import ImageButtons from "./Profile/ImageButtons";
 import heyfamFetch from "../helpers/heyfamFetch";
 
-const USER_API = "/api/v1/thumbnail";
-const JOB_API = "/api/v1/jobs";
+const THUMBNAIL_API = "/api/v1/thumbnail";
 
 const CHANGE_BUTTON_NAME = "Change Photo";
 const UPLOAD_BUTTON_NAME = "Upload a photo";
+
 class FileUpload extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    resource: PropTypes.object.isRequired,
     thumbnail: PropTypes.string,
-    type: PropTypes.oneOf(["user", "job"])
+    type: PropTypes.oneOf(["user", "job"]).isRequired
   };
+
   constructor(props) {
     super(props);
+
     this.state = {
       file: null,
       thumbnail: props.thumbnail,
@@ -25,6 +28,7 @@ class FileUpload extends React.Component {
         ? CHANGE_BUTTON_NAME
         : UPLOAD_BUTTON_NAME
     };
+
     this.onChange = this.onChange.bind(this);
     this.deleteFile = this.deleteFile.bind(this);
     this.emptyPhoto = this.emptyPhoto.bind(this);
@@ -51,8 +55,9 @@ class FileUpload extends React.Component {
     const options = { method: "PUT" };
     const data = new FormData();
     data.append(this.props.name, file);
-    const apiUrl = this.props.type === "user" ? USER_API : JOB_API;
-    return heyfamFetch(apiUrl, data, options, "file");
+    data.append(`record_id`, this.props.resource.id)
+    data.append(`model_type`, this.props.type)
+    return heyfamFetch(THUMBNAIL_API, data, options, "file");
   };
 
   emptyPhoto() {

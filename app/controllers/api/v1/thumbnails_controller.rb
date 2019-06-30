@@ -2,14 +2,7 @@ module Api
   module V1
     class ThumbnailsController < ApplicationController
       def update
-        current_user.update!(update_params)
-        render status: 200, json: {
-          thumbnail: current_user.reload.thumbnail_url,
-        }
-      end
-
-      def destroy
-        current_user.thumbnail.destroy if current_user.thumbnail.present?
+        ThumbnailUpdater.call!(current_user, update_params)
         render status: 200, json: {
           thumbnail: current_user.reload.thumbnail_url,
         }
@@ -18,7 +11,12 @@ module Api
       private
 
       def update_params
-        params.require(:user).permit(thumbnail_attributes: [:file])
+        params.permit(
+          :model_type,
+          :record_id,
+          user: [thumbnail_attributes: [:file]],
+          job: [thumbnail_attributes: [:file]]
+        )
       end
     end
   end
