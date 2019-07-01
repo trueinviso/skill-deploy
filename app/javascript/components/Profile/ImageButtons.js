@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function ImageButtons({ onChange, deleteFile, buttonName }) {
+function ImageButtons({ onChange, deleteFile, buttonName, isFetching }) {
   return (
     <div>
       <label className="image-file-picker-label create-listing-page__image-file-picker-label">
@@ -11,6 +11,8 @@ function ImageButtons({ onChange, deleteFile, buttonName }) {
           className="file-picker-input"
           name="file"
           id="profileUploadPicker"
+          accept="image/x-png,image/gif,image/jpeg"
+          disabled={isFetching}
         />
         {buttonName}
       </label>

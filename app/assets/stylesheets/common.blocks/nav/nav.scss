@@ -37,7 +37,7 @@
     margin-left: 40px;
 
     &__item {
-      line-height: 40px;
+      line-height: 48px;
       &:not(:last-child) {
         margin-right: 40px;
       }
@@ -51,12 +51,18 @@
       }
 
       &__profile {
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
         border-radius: 4px;
         border: 1px dashed $color-beige;
         background-color: $color-concrete;
         text-align: center;
+
+        img {
+          width: 48px;
+          height: 48px;
+          object-fit: contain;
+        }
 
         &--no-border {
           border: none;

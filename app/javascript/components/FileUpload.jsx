@@ -12,7 +12,9 @@ const UPLOAD_BUTTON_NAME = "Upload a photo";
 class FileUpload extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    resource: PropTypes.object.isRequired,
+    resource: PropTypes.shape({
+      id: PropTypes.number.isRequired
+    }).isRequired,
     thumbnail: PropTypes.string,
     type: PropTypes.oneOf(["user", "job"]).isRequired
   };
@@ -25,8 +27,8 @@ class FileUpload extends React.Component {
       thumbnail: props.thumbnail,
       isFetching: false,
       buttonName: props.thumbnail.includes("empty_photo_state_icon")
-        ? CHANGE_BUTTON_NAME
-        : UPLOAD_BUTTON_NAME
+        ? UPLOAD_BUTTON_NAME
+        : CHANGE_BUTTON_NAME
     };
 
     this.onChange = this.onChange.bind(this);
@@ -37,16 +39,19 @@ class FileUpload extends React.Component {
   onChange(e) {
     const file = e.target.files[0];
     document.getElementById("profileUploadPicker").value = "";
-    this.fileUpload(file).then(resp => this.fetchComplete(resp));
+    this.fileUpload(file).then(this.fetchComplete);
   }
 
-  fetchComplete(resp) {
-    this.setState({
-      thumbnail: resp.thumbnail,
-      isFetching: false,
-      buttonName: CHANGE_BUTTON_NAME
-    });
-  }
+  fetchComplete = resp => {
+    this.setState(
+      {
+        thumbnail: resp.thumbnail,
+        isFetching: false,
+        buttonName: CHANGE_BUTTON_NAME
+      },
+      this.updateNavbarAvatar
+    );
+  };
 
   fileUpload = file => {
     if (this.state.isFetching) return;
@@ -55,8 +60,8 @@ class FileUpload extends React.Component {
     const options = { method: "PUT" };
     const data = new FormData();
     data.append(this.props.name, file);
-    data.append(`record_id`, this.props.resource.id)
-    data.append(`model_type`, this.props.type)
+    data.append(`record_id`, this.props.resource.id);
+    data.append(`model_type`, this.props.type);
     return heyfamFetch(THUMBNAIL_API, data, options, "file");
   };
 
@@ -71,8 +76,15 @@ class FileUpload extends React.Component {
     heyfamFetch(API, {}, options).then(resp => this.fetchComplete(resp));
   }
 
+  updateNavbarAvatar = () => {
+    const userAvatar = document.getElementById("userAvatar");
+    if (this.props.type === "user" && userAvatar) {
+      userAvatar.src = this.state.thumbnail;
+    }
+  };
+
   render() {
-    const { thumbnail, buttonName } = this.state;
+    const { thumbnail, buttonName, isFetching } = this.state;
     return (
       <div id="profile-picture" className="file-upload">
         <ProfileImage thumbnail={thumbnail} emptyPhoto={this.emptyPhoto} />
@@ -80,6 +92,7 @@ class FileUpload extends React.Component {
           onChange={this.onChange}
           deleteFile={this.deleteFile}
           buttonName={buttonName}
+          disabled={isFetching}
         />
       </div>
     );

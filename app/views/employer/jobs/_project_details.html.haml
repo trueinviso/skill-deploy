@@ -1,6 +1,5 @@
 - thumbnail = f.object.thumbnail_url
 = react_component("FileUpload", { thumbnail: thumbnail, resource: job, type: "job", name:"job[thumbnail_attributes][file]" })
-= f.file_field :attachment
 .role-company-inputs
   .job-name
     = f.label :name, "Role Title *", class: "label"

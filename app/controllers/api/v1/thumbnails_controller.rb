@@ -4,11 +4,17 @@ module Api
       def update
         ThumbnailUpdater.call!(current_user, update_params)
         render status: 200, json: {
-          thumbnail: current_user.reload.thumbnail_url,
+          thumbnail: thumbnail_for(params[:model_type], params[:record_id]),
         }
       end
 
+      
+
       private
+
+      def thumbnail_for(type, id)
+        type.camelize.constantize.find(id).thumbnail_url
+      end
 
       def update_params
         params.permit(
