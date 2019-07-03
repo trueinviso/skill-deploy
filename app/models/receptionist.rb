@@ -18,7 +18,7 @@ class Receptionist
   end
 
   def direct_by_role(role)
-    return [:root] unless role.present?
+    return [:join_us] if role.blank?
 
     case role.name.downcase.parameterize.underscore.to_sym
     when :employer

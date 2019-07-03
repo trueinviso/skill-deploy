@@ -11,7 +11,9 @@ class ThumbnailUpdater
   end
 
   def update_thumbnail
-    record.update!(params[model_type])
+    result = record.update(params[model_type])
+    return record.reload if result
+    result
   end
 
   private
@@ -30,7 +32,7 @@ class ThumbnailUpdater
   end
 
   def job
-    user
+    @job ||= user
       .jobs
       .find(params[:record_id])
   end

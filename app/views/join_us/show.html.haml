@@ -1,15 +1,27 @@
 .join-us
-    %h1.join-us__heading What are you looking for?
-    %h2.join-us__sub-heading Tell us how we can help
-    
-    .join-us__row
-        %section.join-us__card
-            = image_tag("hire_creatives.png",srcset: { "hire_creatives@2x.png" => "2x" })
-            %h3.join-us__card__title Join as a creative
-            %p.join-us__card__description Apply as a creative and get access to hundreds of projects on the gig board once your profile is approved by the membership board.
-            %a{ href: "/", class: "button button_theme_primary" } Create your profile
-        %section.join-us__card
-            = image_tag("join_as_a_creative.png",srcset: { "join_as_a_creative@2x.png" => "2x" })
-            %h3.join-us__card__title  Hire creatives
-            %p.join-us__card__description Post your projects on the Gig board and quickly receive a short list of the top verified creatives ready to help propel your team forward. No more sifting through applications and resumes.
-            %a{ href: "/", class: "button button_theme_primary" } Get started
+  %h1.join-us__heading What are you looking for?
+  %h2.join-us__sub-heading Tell us how we can help
+
+  .join-us__row
+    %section.join-us__card
+      = image_tag("hire_creatives.png",
+        srcset: { "hire_creatives@2x.png" => "2x" })
+      %h3.join-us__card__title Join as a creative
+      %p.join-us__card__description
+        Apply as a creative and get access to hundreds of projects
+        on the gig board once your profile is approved by the
+        membership board.
+      = link_to "Create your profile",
+        new_profile_path,
+        class: "button button_theme_primary"
+    %section.join-us__card
+      = image_tag("join_as_a_creative.png",
+        srcset: { "join_as_a_creative@2x.png" => "2x" })
+      %h3.join-us__card__title  Hire creatives
+      %p.join-us__card__description
+        Post your projects on the Gig board and quickly receive
+        a short list of the top verified creatives ready to
+        help propel your team forward. No more sifting through
+        applications and resumes.
+      %a{ href: "/", class: "button button_theme_primary" }
+        Get started

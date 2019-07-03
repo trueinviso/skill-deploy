@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile,
-    only: [:edit, :update, :show]
+    except: [:destroy]
 
   resources :jobs,
     only: [:index, :show]

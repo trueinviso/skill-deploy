@@ -4,7 +4,7 @@
   = link_to embedded_svg('logo.svg'),
     root_path,
     class: 'nav--brand'
-  -# - if current_user.present?
+  - if current_user.present?
     = button_to 'Logout' , destroy_user_session_path, method: :delete
 
   - if current_user.present?
