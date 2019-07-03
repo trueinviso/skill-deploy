@@ -1,6 +1,17 @@
 class ProfilesController < ApplicationController
+  skip_before_action :guard_user_registered!, only: [:new, :create]
+
+  def new
+  end
+
   def create
-    byebug
+    result = current_user.update(permitted_params)
+    if result
+      current_user.assign_role("Job Seeker")
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def update
@@ -22,22 +33,34 @@ class ProfilesController < ApplicationController
 
   private
 
-  def user_profile_params
-    params.require(:user_profile)
+  def permitted_params
+    params
+      .require(:user)
       .permit(
-        :location,
-        :website,
-        :bio,
-        :twitter,
-        :facebook,
-        :linked_in,
-        :dribbble,
-        :github,
-        :codepen,
-        :medium,
-        :behance,
-        :instagram,
-        :vimeo,
+        :job_role_ids,
+        :job_experience_ids,
+        :job_type_ids,
+        :skills,
+        social_media_profile: [
+          :facebook,
+          :instagram,
+          :twitter,
+          :website,
+        ],
+        user_profile_attributes: [
+          :bio,
+          :first_name,
+          :headline,
+          :last_name,
+          :location,
+        ],
+        work_experiences_attributes: [
+          :company,
+          :current_role,
+          :end,
+          :start,
+          :title,
+        ],
       )
   end
 end

@@ -1,24 +1,30 @@
 module Api
   module V1
     class ThumbnailsController < ApplicationController
-      def update
-        current_user.update!(update_params)
-        render status: 200, json: {
-          thumbnail: current_user.reload.thumbnail_url,
-        }
-      end
+      skip_before_action :guard_user_registered!, only: [:update]
 
-      def destroy
-        current_user.thumbnail.destroy if current_user.thumbnail.present?
-        render status: 200, json: {
-          thumbnail: current_user.reload.thumbnail_url,
-        }
+      def update
+        record = ThumbnailUpdater.call!(current_user, update_params)
+        if record
+          render status: 200, json: {
+            thumbnail: record.thumbnail_url,
+          }
+        else
+          render status: 400, json: {
+            errors: "There was a problem updating the thumbnail.",
+          }
+        end
       end
 
       private
 
       def update_params
-        params.require(:user).permit(thumbnail_attributes: [:file])
+        params.permit(
+          :model_type,
+          :record_id,
+          user: [thumbnail_attributes: [:file]],
+          job: [thumbnail_attributes: [:file]]
+        )
       end
     end
   end

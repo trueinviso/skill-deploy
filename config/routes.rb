@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   end
 
   resource :profile,
-    only: [:edit, :update, :show]
+    except: [:destroy]
 
   resources :jobs,
     only: [:index, :show]
@@ -74,7 +74,7 @@ Rails.application.routes.draw do
         controller: :user,
         only: [:index]
       resource :thumbnail,
-        only: [:update, :destroy]
+        only: [:update]
       resources :job_filters,
         controller: :job_filters,
         only: [:index]

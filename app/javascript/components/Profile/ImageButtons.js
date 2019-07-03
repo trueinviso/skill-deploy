@@ -1,35 +1,35 @@
-import React from 'react'
+import PropTypes from "prop-types";
+import React from "react";
 
-function ImageButtons({ onChange, deleteFile }) {
-  return(
+function ImageButtons({ onChange, deleteFile, buttonName, isFetching }) {
+  return (
     <div>
-      <label
-        className="image-file-picker-label create-listing-page__image-file-picker-label"
-      >
+      <label className="image-file-picker-label create-listing-page__image-file-picker-label">
         <input
           type="file"
           onChange={onChange}
           className="file-picker-input"
           name="file"
           id="profileUploadPicker"
+          accept="image/x-png,image/gif,image/jpeg"
+          disabled={isFetching}
         />
-        Upload a photo
+        {buttonName}
       </label>
       <div className="instruction-text create-listing-page__instruction-text">
-          Upload your company logo. This photo will
-          be publicly visible to all Heyfam users.
-       </div>
+        Upload your company logo. This photo will be publicly visible to all
+        Heyfam users.
+      </div>
     </div>
   );
 }
-/*
-      TODO: Conditional delete button, allow for passing of custom css classes
-      <div
-        className=""
-        onClick={deleteFile}
-      >
-        <label>Delete</label>
-      </div> */
 
+ImageButtons.propTypes = {
+  buttonName: PropTypes.string
+};
 
-export default ImageButtons
+ImageButtons.defaultProps = {
+  buttonName: "Upload a photo"
+};
+
+export default ImageButtons;

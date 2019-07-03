@@ -94,6 +94,16 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 33px;
+
+    &--avatar {
+      background-color: transparent;
+      border: none;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__social-links-list {
@@ -103,7 +113,7 @@
     margin-bottom: 50px;
     @media only screen and (min-width: $breakpoint-medium) {
       margin-bottom: 0;
-  }
+    }
   }
 
   &__tags {

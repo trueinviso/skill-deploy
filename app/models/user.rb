@@ -41,6 +41,11 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :user_profile
   accepts_nested_attributes_for :user_roles
+  accepts_nested_attributes_for :social_media_profile
+  accepts_nested_attributes_for :job_roles
+  accepts_nested_attributes_for :user_job_roles
+  accepts_nested_attributes_for :job_types
+  accepts_nested_attributes_for :user_job_types
 
   accepts_nested_attributes_for :work_experiences,
     reject_if: :all_blank,

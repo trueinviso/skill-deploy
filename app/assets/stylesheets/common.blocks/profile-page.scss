@@ -66,8 +66,22 @@
     margin-right: auto;
     margin-bottom: 33px;
 
+    &--avatar {
+      border: none;
+      background-color: transparent;
+
+      img {
+        height: 292px;
+        width: 292px;
+        object-fit: contain;
+        @include desktop {
+          height: 300px;
+          width: 300px;
+        }
+      }
+    }
+
     @include desktop {
-      width: 292px;
       margin-bottom: 43.5px;
     }
   }
@@ -236,6 +250,5 @@
       font-size: $font-size-normal;
       display: block;
     }
-
   }
 }

@@ -1,3 +1,6 @@
 class JoinUsController < ApplicationController
-    def show; end
+  skip_before_action :guard_user_registered!
+
+  def show
+  end
 end
