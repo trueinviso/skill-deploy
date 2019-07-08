@@ -14,27 +14,33 @@ module Employer
     end
 
     def create?
-      user.role?(:employer)
+      active_paid_employer?
     end
 
     def destroy?
-      user.role?(:employer) && record.last.user_id == user.id
+      active_paid_employer? && record.last.user_id == user.id
     end
 
     def edit?
-      user.role?(:employer) && record.last.user_id == user.id
+      active_paid_employer? && record.last.user_id == user.id
     end
 
     def index?
-      user.role?(:employer)
+      active_paid_employer?
     end
 
     def new?
-      user.role?(:employer)
+      active_paid_employer?
     end
 
     def update?
-      user.role?(:employer) && record.last.user_id == user.id
+      active_paid_employer? && record.last.user_id == user.id
+    end
+
+    private
+    
+    def active_paid_employer?
+      user.role?(:employer) && user.active_paid_subscriber?
     end
   end
 end

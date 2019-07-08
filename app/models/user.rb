@@ -57,6 +57,12 @@ class User < ApplicationRecord
     subscription.active?
   end
 
+  def past_due_subscriber?
+    return false if gateway_customer.blank?
+    return false if subscription.blank?
+    subscription.past_due?
+  end
+
   def assign_role(role)
     name = role.to_s.humanize.split.map(&:capitalize).join(' ')
     role = Role.find_by(name: name)
