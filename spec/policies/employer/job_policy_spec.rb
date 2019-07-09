@@ -3,8 +3,6 @@ require 'spec_helper'
 module Employer
   describe JobPolicy do
     subject { described_class.new(user, job) }
-    let(:employer) { create(:employer) }
-    let(:job_seeker) { create(:job_seeker) }
     let(:job) { build(:job) }
 
     context 'employer' do
@@ -22,9 +20,24 @@ module Employer
       end
     end
 
+    context 'job seeker' do
+      let(:user) { create(:job_seeker) }
+
+      it "forbid all actions" do
+        is_expected.to forbid_actions([
+          :index,
+          :new,
+          :create,
+          :edit,
+          :update,
+          :destroy
+        ])
+      end
+    end
+
     context 'active paid employer' do
       let(:user) { create(:employer, :active_subscriber) }
-  
+
       it "forbid actions" do
         is_expected.to forbid_actions([
           :edit,
