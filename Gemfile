@@ -11,7 +11,7 @@ gem "devise"
 gem "forgery"
 # gem "foundation-rails", "~> 5.4"
 gem "haml"
-gem "pundit"
+gem "pundit", require: true
 gem "react-rails"
 gem "shrine"
 gem "image_processing"
@@ -59,7 +59,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :test do
-  gem "rspec"
+  gem "rspec-rails"
   gem "shrine-memory"
 end
 
@@ -70,6 +70,9 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'pundit-matchers'
 end
 
 group :development do

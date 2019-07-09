@@ -39,3 +39,4 @@ yarn-debug.log*
 web-data/
 /unity/
 .env
+.rubocop.yml

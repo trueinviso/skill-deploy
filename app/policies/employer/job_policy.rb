@@ -18,11 +18,11 @@ module Employer
     end
 
     def destroy?
-      active_paid_employer? && record.last.user_id == user.id
+      active_paid_employer? && record.user_id == user.id
     end
 
     def edit?
-      active_paid_employer? && record.last.user_id == user.id
+      active_paid_employer? && record.user_id == user.id
     end
 
     def index?
@@ -34,11 +34,11 @@ module Employer
     end
 
     def update?
-      active_paid_employer? && record.last.user_id == user.id
+      active_paid_employer? && record.user_id == user.id
     end
 
     private
-    
+
     def active_paid_employer?
       user.role?(:employer) && user.active_paid_subscriber?
     end

@@ -1,19 +1,61 @@
 require 'spec_helper'
 
-describe EmployerJobPolicy do
-  subject { Employer::JobPolicy }
+module Employer
+  describe JobPolicy do
+    subject { described_class.new(user, job) }
+    let(:employer) { create(:employer) }
+    let(:job_seeker) { create(:job_seeker) }
+    let(:job) { build(:job) }
 
-  permissions :create :index, :new do
-    it "denies access if not a active paid employer" do
+    context 'employer' do
+      let(:user) { create(:employer) }
+
+      it "forbid all actions" do
+        is_expected.to forbid_actions([
+          :index,
+          :new,
+          :create,
+          :edit,
+          :update,
+          :destroy
+        ])
+      end
     end
 
-    it "allows access for an active paid employer" do
-    end
-  end
+    context 'active paid employer' do
+      let(:user) { create(:employer, :active_subscriber) }
+  
+      it "forbid actions" do
+        is_expected.to forbid_actions([
+          :edit,
+          :update,
+          :destroy
+        ])
+      end
 
-  permissions :edit, :update?, :destroy do
-    it "prevents access if not an active paid employer"
-    it "prevents access if current user is not job's owner"
-    it "allows for an active paid employer who owns this job"
+      it "permit actions" do
+        is_expected.to permit_actions([
+          :index,
+          :new,
+          :create,
+        ])
+      end
+    end
+
+    context 'owner with active paid subscription' do
+      let(:user) { create(:employer, :active_subscriber) }
+      before { job.user_id = user.id }
+  
+      it "permit all actions" do
+        is_expected.to permit_actions([
+          :index,
+          :new,
+          :create,
+          :edit,
+          :update,
+          :destroy
+        ])
+      end
+    end
   end
 end
