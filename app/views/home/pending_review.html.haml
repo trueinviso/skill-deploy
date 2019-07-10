@@ -1,0 +1,12 @@
+.pending-review
+  .alert.alert-danger
+    Your profile is currently reviewed and pending approval
+
+  .content
+    = image_tag("join_as_a_creative.png",
+      srcset: { "join_as_a_creative@2x.png" => "2x" })
+    %h3.pending-review__title  Hi #{params[:name]}
+    %p.pending-review__description
+      Your profile is currently being reviewed by our membership
+      %br
+      board. You should hear from us shortly

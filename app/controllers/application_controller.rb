@@ -11,7 +11,10 @@ class ApplicationController < ActionController::Base
   # Available from Devise engine
   def after_sign_in_path_for(resource)
     return [:new, :session] unless user_signed_in?
-
+    if current_user.pending?
+      sign_out
+      return pending_review_path(name: resource.user_profile.first_name)
+    end
     stored_location_for(resource) || Receptionist.new(resource).direct
   end
 

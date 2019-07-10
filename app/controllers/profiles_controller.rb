@@ -8,6 +8,9 @@ class ProfilesController < ApplicationController
     result = current_user.update(permitted_params)
     if result
       current_user.assign_role("Job Seeker")
+      # set review status to 'pending' when the job seeker joins at first
+      current_user.review_status = :pending
+      current_user.save
       redirect_to root_path
     else
       render :new
@@ -15,7 +18,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    byebug
     user_profile = current_user.user_profile
     user_profile.update!(user_profile_params)
     respond_to do |format|

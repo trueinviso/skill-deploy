@@ -1,0 +1,23 @@
+.pending-review {
+  text-align: center;
+
+  .alert {
+    padding: 12px;
+    text-align: center;
+    background-color: #f0ddc3;
+  }
+  .content {
+    margin-top: 80px;
+  }
+  &__title {
+    margin-top: 80px;
+    line-height: 32px;
+    font-size: 22px;
+    color: #444;
+  }
+
+  &__description {
+    margin-top: 24px;
+    color: #9b9b9b;
+  }
+}

@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get "sign-up", to: "sign_up#new"
 
+  get "pending-review", to: "home#pending_review"
+
   resource :join_us, only: :show, path: "join-us"
 
   namespace :profile do
