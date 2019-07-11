@@ -50,7 +50,7 @@ JobListItem.propTypes = {
   instagram: string,
   location: string,
   name: string,
-  remote: string,
+  remote: bool,
   twitter: string,
   updated_at: string,
   user_id: number,

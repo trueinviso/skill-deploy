@@ -15,7 +15,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    byebug
     user_profile = current_user.user_profile
     user_profile.update!(user_profile_params)
     respond_to do |format|

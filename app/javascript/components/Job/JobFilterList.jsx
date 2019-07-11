@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import Dropdown from "../Dropdown";
 
-const roleFilters = [
+const typeFilters = [
   {
     label: "Full Time",
     value: "full_time"
@@ -20,7 +20,7 @@ const roleFilters = [
   }
 ];
 
-const filterOptions = [
+const roleFilters = [
   { label: "Design", value: "design" },
   { label: "Development", value: "development" },
   { label: "Marketing", value: "marketing" },
@@ -31,18 +31,18 @@ const JobFilterList = ({ onChange }) => {
   return (
     <Fragment>
       <Dropdown
-        name="type"
+        name="role"
         onChange={onChange}
-        placeholder="All Creative Types"
-        options={filterOptions}
+        placeholder="All Role Types"
+        options={roleFilters}
       />
       <Dropdown
-        name="role"
+        name="type"
         onChange={onChange}
         buttonClassName="dropdown__button--hidden"
         contentClassName="dropdown__content--inline"
-        placeholder="All Role Types"
-        options={roleFilters}
+        placeholder="All Creative Types"
+        options={typeFilters}
       />
     </Fragment>
   );

@@ -18,11 +18,7 @@ class JobsSerializer
         company_name: job.company_name,
         location: job.location,
         liked: favorite_ids.include?(job.id),
-        job_types: [
-          {
-            name: job.job_types.first.name
-          }
-        ]
+        job_types: job.job_types.map { |type| {name: type.name} }
       }
     end
   end
