@@ -11,7 +11,7 @@ gem "devise"
 gem "forgery"
 # gem "foundation-rails", "~> 5.4"
 gem "haml"
-gem "pundit", require: true
+gem "pundit"
 gem "react-rails"
 gem "shrine"
 gem "image_processing"
@@ -69,7 +69,6 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'pundit-matchers'
