@@ -9,8 +9,7 @@ class ProfilesController < ApplicationController
     if result
       current_user.assign_role("Job Seeker")
       # set review status to 'pending' when the job seeker joins at first
-      current_user.review_status = :pending
-      current_user.save
+      current_user.pending!
       redirect_to root_path
     else
       render :new

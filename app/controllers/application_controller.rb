@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     return [:new, :session] unless user_signed_in?
     if current_user.pending?
       sign_out
-      return pending_review_path(name: resource.user_profile.first_name)
+      return profile_pending_reviews_path(name: resource.user_profile.first_name)
     end
     stored_location_for(resource) || Receptionist.new(resource).direct
   end
