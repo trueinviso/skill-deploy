@@ -11,15 +11,13 @@ FactoryBot.define do
 
     factory :employer do
       after(:create) do |user|
-        employer = Role.find_or_create_by(name: "Employer")
-        user.roles = [employer]
+        user.roles = [ FactoryBot.create(:role, :employer) ]
       end
     end
 
     factory :job_seeker do
       after(:create) do |user|
-        job_seeker = Role.find_or_create_by(name: "Job Seeker")
-        user.roles = [job_seeker]
+        user.roles = [ FactoryBot.create(:role, :job_seeker) ]
       end
     end
 
