@@ -52,15 +52,17 @@ class User < ApplicationRecord
     allow_destroy: true
 
   def active_paid_subscriber?
-    return false if gateway_customer.blank?
-    return false if subscription.blank?
+    return false if gateway_or_subscription_blank?
     subscription.active?
   end
 
   def past_due_subscriber?
-    return false if gateway_customer.blank?
-    return false if subscription.blank?
+    return false if gateway_or_subscription_blank?
     subscription.past_due?
+  end
+
+  def gateway_or_subscription_blank?
+    gateway_customer.blank? || subscription.blank?
   end
 
   def assign_role(role)
