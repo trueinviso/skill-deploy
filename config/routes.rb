@@ -31,8 +31,8 @@ Rails.application.routes.draw do
     resource :notifications,
       only: [:edit, :update]
 
-    resources :pending_reviews,
-      only: [:index]
+    resource :pending_review,
+      only: [:show]
   end
 
   resource :profile,

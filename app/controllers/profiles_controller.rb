@@ -5,11 +5,9 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    result = current_user.update(permitted_params)
+    result = current_user.update(permitted_params.merge(review_status: :pending))
     if result
       current_user.assign_role("Job Seeker")
-      # set review status to 'pending' when the job seeker joins at first
-      current_user.pending!
       redirect_to root_path
     else
       render :new
@@ -42,7 +40,7 @@ class ProfilesController < ApplicationController
         :job_experience_ids,
         :job_type_ids,
         :skills,
-        social_media_profile: [
+        social_media_profile_attributes: [
           :facebook,
           :instagram,
           :twitter,

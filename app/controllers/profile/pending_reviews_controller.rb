@@ -1,8 +1,9 @@
 module Profile
   class PendingReviewsController < ApplicationController
-    skip_before_action :guard_user_authenticated!,
-      :guard_user_registered!, unless: :devise_controller?
+    skip_before_action  :guard_user_reviewed!
 
-    def index; end
+    def show
+      @profile = current_user.user_profile
+    end
   end
 end
