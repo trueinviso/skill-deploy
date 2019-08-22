@@ -48,10 +48,11 @@ module Employer
     private
 
     def guard_user_subscribed!
-      subscription = User::Subscription.new(current_user)
+      invalid_job_seeker_subscription =
+        User::JobSeekerWithCanceledSubscription.call(current_user)
       if current_user.past_due_subscriber?
         redirect_to edit_employer_billing_path
-      elsif current_user.role?(:job_seeker) || subscription.blank_or_canceled?
+      elsif invalid_job_seeker_subscription?
         redirect_to unity.new_subscription_path
       end
     end
