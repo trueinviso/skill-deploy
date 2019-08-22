@@ -1,7 +1,5 @@
 class UserProfile < ApplicationRecord
-  belongs_to :user
+  has_person_name
 
-  def full_name
-    "#{first_name} #{last_name}"
-  end
+  belongs_to :user
 end
