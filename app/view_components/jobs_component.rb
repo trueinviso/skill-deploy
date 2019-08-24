@@ -7,7 +7,7 @@ class JobsComponent
   end
 
   def favorites
-    @favorites = FavoriteJob.where(user_id: user.id).pluck(:job_id)
+    @favorites ||= FavoriteJob.where(user_id: user.id).pluck(:job_id)
   end
 
   def job_roles

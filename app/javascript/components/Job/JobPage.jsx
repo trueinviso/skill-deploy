@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React, { PureComponent, Fragment } from "react";
-import axios from "axios";
 import JobFilterList from "./JobFilterList";
 import JobList from "./JobList";
+import appendQueryString from "../../helpers/appendQueryString";
 
 class JobPage extends PureComponent {
   constructor(props) {
@@ -27,11 +27,11 @@ class JobPage extends PureComponent {
 
     this.setState({activeFilters: filters});
 
-    axios.get('/api/v1/jobs', {
-        params: filters
-      })
+    const url = appendQueryString(this.props.api, filters);
+    fetch(url)
+      .then((response) => response.json())
       .then((response) => {
-        this.setState({jobs: response.data.jobs});
+        this.setState({jobs: response.jobs});
       })
       .catch((error) => {
         // handle error
