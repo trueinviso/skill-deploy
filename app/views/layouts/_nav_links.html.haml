@@ -1,4 +1,4 @@
-%ul.nav__menu
+%ul.nav__menu{class: [current_user.thumbnail.present? && "nav__menu--avatar-present"] }
   %li.nav__menu__item.hidden-mobile
     %a{ href: main_app.favorite_jobs_path,
       class: "#{'active-link' if current_page?(main_app.favorite_jobs_path)}" }
@@ -12,7 +12,7 @@
       class: "#{'active-link' if current_page?(main_app.edit_user_registration_path)}" }
       Account
   %li.nav__menu__item
-    .nav__menu__item__profile{class: [current_user.thumbnail.present? && "nav__menu__item__profile--no-border"] }
+    .nav__menu__item__profile{class: [current_user.thumbnail.present? && "nav__menu__item__profile--exist"] }
       = image_tag current_user.thumbnail_url, alt: current_user.username, id:'userAvatar'
 
 .nav__offcanvas#offcanvas

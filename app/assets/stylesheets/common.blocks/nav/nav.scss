@@ -36,8 +36,14 @@
     justify-content: space-around;
     margin-left: 40px;
 
+    &--avatar-present {
+      & > li {
+        line-height: 48px;
+      }
+    }
+
     &__item {
-      line-height: 48px;
+      line-height: 40px;
       &:not(:last-child) {
         margin-right: 40px;
       }
@@ -51,22 +57,24 @@
       }
 
       &__profile {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
         border-radius: 4px;
         border: 1px dashed $color-beige;
         background-color: $color-concrete;
         text-align: center;
 
-        img {
+        &--exist {
           width: 48px;
           height: 48px;
-          object-fit: contain;
-        }
-
-        &--no-border {
           border: none;
           background-color: transparent;
+
+          img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+          }
         }
       }
     }
