@@ -69,6 +69,9 @@ module Employer
             :location,
             :name,
             :remote,
+            :twitter,
+            :facebook,
+            :instagram,
             thumbnail_attributes: [:file],
           ],
         )
