@@ -15,11 +15,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    byebug
-    user_profile = current_user.user_profile
-    user_profile.update!(user_profile_params)
-    respond_to do |format|
-      format.js
+    result = current_user.update(permitted_params)
+    if result
+      redirect_to root_path
+    else
+      render :edit
     end
   end
 
@@ -41,7 +41,7 @@ class ProfilesController < ApplicationController
         :job_experience_ids,
         :job_type_ids,
         :skills,
-        social_media_profile: [
+        social_media_profile_attributes: [
           :facebook,
           :instagram,
           :twitter,

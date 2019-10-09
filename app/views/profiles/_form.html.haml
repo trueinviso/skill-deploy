@@ -1,0 +1,15 @@
+= form_for(current_user,
+  url: profile_path,
+  html: { method: action }) do |f|
+
+  - thumbnail = f.object.thumbnail_url
+  = react_component("FileUpload", { thumbnail: thumbnail, resource: current_user, type: "user", name:"user[thumbnail_attributes][file]"})
+
+  = render "user_profile_form", form: f
+  = render "preferences_and_skills_form", form: f
+  = render "skills_form", form: f
+  = render "work_experience_form", form: f
+  = render "social_media_links_form", form: f
+
+  = f.submit "Save changes",
+    class: "button button_theme_primary button--small"
