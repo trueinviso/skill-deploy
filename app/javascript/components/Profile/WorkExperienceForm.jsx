@@ -12,6 +12,8 @@ class WorkExperienceForm extends PureComponent {
   constructor(props) {
     super(props);
 
+    console.log("hello", props);
+
     this.state = {
       fields: [this.createField()]
     };
