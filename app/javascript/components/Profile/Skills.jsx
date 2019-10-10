@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { PureComponent, createRef } from "react";
 import Choices from "choices.js";
 
@@ -10,11 +11,20 @@ const config = {
 };
 
 class Skills extends PureComponent {
+  static defaultProps = {
+    initialSkills: []
+  };
+  static propTypes = {
+    initialSkills: PropTypes.arrayOf(PropTypes.string)
+  };
   ref = createRef();
 
   componentDidMount() {
     if (this.ref.current) {
-      this.choices = new Choices(this.ref.current, config);
+      this.choices = new Choices(this.ref.current, {
+        ...config,
+        items: this.props.initialSkills
+      });
     }
   }
 
