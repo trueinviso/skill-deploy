@@ -1,21 +1,32 @@
-.align-center.forms
-  .column.small-12.medium-7
-    .secondary-heading
-      Payment information
+.new-subscription
+  = render "unity/subscriptions/details"
+  %section.new-subscription__paymemnt
+    %h1.new-subscription__heading Subscription details
+
+    .new-subscription__info
+      %h2.new-subscription__info__name=Unity::SubscriptionPlan.first.name
+      %span.new-subscription__info__desc=Unity::SubscriptionPlan.first.description
+    .new-subscription__total
+      %span Total today 
+      %span $#{Unity::SubscriptionPlan.first.price}
 
     = form_for :subscription,
       url: [:subscription],
       method: :create,
       html: { id: "braintree-payment-form",
       "data-validate": "data-validate",
+      class: "new-subscription__form",
       "no-validate": "no-validate" } do |f|
+
+      %h3.new-subscription__form__heading Payment details
 
       = hidden_field_tag :authenticity_token, form_authenticity_token
       = hidden_field_tag :plan_id, Unity::SubscriptionPlan.first.gateway_id
 
       = render "unity/payment_method/card_details", f: f
 
-
+      %span.new-subscription__form__notice All sales are final and all prices are USD.
       .submit-field
         = f.submit 'Get started',
-          data: { disable_with: "Please wait..." }
+          data: { disable_with: "Please wait..." },
+          class: 'button button_theme_primary'

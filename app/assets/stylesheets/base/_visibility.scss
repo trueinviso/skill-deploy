@@ -1,13 +1,13 @@
 .hidden-mobile {
   display: none;
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     display: block;
   }
 }
 
 .hidden-desktop {
   display: block;
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     display: none;
   }
 }

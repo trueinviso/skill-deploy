@@ -1,0 +1,200 @@
+.new-subscription {
+  margin-top: 46px;
+  margin-bottom: 233px;
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  padding: 0;
+
+  @include desktop {
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    margin-bottom: 50px;
+    display: grid;
+    grid-gap: 70px;
+    grid-template-columns: repeat(auto-fit, minmax(535px, 1fr));
+  }
+
+  @media (min-width: $breakpoint-medium) and (max-width: 1024px) {
+    padding: 0 24px;
+  }
+
+  .details {
+    &__heading {
+      font-size: $font-size-xxlarge;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.32;
+      letter-spacing: normal;
+      color: $color-dark-grey;
+    }
+
+    &__sub-heading {
+      font-size: $font-size-medium;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.56;
+      letter-spacing: normal;
+      color: $color-brown-grey;
+      margin-top: 9px;
+    }
+    &__list {
+      margin-top: 75px;
+      counter-reset: section;
+      margin-left: 39px;
+      &__item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        &:not(:first-child) {
+          margin-top: 62px;
+        }
+
+        &::before {
+          counter-increment: section;
+          content: counter(section);
+          width: 29px;
+          height: 29px;
+          background-color: #d2a764;
+          display: inline-block;
+          border-radius: 100%;
+          line-height: 30px;
+          text-align: center;
+          color: $color-white;
+          margin-right: 11px;
+          font-size: $font-size-small;
+        }
+
+        h4 {
+          font-size: $font-size-normal;
+          color: $color-dark-grey;
+          font-weight: 600;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: normal;
+          letter-spacing: normal;
+        }
+        span {
+          display: inline-block;
+          margin-top: 7px;
+          font-size: $font-size-normal;
+          color: $color-brown-grey;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          line-height: 1.5;
+          letter-spacing: normal;
+          max-width: 295px;
+        }
+      }
+    }
+  }
+
+  &__paymemnt {
+    @include desktop {
+      border: 1px solid $color-beige;
+      border-radius: 6px;
+      padding: 60px 55px;
+    }
+  }
+
+  &__heading {
+    height: 32px;
+    font-family: Averta;
+    font-size: $font-size-xlarge;
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    color: $color-dark-grey;
+  }
+
+  &__info {
+    margin-top: 56px;
+    &__name {
+      margin-bottom: 7px;
+      font-family: Averta;
+      font-size: 14px;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.14;
+      letter-spacing: normal;
+      color: $color-tundora;
+    }
+    &__desc {
+      height: 42px;
+      font-family: Averta;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $color-brown-grey;
+    }
+  }
+
+  &__total {
+    border-top: solid 1px #edf4f8;
+    padding-top: 14px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 28px;
+    span {
+      display: block;
+      height: 30px;
+      font-size: $font-size-normal;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.14;
+      letter-spacing: normal;
+      color: $color-dark-grey;
+    }
+  }
+
+  &__form {
+    margin-top: 80px;
+    &__heading {
+      height: 30px;
+      font-family: Averta;
+      font-size: $font-size-large;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      color: $color-dark-grey;
+    }
+
+    .StripeElement {
+      margin-top: 80px;
+      margin-bottom: 16px;
+    }
+
+    &__notice {
+      height: 25px;
+      font-family: Averta;
+      font-size: 12px;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.08;
+      letter-spacing: normal;
+      text-align: center;
+      color: $color-greyish;
+      display: block;
+    }
+    .submit-field {
+      margin-top: 30px;
+    }
+  }
+}
