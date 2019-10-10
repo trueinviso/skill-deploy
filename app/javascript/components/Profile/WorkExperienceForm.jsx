@@ -4,20 +4,32 @@ import DatePicker from "../DatePickerDropdown";
 import FormField from "./../shared/FormField";
 import getUniqKey from "./../../helpers/genUniqKey";
 
+const ExperiencePropTypes = {
+  company: PropTypes.string,
+  created_at: PropTypes.string,
+  current_role: PropTypes.bool,
+  end: PropTypes.string,
+  id: PropTypes.number,
+  start: PropTypes.string,
+  title: PropTypes.string,
+  title: PropTypes.string,
+  updated_at: PropTypes.string,
+  user_id: PropTypes.number
+};
+
 class WorkExperienceForm extends PureComponent {
   static propTypes = {
-    formName: PropTypes.string.isRequired
+    formName: PropTypes.string.isRequired,
+    initialWorkExperiences: PropTypes.arrayOf(
+      PropTypes.shape(ExperiencePropTypes)
+    )
   };
 
-  constructor(props) {
-    super(props);
-
-    console.log("hello", props);
-
-    this.state = {
-      fields: [this.createField()]
-    };
-  }
+  state = {
+    fields: this.props.initialWorkExperiences
+      ? this.props.initialWorkExperiences
+      : [this.createField()]
+  };
 
   onAddNewField = e => {
     e.preventDefault();
@@ -69,7 +81,7 @@ class WorkExperienceForm extends PureComponent {
         {fields.map((field, index) => (
           <div
             className="registration-page__work-experiences__section"
-            key={field.key}
+            key={field.key || field.id}
           >
             <FormField
               containerClassName="registration-page__form-field registration-page__form-field--half"
@@ -79,6 +91,7 @@ class WorkExperienceForm extends PureComponent {
               name={this.getName(index, "title")}
               id={this.getId(index, "name")}
               onChange={this.onChange(index)}
+              defaultValue={field["title"]}
             />
 
             <FormField
@@ -89,6 +102,7 @@ class WorkExperienceForm extends PureComponent {
               name={this.getName(index, "company")}
               id={this.getId(index, "company")}
               onChange={this.onChange(index)}
+              defaultValue={field["company"]}
             />
 
             <div className="registration-page__work-experiences--inline">
@@ -100,12 +114,14 @@ class WorkExperienceForm extends PureComponent {
                   index,
                   this.getName(index, "start")
                 )}
+                defaultValue={field["start"]}
               />
               <DatePicker
                 className="registration-page__form-field registration-page__form-field--fourth"
                 name={this.getName(index, "end")}
                 label="End"
                 onChange={this.onChangeDate(index, this.getName(index, "end"))}
+                defaultValue={field["end"]}
               />
 
               <div className="registration-page__form-field registration-page__form-field--fourth">
@@ -116,6 +132,7 @@ class WorkExperienceForm extends PureComponent {
                   name={this.getName(index, "current_role")}
                   onChange={this.onChange(index)}
                   id={this.getId(index, "current_role")}
+                  defaultChecked={field["current_role"]}
                 />
                 <label
                   className="radio-label"
