@@ -38,10 +38,27 @@ class WorkExperienceForm extends PureComponent {
 
   onRemove = currentIndex => e => {
     e.preventDefault();
+
+    if(this.recordIsPersisted(currentIndex)) {
+      this.markRecordForDestroy(e);
+    } else {
+      this.removeRecordFromPage(currentIndex);
+    }
+  };
+
+  recordIsPersisted = currentIndex => this.state.fields[currentIndex]["id"]
+
+  markRecordForDestroy = e => {
+    const wrapper = e.target.closest(".registration-page__work-experiences__section");
+    wrapper.querySelector("input[name*='_destroy']").value = 1;
+    wrapper.style.display = "none";
+  }
+
+  removeRecordFromPage = currentIndex => {
     this.setState(prev => ({
       fields: prev.fields.filter((_, index) => index !== currentIndex)
     }));
-  };
+  }
 
   onChange = currentIndex => e => {
     const value = e.target.value;
@@ -83,6 +100,12 @@ class WorkExperienceForm extends PureComponent {
             className="registration-page__work-experiences__section"
             key={field.key || field.id}
           >
+            <input
+              type="hidden"
+              name={this.getName(index, "id") }
+              defaultValue={field["id"]}
+            />
+
             <FormField
               containerClassName="registration-page__form-field registration-page__form-field--half"
               inputClassName="input input_theme_normal registrations-edit__input"
@@ -143,6 +166,13 @@ class WorkExperienceForm extends PureComponent {
               </div>
             </div>
             <div className="registration-page__form-field ">
+              <input
+                type="hidden"
+                name={this.getName(index, "_destroy") }
+                className="destroy"
+                defaultValue="0"
+              />
+
               <button
                 onClick={this.onRemove(index)}
                 className="button button--danger registrations-edit__input"

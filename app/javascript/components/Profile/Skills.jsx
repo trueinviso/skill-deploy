@@ -47,8 +47,8 @@ class Skills extends PureComponent {
           name="user[skills]"
         />
         <span className="choices-helper-text">
-          Add up to 15 skills to display on your profile. Use a comma to
-          separate skills.
+          Add up to 15 skills to display on your profile. Hit enter
+          after each skill you input.
         </span>
       </div>
     );

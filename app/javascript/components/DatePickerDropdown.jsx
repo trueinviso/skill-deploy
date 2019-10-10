@@ -21,8 +21,9 @@ class DatePickerDropdown extends PureComponent {
 
   constructor(props) {
     super(props);
+    const date = new Date(this.props.defaultValue)
     this.state = {
-      date: this.props.defaultValue ? new Date(this.props.defaultValue) : ""
+      date: this.props.defaultValue ? date.setDate(date.getDate() + 2) : ""
     };
 
     this.ref = createRef();
