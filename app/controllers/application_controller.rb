@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def guard_user_registered!
-    redirect_to [:join_us] if current_user.roles.blank?
+    redirect_to [:join_us] if !current_user.registered?
   end
 
   def user_not_authorized
