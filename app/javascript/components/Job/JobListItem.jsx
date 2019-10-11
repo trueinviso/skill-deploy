@@ -1,10 +1,10 @@
-import { string, number, bool } from "prop-types";
+import { func, string, number, bool } from "prop-types";
 import React from "react";
 import activeIcon from "./../../../assets/font/icon/save-active.svg";
 import inactiveIcon from "./../../../assets/font/icon/save-inactive.svg";
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg";
 
-const JobListItem = ({ id, company_name, name, job_types, liked }) => {
+const JobListItem = ({ id, company_name, name, job_types, liked, toggleFavorite }) => {
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
@@ -16,7 +16,7 @@ const JobListItem = ({ id, company_name, name, job_types, liked }) => {
           />
         </div>
         <div className="job-card__favorite-icon">
-          <button>
+          <button onClick={(e)=>toggleFavorite(e, id)}>
             <img src={liked ? activeIcon : inactiveIcon} alt="favorite-icon" />
           </button>
         </div>
@@ -51,6 +51,7 @@ JobListItem.propTypes = {
   location: string,
   name: string,
   remote: string,
+  toggleFavorite: func,
   twitter: string,
   updated_at: string,
   user_id: number,
