@@ -1,12 +1,11 @@
-function togglePaymentForm() {
-  const summary = document.getElementsByClassName("card-summary")[0]
-  const details = document.getElementsByClassName("card-details")[0]
-
-  if(summary.style.display === "none") {
-    summary.style.display = "block";
-    details.style.display = "none";
+function togglePaymentForm(e) {
+  const paymentForm = document.getElementById("braintree-payment-form");
+  const cardSummary = document.getElementById("cardSummary");
+  if (paymentForm.classList.contains("hidden")) {
+    e.innerHTML = "Close edit information";
   } else {
-    summary.style.display = "none";
-    details.style.display = "block";
+    e.innerHTML = "Edit my information";
   }
+  cardSummary.classList.toggle("hidden");
+  paymentForm.classList.toggle("hidden");
 }
