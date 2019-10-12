@@ -9,6 +9,4 @@
       %button.button.button_theme_white.employer-job-card__button
         Edit
 
-    %a{ href: '#' }
-      %button.button.button_theme_white.employer-job-card__button
-        Delete
+    = button_to "Delete", employer_job_path(job), { method: :delete, form_class: "button button_theme_white employer-job-card__button" }

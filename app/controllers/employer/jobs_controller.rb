@@ -42,7 +42,8 @@ module Employer
 
     def destroy
       @job = Job.find(params[:id])
-      authorize [:employer, @job]
+      ap @job
+      # authorize [:employer, @job]
     end
 
     private
