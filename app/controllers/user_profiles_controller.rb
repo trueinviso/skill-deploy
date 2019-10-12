@@ -1,4 +1,4 @@
-class ProfilesController < ApplicationController
+class UserProfilesController < ApplicationController
   skip_before_action :guard_user_registered!, only: [:new, :create]
 
   def new
