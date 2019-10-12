@@ -9,4 +9,5 @@
       %button.button.button_theme_white.employer-job-card__button
         Edit
 
-    = button_to "Delete", employer_job_path(job), { method: :delete, form_class: "button button_theme_white employer-job-card__button" }
+    = form_tag employer_job_path(job), method: :delete, data: { confirm: "Are you sure?" } do
+      = submit_tag "Delete", class: "button button_theme_white employer-job-card__button"
