@@ -11,9 +11,13 @@ class FavoriteJobPage extends PureComponent {
   render() {
     const { initialJobs, favorites } = this.props;
 
-    console.log("initialJobs", initialJobs);
-
-    return <JobList className="favorite-job-list" initialJobs={initialJobs} />;
+    return (
+      <JobList
+        className="favorite-job-list"
+        initialJobs={initialJobs}
+        favorites={favorites}
+      />
+    );
   }
 }
 

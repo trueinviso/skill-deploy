@@ -9,18 +9,20 @@ class JobList extends PureComponent {
     className: PropTypes.string
   };
 
-  static defaultProps = {
-    favorites: []
+  state = {
+    jobs: this.props.initialJobs
   };
 
   render() {
-    const { jobs, favorites, className } = this.props;
+    const { jobs } = this.state;
+    const { className, favorites } = this.props;
+
     return (
       <ul className={className}>
         {jobs.map(job => (
           <JobListItem
             key={job.id}
-            liked={favorites.includes(job.id)}
+            favorites={favorites}
             {...job}
           />
         ))}

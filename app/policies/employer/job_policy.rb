@@ -18,11 +18,11 @@ module Employer
     end
 
     def destroy?
-      user.role?(:employer) && record.last.user_id == user.id
+      user.role?(:employer) && record.user_id == user.id
     end
 
     def edit?
-      user.role?(:employer) && record.last.user_id == user.id
+      user.role?(:employer) && record.user_id == user.id
     end
 
     def index?
@@ -34,7 +34,7 @@ module Employer
     end
 
     def update?
-      user.role?(:employer) && record.last.user_id == user.id
+      user.role?(:employer) && record.user_id == user.id
     end
   end
 end

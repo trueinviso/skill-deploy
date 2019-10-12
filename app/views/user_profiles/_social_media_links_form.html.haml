@@ -1,7 +1,8 @@
 .registrations-edit__sub-heading
   Links
 
-= form.fields_for :social_media_profile, SocialMediaProfile.new do |p|
+= form.fields_for :social_media_profile,
+  current_user.social_media_profile || SocialMediaProfile.new do |p|
   .registration-page--link-section
     = p.label :website,
       'Website *',

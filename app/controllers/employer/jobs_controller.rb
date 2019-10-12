@@ -5,17 +5,16 @@ module Employer
     def index
       @jobs = policy_scope([:employer, Job])
       @view_component = Employer::JobsComponent
-      # TODO: Add employer role to user when they sign up
-      # authorize [:employer, @jobs]
+      authorize [:employer, @jobs]
     end
 
     def new
-      # authorize [:employer, Job]
+      authorize [:employer, Job]
       @job = Job.new
     end
 
     def create
-      # authorize [:employer, Job]
+      authorize [:employer, Job]
       job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
       if job.save
         redirect_to employer_jobs_path
@@ -25,15 +24,14 @@ module Employer
     end
 
     def edit
-      # obv need policy for this
       @job = Job.find(params[:id])
-      # authorize [:employer, @job]
+      authorize [:employer, @job]
     end
 
     def update
-      @job = Job.find(params[:id])
-      # authorize [:employer, @job]
-      if @job.update(valid_params[:job])
+      job = Job.find(params[:id])
+      authorize [:employer, job]
+      if job.update(valid_params[:job])
         redirect_to [:employer, :jobs]
       else
         render :edit
@@ -41,8 +39,10 @@ module Employer
     end
 
     def destroy
-      @job = Job.find(params[:id])
-      authorize [:employer, @job]
+      job = Job.find(params[:id])
+      authorize [:employer, job]
+      job.destroy
+      redirect_to employer_jobs_path
     end
 
     private

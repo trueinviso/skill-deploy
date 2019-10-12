@@ -1,4 +1,5 @@
-= form.fields_for :user_profile, UserProfile.new do |p|
+= form.fields_for :user_profile,
+  current_user.user_profile || UserProfile.new do |p|
   .registration-page__profile-form
     .registration-page__form-field.registration-page__form-field--half
       = p.label :first_name,

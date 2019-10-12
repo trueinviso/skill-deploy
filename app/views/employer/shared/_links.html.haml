@@ -7,17 +7,17 @@
       class: 'dropdown__link employer-jobs-list__dropdown__link'
 
     = link_to 'Your profile',
-      edit_user_registration_path,
+      edit_user_profile_path,
       class: 'dropdown__link employer-jobs-list__dropdown__link'
 
     = link_to 'Billing details',
-      edit_employer_billing_path,
+      unity.edit_subscription_path,
       class: 'dropdown__link employer-jobs-list__dropdown__link'
 
 %aside.side-nav
   %nav
     = link_to 'Your profile',
-      edit_user_registration_path,
+      edit_user_profile_path,
       class: 'side-nav__link'
 
     = link_to "Saved projects",
@@ -25,7 +25,7 @@
       class: "side-nav__link"
 
     = link_to 'Account settings',
-      '#',
+      edit_user_registration_path,
       class: 'side-nav__link'
 
     = link_to 'Mangage listings',
@@ -37,5 +37,5 @@
       class: 'side-nav__link'
 
     = link_to 'Billing details',
-      edit_employer_billing_path,
+      unity.edit_subscription_path,
       class: 'side-nav__link'

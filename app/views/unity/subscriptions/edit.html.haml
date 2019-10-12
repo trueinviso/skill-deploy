@@ -1,3 +1,5 @@
+- view_component = Employer::BillingComponent.new(current_user)
+
 .small-8.columns.renewal-message
   - if view_component.cancel_at_period_end
     Your Monthly Subscription will expire on

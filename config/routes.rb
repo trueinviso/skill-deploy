@@ -32,7 +32,9 @@ Rails.application.routes.draw do
       only: [:edit, :update]
   end
 
-  resource :profile,
+  resource :user_profile,
+    controller: :user_profiles,
+    path: "profile",
     except: [:destroy]
 
   resources :jobs,
