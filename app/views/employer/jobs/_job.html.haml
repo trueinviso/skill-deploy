@@ -9,6 +9,5 @@
       %button.button.button_theme_white.employer-job-card__button
         Edit
 
-    %a{ href: '#' }
-      %button.button.button_theme_white.employer-job-card__button
-        Delete
+    = form_tag employer_job_path(job), method: :delete, data: { confirm: "Are you sure?" } do
+      = submit_tag "Delete", class: "button button_theme_white employer-job-card__button"

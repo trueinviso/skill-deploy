@@ -1,10 +1,9 @@
-import { func, string, number, bool } from "prop-types";
+import { array, func, string, number, bool } from "prop-types";
 import React from "react";
-import activeIcon from "./../../../assets/font/icon/save-active.svg";
-import inactiveIcon from "./../../../assets/font/icon/save-inactive.svg";
+import FavoriteJobIcon from "./FavoriteJobIcon";
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg";
 
-const JobListItem = ({ id, company_name, name, job_types, liked, toggleFavorite }) => {
+const JobListItem = ({ id, company_name, name, job_types, favorites, toggleFavorite }) => {
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
@@ -15,11 +14,7 @@ const JobListItem = ({ id, company_name, name, job_types, liked, toggleFavorite 
             alt="job-logo"
           />
         </div>
-        <div className="job-card__favorite-icon">
-          <button onClick={(e)=>toggleFavorite(e, id)}>
-            <img src={liked ? activeIcon : inactiveIcon} alt="favorite-icon" />
-          </button>
-        </div>
+        <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
         <div className="job-card__details">
           <div className="header job-card__header">{name}</div>
           <div className="job-card__company-name">{company_name}</div>
@@ -50,11 +45,11 @@ JobListItem.propTypes = {
   instagram: string,
   location: string,
   name: string,
-  remote: string,
+  remote: bool,
   toggleFavorite: func,
   twitter: string,
   updated_at: string,
   user_id: number,
-  liked: bool
+  favorites: array
 };
 export default JobListItem;
