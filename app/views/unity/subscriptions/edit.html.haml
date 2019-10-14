@@ -17,9 +17,10 @@
         %h3.subscription__details__name Total subscription
         %span.subscription__details__price $#{view_component.price}/mo
       %hr
-      %div  
-        %span Cancel your subscription 
-        %button.button.button.button_theme_black.cancel-subscription Cancel
+      - if view_component.subscription  
+        %div  
+          %span Cancel your subscription 
+          = react_component('Subscription/CancelSubscriptionModal',{apiPath:subscription_delete_path})
 
 
     %h3.subscription--edit__heading Payment details

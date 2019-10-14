@@ -96,5 +96,58 @@
   }
   .cancel-subscription {
     max-width: 75px;
+    padding: 0 10px;
+  }
+
+  &__cancel-modal {
+    &__content {
+      margin: auto;
+      max-width: 500px;
+      background: $color-white;
+      border-radius: 6px;
+      padding: 50px;
+      font-family: Averta;
+
+      hr {
+        margin: 20px 0;
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      &__header {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: baseline;
+        height: 50px;
+
+        &__title {
+          align-self: flex-end;
+          font-size: $font-size-xlarge;
+          margin: 0;
+        }
+      }
+      &__footer {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-gap: 20px;
+      }
+    }
+    &__overlay {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      outline: none;
+    }
   }
 }

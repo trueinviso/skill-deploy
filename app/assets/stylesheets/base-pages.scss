@@ -50,3 +50,31 @@
   letter-spacing: normal;
   color: $color-dark-grey;
 }
+
+.close-icon {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &::before,
+  &:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 24px;
+    width: 2px;
+    top: 0;
+    background-color: $color-tundora;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
