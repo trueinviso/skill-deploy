@@ -1,27 +1,25 @@
 let dropdown = (function() {
   function toggle() {
-    const menu = event
-      .target
-      .parentElement
-      .getElementsByClassName("dropdown__content")[0];
+    const menu = event.target.parentElement.getElementsByClassName(
+      "dropdown__content"
+    )[0];
 
     const selectBox = event.target.parentElement;
 
-    if(shouldToggleDropdown(menu)) {
+    if (shouldToggleDropdown(menu)) {
       selectBox.classList.toggle("dropdown_active");
-      menu.classList.toggle("dropdown__content_active");
+      menu.classList.toggle("dropdown__content--open");
     }
   }
 
   function shouldToggleDropdown(menu) {
-    return !menu
-      .classList
-      .value
-      .includes("dropdown__content_inline-buttons") ||
-      window.matchMedia("(max-width: 736px)").matches;
+    return (
+      !menu.classList.value.includes("dropdown__content_inline-buttons") ||
+      window.matchMedia("(max-width: 736px)").matches
+    );
   }
 
   return {
     toggle: toggle
   };
-}());
+})();

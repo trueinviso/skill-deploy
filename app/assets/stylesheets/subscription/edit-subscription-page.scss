@@ -2,8 +2,8 @@
 @include subscriptionPAge {
   &--edit {
     @include desktop {
-      display: block !important;
-      max-width: 500px !important;
+      grid-gap: 90px;
+      grid-template-columns: 130px 500px !important;
     }
     &__heading {
       margin-top: 70px;
@@ -25,12 +25,22 @@
   }
 
   &__details {
+    @include desktop {
+      margin-top: 0;
+    }
+    .page-heading {
+      margin-bottom: 58px;
+    }
+    margin-top: 50px;
     margin-bottom: 13px;
     & > div {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       margin-bottom: 7px;
+      @include desktop {
+        margin-bottom: 14px;
+      }
     }
 
     font-size: $font-size-normal;
@@ -42,6 +52,7 @@
     color: $color-tundora;
 
     &__desc {
+      max-width: 255px;
       height: 42px;
       font-family: Averta;
       color: $color-brown-grey;
@@ -51,7 +62,7 @@
       line-height: 1.5;
       letter-spacing: normal;
       color: $color-brown-grey;
-      margin-bottom: 29px;
+      margin-bottom: 14px;
     }
   }
 

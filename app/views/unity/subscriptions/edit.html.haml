@@ -1,41 +1,44 @@
 - view_component = Employer::BillingComponent.new(current_user)
-= render "employer/shared/links",
-  selected: "Billing details"
 .subscription.subscription--edit
-  .subscription__details
-    %div
-      %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
-      %span.subscription__details__price $#{view_component.price}/mo
-    %p.subscription__details__desc Post unlimited projects on the Gig board every month. Cancel anytime.
-    %div
-      %span.renewal-message.expiration-date  Expires on #{view_component.card_expiration_date}  
-    %hr   
-    %div
-      %h3.subscription__details__name Total subscription
-      %span.subscription__details__price $#{view_component.price}/mo
-    %hr
-    %div  
-      %span Cancel your subscription 
-      %button.button.button.button_theme_black.cancel-subscription Cancel
+  = render "employer/shared/links",
+    selected: "Billing details"
+  %div  
+    .subscription__details
+      %h1.page-heading Billing details
+      %div
+        %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
+        %span.subscription__details__price $#{view_component.price}/mo
+      %p.subscription__details__desc Post unlimited projects on the Gig board every month. Cancel anytime.
+      %div
+        %span.renewal-message.expiration-date  Expires on 
+        %span #{view_component.card_expiration_date}  
+      %hr   
+      %div
+        %h3.subscription__details__name Total subscription
+        %span.subscription__details__price $#{view_component.price}/mo
+      %hr
+      %div  
+        %span Cancel your subscription 
+        %button.button.button.button_theme_black.cancel-subscription Cancel
 
 
-  %h3.subscription--edit__heading Payment details
-  .subscription__card-summary#cardSummary
-  
-    %span.subscription__card-summary__card-type #{view_component.card_brand} 
-    %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
-  = form_for :payment_method,
-    url: unity.payment_method_path,
-    method: :put,
-    html: { id: "braintree-payment-form",
-    class: "subscription--edit__form #{view_component.subscription ? 'hidden' : ''}",
-    "data-validate":"data-validate",
-    "no-validate": "no-validate" } do |f|
-    .subscription__card-details#cardDetails
-      = render "unity/payment_method/card_details", f: f
-      = f.submit "Update Payment Method", 
-        data: { disable_with: "Please wait..." },
-        class:'button button_theme_white update-button'
-  %button.button.button_theme_black{onClick: "togglePaymentForm(this)" }
-    Edit my information
-      
+    %h3.subscription--edit__heading Payment details
+    .subscription__card-summary#cardSummary
+    
+      %span.subscription__card-summary__card-type #{view_component.card_brand} 
+      %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
+    = form_for :payment_method,
+      url: unity.payment_method_path,
+      method: :put,
+      html: { id: "braintree-payment-form",
+      class: "subscription--edit__form #{view_component.subscription ? 'hidden' : ''}",
+      "data-validate":"data-validate",
+      "no-validate": "no-validate" } do |f|
+      .subscription__card-details#cardDetails
+        = render "unity/payment_method/card_details", f: f
+        = f.submit "Update Payment Method", 
+          data: { disable_with: "Please wait..." },
+          class:'button button_theme_white update-button'
+    %button.button.button_theme_black{onClick: "togglePaymentForm(this)" }
+      Edit my information
+        
