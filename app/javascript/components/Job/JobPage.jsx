@@ -7,7 +7,6 @@ import appendQueryString from "../../helpers/appendQueryString";
 class JobPage extends PureComponent {
   constructor(props) {
     super(props);
-    this.onChangeFilter = this.onChangeFilter.bind(this);
   }
 
   static propTypes = {
@@ -18,25 +17,17 @@ class JobPage extends PureComponent {
 
   state = {
     activeFilters: { search: this.props.search },
-    jobs: this.props.jobs
+    jobs: this.props.initialJobs
   };
 
-  onChangeFilter = ({ name, value }) => {
-    const filters = this.state.activeFilters;
-    filters[`job_${name}_name`] = value;
+  updateFilters = (callback) => this.setState(callback(), this.filterJobs)
 
-    this.setState({activeFilters: filters});
-
-    const url = appendQueryString(this.props.api, filters);
+  filterJobs = () => {
+    const url = appendQueryString(this.props.api, this.state.activeFilters);
     fetch(url)
       .then((response) => response.json())
-      .then((response) => {
-        this.setState({jobs: response.jobs});
-      })
-      .catch((error) => {
-        // handle error
-        console.log(error);
-      })
+      .then((response) => this.setState({ jobs: response.jobs }))
+      .catch((error) => console.log(error))
   }
 
   render() {
@@ -46,13 +37,16 @@ class JobPage extends PureComponent {
       <Fragment>
         <div className="border-bottom-container">
           <div className="jobs-list__filters-container">
-            <JobFilterList onChange={this.onChangeFilter} />
+            <JobFilterList
+              activeFilters={this.state.activeFilters}
+              updateFilters={this.updateFilters}
+            />
           </div>
         </div>
         <div className="desktop-container job-list__desktop-container">
           <div className="jobs-list">
             <JobList
-              jobs = {jobs}
+              jobs={jobs}
               favorites={favorites}
             />
           </div>

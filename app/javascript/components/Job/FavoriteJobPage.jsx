@@ -4,17 +4,17 @@ import JobList from "./JobList";
 
 class FavoriteJobPage extends PureComponent {
   static propTypes = {
-    initialJobs: PropTypes.arrayOf(PropTypes.object),
+    jobs: PropTypes.arrayOf(PropTypes.object),
     favorites: PropTypes.array
   };
 
   render() {
-    const { initialJobs, favorites } = this.props;
+    const { jobs, favorites } = this.props;
 
     return (
       <JobList
         className="favorite-job-list"
-        initialJobs={initialJobs}
+        jobs={jobs}
         favorites={favorites}
       />
     );

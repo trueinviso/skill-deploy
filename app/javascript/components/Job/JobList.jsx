@@ -9,13 +9,8 @@ class JobList extends PureComponent {
     className: PropTypes.string
   };
 
-  state = {
-    jobs: this.props.initialJobs
-  };
-
   render() {
-    const { jobs } = this.state;
-    const { className, favorites } = this.props;
+    const { className, favorites, jobs } = this.props;
 
     return (
       <ul className={className}>
