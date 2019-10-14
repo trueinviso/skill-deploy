@@ -1,5 +1,5 @@
 (function(w, d) {
-  d.addEventListener("DOMContentLoaded", event => {
+  d.addEventListener("turbolinks:load", () => {
     const menuToggler = d.getElementById("menuToggler");
     const closeMenuBtn = d.getElementById("closeMenu");
     const menu = document.getElementById("offcanvas");
