@@ -36,7 +36,8 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
   }
 
   const filterEnabled = (filter, value) => {
-    if (!Object.keys(activeFilters).includes(filter)) return false;
+    const keyPresent = Object.keys(activeFilters).includes(filter)
+    if (!keyPresent) return false;
     return activeFilters[filter].includes(value);
   }
 
