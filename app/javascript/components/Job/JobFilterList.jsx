@@ -65,6 +65,11 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
     updateFilters(callback.bind(this, filter, values));
   }
 
+  const isSelected = (filter, selected) => {
+    return activeFilters.job_type_name &&
+      activeFilters.job_type_name.includes(filter.value);
+  }
+
   return (
     <Fragment>
       <Dropdown
@@ -72,6 +77,7 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
         onChange={onChangeFilter}
         placeholder="All Role Types"
         options={roleFilters}
+        isSelected={(filter, selected) => filter.value === selected.value}
       />
       <Dropdown
         name="type"
@@ -79,7 +85,9 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
         buttonClassName="dropdown__button--hidden"
         contentClassName="dropdown__content--inline"
         placeholder="All Creative Types"
+        activeFilters={activeFilters.job_type_name}
         options={typeFilters}
+        isSelected={isSelected}
       />
     </Fragment>
   );
