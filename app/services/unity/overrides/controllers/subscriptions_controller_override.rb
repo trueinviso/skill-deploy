@@ -4,7 +4,7 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
-      redirect_to main_app.employer_root_path
+      redirect_to main_app.employer_jobs_path
     else
       redirect_to action: "new"
     end

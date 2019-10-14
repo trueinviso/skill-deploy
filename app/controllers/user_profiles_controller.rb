@@ -17,7 +17,7 @@ class UserProfilesController < ApplicationController
   def update
     result = current_user.update(permitted_params)
     if result
-      redirect_to root_path
+      redirect_to edit_profile_path
     else
       render :edit
     end
@@ -43,6 +43,7 @@ class UserProfilesController < ApplicationController
         :skills,
         social_media_profile_attributes: [
           :facebook,
+          :id,
           :instagram,
           :twitter,
           :website,
@@ -51,13 +52,16 @@ class UserProfilesController < ApplicationController
           :bio,
           :first_name,
           :headline,
+          :id,
           :last_name,
           :location,
         ],
         work_experiences_attributes: [
+          :_destroy,
           :company,
           :current_role,
           :end,
+          :id,
           :start,
           :title,
         ],
