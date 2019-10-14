@@ -17,7 +17,7 @@ class UserProfilesController < ApplicationController
   def update
     result = current_user.update(permitted_params)
     if result
-      redirect_to root_path
+      redirect_to edit_user_profile_path
     else
       render :edit
     end
