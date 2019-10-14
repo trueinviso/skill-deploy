@@ -1,14 +1,7 @@
 class JobsController < ApplicationController
   def index
     @jobs = jobs.sort { |x, y| y.created_at <=> x.created_at }
-    @roles = JobRole.all
-    @types = JobType.all
-    @favorites = FavoriteJob.where(user_id: current_user.id).pluck(:job_id)
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @view_component = JobsComponent.new(current_user, jobs)
   end
 
   def show

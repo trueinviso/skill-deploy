@@ -3,7 +3,7 @@ import React from "react";
 import FavoriteJobIcon from "./FavoriteJobIcon";
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg";
 
-const JobListItem = ({ id, company_name, name, job_types, favorites, toggleFavorite }) => {
+const JobListItem = ({ id, company_name, name, job_types, favorites }) => {
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
@@ -46,7 +46,6 @@ JobListItem.propTypes = {
   location: string,
   name: string,
   remote: bool,
-  toggleFavorite: func,
   twitter: string,
   updated_at: string,
   user_id: number,
