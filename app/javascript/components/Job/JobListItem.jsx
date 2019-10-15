@@ -6,15 +6,25 @@ import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
 const JobListItem = ({ id, company_name, name, job_types, favorites, thumbnail_url }) => {
 
   const thumbnailClass = () => {
-    return thumbnail_url.includes("empty_photo_state_icon") ?
+    return emptyThumbnailIcon() ?
       "employer-job-card__image_empty" :
       "image_present"
+  }
+
+  const imageWrapperClass = () => {
+    return emptyThumbnailIcon() ?
+      "" :
+      "employer-job-card__image--avatar"
+  }
+
+  const emptyThumbnailIcon = () => {
+    return thumbnail_url.includes("empty_photo_state_icon")
   }
 
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
-        <div className="image_small job-card__image">
+        <div className={"employer-job-card__image " + (imageWrapperClass())}>
           <img
             src={thumbnail_url}
             className={thumbnailClass()}
