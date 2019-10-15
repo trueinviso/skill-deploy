@@ -4,26 +4,42 @@
 = form.fields_for :social_media_profile,
   current_user.social_media_profile || SocialMediaProfile.new do |p|
   .registration-page--link-section
-    = p.label :website,
-      'Website *',
-      class: 'label'
-    = p.text_field :website,
-      class: 'input input_theme_normal registrations-edit__input'
+    .registration-page--link-section__item
+      = p.label :website,
+        "Website *",
+        class: "label"
+      = p.text_field :website,
+        onfocusout: "validateWebsiteLink('#user_website')",
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_website"
+      .error-message#user_website-error
 
-    = p.label :twitter,
-      'Twitter *',
-      class: 'label'
-    = p.text_field :twitter,
-      class: 'input input_theme_normal registrations-edit__input'
+    .registration-page--link-section__item
+      = p.label :twitter,
+        "Twitter *",
+        class: "label"
+      = p.text_field :twitter,
+        onfocusout: "validateWebsiteLink('#user_twitter')",
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_twitter"
+      .error-message#user_twitter-error
 
-    = p.label :facebook,
-      'Facebook *',
-      class: 'label'
-    = p.text_field :facebook,
-      class: 'input input_theme_normal registrations-edit__input'
+    .registration-page--link-section__item
+      = p.label :facebook,
+        "Facebook *",
+        class: "label"
+      = p.text_field :facebook,
+        onfocusout: "validateWebsiteLink('#user_facebook')",
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_facebook"
+      .error-message#user_facebook-error
 
-    = p.label :instagram,
-      'Instagram *',
-      class: 'label'
-    = p.text_field :instagram,
-      class: 'input input_theme_normal registrations-edit__input'
+    .registration-page--link-section__item
+      = p.label :instagram,
+        "Instagram *",
+        class: "label"
+      = p.text_field :instagram,
+        onfocusout: "validateWebsiteLink('#user_instagram')",
+        class: "input input_theme_normal registrations-edit__input",
+        id: "user_instagram"
+      .error-message#user_instagram-error
