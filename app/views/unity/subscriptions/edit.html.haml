@@ -1,49 +1,46 @@
 - view_component = Employer::BillingComponent.new(current_user)
+.subscription.subscription--edit
+  = render "employer/shared/links",
+    selected: "Billing details"
+  %div
+    .subscription__details
+      %h1.page-heading Billing details
+      %div
+        %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
+        %span.subscription__details__price $#{view_component.price}/mo
+      %p.subscription__details__desc Post unlimited projects on the Gig board every month. Cancel anytime.
+      - if view_component.subscription.canceled_at.present?
+        %div
+          %span.renewal-message.expiration-date  Expires on
+          %span #{view_component.expiration_date}
+      %hr
+      %div
+        %h3.subscription__details__name Total subscription
+        %span.subscription__details__price $#{view_component.price}/mo
+      %hr
+      - if view_component.subscription
+        %div
+          %span Cancel your subscription
+          = react_component('Subscription/CancelSubscriptionModal',{apiPath:subscription_delete_path})
 
-.small-8.columns.renewal-message
-  - if view_component.cancel_at_period_end
-    Your Monthly Subscription will expire on
-    %span.bold
-      #{view_component.expiration_date}.
-  - else
-    Your Monthly Subscription will renew on
-    %span.bold
-      #{view_component.expiration_date}
-    for
-    %span.bold
-      $#{view_component.price}.
 
-- if !view_component.cancel_at_period_end
-  .small-4.columns.submit-field.inverted
-    .right
-      = button_to "Cancel Subscription",
-        unity.subscription_path,
-        method: :delete
+    %h3.subscription--edit__heading Payment details
+    .subscription__card-summary#cardSummary
 
-.row#card-on-file
-  .secondary-heading
-    Card on file
-.row.billing-details-wrapper
-  .card-summary
-    .small-4.columns.plan-wrapper.active-plan.card-on-file
-      #{view_component.card_brand} ....#{view_component.card_last4}
-    .small-8.columns.show-payment-form-link
-      %span.change{ onClick: "togglePaymentForm()" }
-        change
-    .small-12.columns.renewal-message.expiration-date
-      Expires on #{view_component.card_expiration_date}
-  .card-details
+      %span.subscription__card-summary__card-type #{view_component.card_brand}
+      %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
     = form_for :payment_method,
       url: unity.payment_method_path,
       method: :put,
       html: { id: "braintree-payment-form",
+      class: "subscription--edit__form #{view_component.subscription ? 'hidden' : ''}",
       "data-validate":"data-validate",
       "no-validate": "no-validate" } do |f|
+      .subscription__card-details#cardDetails
+        = render "unity/payment_method/card_details", f: f
+        = f.submit "Update Payment Method",
+          data: { disable_with: "Please wait..." },
+          class:'button button_theme_white update-button'
+    %button.button.button_theme_black{onClick: "togglePaymentForm(this)" }
+      Edit my information
 
-      = render "unity/payment_method/card_details", f: f
-
-      = f.submit "Update Payment Method",
-        data: { disable_with: "Please wait..." }
-    .small-8.columns.show-payment-form-link
-      %span{ onClick: "togglePaymentForm()" }
-        cancel

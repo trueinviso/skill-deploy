@@ -52,13 +52,20 @@
     position: absolute;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    z-index: 1000;
+    z-index: 4;
     margin-top: -5px;
     background-color: $color-white;
     margin-top: 0;
 
     &--open {
-      display: block;
+      display: flex;
+      flex-direction: column;
+
+      & > .dropdown__link {
+        line-height: 46px;
+        padding-left: 15px;
+        cursor: pointer;
+      }
     }
 
     &--inline {
