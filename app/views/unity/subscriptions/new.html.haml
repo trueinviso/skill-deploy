@@ -7,14 +7,14 @@
       %h2.subscription__info__name=Unity::SubscriptionPlan.first.name
       %span.subscription__info__desc=Unity::SubscriptionPlan.first.description
     .subscription__total
-      %span Total today 
+      %span Total today
       %span $#{Unity::SubscriptionPlan.first.price}
 
     = form_for :subscription,
       url: [:subscription],
       method: :create,
       html: { id: "braintree-payment-form",
-      "data-validate": "data-validate" 
+      "data-validate": "data-validate",
       class: "subscription__form",
       "no-validate": "no-validate" } do |f|
 

@@ -3,7 +3,7 @@ this.validator = {
     return document.querySelector(id).value.length === 0;
   },
   validate_presence: function(id) {
-    var is_valid = this.validate_is_empty(id);
+    var is_valid = !this.validate_is_empty(id);
     this.set_red_border(is_valid, id);
     this.error_message_check(id, is_valid, "This field is required");
     return is_valid;
