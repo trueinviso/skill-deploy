@@ -3,14 +3,21 @@ import React from "react";
 import FavoriteJobIcon from "./FavoriteJobIcon";
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg";
 
-const JobListItem = ({ id, company_name, name, job_types, favorites }) => {
+const JobListItem = ({ id, company_name, name, job_types, favorites, thumbnail_url }) => {
+
+  const thumbnailClass = () => {
+    return thumbnail_url.includes("empty_photo_state_icon") ?
+      "employer-job-card__image_empty" :
+      "image_present"
+  }
+
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card">
         <div className="image_small job-card__image">
           <img
-            src={emptyImg}
-            className="employer-job-card__image_empty"
+            src={thumbnail_url}
+            className={thumbnailClass()}
             alt="job-logo"
           />
         </div>
