@@ -1,16 +1,16 @@
 const sideNav = (function() {
   function setActiveLink() {
-    const links = document.getElementsByClassName("side-nav__link");
+    const links = document.querySelectorAll(".side-nav__link");
     for (let i in links) {
       removeActiveClass(links[i]);
-      if(links[i].href == window.location.href) {
+      if (links[i].href === window.location.href) {
         addActiveClass(links[i]);
       }
     }
   }
 
   function removeActiveClass(link) {
-    if(link.classList) {
+    if (link.classList) {
       link.classList.remove("side-nav__link_active");
     }
   }
@@ -22,9 +22,9 @@ const sideNav = (function() {
   return {
     setActiveLink: setActiveLink
   };
-}());
+})();
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("turbolinks:load", function() {
   if (document.getElementsByClassName("side-nav").length > 0) {
     sideNav.setActiveLink();
   }
