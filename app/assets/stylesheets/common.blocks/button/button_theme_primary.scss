@@ -3,4 +3,8 @@
 .button_theme_primary {
   color: $color-white;
   background-color: $color-primary;
+  &:disabled {
+    background-color: rgba($color-primary, 0.7);
+    cursor: not-allowed;
+  }
 }
