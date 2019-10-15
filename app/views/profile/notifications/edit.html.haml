@@ -6,4 +6,4 @@
     - else
       = render 'shared/links'
 
-    = render 'form', user_profile: UserProfile.new
+    = render 'form', user_profile: current_user.user_profile
