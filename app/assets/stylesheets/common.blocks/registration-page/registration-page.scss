@@ -33,4 +33,12 @@
       margin-bottom: 50px;
     }
   }
+
+  &__notice {
+    display: block;
+    margin-top: 15px;
+    color: $color-primary;
+    font-weight: bold;
+    font-size: $font-size-medium;
+  }
 }

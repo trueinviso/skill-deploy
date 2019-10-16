@@ -1,0 +1,53 @@
+.account-settings {
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  margin-top: 27px;
+
+  @include desktop {
+    max-width: fit-content;
+    margin-top: 68px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-gap: 90px;
+    grid-template-columns: max-content 480px;
+    grid-auto-columns: 1fr;
+  }
+  &__content {
+    margin-top: 40px;
+    @include desktop {
+      margin-top: 0;
+    }
+  }
+
+  &__form {
+    @include desktop {
+      margin-top: 64px;
+      max-width: 480px;
+    }
+
+    &__field {
+      width: 100%;
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+    }
+    &__submit {
+      @include desktop {
+        margin-top: 15px;
+      }
+      margin-top: 20px;
+      background-color: transparent;
+      color: $color-primary;
+      font-family: Averta;
+      font-size: $font-size-normal;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.14;
+      letter-spacing: normal;
+      border: 0;
+      outline: none;
+    }
+  }
+}
