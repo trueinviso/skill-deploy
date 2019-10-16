@@ -1,9 +1,8 @@
 @import "colors";
+$nav-height: 57px;
 
 .nav {
   .menu-toggle {
-    width: 25px;
-    height: 25px;
     outline: none;
     &:hover {
       cursor: pointer;
@@ -18,7 +17,7 @@
   justify-content: space-between;
   border-bottom: 1px solid $color-light-concrete;
   background-color: $color-white;
-  height: 57px;
+  height: $nav-height;
   padding-left: 15px;
   padding-right: 15px;
 
@@ -34,7 +33,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 40px;
 
     &--avatar-present {
       & > li {
@@ -43,7 +41,18 @@
     }
 
     &__item {
+      position: relative;
       line-height: 40px;
+
+      &--parent {
+        @include desktop {
+          &:hover {
+            & > .nav__menu__nested {
+              display: block;
+            }
+          }
+        }
+      }
       &:not(:last-child) {
         margin-right: 40px;
       }
@@ -76,6 +85,33 @@
             object-fit: contain;
           }
         }
+      }
+    }
+
+    &__nested {
+      text-align: center;
+      z-index: 5;
+      min-width: 120px;
+      display: none;
+      position: absolute;
+      right: -40px;
+      top: 50px;
+      padding: 25px 15px;
+      background: $color-white;
+      border: 1px solid $color-light-concrete;
+      border-top-color: $color-dark-grey;
+      .nav__menu__item {
+        margin: 0;
+      }
+      &:before {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        content: " ";
+        display: block;
+        background: transparent;
+        height: 60px;
+        width: 100%;
       }
     }
   }
