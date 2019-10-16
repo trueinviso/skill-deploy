@@ -4,7 +4,8 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
-      redirect_to main_app.employer_jobs_path
+      flash[:success] = "Thank you for your payment! Your subscription is now active"
+      redirect_to main_app.new_employer_job_path
     else
       redirect_to action: "new"
     end
