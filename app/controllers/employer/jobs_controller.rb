@@ -15,8 +15,8 @@ module Employer
 
     def create
       authorize [:employer, Job]
-      job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
-      if job.save
+      @job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
+      if @job.save
         redirect_to employer_jobs_path
       else
         render :new
