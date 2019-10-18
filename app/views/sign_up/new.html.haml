@@ -5,7 +5,7 @@
 
 = form_for(@user,
   url: registration_path(@user)) do |f|
-
+  = render("application/form_errors", object: @user)
   = f.fields_for :user_profile, UserProfile.new do |p|
     = p.text_field :first_name
     = p.text_field :last_name

@@ -23,7 +23,12 @@
       w.removeEventListener("click", handleClickOutside);
     }
 
-    menuToggler.addEventListener("click", openNav);
-    closeMenuBtn.addEventListener("click", closeNav);
+    if (menuToggler) {
+      menuToggler.addEventListener("click", openNav);
+    }
+
+    if (closeMenuBtn) {
+      closeMenuBtn.addEventListener("click", closeNav);
+    }
   });
 })(window, document);

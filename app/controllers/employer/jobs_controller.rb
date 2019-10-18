@@ -15,8 +15,8 @@ module Employer
 
     def create
       authorize [:employer, Job]
-      job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
-      if job.save
+      @job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
+      if @job.save
         redirect_to employer_jobs_path
       else
         render :new
@@ -29,9 +29,9 @@ module Employer
     end
 
     def update
-      job = Job.find(params[:id])
-      authorize [:employer, job]
-      if job.update(valid_params[:job])
+      @job = Job.find(params[:id])
+      authorize [:employer, @job]
+      if @job.update(valid_params[:job])
         redirect_to [:employer, :jobs]
       else
         render :edit

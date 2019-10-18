@@ -2,8 +2,8 @@
   - if flash.any?
     - flash.each do |name, msg|
       - if msg.present?
-        %div{ class: "flash-message #{name}" }
+        %div{ class: "flash-message flash-message--#{name}" }
           .flash-message__content
             .flash-message__text
               = msg
-              %button.flash-message__close &times;
+            %button.flash-message__close &times;

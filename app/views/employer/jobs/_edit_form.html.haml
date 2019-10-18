@@ -2,6 +2,7 @@
   url: employer_job_path(job),
   html: { method: :put, multipart: true }) do |f|
 
+  = render 'form_errors', object: job
   = render 'project_details', f: f, job: job
 
   .create-listing-page__submit-buttons

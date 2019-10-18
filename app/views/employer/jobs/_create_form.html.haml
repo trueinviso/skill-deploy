@@ -5,6 +5,7 @@
   'no-validate': 'no-validate',
   multipart: true }) do |f|
 
+  = render 'form_errors', object:f.object
   = render 'project_details', f: f, job: job
 
   .create-listing-page__submit-buttons
