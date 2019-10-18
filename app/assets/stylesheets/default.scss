@@ -1,5 +1,6 @@
 @import "base/breakpoints";
 @import "dimensions";
+@import "base/mixins";
 
 body {
   font-family: "Noto Sans", sans-serif;
@@ -22,6 +23,27 @@ body {
   grid-gap: 15px;
 }
 
-.text-center{
-  text-align: center
+.text-center {
+  text-align: center;
+}
+
+.admin-container {
+  max-width: 100%;
+  margin-top: 28px;
+  @include tablet {
+    margin-left: $mobile-margin-left !important;
+    margin-right: $mobile-margin-right !important;
+  }
+
+  @include desktop {
+    margin-top: 68px;
+    max-width: 1060px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-gap: 90px;
+    grid-template-columns: max-content 1fr;
+    grid-auto-columns: 1fr;
+    align-items: start;
+  }
 }

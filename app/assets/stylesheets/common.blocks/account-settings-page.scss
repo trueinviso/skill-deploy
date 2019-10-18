@@ -1,18 +1,4 @@
 .account-settings {
-  margin-left: $mobile-margin-left;
-  margin-right: $mobile-margin-right;
-  margin-top: 27px;
-
-  @include desktop {
-    max-width: fit-content;
-    margin-top: 68px;
-    margin-left: auto;
-    margin-right: auto;
-    display: grid;
-    grid-gap: 90px;
-    grid-template-columns: max-content 480px;
-    grid-auto-columns: 1fr;
-  }
   &__content {
     margin-top: 40px;
     @include desktop {

@@ -1,9 +1,21 @@
 @import "common";
 @include subscriptionPAge {
   &--edit {
+    margin-top: 28px !important;
     @include desktop {
-      grid-gap: 90px;
-      grid-template-columns: 130px 500px !important;
+      margin-top: 68px !important;
+      max-width: 1060px !important;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-gap: 90px !important;
+      grid-template-columns: max-content 1fr !important;
+      grid-auto-columns: 1fr !important;
+      align-items: start !important;
+    }
+
+    &__content {
+      max-width: 500px;
     }
     &__heading {
       margin-top: 70px;
