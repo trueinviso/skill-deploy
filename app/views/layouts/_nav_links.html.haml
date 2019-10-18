@@ -3,8 +3,8 @@
     %a{ href: '#'}
       Community
   %li.nav__menu__item.hidden-mobile
-    %a{ href: main_app.applied_fors_path,
-      class: "#{'active-link' if current_page?(main_app.applied_fors_path)}" }
+    %a{ href: main_app.jobs_path,
+      class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
       Gig board
   %li.nav__menu__item.nav__menu__item--parent
     .nav__menu__item__profile{class: [current_user.thumbnail.present? && "nav__menu__item__profile--exist"] }
@@ -18,8 +18,8 @@
         %a{ href: '#'}
           Community
       %li.nav__menu__item.hidden-desktop
-        %a{ href: main_app.applied_fors_path,
-          class: "#{'active-link' if current_page?(main_app.applied_fors_path)}" }
+        %a{ href: main_app.jobs_path,
+          class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
           Gig board
       %li.nav__menu__item
         = link_to 'Sign out' , main_app.destroy_user_session_path, method: :delete
@@ -37,8 +37,8 @@
       %a{ href: '#'}
         Community
     %li.nav__offcanvas__menu__item
-      %a{ href: main_app.applied_fors_path,
-        class: "#{'active-link' if current_page?(main_app.applied_fors_path)}" }
+      %a{ href: main_app.jobs_path,
+        class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
         Gig board
     %li.nav__offcanvas__menu__item
       = link_to 'Sign out' , main_app.destroy_user_session_path, method: :delete
