@@ -1,13 +1,15 @@
 - thumbnail = f.object.thumbnail_url
 = react_component("shared/FileUpload/index", { thumbnail: thumbnail, resource: job, type: "job", name:"job[thumbnail_attributes][file]", upload:false })
 .role-company-inputs
-  .job-name
+  .job-name.create-listing-page__input
     = f.label :name, "Role Title *", class: "label"
-    = f.text_field :name, class: "input create-listing-page__input"
+    = f.text_field :name, class: "input", id:'role',onfocusout: "listingPage.validatePresence('#role')"
+    .error-message#role-error
 
-  .company-name
+  .company-name.create-listing-page__input
     = f.label :company_name, "Company Name *", class: "label"
-    = f.text_field :company_name, class: "input create-listing-page__input"
+    = f.text_field :company_name, class: "input", id:'company_name', onfocusout: "listingPage.validatePresence('#company_name')"
+    .error-message#company_name-error
 
 = f.label :description, "Job Description *", class: "label"
 = f.rich_text_area :description,
@@ -58,27 +60,44 @@
   = f.radio_button :remote, "0", class: "create-listing-page__radio-button"
   = f.label :remote, "No",
     for: "job_remote_0",
-    class: "create-listing-page__radio-label"
+    class: "create-listing-page__radio-label",
+    id:'job_remote',
+    onfocusout: "listingPage.validatePresence('#job_remote')"
+  .error-message#job_remote-error
+
 
 .sub-heading.create-listing-page__sub-heading
   Links
+.create-listing-page__input
+  = f.label :company_website, "Website *", class: "label"
+  = f.text_field :company_website,
+    class: "input",
+    placeholder: "http://www.website.com",
+    id:'company_website',
+    onfocusout: "listingPage.validateLink('#company_website')"
+  .error-message#company_website-error
+.create-listing-page__input
+  = f.label :twitter, "Twitter *", class: "label"
+  = f.text_field :twitter,
+    class: "input create-listing-page__input",
+    placeholder: "http://www.twitter.com/username",
+    id:'twitter',
+    onfocusout: "listingPage.validateLink('#twitter')"
+  .error-message#twitter-error
 
-= f.label :company_website, "Website *", class: "label"
-= f.text_field :company_website,
-  class: "input create-listing-page__input",
-  placeholder: "http://www.website.com"
-
-= f.label :twitter, "Twitter *", class: "label"
-= f.text_field :twitter,
-  class: "input create-listing-page__input",
-  placeholder: "http://www.twitter.com/username"
-
-= f.label :facebook, "Facebook *", class: "label"
-= f.text_field :facebook,
-  class: "input create-listing-page__input",
-  placeholder: "http://www.facebook.com/username"
-
-= f.label :instagram, "Instagram *", class: "label"
-= f.text_field :instagram,
-  class: "input create-listing-page__input",
-  placeholder: "http://www.instagram.com/username"
+.create-listing-page__input
+  = f.label :facebook, "Facebook *", class: "label"
+  = f.text_field :facebook,
+    class: "input create-listing-page__input",
+    placeholder: "http://www.facebook.com/username",
+    id:'facebook',
+    onfocusout: "listingPage.validateLink('#facebook')"
+  .error-message#facebook-error
+.create-listing-page__input
+  = f.label :instagram, "Instagram *", class: "label"
+  = f.text_field :instagram,
+    class: "input create-listing-page__input",
+    placeholder: "http://www.instagram.com/username",
+    id:'instagram',
+    onfocusout: "listingPage.validateLink('#instagram')"
+  .error-message#instagram-error
