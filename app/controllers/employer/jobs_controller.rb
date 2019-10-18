@@ -29,9 +29,9 @@ module Employer
     end
 
     def update
-      job = Job.find(params[:id])
-      authorize [:employer, job]
-      if job.update(valid_params[:job])
+      @job = Job.find(params[:id])
+      authorize [:employer, @job]
+      if @job.update(valid_params[:job])
         redirect_to [:employer, :jobs]
       else
         render :edit
