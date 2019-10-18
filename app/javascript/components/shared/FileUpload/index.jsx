@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import React from "react";
-import ProfileImage from "./Profile/ProfileImage";
-import ImageButtons from "./Profile/ImageButtons";
-import heyfamFetch from "../helpers/heyfamFetch";
+import ImagePreview from "./ImagePreview";
+import ImageButtons from "./ImageButtons";
+import heyfamFetch from "../../../helpers/heyfamFetch";
 
 const THUMBNAIL_API = "/api/v1/thumbnail";
 
@@ -13,14 +13,20 @@ class FileUpload extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
     resource: PropTypes.shape({
-      id: PropTypes.number.isRequired
+      id: PropTypes.number
     }).isRequired,
     thumbnail: PropTypes.string,
-    type: PropTypes.oneOf(["user", "job"]).isRequired
+    type: PropTypes.oneOf(["user", "job"]).isRequired,
+    upload: PropTypes.bool
+  };
+
+  static defaultProps = {
+    upload: true
   };
 
   constructor(props) {
     super(props);
+    console.log("Props", props);
 
     this.state = {
       file: null,
@@ -30,17 +36,17 @@ class FileUpload extends React.Component {
         ? UPLOAD_BUTTON_NAME
         : CHANGE_BUTTON_NAME
     };
-
-    this.onChange = this.onChange.bind(this);
-    this.deleteFile = this.deleteFile.bind(this);
-    this.emptyPhoto = this.emptyPhoto.bind(this);
   }
 
-  onChange(e) {
+  onChange = e => {
     const file = e.target.files[0];
-    document.getElementById("profileUploadPicker").value = "";
-    this.fileUpload(file).then(this.fetchComplete);
-  }
+    if (this.props.upload) {
+      e.target.value = null; // clear file value
+      this.fileUpload(file).then(this.fetchComplete);
+    } else {
+      this.createPreview(file).then(this.fetchComplete);
+    }
+  };
 
   fetchComplete = resp => {
     this.setState(
@@ -65,16 +71,12 @@ class FileUpload extends React.Component {
     return heyfamFetch(THUMBNAIL_API, data, options, "file");
   };
 
-  emptyPhoto() {
-    return this.state.thumbnail.includes("empty_photo_state_icon");
-  }
-
-  deleteFile() {
+  deleteFile = () => {
     if (this.state.isFetching || this.emptyPhoto()) return;
     this.setState({ isFetching: true });
     const options = { method: "DELETE" };
     heyfamFetch(API, {}, options).then(resp => this.fetchComplete(resp));
-  }
+  };
 
   updateNavbarAvatar = () => {
     const userAvatar = document.getElementById("userAvatar");
@@ -83,16 +85,33 @@ class FileUpload extends React.Component {
     }
   };
 
+  createPreview = file =>
+    new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        resolve({
+          thumbnail: e.target.result
+        });
+      };
+      reader.readAsDataURL(file);
+    });
+
   render() {
     const { thumbnail, buttonName, isFetching } = this.state;
+    const { name } = this.props;
     return (
-      <div id="profile-picture" className="file-upload">
-        <ProfileImage thumbnail={thumbnail} emptyPhoto={this.emptyPhoto} />
+      <div className="file-upload">
+        <ImagePreview
+          thumbnail={thumbnail}
+          isEmpty={this.state.thumbnail.includes("empty_photo_state_icon")}
+          name={name}
+        />
         <ImageButtons
           onChange={this.onChange}
           deleteFile={this.deleteFile}
           buttonName={buttonName}
           disabled={isFetching}
+          fileName={this.props.name}
         />
       </div>
     );

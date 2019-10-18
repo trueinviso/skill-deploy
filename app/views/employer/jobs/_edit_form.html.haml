@@ -1,6 +1,7 @@
 = form_for(job,
   url: employer_job_path(job),
-  method: :put) do |f|
+  html: { method: :put, multipart: true }) do |f|
+
   = render 'form_errors', object: job
   = render 'project_details', f: f, job: job
 
