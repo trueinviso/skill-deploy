@@ -24,6 +24,7 @@ class Job < ApplicationRecord
   accepts_nested_attributes_for :job_types
 
   validates_inclusion_of :remote, in: [true, false]
+  validates :name, presence: true
 
   def self.job_type_name(job_type_name)
     joins(:job_types)
