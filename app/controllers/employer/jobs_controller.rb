@@ -1,7 +1,5 @@
 module Employer
   class JobsController < ApplicationController
-    # before_action :guard_user_subscribed!
-
     def index
       @jobs = policy_scope([:employer, Job])
       @view_component = Employer::JobsComponent
@@ -46,12 +44,6 @@ module Employer
     end
 
     private
-
-    def guard_user_subscribed!
-      if current_user.subscription.blank?
-        redirect_to unity.new_subscription_path
-      end
-    end
 
     def valid_params
       params
