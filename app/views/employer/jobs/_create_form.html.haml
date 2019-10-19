@@ -2,13 +2,18 @@
   url: employer_jobs_path(job),
   html: { id: 'stripe-payment-form',
   'data-validate': 'data-validate',
-  'no-validate': 'no-validate' }) do |f|
+  'no-validate': 'no-validate',
+  onsubmit: "return listingPage.validateForm(this);",
+  onchange: "listingPage.checkErrors(this)",
+  'no-validate': 'no-validate',
+  multipart: true }) do |f|
 
+  = render 'form_errors', object:f.object
   = render 'project_details', f: f, job: job
 
   .create-listing-page__submit-buttons
     = f.submit 'Preview Listing',
-      class: 'button button_theme_primary create-listing-page__button'
+      class: 'button button_theme_primary create-listing-page__button',id:'button-submit'
 
     %a{ href: '#' }
       %button.button.button_theme_white.create-listing-page__button

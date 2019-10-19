@@ -13,6 +13,8 @@
     url: registration_path(resource_name),
     html: { onsubmit: "return validateRegistration();" } do |f|
 
+    = render "form_errors", object: @user
+
     = f.fields_for :user_profile, UserProfile.new do |p|
       .form
         = p.label :first_name,

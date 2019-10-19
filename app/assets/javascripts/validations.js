@@ -117,6 +117,13 @@ this.validator = {
     );
     return is_valid;
   },
+  validate_is_checked: function(id, errorId) {
+    var is_valid = document.getElementById(id).checked === true;
+    console.log("is", is_valid);
+    console.log("errorId", errorId);
+    this.error_message_check(errorId, is_valid, "Must be checked");
+    return is_valid;
+  },
   clear: function(id) {
     this.hide_error_message(id);
     this.remove_red_border(id);

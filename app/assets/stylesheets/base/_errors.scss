@@ -1,9 +1,10 @@
 .error-message {
   color: $color-danger;
   margin: 10px 0;
+  font-size: $font-size-small;
 }
 
-#error_explanation {
+#error-explanation {
   margin: 20px auto;
   border: 1px solid $color-danger;
   padding: 20px;

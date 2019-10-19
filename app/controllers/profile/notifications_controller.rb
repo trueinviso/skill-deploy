@@ -1,8 +1,8 @@
 module Profile
   class NotificationsController < ApplicationController
     def update
-      user_profile = current_user.user_profile
-      if user_profile.update(user_profile_params)
+      @user_profile = current_user.user_profile
+      if @user_profile.update(user_profile_params)
         redirect_to edit_profile_notifications_path
       else
         render "edit"

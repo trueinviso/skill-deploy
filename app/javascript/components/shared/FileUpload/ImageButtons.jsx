@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-function ImageButtons({ onChange, deleteFile, buttonName, isFetching }) {
+function ImageButtons({
+  onChange,
+  buttonName,
+  isFetching,
+  metaText,
+  fileName
+}) {
   return (
     <div>
       <label className="image-file-picker-label create-listing-page__image-file-picker-label">
@@ -9,7 +15,7 @@ function ImageButtons({ onChange, deleteFile, buttonName, isFetching }) {
           type="file"
           onChange={onChange}
           className="file-picker-input"
-          name="file"
+          name={fileName}
           id="profileUploadPicker"
           accept="image/x-png,image/gif,image/jpeg"
           disabled={isFetching}
@@ -17,19 +23,22 @@ function ImageButtons({ onChange, deleteFile, buttonName, isFetching }) {
         {buttonName}
       </label>
       <div className="instruction-text create-listing-page__instruction-text">
-        Upload your company logo. This photo will be publicly visible to all
-        Heyfam users.
+        {metaText}
       </div>
     </div>
   );
 }
 
 ImageButtons.propTypes = {
-  buttonName: PropTypes.string
+  buttonName: PropTypes.string,
+  metaText: PropTypes.string,
+  fileName: PropTypes.string.isRequired
 };
 
 ImageButtons.defaultProps = {
-  buttonName: "Upload a photo"
+  buttonName: "Upload a photo",
+  metaText: `Upload your company logo. This photo will be publicly visible to all
+  Heyfam users.`
 };
 
 export default ImageButtons;

@@ -1,17 +1,4 @@
 .favorite-jobs {
-  display: flex;
-  flex-direction: column;
-  margin-left: $mobile-margin-left;
-  margin-right: $mobile-margin-right;
-  margin-top: 27px;
-
-  @include desktop {
-    margin-top: 58px;
-    margin-left: 191px;
-    margin-right: 190px;
-    flex-direction: row;
-  }
-
   &__heading {
     font-size: $font-size-large;
     font-weight: normal;
@@ -19,7 +6,7 @@
     font-stretch: normal;
     line-height: 1.36;
     letter-spacing: normal;
-    color: #444444;
+    color: $color-tundora;
     margin-bottom: 67px;
   }
 
@@ -29,7 +16,6 @@
     margin-top: 40px;
 
     @include desktop {
-      margin-left: 90px;
       margin-top: 0;
     }
   }
