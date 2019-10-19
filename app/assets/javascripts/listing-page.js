@@ -63,6 +63,13 @@ var listingPage = (function(d, validator) {
         }
       });
   }
+
+  function validateUrlFields(errors) {
+    const REQUIRED_IDS = ["company_website", "twitter", "instagram", "facebook"]
+
+    REQUIRED_IDS
+      .forEach(id => errors.push(!validateLink(`#${id}`)));
+  }
   /**
    *
    * @param {*} errors
@@ -103,6 +110,7 @@ var listingPage = (function(d, validator) {
     const errors = [];
     validateTextFields(errors, form);
     validateRadioFields(errors);
+    validateUrlFields(errors);
     return !errors.some(er => er === true);
   }
   /**

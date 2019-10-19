@@ -37,6 +37,11 @@ class Job < ApplicationRecord
     :remote,
     length: { minimum: 1 }
 
+  validates :facebook,
+    :instagram,
+    :twitter,
+    :company_website, url: true
+
   def self.job_type_name(job_type_name)
     joins(:job_types)
       .where(
