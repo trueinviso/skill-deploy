@@ -1,5 +1,4 @@
 var listingPage = (function(d, validator) {
-  const REQUIRED_FIELDS_IDS = ["role", "company_name"];
   /**
    *
    * @param {*} id
@@ -45,11 +44,15 @@ var listingPage = (function(d, validator) {
   }
   /**
    *
-   * @param {*} form
+   * @param {*} errors, form
    */
-  function validate(form) {
-    const errors = [];
-    Array.from(form.elements)
+  function validateTextFields(errors, form) {
+    const REQUIRED_FIELDS_IDS = ["role", "company_name", "description"];
+    const formElements = Array
+      .from(form.elements)
+      .concat(d.querySelector("trix-editor"));
+
+    Array.from(formElements)
       .filter(el => el.tagName !== "BUTTON")
       .filter(inputEl => inputEl.type !== "hidden")
       .forEach(el => {
@@ -58,18 +61,47 @@ var listingPage = (function(d, validator) {
           errors.push(!validator.validate_presence(`#${id}`));
         }
       });
+  }
+  /**
+   *
+   * @param {*} errors
+   */
+  function validateRadioFields(errors) {
+    const REQUIRED_FIELDS_CLASSES = [
+      "job_role",
+      "job_remote",
+      "job_type",
+      "job_experience"
+    ];
 
-    const isCheckedRemote0 = d.getElementById("job_remote_0").checked === false;
-    const isCheckedRemote1 = d.getElementById("job_remote_1").checked === false;
+    REQUIRED_FIELDS_CLASSES.forEach(className => {
+      const els = d.querySelectorAll(`.${className}`);
+      let isChecked = false;
 
-    if (isCheckedRemote0 && isCheckedRemote1) {
-      validator.show_error_message("#job_remote", "This field is required");
-      errors.push(true);
-    } else {
-      validator.hide_error_message("#job_remote");
-      errors.push(false);
-    }
+      if(els.length === 0) return;
 
+      els.forEach(el => {
+        if (el.checked === true) isChecked = true
+      });
+
+      if (isChecked) {
+        validator.hide_error_message(`#${className}`);
+        errors.push(false);
+      } else {
+        validator.show_error_message(`#${className}`, "This field is required");
+        errors.push(true);
+      }
+    });
+  }
+
+  /**
+   *
+   * @param {*} form
+   */
+  function validate(form) {
+    const errors = [];
+    validateTextFields(errors, form);
+    validateRadioFields(errors);
     return !errors.some(er => er === true);
   }
   /**
