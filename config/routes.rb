@@ -50,11 +50,6 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
-    resource :profile,
-      only: [:edit, :update]
-    resource :billing,
-      controller: :billing,
-      only: [:edit, :update, :destroy]
 
     namespace :preview do
       resources :job,
