@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:trueinviso/unity.git
+  remote: https://github.com/trueinviso/unity.git
   revision: ac0d23193f998bd2581a2ea241121adbde5745c4
   specs:
     unity (0.1.0)
