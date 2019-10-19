@@ -46,7 +46,7 @@ module HasAttachments
       if send(type)
         send(type).file_url(size)
       else
-        send("build_#{type}").file_url
+        send("build_#{type}").file_url(size)
       end
     end
   end

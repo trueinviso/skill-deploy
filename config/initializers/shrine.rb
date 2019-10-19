@@ -43,6 +43,7 @@ end
 Shrine.plugin :activerecord # for AR integration
 Shrine.plugin :cached_attachment_data # for forms
 # Shrine.plugin :upload_endpoint # for direct upload ajax
-Shrine.plugin :logging, logger: Rails.logger
+Shrine.plugin :instrumentation
+Shrine.logger = Rails.logger
 Shrine.plugin :remote_url, max_size: 20 * 1024 * 1024 # remote_url support, max 20mb
 Shrine.plugin :restore_cached_data # for pulling metadata after a direct upload
