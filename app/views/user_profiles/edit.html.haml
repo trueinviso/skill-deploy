@@ -1,7 +1,7 @@
-.container
-  .registrations-edit
-    = render 'employer/shared/links',
-      selected: 'Your profile'
-    .registration-page__content
-      %h1{ :class => "registration-page__heading" }= "Your profile"
-      = render "form", action: :put
+
+.admin-container.registrations-edit
+  = render 'employer/shared/links',
+    selected: 'Your profile'
+  .registration-page__content
+    %h1{ :class => "registration-page__heading" }= "Your profile"
+    = render "form", action: :put
