@@ -1,4 +1,4 @@
-.favorite-jobs
+.admin-container.favorite-jobs
   .left-section
     = render "employer/shared/links",
         selected: "Saved projects"
@@ -6,4 +6,4 @@
     .favorite-jobs__heading.hidden-mobile
       Saved projects
 
-    = react_component("Job/FavoriteJobPage", { initialJobs:@jobs.as_json(methods: :job_types) })
+    = react_component("Job/FavoriteJobPage", { jobs: @jobs.as_json(methods: :job_types), favorites: @favorites })

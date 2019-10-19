@@ -1,5 +1,5 @@
 (function(w, d) {
-  d.addEventListener("DOMContentLoaded", event => {
+  d.addEventListener("turbolinks:load", () => {
     const menuToggler = d.getElementById("menuToggler");
     const closeMenuBtn = d.getElementById("closeMenu");
     const menu = document.getElementById("offcanvas");
@@ -23,7 +23,12 @@
       w.removeEventListener("click", handleClickOutside);
     }
 
-    menuToggler.addEventListener("click", openNav);
-    closeMenuBtn.addEventListener("click", closeNav);
+    if (menuToggler) {
+      menuToggler.addEventListener("click", openNav);
+    }
+
+    if (closeMenuBtn) {
+      closeMenuBtn.addEventListener("click", closeNav);
+    }
   });
 })(window, document);

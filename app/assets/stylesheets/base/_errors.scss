@@ -1,0 +1,24 @@
+.error-message {
+  color: $color-danger;
+  margin: 10px 0;
+  font-size: $font-size-small;
+}
+
+#error-explanation {
+  margin: 20px auto;
+  border: 1px solid $color-danger;
+  padding: 20px;
+
+  h2 {
+    color: $color-danger;
+    font-size: $font-size-large;
+  }
+  ul {
+    list-style: none;
+    margin-top: 15px;
+    li {
+      color: $color-danger;
+      line-height: 25px;
+    }
+  }
+}

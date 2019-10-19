@@ -1,0 +1,165 @@
+@import "common";
+@include subscriptionPAge {
+  &--edit {
+    margin-top: 28px !important;
+    @include desktop {
+      margin-top: 68px !important;
+      max-width: 1060px !important;
+      margin-left: auto;
+      margin-right: auto;
+      display: grid;
+      grid-gap: 90px !important;
+      grid-template-columns: max-content 1fr !important;
+      grid-auto-columns: 1fr !important;
+      align-items: start !important;
+    }
+
+    &__content {
+      max-width: 500px;
+    }
+    &__heading {
+      margin-top: 70px;
+      margin-bottom: 31px;
+      font-size: $font-size-large;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.36;
+      letter-spacing: normal;
+      color: $color-tundora;
+    }
+    &__form {
+      margin-bottom: 20px;
+      .button {
+        margin-top: 38px;
+      }
+    }
+  }
+
+  &__details {
+    @include desktop {
+      margin-top: 0;
+    }
+    .page-heading {
+      margin-bottom: 58px;
+    }
+    margin-top: 50px;
+    margin-bottom: 13px;
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 7px;
+      @include desktop {
+        margin-bottom: 14px;
+      }
+    }
+
+    font-size: $font-size-normal;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 2.14;
+    letter-spacing: normal;
+    color: $color-tundora;
+
+    &__desc {
+      max-width: 255px;
+      height: 42px;
+      font-family: Averta;
+      color: $color-brown-grey;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $color-brown-grey;
+      margin-bottom: 14px;
+    }
+  }
+
+  &__card-summary {
+    margin-bottom: 20px;
+    &__card-type {
+      height: 30px;
+      font-size: $font-size-normal;
+      font-weight: bold;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 2.14;
+      letter-spacing: normal;
+      color: $color-tundora;
+    }
+    &__card-number {
+      height: 21px;
+      color: $color-brown-grey;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      color: $color-brown-grey;
+      margin-left: 22px;
+    }
+  }
+
+  .update-button {
+    max-width: 222px;
+  }
+  .cancel-subscription {
+    max-width: 75px;
+    padding: 0 10px;
+  }
+
+  &__cancel-modal {
+    &__content {
+      margin: auto;
+      max-width: 500px;
+      background: $color-white;
+      border-radius: 6px;
+      padding: 50px;
+      font-family: Averta;
+
+      hr {
+        margin: 20px 0;
+      }
+
+      .close-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      &__header {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: baseline;
+        height: 50px;
+
+        &__title {
+          align-self: flex-end;
+          font-size: $font-size-xlarge;
+          margin: 0;
+        }
+      }
+      &__footer {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        grid-gap: 20px;
+      }
+    }
+    &__overlay {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.75);
+      display: flex;
+      outline: none;
+    }
+  }
+}

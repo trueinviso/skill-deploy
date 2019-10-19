@@ -76,6 +76,10 @@ class User < ApplicationRecord
     subscriptions.any?
   end
 
+  def registering?
+    roles.empty?
+  end
+
   def unlimited?
     subscriptions.any? { |s| s.active? && s.unlimited? }
   end

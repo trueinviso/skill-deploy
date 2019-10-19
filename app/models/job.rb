@@ -25,11 +25,28 @@ class Job < ApplicationRecord
 
   validates_inclusion_of :remote, in: [true, false]
 
+  validates :name,
+    :company_name,
+    :description,
+    :location,
+    presence: true
+
+  validates :employer_job_types,
+    :employer_job_roles,
+    :employer_job_experiences,
+    :remote,
+    length: { minimum: 1 }
+
+  validates :facebook,
+    :instagram,
+    :twitter,
+    :company_website, url: true
+
   def self.job_type_name(job_type_name)
     joins(:job_types)
       .where(
         "job_types.name = :job_type_name",
-        job_type_name: job_type_name,
+        job_type_name: job_type_name.titleize,
     )
   end
 
@@ -37,7 +54,7 @@ class Job < ApplicationRecord
     joins(:job_roles)
       .where(
         "job_roles.name = :job_role_name",
-        job_role_name: job_role_name,
+        job_role_name: job_role_name.titleize,
     )
   end
 

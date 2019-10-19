@@ -1,8 +1,7 @@
 .nav {
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     .menu-toggle {
       display: none;
-  
     }
 
     flex-direction: row;

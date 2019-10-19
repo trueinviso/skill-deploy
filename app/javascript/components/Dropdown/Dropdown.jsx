@@ -8,6 +8,7 @@ const Dropdown = ({
   options,
   selected,
   isOpen,
+  isSelected,
   onTrigger,
   onSelect,
   containerClassName,
@@ -36,7 +37,7 @@ const Dropdown = ({
       {options.map((filter, key) => (
         <DropdownItem
           key={key}
-          isSelected={filter.value === selected.value}
+          isSelected={isSelected(filter, selected)}
           {...filter}
           onClick={onSelect}
         />

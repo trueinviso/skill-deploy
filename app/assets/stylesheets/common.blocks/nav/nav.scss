@@ -1,9 +1,8 @@
 @import "colors";
+$nav-height: 57px;
 
 .nav {
   .menu-toggle {
-    width: 25px;
-    height: 25px;
     outline: none;
     &:hover {
       cursor: pointer;
@@ -18,7 +17,7 @@
   justify-content: space-between;
   border-bottom: 1px solid $color-light-concrete;
   background-color: $color-white;
-  height: 57px;
+  height: $nav-height;
   padding-left: 15px;
   padding-right: 15px;
 
@@ -34,10 +33,26 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    margin-left: 40px;
+
+    &--avatar-present {
+      & > li {
+        line-height: 48px;
+      }
+    }
 
     &__item {
-      line-height: 48px;
+      position: relative;
+      line-height: 40px;
+
+      &--parent {
+        @include desktop {
+          &:hover {
+            & > .nav__menu__nested {
+              display: block;
+            }
+          }
+        }
+      }
       &:not(:last-child) {
         margin-right: 40px;
       }
@@ -51,23 +66,52 @@
       }
 
       &__profile {
-        width: 48px;
-        height: 48px;
+        width: 40px;
+        height: 40px;
         border-radius: 4px;
         border: 1px dashed $color-beige;
         background-color: $color-concrete;
         text-align: center;
 
-        img {
+        &--exist {
           width: 48px;
           height: 48px;
-          object-fit: contain;
-        }
-
-        &--no-border {
           border: none;
           background-color: transparent;
+
+          img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+          }
         }
+      }
+    }
+
+    &__nested {
+      text-align: center;
+      z-index: 5;
+      min-width: 120px;
+      display: none;
+      position: absolute;
+      right: -40px;
+      top: 50px;
+      padding: 25px 15px;
+      background: $color-white;
+      border: 1px solid $color-light-concrete;
+      border-top-color: $color-dark-grey;
+      .nav__menu__item {
+        margin: 0;
+      }
+      &:before {
+        position: absolute;
+        top: -60px;
+        left: 0;
+        content: " ";
+        display: block;
+        background: transparent;
+        height: 60px;
+        width: 100%;
       }
     }
   }
@@ -76,7 +120,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     top: 0;
     left: 0;
     background-color: #fff;

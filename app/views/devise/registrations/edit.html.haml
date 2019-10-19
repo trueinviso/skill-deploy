@@ -1,9 +1,32 @@
-.container
-  .registrations-edit
-    - if current_user.role?(:employer)
-      = render 'employer/shared/links',
-        selected: 'Your profile'
-
-    = render 'edit_employer_registration',
-      resource: resource,
-      minimum_password_length: @minimum_password_length
+.admin-container.account-settings
+  = render "employer/shared/links",
+    selected: "Account settings"
+  .account-settings__content
+    %h1.page-heading Account settings
+    = form_for(resource,
+      as: resource_name,
+      url: registration_path(resource_name),
+      html: { method: :put,class:'account-settings__form' }) do |f|
+      .account-settings__form__field
+        = devise_error_messages!
+        = alert
+        = f.label :email,
+          "Email *",
+          class: "label"
+        = f.email_field :email,
+          class: "input input_theme_normal",
+          id: "user_email"
+      .account-settings__form__field
+        = f.label :password,
+          "Password *",
+          class: "label"
+        = f.password_field :password,
+          class: "input input_theme_normal"
+      .account-settings__form__field
+        = f.label :current_password,
+          "Current password *",
+          class: "label"
+        = f.password_field :current_password,
+          class: "input input_theme_normal"
+        = f.submit "Update password",
+        class: "account-settings__form__submit"

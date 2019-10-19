@@ -5,4 +5,4 @@
 #card-element
 %script{ src: 'https://js.stripe.com/v3/' }
 :javascript
-  stripe_dropin_setup('#{@token}')
+  stripe_dropin_setup('#{Unity.config.client_token}')

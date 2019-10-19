@@ -1,13 +1,11 @@
 .registration-page {
-  @media only screen and (min-width: $breakpoint-medium) {
+  @include desktop {
     width: 373px;
     margin: 108px auto auto auto;
 
     &__content {
-      margin-left: 90px;
-      width: 650px;
+      max-width: 612px;
     }
-
 
     &__heading {
       display: block;
@@ -21,18 +19,16 @@
     }
 
     &__profile-form {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      width: 612px;
+      display: block;
+      width: 100%;
+      // width: 612px;
     }
 
     &__work-experiences {
       margin-bottom: 30px;
 
       .button {
-        width: 605px;
+        width: 100%;
       }
 
       &__section {
@@ -56,22 +52,16 @@
 
     &__form-field {
       width: 100%;
-      margin-right: 10px;
+      display: inline-block;
       margin-top: 0;
-
-
-      // padding-right: 21px;
-      // &:not(:last-child) {
-      // padding-right: 21px;
-      // }
-      //
+      box-sizing: content-box;
 
       &--half {
-        width: 45%;
-        min-width: 285px;
-
+        width: calc(50% - 13px);
+        margin-right: 21px;
         &:nth-child(even) {
           padding-right: 0;
+          margin-right: 0;
         }
       }
 
@@ -98,8 +88,8 @@
     }
 
     &--link-section {
-      & > input {
-        width: 605px;
+      &__item {
+        width: 100%;
       }
 
       & + .button {

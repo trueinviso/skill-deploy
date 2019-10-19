@@ -35,7 +35,9 @@ Rails.application.routes.draw do
       only: [:show]
   end
 
-  resource :profile,
+  resource :user_profile,
+    controller: :user_profiles,
+    path: "profile",
     except: [:destroy]
 
   resources :jobs,
