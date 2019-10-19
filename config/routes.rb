@@ -25,9 +25,6 @@ Rails.application.routes.draw do
   resource :join_us, only: :show, path: "join-us"
 
   namespace :profile do
-    resource :social,
-      only: [:edit, :update]
-
     resource :notifications,
       only: [:edit, :update]
 
@@ -53,11 +50,6 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
-    resource :profile,
-      only: [:edit, :update]
-    resource :billing,
-      controller: :billing,
-      only: [:edit, :update, :destroy]
 
     namespace :preview do
       resources :job,
@@ -75,14 +67,8 @@ Rails.application.routes.draw do
       resource :apply,
         controller: :apply,
         only: [:create]
-      resources :user,
-        controller: :user,
-        only: [:index]
       resource :thumbnail,
         only: [:update]
-      resources :job_filters,
-        controller: :job_filters,
-        only: [:index]
     end
   end
 end
