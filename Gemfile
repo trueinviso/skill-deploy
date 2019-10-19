@@ -57,6 +57,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'name_of_person'
 
 group :test do
   gem "rspec"

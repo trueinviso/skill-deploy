@@ -30,6 +30,9 @@ Rails.application.routes.draw do
 
     resource :notifications,
       only: [:edit, :update]
+
+    resource :pending_review,
+      only: [:show]
   end
 
   resource :user_profile,

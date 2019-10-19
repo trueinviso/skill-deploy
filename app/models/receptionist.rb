@@ -7,8 +7,6 @@ class Receptionist
     @current_user = current_user
   end
 
-  # Show the intermediate "choose your path" page if the user has more
-  # than one role. Otherwise, direct to the page for your role.
   def direct
     if current_user.nil?
       [:new, :user, :session]
