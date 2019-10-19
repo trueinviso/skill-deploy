@@ -10,6 +10,8 @@
 import "babel-polyfill"
 import "whatwg-fetch"
 import "url-polyfill"
+import { onEachTurbolinksPage } from "../helpers/turbolinks"
+import flashMessages from "../components/flashMessages"
 var componentRequireContext = require.context("components", true)
 var ReactRailsUJS = require("react_ujs")
 ReactRailsUJS.useContext(componentRequireContext)
@@ -17,3 +19,5 @@ ReactRailsUJS.useContext(componentRequireContext)
 require("trix")
 require("@rails/actiontext")
 import "controllers"
+
+onEachTurbolinksPage(flashMessages)

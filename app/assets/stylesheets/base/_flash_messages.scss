@@ -1,0 +1,51 @@
+.flash-message {
+  background: $light-peach;
+  padding: 27px 0 24px 0;
+
+  @include desktop {
+    padding: 22px 0;
+  }
+
+  &--notice {
+    color: $color-primary;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 30px;
+  }
+
+  &__text {
+    text-align: center;
+    font-family: Averta;
+    font-size: $font-size-normal;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+
+    a {
+      color: $color-primary;
+      font-size: $font-size-normal;
+      font-weight: bold;
+    }
+  }
+
+  &__close {
+    display: none;
+    color: $color-dark-grey;
+    font-size: $font-size-xlarge;
+    font-weight: lighter;
+    line-height: 22px;
+    @include desktop {
+      display: block;
+      position: absolute;
+      right: 25px;
+    }
+  }
+}
