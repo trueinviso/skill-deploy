@@ -60,7 +60,10 @@
 = f.label :location, "Location *", class: "label"
 = f.text_field :location,
   class: "input create-listing-page__input",
-  placeholder: "City and State"
+  placeholder: "City and State",
+  id: "location",
+  onfocusout: "listingPage.validatePresence('#location')"
+.error-message#location-error
 
 = f.label :remote, "Can this role be remote? *", class: "label"
 .create-listing-page__remote-options

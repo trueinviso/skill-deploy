@@ -47,7 +47,8 @@ var listingPage = (function(d, validator) {
    * @param {*} errors, form
    */
   function validateTextFields(errors, form) {
-    const REQUIRED_FIELDS_IDS = ["role", "company_name", "description"];
+    const REQUIRED_FIELDS_IDS = ["role", "company_name", "description", "location"];
+
     const formElements = Array
       .from(form.elements)
       .concat(d.querySelector("trix-editor"));
