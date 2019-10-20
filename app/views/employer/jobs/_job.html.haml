@@ -1,10 +1,20 @@
+
 .employer-job-card
-  = render 'image', resource: job
+  .job_status_and_image
+    %span.status
+      = job.status
+    %span.image
+      = render 'image', resource: job
   .employer-job-card__titles
     .header.employer-job-card__header= job.name
     .employer-job-card__company-name= job.company_name
 
   .employer-job-card__button-list
+    - if job.preview?
+      %a{ href: employer_preview_job_path(job.id) }
+        %button.button.button_theme_white.employer-job-card__button
+          Preview
+
     %a{ href: edit_employer_job_path(job.id) }
       %button.button.button_theme_white.employer-job-card__button
         Edit
