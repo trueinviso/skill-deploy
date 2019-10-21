@@ -42,6 +42,9 @@ class Job < ApplicationRecord
     :twitter,
     :company_website, url: true
 
+
+  enum status: [:preview, :published]
+
   def self.job_type_name(job_type_name)
     joins(:job_types)
       .where(
