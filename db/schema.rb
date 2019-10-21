@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.string "twitter"
     t.string "facebook"
     t.string "instagram"
-    t.integer "status"
+    t.integer "status", default: 0
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 

@@ -45,8 +45,6 @@ class Job < ApplicationRecord
 
   enum status: [:preview, :published]
 
-  before_create :set_status_to_preview!
-
   def self.job_type_name(job_type_name)
     joins(:job_types)
       .where(
@@ -85,11 +83,5 @@ class Job < ApplicationRecord
       facebook: facebook,
       twitter: twitter,
     }
-  end
-
-  private
-
-  def set_status_to_preview!
-    self.status = 'preview'
   end
 end
