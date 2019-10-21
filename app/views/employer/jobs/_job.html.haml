@@ -1,13 +1,9 @@
-
 .employer-job-card
-  .job_status_and_image
-    %span.status
-      = job.status
-    %span.image
-      = render 'image', resource: job
+  = render 'image', resource: job
   .employer-job-card__titles
     .header.employer-job-card__header= job.name
     .employer-job-card__company-name= job.company_name
+    = job.status
 
   .employer-job-card__button-list
     - if job.preview?
