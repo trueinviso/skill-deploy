@@ -7,6 +7,7 @@ var listingPage = (function(d, validator) {
     if (validator.validate_is_empty(id)) {
       validator.clear(id);
       validateSubmitButton();
+      return true;
     } else {
       const isValid = validator.validate_website_url(id);
       validateSubmitButton();
@@ -47,11 +48,16 @@ var listingPage = (function(d, validator) {
    * @param {*} errors, form
    */
   function validateTextFields(errors, form) {
-    const REQUIRED_FIELDS_IDS = ["role", "company_name", "description", "location"];
+    const REQUIRED_FIELDS_IDS = [
+      "role",
+      "company_name",
+      "description",
+      "location"
+    ];
 
-    const formElements = Array
-      .from(form.elements)
-      .concat(d.querySelector("trix-editor"));
+    const formElements = Array.from(form.elements).concat(
+      d.querySelector("trix-editor")
+    );
 
     Array.from(formElements)
       .filter(el => el.tagName !== "BUTTON")
@@ -65,10 +71,14 @@ var listingPage = (function(d, validator) {
   }
 
   function validateUrlFields(errors) {
-    const REQUIRED_IDS = ["company_website", "twitter", "instagram", "facebook"]
+    const REQUIRED_IDS = [
+      "company_website",
+      "twitter",
+      "instagram",
+      "facebook"
+    ];
 
-    REQUIRED_IDS
-      .forEach(id => errors.push(!validateLink(`#${id}`)));
+    REQUIRED_IDS.forEach(id => errors.push(!validateLink(`#${id}`)));
   }
   /**
    *
@@ -86,10 +96,10 @@ var listingPage = (function(d, validator) {
       const els = d.querySelectorAll(`.${className}`);
       let isChecked = false;
 
-      if(els.length === 0) return;
+      if (els.length === 0) return;
 
       els.forEach(el => {
-        if (el.checked === true) isChecked = true
+        if (el.checked === true) isChecked = true;
       });
 
       if (isChecked) {
@@ -111,6 +121,7 @@ var listingPage = (function(d, validator) {
     validateTextFields(errors, form);
     validateRadioFields(errors);
     validateUrlFields(errors);
+    console.log(errors);
     return !errors.some(er => er === true);
   }
   /**
@@ -119,6 +130,8 @@ var listingPage = (function(d, validator) {
    */
   function validateForm(e) {
     const isValid = validate(e);
+
+    console.log("isValida", isValid);
 
     return isValid;
   }
