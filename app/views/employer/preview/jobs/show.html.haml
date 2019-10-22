@@ -3,7 +3,10 @@
     .job-preview__heading.hidden-desktop
       Listing preview
 
-    = link_to "Post Listing", employer_job_posting_path(@job), method: :put, class: "button button_theme_black job-preview__button"
+    = link_to "Post Listing",
+      employer_job_posting_path(@job),
+      method: :put,
+      class: "button button_theme_black job-preview__button"
 
     .job-preview__heading.hidden-mobile
       Listing preview
