@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
+    resources :job_postings, only: :update
 
     namespace :preview do
       resources :job,
