@@ -4,7 +4,7 @@ module Employer
       @job = Job.find(params[:id])
       authorize [:employer, @job]
       @job.published!
-      flash[:notice] = "<span>Congratulations! your listing is now live.</span> #{redirect_link}"
+      flash[:notice] = "Congratulations! your listing is now live. #{redirect_link}"
       redirect_to employer_jobs_path
     end
 
