@@ -14,15 +14,19 @@ module Employer
     end
 
     def create?
-      user.role?(:employer)
+      user.role?(:employer) && user.active_paid_subscriber?
     end
 
     def destroy?
-      user.role?(:employer) && record.user_id == user.id
+      user.role?(:employer) &&
+        user.active_paid_subscriber? &&
+        user_owns_record?
     end
 
     def edit?
-      user.role?(:employer) && record.user_id == user.id
+      user.role?(:employer) &&
+        user.active_paid_subscriber? &&
+        user_owns_record?
     end
 
     def index?
@@ -30,11 +34,25 @@ module Employer
     end
 
     def new?
-      user.role?(:employer)
+      user.role?(:employer) && user.active_paid_subscriber?
+    end
+
+    def show?
+      user.role?(:employer) &&
+        user.active_paid_subscriber? &&
+        user_owns_record?
     end
 
     def update?
-      user.role?(:employer) && record.user_id == user.id
+      user.role?(:employer) &&
+        user.active_paid_subscriber? &&
+        user_owns_record?
+    end
+
+    private
+
+    def user_owns_record?
+      record.user_id == user.id
     end
   end
 end
