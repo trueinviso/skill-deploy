@@ -11,7 +11,7 @@
   = form_for @user,
     as: resource_name,
     url: registration_path(resource_name),
-    html: { onsubmit: "return validateRegistration();" } do |f|
+    html: { id:'userRegistration',autocomplete:"off" } do |f|
 
     = render "form_errors", object: @user
 
@@ -21,36 +21,27 @@
           "First Name *",
           class: "label"
         = p.text_field :first_name,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_first_name",
-          onfocusout: "validatePresence('#user_first_name')"
-        .error-message#user_first_name-error
+          class: "input input_theme_normal registration-page__input"
 
         = p.label :last_name,
           "Last Name *",
           class: "label"
         = p.text_field :last_name,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_last_name",
-          onfocusout: "validatePresence('#user_last_name')"
-        .error-message#user_last_name-error
+          class: "input input_theme_normal registration-page__input"
 
         = f.label :email,
           "Email *",
           class: "label"
         = f.email_field :email,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_email",
-          onfocusout: "validateEmail('#user_email')"
-        .error-message#user_email-error
+          autocomplete:"off",
+          class: "input input_theme_normal registration-page__input"
 
         = f.label :password,
           "Password *",
           class: "label"
         = f.password_field :password,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_password"
-        .error-message#user_password-error
+          autocomplete:"off",
+          class: "input input_theme_normal registration-page__input"
 
       = f.submit "Get started",
         class: "button button_theme_primary registration-page__button",

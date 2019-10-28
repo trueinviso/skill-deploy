@@ -1,63 +1,43 @@
-// Registration javascript
-function validateSubdomain(id) {
-  return validator.validate_presence(id) &&
-    validator.validate_subdomain_format(id);
-}
+var registrationPage = (function(formValidator, validator, d) {
+  const validate = values => {
+    const errors = {
+      user: {
+        user_profile_attributes: {}
+      }
+    };
 
-function validatePresence(id) {
-  return validator.validate_presence(id);
-}
-
-function validateEmail(id) {
-  return validator.validate_presence(id) &&
-    validator.validate_email_format(id);
-}
-
-function validatePassword(id) {
-  return validator.validate_presence(id) &&
-    validator.validate_min_length(id, 6);
-}
-
-function validatePasswordsMatch(first, second) {
-  return validator.validate_passwords_match(first, second);
-}
-
-function validRegistration() {
-  inputs = document.querySelectorAll(
-    'input[type=text], input[type=password], input[type=email]'
-  );
-  for(i = 0; i < inputs.length; i++) {
-    input = inputs[i]
-    switch(input.type) {
-      case "email":
-        if(!validateEmail('#' + input.id)) return false;
-        break;
-      case "password":
-        if(!validatePassword('#' + input.id)) return false;
-        break;
-      default:
-        if(!validatePresence('#' + input.id)) return false;
-        break;
+    const profileValues = values.user.user_profile_attributes;
+    const profileErrors = errors.user.user_profile_attributes;
+    if (!profileValues.first_name) {
+      profileErrors.first_name = "This field is required";
     }
-  }
-  return validatePasswordsMatch('#user_password', '#user_password_confirmation');
-}
-
-
-function validateRegistration() {
-  const submit = document.querySelector('input[type="submit"]');
-  submit.disabled = true;
-
-  if(validRegistration()) {
-    return true;
-  } else {
-    submit.disabled = false;
-    return false;
-  }
-}
-
-function autoFillSubdomain() {
-  subdomain = document.querySelector("#user_account_attributes_subdomain")
-  company = document.querySelector("#user_account_attributes_company")
-  subdomain.value = company.value.replace(/\s+/g, '-').toLowerCase();
-}
+    if (!profileValues.last_name) {
+      profileErrors.last_name = "This field is required";
+    }
+    if (!values.user.email) {
+      errors.user.email = "This field is required";
+    }
+    if (values.user.email && !validator.isEmail(values.user.email)) {
+      errors.user.email = "Invalid email";
+    }
+    if (!values.user.password) {
+      errors.user.password = "This field is required";
+    }
+    if (
+      values.user.password &&
+      !validator.isLength(values.user.password, { min: 6 })
+    ) {
+      errors.user.password = "Password is too short (minimum is 6 characters)";
+    }
+    console.log("va", values);
+    return errors;
+  };
+  formValidator.registerForm("userRegistration", {
+    validate,
+    initialValues: {
+      user: {
+        user_profile_attributes: {}
+      }
+    }
+  });
+})(window.formValidator, window.validator, document);
