@@ -1,6 +1,6 @@
 = form_for(current_user,
   url: user_profile_path,
-  html: { method: action, class:"registration-page__profile-form" }) do |f|
+  html: { method: action, class:"registration-page__profile-form",id:'editUser' }) do |f|
 
   = render("application/form_errors", object: current_user)
 

@@ -1,17 +1,40 @@
-function validateWebsiteLink(id) {
-  if (validator.validate_is_empty(id)) {
-    validator.clear(id);
-    validateSubmitButton();
-  } else {
-    const isValid = validator.validate_website_url(id);
-    validateSubmitButton();
-    return isValid;
-  }
-}
+var editUserPage = (function(formValidator, validator, d) {
+  const validate = values => {
+    const errors = {
+      user: {
+        user_profile_attributes: {},
+        social_media_profile_attributes: {}
+      }
+    };
 
-function validateSubmitButton() {
-  const submit = document.getElementById("edit-profile");
-  const errorsNodes = document.querySelectorAll(".error-message");
-  const errors = Array.prototype.slice.call(errorsNodes);
-  submit.disabled = errors.some(error => error.dataset.hasError === "1");
-}
+    // const userProfileErrors = errors.user.user_profile_attributes;
+    const social = errors.user.social_media_profile_attributes;
+    const socialValues = values.user.social_media_profile_attributes;
+
+    if (socialValues.website && !validator.isURL(socialValues.website)) {
+      social["website"] = "Invalid link";
+    }
+    if (socialValues.twitter && !validator.isURL(socialValues.twitter)) {
+      social["twitter"] = "Invalid link";
+    }
+
+    if (socialValues.instagram && !validator.isURL(socialValues.instagram)) {
+      social["instagram"] = "Invalid link";
+    }
+    if (socialValues.facebook && !validator.isURL(socialValues.facebook)) {
+      social["facebook"] = "Invalid link";
+    }
+
+    return errors;
+  };
+
+  formValidator.registerForm("editUser", {
+    validate,
+    initialValues: {
+      user: {
+        user_profile_attributes: {},
+        social_media_profile_attributes: {}
+      }
+    }
+  });
+})(window.formValidator, window.validator, document);
