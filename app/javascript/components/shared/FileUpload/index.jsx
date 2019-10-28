@@ -26,7 +26,6 @@ class FileUpload extends React.Component {
 
   constructor(props) {
     super(props);
-    console.log("Props", props);
 
     this.state = {
       file: null,
