@@ -12,5 +12,7 @@
 //
 //= require rails-ujs
 //= require turbolinks
-// = require validations
-//= require_tree .
+//= require validator/validator.min.js
+//= require final-form/dist/final-form.umd.min.js
+//= require form-validator
+//= require_tree
