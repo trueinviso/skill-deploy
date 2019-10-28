@@ -10,11 +10,13 @@
     = f.label :company_name, "Company Name *", class: "label"
     = f.text_field :company_name,
       class: "input"
+      
 .create-listing-page__text-area
   = f.label :description, "Job Description *", class: "label"
   = f.rich_text_area :description,
     class: "text-area",
     id:'description'
+
   %span{id:"job[description]_error",class:'error-message'}
 
 = f.label :job_type_ids, "Type of Creative *", class: "label"
@@ -26,6 +28,7 @@
     { checked: job.job_roles.first&.id }) do |jr|
     = jr.radio_button(class: "create-listing-page__radio-button job_role")
     = jr.label(class: "create-listing-page__radio-label")
+
 %span{id:"job[job_role_ids]_error",class:'error-message'}
 
 = f.label :job_roles, "Type of role *", class: "label"
@@ -37,6 +40,7 @@
     { checked: job.job_types.first&.id }) do |jt|
     = jt.radio_button(class: "create-listing-page__radio-button job_type")
     = jt.label(class: "create-listing-page__radio-label")
+
 %span{id:"job[job_type_ids]_error",class:'error-message'}
 
 = f.label :job_experiences, "Preferred Experience Level *", class: "label"
@@ -48,7 +52,9 @@
     { checked: job.job_experiences.first&.id }) do |jt|
     = jt.radio_button(class: "create-listing-page__radio-button job_experience")
     = jt.label(class: "create-listing-page__radio-label")
+
 %span{id:"job[job_experience_ids]_error",class:'error-message'}
+
 .create-listing-page__input
   = f.label :location, "Location *", class: "label"
   = f.text_field :location,
@@ -56,6 +62,7 @@
     placeholder: "City and State"
 
 = f.label :remote, "Can this role be remote? *", class: "label"
+
 .create-listing-page__remote-options
   = f.radio_button :remote, "1", class: "create-listing-page__radio-button"
   = f.label :remote, "Yes",
@@ -66,6 +73,7 @@
   = f.label :remote, "No",
     for: "job_remote_0",
     class: "create-listing-page__radio-label"
+
 %span{id:"job[remote]_error",class:'error-message'}
 
 
@@ -88,6 +96,7 @@
   = f.text_field :facebook,
     class: "input create-listing-page__input",
     placeholder: "http://www.facebook.com/username"
+
 .create-listing-page__input
   = f.label :instagram, "Instagram *", class: "label"
   = f.text_field :instagram,
