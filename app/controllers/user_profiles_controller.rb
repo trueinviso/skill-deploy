@@ -15,6 +15,7 @@ class UserProfilesController < ApplicationController
   end
 
   def update
+    authorize [current_user.user_profile]
     result = current_user.update(permitted_params)
     if result
       redirect_to edit_user_profile_path
@@ -25,10 +26,12 @@ class UserProfilesController < ApplicationController
 
   def edit
     @user_profile = current_user.user_profile
+    authorize [@user_profile]
   end
 
   def show
     @user_profile = current_user.user_profile
+    authorize [@user_profile]
   end
 
   private

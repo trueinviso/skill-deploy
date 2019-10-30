@@ -22,6 +22,7 @@ module Api
       end
 
       def destroy
+        authorize favorite
         if favorite.present?
           fav = favorite.destroy
           render status: 200, json: fav
