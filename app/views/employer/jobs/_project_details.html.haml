@@ -67,14 +67,14 @@
 
 = f.label :remote, "Can this role be remote? *", class: "label"
 .create-listing-page__remote-options
-  = f.radio_button :remote, "1", class: "create-listing-page__radio-button job_remote"
+  = f.radio_button :remote, true, class: "create-listing-page__radio-button job_remote"
   = f.label :remote, "Yes",
-    for: "job_remote_1",
+    for: "job_remote_true",
     class: "create-listing-page__radio-label"
 
-  = f.radio_button :remote, "0", class: "create-listing-page__radio-button job_remote"
+  = f.radio_button :remote, false, class: "create-listing-page__radio-button job_remote"
   = f.label :remote, "No",
-    for: "job_remote_0",
+    for: "job_remote_false",
     class: "create-listing-page__radio-label"
   .error-message#job_remote-error
 
