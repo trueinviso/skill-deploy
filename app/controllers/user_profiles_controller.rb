@@ -2,9 +2,11 @@ class UserProfilesController < ApplicationController
   skip_before_action :guard_user_registered!, only: [:new, :create]
 
   def new
+    authorize [current_user.user_profile]
   end
 
   def create
+    authorize [current_user.user_profile]
     result = current_user.update(permitted_params.merge(review_status: :pending))
     if result
       current_user.assign_role("Job Seeker")
