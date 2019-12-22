@@ -2,11 +2,11 @@ import { string } from "prop-types";
 import React from "react";
 import Modal from "./shared/Modal";
 
-const ApplyGig = ({ title }) => {
+const ApplyGig = ({ title, buttonTitle }) => {
   return (
     <Modal
       contentLabel="Send Message"
-      openModalBtnText="Apply for this gig"
+      openModalBtnText={buttonTitle}
       openBtnClassName="button button_theme_primary"
       portalClassName="job__message-modal"
       overlayClassName="job__message-modal__overlay"
@@ -44,7 +44,8 @@ const ApplyGig = ({ title }) => {
 };
 
 ApplyGig.propTypes = {
-  title: string.isRequired
+  title: string.isRequired,
+  buttonTitle: string.isRequired
 };
 
 export default ApplyGig;
