@@ -179,4 +179,84 @@
     display: grid;
     grid-gap: 15px;
   }
+
+  &__message-modal {
+    &__content {
+      margin: auto;
+      max-width: 100%;
+      background: $color-white;
+      border-radius: 6px;
+      padding: 15px;
+      font-family: "Averta";
+      box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+      @include desktop {
+        padding: 91px 110px;
+        max-width: 826px;
+      }
+
+      &__title {
+        height: 34px;
+        font-family: "Averta";
+        font-size: $font-size-xxlarge;
+        font-weight: $font-weight-bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: 1.21;
+        letter-spacing: normal;
+        color: $color-dark-grey;
+        margin-bottom: 29px;
+      }
+
+      &__form {
+        label {
+          height: 25px;
+          font-family: "Averta";
+          font-size: $font-size-small;
+          font-weight: $font-weight-bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 2.08;
+          letter-spacing: normal;
+          color: $color-greyish;
+          margin-bottom: 5px;
+        }
+        textarea {
+          @include desktop {
+            width: 612px;
+          }
+        }
+      }
+
+      &__footer {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 15px;
+        align-items: center;
+        justify-content: center;
+
+        @include desktop {
+          grid-template-columns: repeat(2, max-content);
+          justify-content: flex-end;
+        }
+        button {
+          @include desktop {
+            min-width: 187px;
+          }
+          width: 100%;
+        }
+      }
+    }
+    &__overlay {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      outline: none;
+    }
+  }
 }

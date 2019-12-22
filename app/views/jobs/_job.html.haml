@@ -7,9 +7,7 @@
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
-      %a{ href: "#" }
-        %span.button.button_theme_primary
-          Apply for this gig
+      =react_component('ApplyGig',{title:job.name})
       %a{ href: job.company_website }
         %span.button.button_theme_white
           Website
