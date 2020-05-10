@@ -60,6 +60,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 gem 'name_of_person'
 
+gem "sentry-raven", "~> 2.6.0"
+
 group :test do
   gem "rspec"
   gem "shrine-memory"
