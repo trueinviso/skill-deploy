@@ -10,6 +10,7 @@ default: &default
   username: <%= ENV['DB_USER_POSTGRES_USERNAME'] %>
   host:     <%= ENV['DB_USER_POSTGRES_HOST'] || 'localhost' %>
   port:     <%= ENV['DB_USER_POSTGRES_PORT'] || '5432' %>
+  password: <%= ENV['DB_USER_POSTGRES_PASSWORD'] || '5432' %>
   timeout: 5000
 
 development:
