@@ -16,10 +16,7 @@
         %span.profile-page__detail-section__location
           = @user_profile.location
     .buttons-group.profile-page__buttons-group
-      %a{ href: '#' }
-        %span.button.button_theme_primary
-          Start conversation
-
+      =react_component('ApplyGig',{title:@user_profile.first_name.concat(" ").concat(@user_profile.last_name) ,buttonTitle:'Send message'})
       %a{ href: current_user.social_media_profile&.website }
         %span.button.button_theme_white
           Website
