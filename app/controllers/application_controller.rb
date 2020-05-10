@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include Pundit
 
+  before_action :set_raven_context
+
   before_action :guard_user_authenticated!,
                 :guard_user_registered!,
                 :guard_user_profile_reviewed!, unless: :devise_controller?
@@ -33,5 +35,19 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     redirect_to(request.referrer || [:root])
+  end
+
+  def set_raven_context
+    Raven.user_context(
+      id: current_user.try(:id),
+      email: current_user.try(:email),
+    )
+
+    Raven.extra_context(
+      params: params.to_unsafe_h,
+      url: request.url,
+    )
+  rescue => exception
+    puts exception
   end
 end
