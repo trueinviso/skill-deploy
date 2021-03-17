@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./app/javascript",
+    "paths": {
+      "~/*": ["./*"]
+    }
+  },
+  "exclude": ["**/*.spec.js", "node_modules", "vendor", "public"]
+}
