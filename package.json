@@ -6,7 +6,7 @@
   "scripts": {
     "eslint-fix": "eslint . --fix --ext '.js,.jsx'",
     "format:js": "prettier-eslint --write \"app/**/*.js\" \"app/**/*.jsx\"",
-    "format:scss": "stylelint --fix 'app/**/*.{css,scss}'"
+    "format:scss": "stylelint --fix 'app/**/*.{css,scss}' !**/legacy/**"
   },
   "dependencies": {
     "@babel/core": "7.13.10",

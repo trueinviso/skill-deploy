@@ -22,3 +22,8 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## File Formatting
+
+If you want to use auto-formatting before committing files on your local machine
+you should run `cp .lintstagedrc.sample .lintstagedrc && cp .huskyrc.sample .huskyrc`
