@@ -35,7 +35,7 @@ linters:
   ImplicitDiv:
     enabled: true
 
-  InlineStyles:git
+  InlineStyles:
     enabled: false
 
   InstanceVariables:
