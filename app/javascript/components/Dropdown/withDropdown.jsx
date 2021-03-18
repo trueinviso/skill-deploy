@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React, { PureComponent } from "react";
-import { findDOMNode } from "react-dom";
+import PropTypes from "prop-types"
+import React, { PureComponent } from "react"
+import { findDOMNode } from "react-dom"
 
 function withDropdown(WrappedComponent) {
   return class HocDropDown extends PureComponent {
@@ -12,48 +12,47 @@ function withDropdown(WrappedComponent) {
         label: PropTypes.string
       }),
       onChange: PropTypes.func
-    };
+    }
 
     static defaultProps = {
       defaultSelected: { value: "", label: "" },
       isOpen: false
-    };
+    }
 
     state = {
       isOpen: false,
       selected: this.props.defaultSelected
-    };
+    }
 
     componentDidMount() {
-      window.addEventListener("click", this._onWindowClick);
-      window.addEventListener("touchstart", this._onWindowClick);
+      window.addEventListener("click", this._onWindowClick)
+      window.addEventListener("touchstart", this._onWindowClick)
     }
 
     componentWillUnmount() {
-      window.removeEventListener("click", this._onWindowClick);
-      window.removeEventListener("touchstart", this._onWindowClick);
+      window.removeEventListener("click", this._onWindowClick)
+      window.removeEventListener("touchstart", this._onWindowClick)
     }
 
     _onWindowClick = e => {
-      const dropdownElement = findDOMNode(this);
-      if (this.isDropdownOpen(dropdownElement, e))
-        this.closeDropdownElement();
-    };
+      const dropdownElement = findDOMNode(this)
+      if (this.isDropdownOpen(dropdownElement, e)) this.closeDropdownElement()
+    }
 
-    closeDropdownElement = () => this.onClose();
+    closeDropdownElement = () => this.onClose()
 
     isDropdownOpen = (dropdownElement, e) =>
       e.target !== dropdownElement &&
       !dropdownElement.contains(e.target) &&
       this.state.isOpen
 
-    onClose = () => this.setState({ isOpen: false });
+    onClose = () => this.setState({ isOpen: false })
 
     onTrigger = () => {
       this.setState(prevState => ({
         isOpen: !prevState.isOpen
-      }));
-    };
+      }))
+    }
 
     onSelect = value => {
       this.setState(
@@ -62,13 +61,13 @@ function withDropdown(WrappedComponent) {
           isOpen: false
         },
         () => {
-          const { onChange, name } = this.props;
+          const { onChange, name } = this.props
           if (onChange) {
-            onChange({ name, value: this.state.selected.value });
+            onChange({ name, value: this.state.selected.value })
           }
         }
-      );
-    };
+      )
+    }
 
     render() {
       return (
@@ -79,9 +78,9 @@ function withDropdown(WrappedComponent) {
           onClose={this.onClose}
           onSelect={this.onSelect}
         />
-      );
+      )
     }
-  };
+  }
 }
 
-export default withDropdown;
+export default withDropdown

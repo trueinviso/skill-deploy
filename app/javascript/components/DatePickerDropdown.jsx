@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
-import React, { PureComponent, createRef } from "react";
-import DatePicker from "react-datepicker";
+import PropTypes from "prop-types"
+import React, { PureComponent, createRef } from "react"
+import DatePicker from "react-datepicker"
 
-const dateFormat = "MMM YYYY";
+const dateFormat = "MMM YYYY"
 
 class DatePickerDropdown extends PureComponent {
   static propTypes = {
@@ -12,21 +12,21 @@ class DatePickerDropdown extends PureComponent {
     className: PropTypes.string,
     onChange: PropTypes.func,
     defaultValue: PropTypes.string
-  };
+  }
 
   static defaultProps = {
     placeholder: "Select date",
     className: ""
-  };
+  }
 
   constructor(props) {
-    super(props);
+    super(props)
     const date = new Date(this.props.defaultValue)
     this.state = {
       date: this.props.defaultValue ? date.setDate(date.getDate() + 2) : ""
-    };
+    }
 
-    this.ref = createRef();
+    this.ref = createRef()
   }
 
   handleChange = date =>
@@ -35,13 +35,13 @@ class DatePickerDropdown extends PureComponent {
         date
       },
       () => {
-        this.props.onChange && this.props.onChange(this.state.date);
+        this.props.onChange && this.props.onChange(this.state.date)
       }
-    );
+    )
 
   render() {
-    const { label, name, placeholder, className, defaultValue } = this.props;
-    const { date } = this.state;
+    const { label, name, placeholder, className, defaultValue } = this.props
+    const { date } = this.state
     return (
       <div className={className} ref={this.ref}>
         <label className="label">{label}</label>
@@ -53,8 +53,8 @@ class DatePickerDropdown extends PureComponent {
           dateFormat={dateFormat}
         />
       </div>
-    );
+    )
   }
 }
 
-export default DatePickerDropdown;
+export default DatePickerDropdown

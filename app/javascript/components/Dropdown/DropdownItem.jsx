@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import classNames from "classnames";
+import PropTypes from "prop-types"
+import React from "react"
+import classNames from "classnames"
 
 const DropdownItem = ({ isSelected, onClick, value, label }) => (
   <li
@@ -12,13 +12,13 @@ const DropdownItem = ({ isSelected, onClick, value, label }) => (
   >
     <span>{label}</span>
   </li>
-);
+)
 
 DropdownItem.propTypes = {
   isSelected: PropTypes.bool,
   onClick: PropTypes.func,
   value: PropTypes.string,
   label: PropTypes.string
-};
+}
 
-export default DropdownItem;
+export default DropdownItem

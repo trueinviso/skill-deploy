@@ -1,18 +1,18 @@
-import PropTypes from "prop-types";
-import React, { Fragment } from "react";
-import heyfamFetch from "./../../helpers/heyfamFetch";
-import Modal from "./../shared/Modal";
+import PropTypes from "prop-types"
+import React, { Fragment } from "react"
+import heyfamFetch from "./../../helpers/heyfamFetch"
+import Modal from "./../shared/Modal"
 
 const CancelSubscriptionModal = ({ apiPath }) => {
-  const [processing, setProcessing] = React.useState(false);
+  const [processing, setProcessing] = React.useState(false)
   const onCancelSubscription = React.useCallback(async () => {
     try {
-      setProcessing(true);
-      await heyfamFetch(apiPath);
+      setProcessing(true)
+      await heyfamFetch(apiPath)
     } finally {
-      setProcessing(false);
+      setProcessing(false)
     }
-  }, []);
+  }, [])
   return (
     <React.Fragment>
       <Modal
@@ -77,11 +77,11 @@ const CancelSubscriptionModal = ({ apiPath }) => {
         )}
       </Modal>
     </React.Fragment>
-  );
-};
+  )
+}
 
 CancelSubscriptionModal.propTypes = {
   apiPath: PropTypes.string
-};
+}
 
-export default CancelSubscriptionModal;
+export default CancelSubscriptionModal

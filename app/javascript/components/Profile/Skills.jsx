@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React, { PureComponent, createRef } from "react";
-import Choices from "choices.js";
+import PropTypes from "prop-types"
+import React, { PureComponent, createRef } from "react"
+import Choices from "choices.js"
 
 const config = {
   silent: true,
@@ -8,29 +8,29 @@ const config = {
   duplicateItemsAllowed: false,
   placeholderValue: "Enter your skills",
   maxItemCount: 15
-};
+}
 
 class Skills extends PureComponent {
   static defaultProps = {
     initialSkills: []
-  };
+  }
   static propTypes = {
     initialSkills: PropTypes.arrayOf(PropTypes.string)
-  };
-  ref = createRef();
+  }
+  ref = createRef()
 
   componentDidMount() {
     if (this.ref.current) {
       this.choices = new Choices(this.ref.current, {
         ...config,
         items: this.props.initialSkills
-      });
+      })
     }
   }
 
   componentWillUnmount() {
     if (this.choices) {
-      this.choices.destroy();
+      this.choices.destroy()
     }
   }
 
@@ -47,12 +47,12 @@ class Skills extends PureComponent {
           name="user[skills]"
         />
         <span className="choices-helper-text">
-          Add up to 15 skills to display on your profile. Hit enter
-          after each skill you input.
+          Add up to 15 skills to display on your profile. Hit enter after each
+          skill you input.
         </span>
       </div>
-    );
+    )
   }
 }
 
-export default Skills;
+export default Skills

@@ -1,5 +1,5 @@
-export {default as ApplyGig}  from 'components/ApplyGig'
-export {default as JobList}  from 'components/Job/JobList'
-export {default as FavoriteJobPage}  from 'components/Job/FavoriteJobPage'
-export {default as JobPage}  from 'components/Job/JobPage'
-export {default as Notifications} from 'components/Notifications'
+export { default as ApplyGig } from "components/ApplyGig"
+export { default as JobList } from "components/Job/JobList"
+export { default as FavoriteJobPage } from "components/Job/FavoriteJobPage"
+export { default as JobPage } from "components/Job/JobPage"
+export { default as Notifications } from "components/Notifications"

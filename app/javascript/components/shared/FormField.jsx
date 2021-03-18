@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from "prop-types"
+import React from "react"
 
 const FormField = ({
   containerClassName,
@@ -30,7 +30,7 @@ const FormField = ({
     />
     {children}
   </div>
-);
+)
 
 FormField.propTypes = {
   containerClassName: PropTypes.string,
@@ -44,10 +44,10 @@ FormField.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
   defaultValue: PropTypes.string
-};
+}
 
 FormField.defaultProps = {
   type: "text"
-};
+}
 
-export default FormField;
+export default FormField

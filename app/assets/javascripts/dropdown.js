@@ -1,14 +1,14 @@
-let dropdown = (function() {
+let dropdown = (function () {
   function toggle() {
     const menu = event.target.parentElement.getElementsByClassName(
       "dropdown__content"
-    )[0];
+    )[0]
 
-    const selectBox = event.target.parentElement;
+    const selectBox = event.target.parentElement
 
     if (shouldToggleDropdown(menu)) {
-      selectBox.classList.toggle("dropdown_active");
-      menu.classList.toggle("dropdown__content--open");
+      selectBox.classList.toggle("dropdown_active")
+      menu.classList.toggle("dropdown__content--open")
     }
   }
 
@@ -16,10 +16,10 @@ let dropdown = (function() {
     return (
       !menu.classList.value.includes("dropdown__content_inline-buttons") ||
       window.matchMedia("(max-width: 736px)").matches
-    );
+    )
   }
 
   return {
     toggle: toggle
-  };
-})();
+  }
+})()

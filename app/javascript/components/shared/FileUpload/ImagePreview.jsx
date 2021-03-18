@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import React from "react";
-import classNames from "classnames";
+import PropTypes from "prop-types"
+import React from "react"
+import classNames from "classnames"
 
 const ImagePreview = ({ thumbnail, isEmpty }) => {
   return (
@@ -15,12 +15,12 @@ const ImagePreview = ({ thumbnail, isEmpty }) => {
         alt="uploaded image"
       />
     </div>
-  );
-};
+  )
+}
 
 ImagePreview.propTypes = {
   thumbnail: PropTypes.string,
   isEmpty: PropTypes.bool
-};
+}
 
-export default ImagePreview;
+export default ImagePreview

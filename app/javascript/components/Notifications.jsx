@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Toggle from "./Toggle";
+import React from "react"
+import PropTypes from "prop-types"
+import Toggle from "./Toggle"
 
 class Notifications extends React.PureComponent {
   static propTypes = {
@@ -8,10 +8,8 @@ class Notifications extends React.PureComponent {
     defaultValue: PropTypes.bool.isRequired
   }
 
-  onChange = (on) => {
-    document
-      .getElementsByClassName("edit_user_profile")[0]
-      .submit();
+  onChange = on => {
+    document.getElementsByClassName("edit_user_profile")[0].submit()
   }
 
   render() {
@@ -21,8 +19,8 @@ class Notifications extends React.PureComponent {
         name={this.props.name}
         defaultValue={this.props.defaultValue}
       />
-    );
+    )
   }
 }
 
-export default Notifications;
+export default Notifications

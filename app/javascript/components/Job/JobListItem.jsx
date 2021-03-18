@@ -3,7 +3,6 @@ import React from "react"
 import FavoriteJobIcon from "./FavoriteJobIcon"
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
 
-
 const JobListItem = ({
   id,
   companyName,
