@@ -1,3 +1,5 @@
+-# haml-lint: disable all
+-# rubocop:disable all
 .admin-container.account-settings
   = render "employer/shared/links",
     selected: "Account settings"
@@ -29,4 +31,4 @@
         = f.password_field :current_password,
           class: "input input_theme_normal"
         = f.submit "Update password",
-        class: "account-settings__form__submit"
+          class: "account-settings__form__submit"

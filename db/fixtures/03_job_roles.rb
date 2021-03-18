@@ -20,9 +20,6 @@ growth = Tag.find_by(name: "Growth")
 social_media = Tag.find_by(name: "Social Media")
 content = Tag.find_by(name: "Content")
 
-
-
-
 JobRole.seed(:id,
   {
     id: 1,
@@ -52,7 +49,7 @@ JobRole.seed(:id,
   },
   {
     id: 3,
-    name: "Marketing" ,
+    name: "Marketing",
     description: "Marketers for all mediums, Digital Marketers, Social Media, etc.",
     tags: [
       digital_marketing,
@@ -60,11 +57,11 @@ JobRole.seed(:id,
       social_media,
       content,
       management,
-    ]
+    ],
   },
   {
     id: 4,
-    name: "Photography" ,
+    name: "Photography",
     description: "Photographers",
     tags: [
       digital_marketing,
@@ -72,6 +69,5 @@ JobRole.seed(:id,
       social_media,
       content,
       management,
-    ]
-  },
-)
+    ],
+  })

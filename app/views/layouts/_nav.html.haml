@@ -1,12 +1,13 @@
-%nav.nav{:class => ('nav--logged-out' if current_user.blank? || current_user.registering?)}
+%nav.nav{ class: ("nav--logged-out" if current_user.blank? || current_user.registering?) }
   - if !current_user.blank?
+    -# haml-lint:disable IdNames
     %button.menu-toggle#menuToggler
-      = embedded_svg('menu.svg')
+      = embedded_svg("menu.svg")
 
-  = link_to embedded_svg('logo.svg'),
+  = link_to embedded_svg("logo.svg"),
     main_app.root_path,
-    class: 'nav--brand'
+    class: "nav--brand"
 
   - if !current_user.blank?
-    = render 'layouts/nav_search'
-    = render 'layouts/nav_links'
+    = render "layouts/nav_search"
+    = render "layouts/nav_links"

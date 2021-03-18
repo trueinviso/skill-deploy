@@ -1,10 +1,12 @@
+-# haml-lint: disable all 
+-# rubocop:disable all
 .text-field
   = f.label :email
   = f.email_field :email,
-    onfocusout: 'validateEmail('#user_email');',
+    onfocusout: 'validateEmail('#user_email');', 
     autofocus: true,
     autocomplete: 'email'
-  .error-message#user_email-error
+  .error-message#user_email-error 
 
 - if devise_mapping.confirmable? && resource.pending_reconfirmation?
   %div Currently waiting confirmation for: #{resource.unconfirmed_email}

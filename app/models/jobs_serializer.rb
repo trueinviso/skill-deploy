@@ -19,7 +19,7 @@ class JobsSerializer
         location: job.location,
         liked: favorite_ids.include?(job.id),
         thumbnail_url: job.thumbnail_url,
-        job_types: job.job_types.map { |type| {name: type.name} }
+        job_types: job.job_types.map { |type| { name: type.name } },
       }
     end
   end
@@ -27,7 +27,7 @@ class JobsSerializer
   private
 
   def favorite_ids
-    @favorite_job_ids ||= FavoriteJob
+    @favorite_ids ||= FavoriteJob
       .where(job_id: jobs.map(&:id), user: user)
       .pluck(:job_id)
       .to_set

@@ -1,3 +1,5 @@
 .registrations-edit__sub-heading
   Work experience
-= react_component( 'Profile/WorkExperienceForm', { formName: 'user[work_experiences_attributes]',  initialWorkExperiences:current_user&.work_experiences }, { class: 'registration-page__work-experiences' } )
+= react_component("Profile/WorkExperienceForm", { formName: "user[work_experiences_attributes]",
+  nitialWorkExperiences: current_user&.work_experiences },
+  { class: "registration-page__work-experiences" })

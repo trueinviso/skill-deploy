@@ -4,8 +4,8 @@
     %h1.new-subscription__heading Subscription details
 
     .subscription__info
-      %h2.subscription__info__name=Unity::SubscriptionPlan.first.name
-      %span.subscription__info__desc=Unity::SubscriptionPlan.first.description
+      %h2.subscription__info__name= Unity::SubscriptionPlan.first.name
+      %span.subscription__info__desc= Unity::SubscriptionPlan.first.description
     .subscription__total
       %span Total today
       %span $#{Unity::SubscriptionPlan.first.price}
@@ -27,6 +27,6 @@
 
       %span.subscription__form__notice All sales are final and all prices are USD.
       .submit-field
-        = f.submit 'Get started',
+        = f.submit "Get started",
           data: { disable_with: "Please wait..." },
-          class: 'button button_theme_primary'
+          class: "button button_theme_primary"

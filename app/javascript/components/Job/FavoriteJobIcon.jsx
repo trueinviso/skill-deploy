@@ -66,12 +66,12 @@ class FavoriteJobIcon extends PureComponent {
 
   render() {
     const { favorites } = this.state;
-    const { job_id } = this.props;
+    const { jobId } = this.props;
 
     return (
       <div className="job-card__favorite-icon">
         <button onClick={(e)=>this.toggleFavorite(e, job_id)}>
-          <img src={favorites.includes(job_id) ? activeIcon : inactiveIcon} alt="favorite-icon" />
+          <img src={favorites.includes(jobId) ? activeIcon : inactiveIcon} alt="favorite-icon" />
         </button>
       </div>
     );

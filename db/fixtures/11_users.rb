@@ -31,8 +31,7 @@ UserProfile.seed(:id,
     first_name: Forgery("name").first_name,
     last_name: Forgery("name").last_name,
     location: Forgery("address").city,
-  },
-)
+  })
 
 SocialMediaProfile.seed(:id,
   {
@@ -44,5 +43,4 @@ SocialMediaProfile.seed(:id,
     id: 2,
     user_id: 2,
     website: Forgery("internet").domain_name,
-  },
-)
+  })

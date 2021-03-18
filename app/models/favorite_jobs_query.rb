@@ -6,7 +6,7 @@ class FavoriteJobsQuery
   end
 
   def jobs
-    jobs ||= Job
+    jobs || Job
       .includes(:job_types)
       .where(id: favorites)
   end

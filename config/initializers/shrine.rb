@@ -26,12 +26,12 @@ else
 
   cache_storage = Shrine::Storage::S3.new(
     prefix: "cache",
-    **s3_options
+    **s3_options,
   )
 
   store_storage = Shrine::Storage::S3.new(
     prefix: "store",
-    **s3_options
+    **s3_options,
   )
 
   Shrine.storages = {

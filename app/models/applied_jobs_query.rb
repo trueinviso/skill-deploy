@@ -6,7 +6,7 @@ class AppliedJobsQuery
   end
 
   def jobs
-    jobs ||= Job
+    @jobs ||= Job
       .includes(:job_types)
       .where(id: applied_jobs)
   end

@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def guard_user_profile_reviewed!
     if current_user.pending?
-       redirect_to profile_pending_review_path
+      redirect_to profile_pending_review_path
     end
   end
 

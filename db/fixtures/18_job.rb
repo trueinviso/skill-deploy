@@ -2,13 +2,11 @@
 full_time = JobType.find_by(name: "Full Time")
 part_time = JobType.find_by(name: "Part Time")
 contract = JobType.find_by(name: "Contract")
-freelance = JobType.find_by(name: "Freelance")
 
 # roles
 design = JobRole.find_by(name: "Design")
 development = JobRole.find_by(name: "Development")
 marketing = JobRole.find_by(name: "Marketing")
-photography = JobRole.find_by(name: "Photography")
 
 # experiences
 entry = JobExperience.find_by(name: "Entry-level")
@@ -39,7 +37,7 @@ social_media = Tag.find_by(name: "Social Media")
 content = Tag.find_by(name: "Content")
 
 Job.seed(:id,
-# Design Jobs
+  # Design Jobs
   {
     id: 1,
     user_id: 1,
@@ -110,7 +108,7 @@ Job.seed(:id,
     company_website: Forgery(:internet).domain_name,
     remote: true,
   },
-# Development Jobs
+  # Development Jobs
   {
     id: 6,
     user_id: 1,
@@ -136,8 +134,7 @@ Job.seed(:id,
     tags: [mobile],
     description: Forgery(:lorem_ipsum).paragraphs,
     company_website: Forgery(:internet).domain_name,
-    remote: true,
-  },
+    remote: true },
   {
     id: 8,
     user_id: 1,
@@ -161,7 +158,7 @@ Job.seed(:id,
     location: "#{Forgery(:address).city}, #{Forgery(:address).state_abbrev}",
     job_types: [part_time],
     job_experiences: [senior, mid, entry],
-    tags: [full_stack,front_end],
+    tags: [full_stack, front_end],
     description: Forgery(:lorem_ipsum).paragraphs,
     company_website: Forgery(:internet).domain_name,
     remote: true,
@@ -180,7 +177,7 @@ Job.seed(:id,
     company_website: Forgery(:internet).domain_name,
     remote: false,
   },
-# Marketing Jobs
+  # Marketing Jobs
   {
     id: 11,
     user_id: 1,
@@ -250,5 +247,4 @@ Job.seed(:id,
     company_website: Forgery(:internet).domain_name,
     tags: [management],
     remote: true,
-  },
-)
+  })

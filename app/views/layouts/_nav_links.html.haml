@@ -1,28 +1,31 @@
-%ul.nav__menu{class: [current_user.thumbnail.present? && "nav__menu--avatar-present"] }
+-# haml-lint:disable all
+-# rubocop:disable all
+%ul.nav__menu{ class: [current_user.thumbnail.present? && "nav__menu--avatar-present"] }
   %li.nav__menu__item.hidden-mobile
-    %a{ href: '#'}
+    %a{ href: "#" }
       Community
   %li.nav__menu__item.hidden-mobile
     %a{ href: main_app.jobs_path,
       class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
       Gig board
   %li.nav__menu__item.nav__menu__item--parent
+    -# haml-lint:disable all
     .nav__menu__item__profile{class: [current_user.thumbnail.present? && "nav__menu__item__profile--exist"] }
-      = image_tag current_user.thumbnail_url, alt: current_user.username, id:'userAvatar'
+      = image_tag current_user.thumbnail_url, alt: current_user.username, id: "userAvatar"
     %ul.nav__menu__nested
       %li.nav__menu__item
         %a{ href: main_app.edit_user_registration_path,
           class: "#{'active-link' if current_page?(main_app.edit_user_registration_path)}" }
           Account
       %li.nav__menu__item.hidden-desktop
-        %a{ href: '#'}
+        %a{ href: "#"}
           Community
       %li.nav__menu__item.hidden-desktop
         %a{ href: main_app.jobs_path,
-          class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
+          class: "#{"active-link" if current_page?(main_app.jobs_path)}" }
           Gig board
       %li.nav__menu__item
-        = link_to 'Sign out' , main_app.destroy_user_session_path, method: :delete
+        = link_to "Sign out", main_app.destroy_user_session_path, method: :delete
 
 .nav__offcanvas#offcanvas
   %ul.nav__offcanvas__menu
@@ -34,11 +37,11 @@
         class: "#{'active-link' if current_page?(main_app.edit_user_registration_path)}" }
         Account
     %li.nav__offcanvas__menu__item
-      %a{ href: '#'}
+      %a{ href: "#"}
         Community
     %li.nav__offcanvas__menu__item
       %a{ href: main_app.jobs_path,
         class: "#{'active-link' if current_page?(main_app.jobs_path)}" }
         Gig board
     %li.nav__offcanvas__menu__item
-      = link_to 'Sign out' , main_app.destroy_user_session_path, method: :delete
+      = link_to "Sign out", main_app.destroy_user_session_path, method: :delete
