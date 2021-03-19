@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       omniauth_callbacks: "users/omniauth_callbacks",
       registrations: "users/registrations",
       sessions: "users/sessions",
+      passwords: "users/passwords",
     }
 
   devise_scope :user do
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
   end
 
   get "sign-up", to: "sign_up#new"
+
+  resources :confirmations, only: :index
 
   resource :join_us, only: :show, path: "join-us"
 

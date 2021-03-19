@@ -9,5 +9,6 @@ window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts
 Rails.start()
 
+
 /* Enable to measure turbolinks visit time */
 // require("helpers/measureTurbolinksVisitTiming")

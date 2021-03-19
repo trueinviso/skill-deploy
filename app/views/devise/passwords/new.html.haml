@@ -1,0 +1,21 @@
+.forgot-password
+  .forgot-password__header
+    %h1.hidden Forgot your password?
+    %h2.forgot-password__sub-heading We'll send you an email with instructions.
+  
+  = form_for(resource, as: resource_name,
+    url: password_path(resource_name),
+    html: { method: :post }) do |f|
+    = devise_error_messages!
+    .form
+      .form--field
+        = f.label :email,
+          class: "form--label"
+        = f.text_field :email, autofocus: true, autocomplete: "email",
+          class: "form--input",
+          onfocusout: "validateEmail();"
+        .error-message
+
+      .forgot-password__actions
+        = f.submit "Reset password",
+          class: "button -no-radius"

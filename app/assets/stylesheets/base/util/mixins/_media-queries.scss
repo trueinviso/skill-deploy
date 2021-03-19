@@ -1,0 +1,113 @@
+@mixin mq($breakpoint, $type: min) {
+  @if $type == max {
+    $breakpoint: $breakpoint - 1px;
+  }
+
+  @media only screen and (#{$type}-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin minmax-mq($min-breakpoint, $max-breakpoint) {
+  @media only screen and (min-width: $min-breakpoint) and (max-width: $max-breakpoint) {
+    @content;
+  }
+}
+
+// screen specific media queries
+
+@mixin mobile-only {
+  @include mq($breakpoint-tablet, max) {
+    @content;
+  }
+}
+
+@mixin mobile-up {
+  @include mq($breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-large-down {
+  @include mq($breakpoint-mobile-lg, max) {
+    @content;
+  }
+}
+
+@mixin mobile-large-only {
+  @include minmax-mq($breakpoint-mobile-lg, $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin mobile-large-up {
+  @include mq($breakpoint-mobile-lg) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @include mq($breakpoint-tablet, max) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @include minmax-mq($breakpoint-tablet, $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @include mq($breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-down {
+  @include mq($breakpoint-desktop, max) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @include minmax-mq($breakpoint-desktop, $breakpoint-desktop-lg) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @include mq($breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-large-down {
+  @include mq($breakpoint-desktop-wide, max) {
+    @content;
+  }
+}
+
+@mixin desktop-large-only {
+  @include minmax-mq($breakpoint-desktop-lg, $breakpoint-wide) {
+    @content;
+  }
+}
+
+@mixin desktop-large-up {
+  @include mq($breakpoint-desktop-lg) {
+    @content;
+  }
+}
+
+@mixin wide-down {
+  @include mq($breakpoint-wide, max) {
+    @content;
+  }
+}
+
+@mixin wide-up {
+  @include mq($breakpoint-wide) {
+    @content;
+  }
+}

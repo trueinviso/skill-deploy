@@ -1,0 +1,27 @@
+.button {
+  --button-font-size: 12px;
+  --button-line-height: 15px;
+
+  @include desktop-up {
+    --button-font-size: 14px;
+    --button-line-height: 17px;
+  }
+
+  background-color: var(--quaternary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-size: var(--button-font-size);
+  font-weight: var(--font-medium);
+  line-height: var(--button-line-height);
+  outline: none;
+  padding: 0 12px;
+  text-align: center;
+
+  &.-no-radius {
+    border-radius: 0;
+  }
+}

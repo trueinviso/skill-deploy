@@ -1,0 +1,47 @@
+//flex
+
+%flex--centered {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+%flex--vertically-centered {
+  align-items: center;
+  display: flex;
+}
+
+%flex-row-space-between {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+%flex--horizontally-centered {
+  display: flex;
+  justify-content: center;
+}
+
+%flex-col--centered {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+%flex-col--vertically-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+%flex-col--horizontally-centered {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-col {
+  display: flex;
+  flex-direction: column;
+}

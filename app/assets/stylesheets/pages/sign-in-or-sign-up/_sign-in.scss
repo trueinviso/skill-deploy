@@ -1,0 +1,44 @@
+.sign-in {
+  margin: 58px var(--page-margin) 0;
+  max-width: 373px;
+
+  @include tablet-up {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 89px;
+  }
+
+  h1 {
+    margin-bottom: 37px;
+  }
+
+  .form--field {
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__footer {
+    margin-top: 25px;
+
+    @include desktop-up {
+      margin-top: 29px;
+    }
+
+    &__text {
+      margin-top: 8px;
+    }
+  }
+
+  &__meta {
+    margin: 18px 0;
+    width: 219px;
+
+    @include desktop-up {
+      margin: 20px 0;
+      width: 275px;
+    }
+  }
+}
