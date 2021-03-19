@@ -1,0 +1,140 @@
+/* stylelint-disable */
+@function calc-height($ratio, $new-width) {
+  @return $new-width / $ratio;
+}
+
+@function aspect-ratio-percentage($width, $height) {
+  @return percentage($height / $width);
+}
+
+@function getNestedArrayValue($arrayVariable, $nestedArrayName, $value) {
+  $nestedArray: map-get($arrayVariable, $nestedArrayName);
+
+  @return map-get($nestedArray, $value);
+}
+
+// generate responsive hide classes
+
+@each $breakpoint in map-keys($breakpoints) {
+  .hide-#{$breakpoint}-down {
+    display: none !important;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: block !important;
+    }
+  }
+
+  .hide-flex-#{$breakpoint}-down {
+    display: none !important;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: flex !important;
+    }
+  }
+
+  .hide-#{$breakpoint}-up {
+    display: block;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: none !important;
+    }
+  }
+
+  .hide-flex-#{breakpoint}-up {
+    display: flex;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: none !important;
+    }
+  }
+}
+
+@function strip-unit($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+@function replace-svg-color(
+  $svg,
+  $color,
+  $previous-color: encode-color($color-default-icon)
+) {
+  $updated-svg: str-replace($svg, $previous-color, encode-color($color));
+
+  @return $updated-svg;
+}
+
+@function encode-color($string) {
+  @if type-of($string) == "color" {
+    $hex: str-slice(ie-hex-str($string), 4);
+    $string: unquote("#{$hex}");
+  }
+  $string: "%23" + $string;
+
+  @return $string;
+}
+
+@function encode-var-color($string) {
+  $string: "var(" + $string + ")";
+
+  @return $string;
+}
+
+@function calc-percentage($number, $percentage) {
+  @return $number * ($percentage / 100%);
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  .hide-#{$breakpoint}-down {
+    display: none !important;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: block !important;
+    }
+  }
+
+  .hide-flex-#{$breakpoint}-down {
+    display: none !important;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: flex !important;
+    }
+  }
+
+  .hide-#{$breakpoint}-up {
+    display: block;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: none !important;
+    }
+  }
+
+  .hide-flex-#{breakpoint}-up {
+    display: flex;
+
+    @include mq(map-get($breakpoints, $breakpoint)) {
+      display: none !important;
+    }
+  }
+}
