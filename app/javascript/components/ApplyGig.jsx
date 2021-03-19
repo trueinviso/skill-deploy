@@ -1,6 +1,6 @@
-import { string } from "prop-types";
-import React from "react";
-import Modal from "./shared/Modal";
+import { string } from "prop-types"
+import React from "react"
+import Modal from "./shared/Modal"
 
 const ApplyGig = ({ title, buttonTitle }) => {
   return (
@@ -40,12 +40,12 @@ const ApplyGig = ({ title, buttonTitle }) => {
         </React.Fragment>
       )}
     </Modal>
-  );
-};
+  )
+}
 
 ApplyGig.propTypes = {
   title: string.isRequired,
   buttonTitle: string.isRequired
-};
+}
 
-export default ApplyGig;
+export default ApplyGig

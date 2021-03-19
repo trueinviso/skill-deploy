@@ -1,12 +1,26 @@
-%nav.nav{:class => ('nav--logged-out' if current_user.blank? || current_user.registering?)}
+-
+
+%nav.nav
   - if !current_user.blank?
+    -# haml-lint:disable IdNames
     %button.menu-toggle#menuToggler
-      = embedded_svg('menu.svg')
+      = embedded_svg("menu.svg")
 
-  = link_to embedded_svg('logo.svg'),
-    main_app.root_path,
-    class: 'nav--brand'
+  = link_to main_app.root_path, class: "nav--brand", "aria-label" => "logo" do
+    .logo
 
   - if !current_user.blank?
-    = render 'layouts/nav_search'
-    = render 'layouts/nav_links'
+    = render "layouts/nav_search"
+    = render "layouts/nav_links"
+  - elsif %w(registrations).include?(controller_name)
+    %p.nav--sign-out-text.text.-base.hide-flex-desktop-down
+      Already have an account?&nbsp
+      = link_to "Sign in",
+        new_user_session_path,
+        class: "text -link"
+  - elsif %w(sessions).include?(controller_name)
+    %p.nav--sign-out-text.text.-base.hide-flex-desktop-down
+      Don't have an account?&nbsp
+      = link_to "Sign up",
+        new_user_registration_path,
+        class: "text -link"

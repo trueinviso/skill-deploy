@@ -1,15 +1,16 @@
 = form_for(job,
   url: employer_job_path(job),
   method: :put,
-  html: { method: :put, multipart: true, onsubmit: "return listingPage.validateForm(this);",onchange:"listingPage.checkErrors(this)" }) do |f|
+  html: { method: :put, multipart: true, onsubmit: "return listingPage.validateForm(this);",
+  onchange: "listingPage.checkErrors(this)" }) do |f|
 
-  = render 'form_errors', object: job
-  = render 'project_details', f: f, job: job
+  = render "form_errors", object: job
+  = render "project_details", f: f, job: job
 
   .create-listing-page__submit-buttons
-    = f.submit 'Save',
-      class: 'button button_theme_primary create-listing-page__button',id:'button-submit'
+    = f.submit "Save",
+      class: "button button_theme_primary create-listing-page__button", id: "button-submit"
 
-    %a{ href: '#' }
+    %a{ href: "#" }
       %button.button.button_theme_white.create-listing-page__button
-        = link_to 'Cancel', employer_jobs_path
+        = link_to "Cancel", employer_jobs_path

@@ -1,0 +1,41 @@
+/*
+ * This is a manifest file that"ll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin"s vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You"re free to add application-wide styles to this file and they"ll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require trix/dist/trix
+ */
+
+/* VENDOR - Default fall-backs and external files.
+========================================================================== */
+
+@import "mq-sass";
+@import "colors";
+@import "actiontext";
+@import "reset";
+@import "default";
+@import "font-awesome";
+@import "fonts";
+@import "dimensions";
+@import "base/breakpoints";
+@import "base/mixins";
+@import "base/toggle";
+@import "base/dropdown";
+@import "base/errors";
+@import "base-pages";
+@import "base/visibility";
+@import "base/flash_messages";
+@import "common.blocks/**/*";
+@import "desktop.blocks/**/*";
+@import "choices";
+@import "datepicker";
+@import "subscription-payment-form";
+@import "subscription/subscription";

@@ -1,0 +1,9 @@
+@import "legacy/colors";
+
+.label {
+  font-family: $font-primary;
+  font-size: $font-size-normal;
+  font-weight: $font-weight-bold;
+  line-height: 2.08;
+  color: $color-greyish;
+}

@@ -1,11 +1,13 @@
+-# haml-lint:disable all
 = form_for(current_user,
   url: user_profile_path,
-  html: { method: action, class:"registration-page__profile-form" }) do |f|
+  html: { method: action, class: "registration-page__profile-form" }) do |f|
 
   = render("application/form_errors", object: current_user)
 
   - thumbnail = f.object.thumbnail_url
-  = react_component("shared/FileUpload/index", { thumbnail: thumbnail, resource: current_user, type: "user", name:"user[thumbnail_attributes][file]"})
+  = react_component("shared/FileUpload/index", { thumbnail: thumbnail, resource: current_user, type: "user", 
+    name: "user[thumbnail_attributes][file]" })
 
   = render "user_profile_form", form: f
   = render "preferences_and_skills_form", form: f
@@ -15,4 +17,4 @@
 
   = f.submit "Save changes",
     class: "button button_theme_primary button--small",
-    id:'edit-profile'
+    id: "edit-profile"

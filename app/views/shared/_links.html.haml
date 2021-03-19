@@ -1,17 +1,17 @@
 .side-nav
   .small-12.columns
-    = link_to 'Profile',
+    = link_to "Profile",
       edit_user_registration_path,
       class: "#{'active-link' if edit_profile_page?} profile-link"
 
   .small-12.columns
-    = link_to 'Social Profiles',
+    = link_to "Social Profiles",
       edit_profile_social_path,
       class: "#{'active-link' if edit_social_profile_page?} profile-link"
 
   /- if current_user.subscription.present?
   .small-12.columns
-    = link_to 'Notifications',
+    = link_to "Notifications",
       edit_profile_notifications_path,
       class: "#{'active-link' if edit_notifications_page?} profile-link"
 

@@ -1,6 +1,8 @@
+
 .image_small.job-card__image
   - if resource.thumbnail.present?
-    - image_class = resource.thumbnail.file_data.empty? ? 'employer-job-card__image_empty' : 'image_present'
+    -# haml-lint:disable LineLength
+    - image_class = resource.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
     = image_tag resource.thumbnail.file_url, class: image_class
   - else
-    = embedded_svg('empty_photo_state_icon_3x.svg', class: 'employer-job-card__image_empty')
+    = embedded_svg("empty_photo_state_icon_3x.svg", class: "employer-job-card__image_empty")

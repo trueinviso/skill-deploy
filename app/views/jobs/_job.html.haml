@@ -1,13 +1,15 @@
+
 .job
   .job__left-panel
-    .job__preview-image{class: [current_user.thumbnail.present? && "job__preview-image--avatar"] }
+    .job__preview-image{ class: [current_user.thumbnail.present? && "job__preview-image--avatar"] }
       - if @job.thumbnail.present?
+        -# haml-lint:disable LineLength
         - image_class = @job.thumbnail.file_data.empty? ? "employer-job-card__image_empty" : "image_present"
         = image_tag @job.thumbnail_url, class: image_class
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
-      =react_component('ApplyGig',{title:job.name,buttonTitle:'Apply for this gig'})
+      = react_component("ApplyGig", { title: job.name, buttonTitle: "Apply for this gig" })
       %a{ href: job.company_website }
         %span.button.button_theme_white
           Website

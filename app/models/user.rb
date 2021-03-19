@@ -53,7 +53,7 @@ class User < ApplicationRecord
 
   enum review_status: [
     :pending,
-    :complete
+    :complete,
   ]
 
   def active_paid_subscriber?
@@ -63,7 +63,7 @@ class User < ApplicationRecord
   end
 
   def assign_role(role)
-    name = role.to_s.humanize.split.map(&:capitalize).join(' ')
+    name = role.to_s.humanize.split.map(&:capitalize).join(" ")
     role = Role.find_by(name: name)
     roles << role unless roles.include?(role) || role.nil?
   end
@@ -90,17 +90,17 @@ class User < ApplicationRecord
     subs.first
   end
 
-	def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
 
     unless user
       user = User.create(
         email: auth.info.email,
-        password: Devise.friendly_token[0,20],
+        password: Devise.friendly_token[0, 20],
         provider: auth.provider,
         uid: auth.uid,
       )
-      if !user.errors.any?
+      if user.errors.none?
         user.assign_role(:job_seeker)
         if Unity.config.stripe?
           Unity::StripeGateway::CustomerCreator.call!(user)

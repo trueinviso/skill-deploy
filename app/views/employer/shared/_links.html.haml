@@ -2,40 +2,40 @@
   .dropdown__button.employer-jobs-list__dropdown__button{ onclick: "dropdown.toggle()" }
     = selected || "Select"
   .dropdown__content
-    = link_to 'Manage listings',
+    = link_to "Manage listings",
       main_app.employer_jobs_path,
-      class: 'dropdown__link employer-jobs-list__dropdown__link'
+      class: "dropdown__link employer-jobs-list__dropdown__link"
 
-    = link_to 'Your profile',
+    = link_to "Your profile",
       main_app.edit_user_profile_path,
-      class: 'dropdown__link employer-jobs-list__dropdown__link'
+      class: "dropdown__link employer-jobs-list__dropdown__link"
 
-    = link_to 'Billing details',
+    = link_to "Billing details",
       unity.edit_subscription_path,
-      class: 'dropdown__link employer-jobs-list__dropdown__link'
+      class: "dropdown__link employer-jobs-list__dropdown__link"
 
 %aside.side-nav
   %nav
-    = link_to 'Your profile',
+    = link_to "Your profile",
       main_app.edit_user_profile_path,
-      class: 'side-nav__link'
+      class: "side-nav__link"
 
     = link_to "Saved projects",
       main_app.favorite_jobs_path,
       class: "side-nav__link"
 
-    = link_to 'Account settings',
+    = link_to "Account settings",
       main_app.edit_user_registration_path,
-      class: 'side-nav__link'
+      class: "side-nav__link"
 
-    = link_to 'Mangage listings',
+    = link_to "Mangage listings",
       main_app.employer_jobs_path,
-      class: 'side-nav__link'
+      class: "side-nav__link"
 
-    = link_to 'Notifications',
+    = link_to "Notifications",
       main_app.edit_profile_notifications_path,
-      class: 'side-nav__link'
+      class: "side-nav__link"
 
-    = link_to 'Billing details',
+    = link_to "Billing details",
       unity.edit_subscription_path,
-      class: 'side-nav__link'
+      class: "side-nav__link"

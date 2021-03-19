@@ -21,11 +21,11 @@ module Employer
     end
 
     def card_expiration_date
-      "#{card.exp_month.to_s.rjust(2, "0")}/#{card.exp_year}"
+      "#{card.exp_month.to_s.rjust(2, '0')}/#{card.exp_year}"
     end
 
     def card_last4
-        card.last4
+      card.last4
     end
 
     def expiration_date
@@ -50,13 +50,13 @@ module Employer
 
     def stripe_customer
       @stripe_customer ||= Stripe::Customer.retrieve(
-        user.gateway_customer.gateway_id
+        user.gateway_customer.gateway_id,
       )
     end
 
     def subscription
       @subscription ||= Stripe::Subscription.retrieve(
-        user.subscription.gateway_id
+        user.subscription.gateway_id,
       )
     end
   end

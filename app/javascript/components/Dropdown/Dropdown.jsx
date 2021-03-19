@@ -1,8 +1,8 @@
-import { Component } from "react";
-import { arrayOf, string, shape } from "prop-types";
-import classNames from "classnames";
-import withDropdown from "./withDropdown";
-import DropdownItem from "./DropdownItem";
+import { Component } from "react"
+import { arrayOf, string, shape } from "prop-types"
+import classNames from "classnames"
+import withDropdown from "./withDropdown"
+import DropdownItem from "./DropdownItem"
 
 const Dropdown = ({
   options,
@@ -44,7 +44,7 @@ const Dropdown = ({
       ))}
     </ul>
   </div>
-);
+)
 
 Dropdown.propTypes = {
   options: arrayOf(
@@ -57,10 +57,10 @@ Dropdown.propTypes = {
   containerClassName: string,
   buttonClassName: string,
   contentClassName: string
-};
+}
 
 Dropdown.defaultProps = {
   placeholder: "Open dropdown"
-};
+}
 
-export default withDropdown(Dropdown);
+export default withDropdown(Dropdown)

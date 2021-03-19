@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
+import PropTypes from "prop-types"
+import React from "react"
 
 function ImageButtons({
   onChange,
@@ -26,19 +26,19 @@ function ImageButtons({
         {metaText}
       </div>
     </div>
-  );
+  )
 }
 
 ImageButtons.propTypes = {
   buttonName: PropTypes.string,
   metaText: PropTypes.string,
   fileName: PropTypes.string.isRequired
-};
+}
 
 ImageButtons.defaultProps = {
   buttonName: "Upload a photo",
   metaText: `Upload your company logo. This photo will be publicly visible to all
   Heyfam users.`
-};
+}
 
-export default ImageButtons;
+export default ImageButtons

@@ -11,3 +11,5 @@ class CreateRoles < ActiveRecord::Migration[5.1]
     end
   end
 end
+
+SeedFu.seed

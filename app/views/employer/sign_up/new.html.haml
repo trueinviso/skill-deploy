@@ -11,11 +11,11 @@
 
   / Role should be safe since it just determines views not security
   = f.fields_for :user_roles, UserRole.new do |r|
-    = r.hidden_field :role_id, value: Role.find_by(name: 'Employer').id
+    = r.hidden_field :role_id, value: Role.find_by(name: "Employer").id
 
-  = f.submit 'Continue'
+  = f.submit "Continue"
 
   .login-or-registration__fine-print
-    By clicking 'Continue' you agree to our
-    = link_to 'terms and conditions', '#',
-      class: 'login-or-registration__link'
+    By clicking "Continue" you agree to our
+    = link_to "terms and conditions", "#",
+      class: "login-or-registration__link"

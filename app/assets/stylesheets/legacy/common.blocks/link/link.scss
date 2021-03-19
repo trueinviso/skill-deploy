@@ -1,0 +1,13 @@
+@import "legacy/colors";
+
+.link {
+  font-family: $font-primary;
+  font-weight: bold;
+  font-size: $font-size-normal;
+  line-height: 2.14;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

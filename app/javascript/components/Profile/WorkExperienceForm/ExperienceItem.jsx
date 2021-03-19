@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import DatePicker from "./../../DatePickerDropdown";
-import FormField from "./../../shared/FormField";
+import React from "react"
+import PropTypes from "prop-types"
+import DatePicker from "./../../DatePickerDropdown"
+import FormField from "./../../shared/FormField"
 
 const ExperienceItem = ({
   index,
@@ -12,21 +12,21 @@ const ExperienceItem = ({
   onChangeDate,
   onRemove
 }) => {
-  const ref = React.useRef(null);
+  const ref = React.useRef(null)
   const onRemoveItem = React.useCallback(
     e => {
-      e.preventDefault();
+      e.preventDefault()
       // mark as destroy
       if (field["id"] !== undefined) {
-        ref.current.querySelector("input[name*='_destroy']").value = 1;
-        ref.current.style.display = "none";
+        ref.current.querySelector("input[name*='_destroy']").value = 1
+        ref.current.style.display = "none"
       } else {
         // Remove from the page
-        onRemove(index);
+        onRemove(index)
       }
     },
     [index]
-  );
+  )
 
   return (
     <div className="registration-page__work-experiences__section" ref={ref}>
@@ -102,8 +102,8 @@ const ExperienceItem = ({
         Remove
       </button>
     </div>
-  );
-};
+  )
+}
 
 ExperienceItem.propTypes = {
   getName: PropTypes.func.isRequired,
@@ -112,6 +112,6 @@ ExperienceItem.propTypes = {
   onChange: PropTypes.func,
   onChangeDate: PropTypes.func,
   index: PropTypes.number
-};
+}
 
-export default React.memo(ExperienceItem);
+export default React.memo(ExperienceItem)

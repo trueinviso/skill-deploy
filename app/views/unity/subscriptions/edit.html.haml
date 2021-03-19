@@ -1,3 +1,5 @@
+-# haml-lint:disable all
+-# rubocop:disable all
 - view_component = Employer::BillingComponent.new(current_user)
 .subscription.subscription--edit
   = render "employer/shared/links",
@@ -12,7 +14,7 @@
       - if view_component.subscription.canceled_at.present?
         %div
           %span.renewal-message.expiration-date  Expires on
-          %span #{view_component.expiration_date}
+          %span= view_component.expiration_date
       %hr
       %div
         %h3.subscription__details__name Total subscription
@@ -21,26 +23,26 @@
       - if view_component.subscription
         %div
           %span Cancel your subscription
-          = react_component('Subscription/CancelSubscriptionModal',{apiPath:subscription_delete_path})
+          = react_component("Subscription/CancelSubscriptionModal", { apiPath: subscription_delete_path })
 
 
     %h3.subscription--edit__heading Payment details
     .subscription__card-summary#cardSummary
 
-      %span.subscription__card-summary__card-type #{view_component.card_brand}
+      %span.subscription__card-summary__card-type= view_component.card_brand
       %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
     = form_for :payment_method,
       url: unity.payment_method_path,
       method: :put,
       html: { id: "braintree-payment-form",
-      class: "subscription--edit__form #{view_component.subscription ? 'hidden' : ''}",
-      "data-validate":"data-validate",
+      class: "subscription--edit__form #{view_component.subscription ? "hidden" : ""}",
+      "data-validate": "data-validate",
       "no-validate": "no-validate" } do |f|
       .subscription__card-details#cardDetails
         = render "unity/payment_method/card_details", f: f
         = f.submit "Update Payment Method",
           data: { disable_with: "Please wait..." },
-          class:'button button_theme_white update-button'
-    %button.button.button_theme_black{onClick: "togglePaymentForm(this)" }
+          class: "button button_theme_white update-button"
+    %button.button.button_theme_black{ onClick: "togglePaymentForm(this)" }
       Edit my information
 

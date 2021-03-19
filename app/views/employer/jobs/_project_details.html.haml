@@ -1,5 +1,7 @@
+-# haml-lint:disable IdNames
 - thumbnail = f.object.thumbnail_url
-= react_component("shared/FileUpload/index", { thumbnail: thumbnail, resource: job, type: "job", name:"job[thumbnail_attributes][file]", upload:false })
+= react_component("shared/FileUpload/index", { thumbnail: thumbnail, resource: job,
+  type: "job", name: "job[thumbnail_attributes][file]", upload: false })
 .role-company-inputs
   .job-name.create-listing-page__input
     = f.label :name, "Role Title *", class: "label"

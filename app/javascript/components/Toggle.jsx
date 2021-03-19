@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classnames from "classnames";
+import React from "react"
+import PropTypes from "prop-types"
+import classnames from "classnames"
 
-const noop = () => {};
+const noop = () => {}
 
 class Toggle extends React.PureComponent {
   static propTypes = {
@@ -10,29 +10,29 @@ class Toggle extends React.PureComponent {
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     name: PropTypes.string.isRequired
-  };
+  }
 
   static defaultProps = {
     defaultValue: false,
     disabled: false,
     onChange: noop
-  };
+  }
 
   state = {
     on: this.props.defaultValue
-  };
+  }
 
   onToggle = () =>
     this.setState(
       prev => ({ on: !prev.on }),
       () => {
-        this.props.onChange(this.state.on);
+        this.props.onChange(this.state.on)
       }
-    );
+    )
 
   render() {
-    const { disabled, name } = this.props;
-    const { on } = this.state;
+    const { disabled, name } = this.props
+    const { on } = this.state
 
     return (
       <div
@@ -49,8 +49,8 @@ class Toggle extends React.PureComponent {
         />
         <input type="hidden" name={name} value={on} />
       </div>
-    );
+    )
   }
 }
 
-export default Toggle;
+export default Toggle

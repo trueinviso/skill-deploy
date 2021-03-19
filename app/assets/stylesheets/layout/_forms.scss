@@ -1,0 +1,26 @@
+.form {
+}
+
+.form--label {
+  color: var(--greyish-color);
+  display: inline-block;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: var(--font-medium);
+  line-height: 22px;
+  margin-bottom: 3px;
+
+  @include desktop-up {
+    font-size: 12px;
+    line-height: 25px;
+  }
+}
+.form--input {
+  background-color: var(--tertiary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  box-sizing: border-box;
+  height: 46px;
+  padding: 0 20px;
+  width: 100%;
+}

@@ -1,0 +1,37 @@
+.text {
+  color: var(--quaternary-color);
+  font-size: 14px;
+  font-weight: var(--font-medium);
+  line-height: 22px;
+
+  &.-link {
+    color: var(--danger-color);
+    font-size: 12px;
+    line-height: 26px;
+
+    @include desktop-up {
+      font-size: 14px;
+      line-height: 30px;
+    }
+  }
+
+  &.-base {
+    font-size: 12px;
+    line-height: 26px;
+
+    @include desktop-up {
+      font-size: 14px;
+      line-height: 30px;
+    }
+  }
+
+  &.-meta {
+    color: var(--greyish-color);
+    font-size: 10px;
+    line-height: 18px;
+    @include desktop-up {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}

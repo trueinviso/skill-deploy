@@ -23,7 +23,7 @@ module Api
           :model_type,
           :record_id,
           user: [thumbnail_attributes: [:file]],
-          job: [thumbnail_attributes: [:file]]
+          job: [thumbnail_attributes: [:file]],
         )
       end
     end

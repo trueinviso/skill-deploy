@@ -12,7 +12,6 @@ class Job < ApplicationRecord
   has_many :employer_job_experiences, dependent: :destroy
   has_many :job_experiences, through: :employer_job_experiences
 
-
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
@@ -41,7 +40,6 @@ class Job < ApplicationRecord
     :instagram,
     :twitter,
     :company_website, url: true
-
 
   enum status: [:preview, :published]
 
@@ -73,8 +71,7 @@ class Job < ApplicationRecord
     where("jobs.name ILIKE :search OR " \
           "jobs.location ILIKE :search OR " \
           "jobs.company_name ILIKE :search",
-      search: "%#{search}%"
-    )
+      search: "%#{search}%")
   end
 
   def social_links

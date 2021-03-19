@@ -4,7 +4,7 @@ module Users
 
     protected
 
-    def after_update_path_for(resource)
+    def after_update_path_for(_resource)
       edit_user_registration_path
     end
 

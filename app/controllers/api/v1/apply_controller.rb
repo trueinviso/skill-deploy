@@ -18,7 +18,7 @@ module Api
       private
 
       def applied_for
-        @favorite ||= AppliedFor.where(
+        @applied_for ||= AppliedFor.where(
           user_id: current_user.id,
           job_id: params[:id],
         ).first

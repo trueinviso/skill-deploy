@@ -3,7 +3,7 @@ class UrlValidator < ActiveModel::EachValidator
 
   def validate_each(record, attribute, value)
     return true if value.blank?
-    unless value =~ URL_REGEX
+    unless value.match?(URL_REGEX)
       record.errors[attribute] << (options[:message] || "is not a valid url")
     end
   end
