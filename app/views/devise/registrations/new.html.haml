@@ -1,15 +1,6 @@
--# haml-lint:disable all
--# rubocop:disable all
-.registration-page
-  .header.registration-page__header
-    Join the world's top network of purpose driven creatives
+.sign-in
+  %h1 Let’s create an account
 
-  //.registration__content
-  //  = link_to "Sign up with Google",
-  //    user_google_oauth2_omniauth_authorize_path,
-  //    class: "registration__oauth"
-  //  .registration__or
-  //    or
   = form_for @user,
     as: resource_name,
     url: registration_path(resource_name),
@@ -19,48 +10,51 @@
 
     = f.fields_for :user_profile, UserProfile.new do |p|
       .form
-        = p.label :first_name,
-          "First Name *",
-          class: "label"
-        = p.text_field :first_name,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_first_name",
-          onfocusout: "validatePresence('#user_first_name')"
-        .error-message#user_first_name-error
+        .form--field
+          = p.label :first_name,
+            "First Name *",
+            class: "form--label"
+          = p.text_field :first_name,
+            class: "form--input",
+            id: "user-first-name",
+            onfocusout: "validatePresence('#user-first-name-error')"
+          .error-message#user-first-name-error
+        .form--field
+          = p.label :last_name,
+            "Last Name *",
+            class: "form--label"
+          = p.text_field :last_name,
+            class: "form--input",
+            id: "user-last_name",
+            onfocusout: "validatePresence('#user-last-name')"
+          .error-message#user-last-name-error
 
-        = p.label :last_name,
-          "Last Name *",
-          class: "label"
-        = p.text_field :last_name,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_last_name",
-          onfocusout: "validatePresence('#user_last_name')"
-        .error-message#user_last_name-error
+        .form--field
+          = f.label :email,
+            "Email *",
+            class: "form--label"
+          = f.email_field :email,
+            class: "form--input",
+            id: "user-email",
+            onfocusout: "validateEmail('#user-email')"
+          .error-message#user-email-error
 
-        = f.label :email,
-          "Email *",
-          class: "label"
-        = f.email_field :email,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_email",
-          onfocusout: "validateEmail('#user_email')"
-        .error-message#user_email-error
-
-        = f.label :password,
-          "Password *",
-          class: "label"
-        = f.password_field :password,
-          class: "input input_theme_normal registration-page__input",
-          id: "user_password"
-        .error-message#user_password-error
+        .form--field
+          = f.label :password,
+            "Password *",
+            class: "form--label"
+          = f.password_field :password,
+            class: "form--input",
+            id: "user-password"
+          .error-message#user-password-error
 
       = f.submit "Get started",
-        class: "button button_theme_primary registration-page__button",
+        class: "button",
         data: { disable_with: false }
 
-      .registration-page__terms-text
-        By clicking "Get started", I agree to Heyfam"s Terms & Privacy Policy.
+      .sign-in__meta.text.-meta
+        By clicking “Get started”, I agree to Skill Deploy’s Terms & Privacy Policy.
 
-      .form__heading
+      .text.-base.hide-desktop-up
         Already have an account?
-        = link_to "Log in", new_user_session_path, class: "link link_theme_primary"
+        = link_to "Log in", new_user_session_path, class: "text -link"
