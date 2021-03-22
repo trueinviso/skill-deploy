@@ -19,7 +19,7 @@
 
 @import "mq-sass";
 @import "colors";
-@import "actiontext";
+// @import "actiontext";
 @import "reset";
 @import "default";
 @import "font-awesome";
@@ -35,7 +35,6 @@
 @import "base/flash_messages";
 @import "common.blocks/**/*";
 @import "desktop.blocks/**/*";
-@import "choices";
 @import "datepicker";
 @import "subscription-payment-form";
 @import "subscription/subscription";

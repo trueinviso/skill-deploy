@@ -1,14 +1,7 @@
 @import "legacy/index";
-@import "base/breakpoints";
-@import "base/util/mixins/*";
-@import "base/util/placeholders";
-@import "base/util/functions";
-@import "base/base";
-@import "base/typography";
-@import "base/icons/icons";
+@import "resources";
 
-@import "layout/forms";
-@import "layout/navigation";
+@import "layout/**/*";
 
 // Pages
 @import "pages/**/*";
@@ -18,3 +11,7 @@
 @import "components/logo";
 @import "components/buttons/*";
 @import "components/text";
+@import "components/editor/actiontext";
+@import "components/choices-overrides";
+@import "components/label";
+@import "components/alert";

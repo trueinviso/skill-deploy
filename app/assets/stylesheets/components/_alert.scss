@@ -1,0 +1,28 @@
+.alert {
+  align-items: center;
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  display: flex;
+  font-size: 13px;
+  font-weight: var(--font-medium);
+  line-height: 16px;
+  padding: 27px;
+  text-align: center;
+
+  &__content {
+    width: 100%;
+  }
+
+  &.-danger {
+    background-color: var(--danger-color);
+  }
+
+  & > .close {
+    border: 2px solid #ffffff40;
+    border-radius: 100%;
+    height: 20px;
+    margin-left: auto;
+    outline: none;
+    width: 20px;
+  }
+}
