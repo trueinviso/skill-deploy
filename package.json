@@ -40,6 +40,7 @@
     "react-datepicker": "^3.6.0",
     "react-dom": "^17.0.1",
     "react-modal": "^3.12.1",
+    "react-select": "^4.3.0",
     "react-spinners": "^0.10.6",
     "react-stripe-elements": "^6.1.2",
     "react_ujs": "^2.6.1",
