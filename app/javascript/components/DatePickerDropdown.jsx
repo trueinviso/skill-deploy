@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React, { PureComponent, createRef } from "react"
 import DatePicker from "react-datepicker"
 
-const dateFormat = "MMM YYYY"
+const dateFormat = "MMM yyyy"
 
 class DatePickerDropdown extends PureComponent {
   static propTypes = {
@@ -40,11 +40,18 @@ class DatePickerDropdown extends PureComponent {
     )
 
   render() {
-    const { label, name, placeholder, className, defaultValue } = this.props
+    const {
+      label,
+      name,
+      placeholder,
+      className,
+      labelClassName,
+      defaultValue
+    } = this.props
     const { date } = this.state
     return (
       <div className={className} ref={this.ref}>
-        <label className="label">{label}</label>
+        <label className={labelClassName}>{label}</label>
         <DatePicker
           selected={date}
           name={name}

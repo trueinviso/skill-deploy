@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import React, { PureComponent, createRef } from "react"
+import React, { PureComponent, Fragment, createRef } from "react"
 import Choices from "choices.js"
 
 const config = {
@@ -36,21 +36,22 @@ class Skills extends PureComponent {
 
   render() {
     return (
-      <div>
-        <label className="label" htmlFor="user_skills">
-          Your skills *
+      <Fragment>
+        <label className="form--label -required -black" htmlFor="user_skills">
+          List skills on your profile
         </label>
         <input
+          hidden
           id="user_skills"
           type="text"
           ref={this.ref}
           name="user[skills]"
         />
-        <span className="choices-helper-text">
+        <span className="choices__helper-text">
           Add up to 15 skills to display on your profile. Hit enter after each
           skill you input.
         </span>
-      </div>
+      </Fragment>
     )
   }
 }
