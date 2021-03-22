@@ -1,0 +1,53 @@
+.sidebar {
+  --spacing-left: 93px;
+  background-color: var(--primary-color);
+  padding-top: 57px;
+  width: 338px;
+
+  &__nav {
+    &__heading {
+      color: var(--dark-grey-color);
+      font-size: 8px;
+      font-weight: var(--font-medium);
+      letter-spacing: 1px;
+      line-height: 10px;
+      margin-bottom: 8px;
+      padding-left: var(--spacing-left);
+      text-transform: uppercase;
+    }
+
+    &__divider {
+      background-color: var(--tertiary-color);
+      border: none;
+      height: 1px;
+      margin-top: 9px;
+    }
+    &__menu {
+      margin-bottom: 75px;
+
+      &__item {
+        margin-bottom: 17px;
+        padding: 12px 0 12px var(--spacing-left);
+
+        &.-selected {
+          background-color: var(--bg-color);
+          border-right: 3px solid var(--quaternary-color);
+
+          a {
+            color: var(--quaternary-color);
+          }
+        }
+
+        &__link {
+          color: var(--dark-grey-color);
+          font-size: 15px;
+          font-weight: var(--font-medium);
+
+          ~ .label {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}
