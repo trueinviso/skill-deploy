@@ -1,4 +1,16 @@
 GIT
+  remote: https://github.com/heartcombo/devise.git
+  revision: ef9a2f410413b02b5234d80a73b42e296ebcc863
+  branch: master
+  specs:
+    devise (4.7.3)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/trueinviso/unity.git
   revision: ac0d23193f998bd2581a2ea241121adbde5745c4
   specs:
@@ -108,12 +120,6 @@ GEM
     connection_pool (2.2.3)
     content_disposition (1.0.0)
     crass (1.0.6)
-    devise (4.7.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     dotenv-rails (2.7.6)
@@ -373,7 +379,7 @@ DEPENDENCIES
   aws-sdk-s3
   byebug
   capybara (~> 2.13)
-  devise
+  devise!
   dotenv-rails
   fastimage
   font-awesome-rails
@@ -415,4 +421,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.2
+   2.2.15

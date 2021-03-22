@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "awesome_print"
-gem "devise"
+gem "devise", github: "heartcombo/devise", branch: "master"
 gem "forgery"
 # gem "foundation-rails", "~> 5.4"
 gem "aws-sdk-s3"
