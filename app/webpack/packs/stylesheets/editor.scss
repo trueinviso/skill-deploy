@@ -1,0 +1,5 @@
+@import "~trix/dist/trix";
+@import "stylesheets/base/_breakpoints.scss";
+@import "stylesheets/base/util/mixins/_media-queries.scss";
+@import "stylesheets/base/util/functions";
+@import "stylesheets/components/editor/_overrides.scss";

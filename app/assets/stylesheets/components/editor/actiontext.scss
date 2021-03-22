@@ -1,0 +1,28 @@
+@import "./icons";
+
+@mixin hideTrixButtons($collection...) {
+  @each $title in $collection {
+    button[title="#{$title}"] {
+      display: none;
+    }
+  }
+}
+
+.trix-button-row {
+  @include hideTrixButtons(
+    "Strikethrough",
+    "Link",
+    "Heading",
+    "Quote",
+    "Code",
+    "Numbers",
+    "Decrease Level",
+    "Increase Level",
+    "Undo",
+    "Redo"
+  );
+
+  .trix-button-group--history-tools {
+    display: none;
+  }
+}
