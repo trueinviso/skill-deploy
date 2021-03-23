@@ -1,0 +1,41 @@
+.photoUploader {
+  align-items: center;
+  box-sizing: border-box;
+  display: grid;
+  grid-gap: 26px;
+  grid-template-columns: 100px 176px;
+  margin-top: 50px;
+}
+
+.thumbnailContainer {
+  @extend %flex--centered;
+  background-color: var(--tertiary-color);
+  border-radius: 100%;
+  height: 100px;
+  overflow: hidden;
+  width: 100px;
+}
+
+.thumbnail {
+  height: 100px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.icon {
+  background-image: url($camera-icon);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: inline-block;
+  height: 28px;
+  width: 34px;
+}
+
+.button {
+  line-height: 46px;
+  max-width: 176px;
+}
+
+.input {
+  display: none;
+}

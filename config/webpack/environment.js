@@ -2,6 +2,7 @@ const { environment } = require("@rails/webpacker")
 const { ProvidePlugin, EnvironmentPlugin } = require("webpack")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const dotenv = require("dotenv")
+const path = require('path')
 const customConfig = require("./custom")
 const rules = environment.loaders
 
@@ -12,15 +13,22 @@ const ManifestPlugin = environment.plugins.get("Manifest")
 
 const devMode = process.env.NODE_ENV === "development"
 const dotenvFiles = [`.env.${process.env.NODE_ENV}`, ".env"]
-const sassResources = ['./app/assets/stylesheets/colors.scss'];
+const sassResources = [path.resolve(__dirname, "../../app/assets/stylesheets/_resources.scss")];
 const styleLoader = devMode ? "style-loader" : MiniCssExtractPlugin.loader
 
-sassLoader.use.push({
-    loader: 'sass-resources-loader',
-    options: {
-      resources: sassResources,
-    },
-  });
+
+
+const resourcesLoader = {
+  loader: 'sass-resources-loader',
+  options: {
+    resources: sassResources,
+  },
+}
+sassLoader.use.splice(-1, 0, {
+  loader: 'resolve-url-loader'
+});
+
+sassLoader.use.push(resourcesLoader);
 
 
 
@@ -60,8 +68,11 @@ environment.config.set(
 
 environment.loaders.insert("scssModule", {
   test: /\.module\.(sa|sc|c)ss$/,
-  use: [styleLoader, CSSModuleLoader]
+  use: [styleLoader, CSSModuleLoader,"sass-loader",resourcesLoader]
 })
+
+
+
 
 rules.delete("nodeModules")
 rules.delete("moduleCss")

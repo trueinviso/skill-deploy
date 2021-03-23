@@ -1,0 +1,28 @@
+$color-active: #000;
+
+.rateRange {
+  align-items: center;
+  display: grid;
+  grid-gap: 34px;
+  grid-template-columns: auto;
+
+  @include tablet-up {
+    grid-template-columns: 315px 80px;
+  }
+}
+
+.iconList {
+  display: flex;
+  gap: 4px;
+}
+
+.icon {
+  background-image: url($dollar-icon);
+  display: inline-block;
+  height: 24px;
+  width: 11.73px;
+}
+
+.iconActive {
+  background-image: url(replace-svg-color($dollar-icon, $color-active));
+}

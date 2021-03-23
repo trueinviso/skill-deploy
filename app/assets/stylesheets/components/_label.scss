@@ -1,0 +1,12 @@
+.label {
+  border-radius: 38px;
+  color: var(--primary-color);
+  font-size: 10px;
+  line-height: 12px;
+  line-height: 21px;
+  padding: 4px 14px;
+
+  &.-danger {
+    background-color: var(--danger-color);
+  }
+}

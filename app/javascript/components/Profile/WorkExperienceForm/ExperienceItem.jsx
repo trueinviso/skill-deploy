@@ -44,8 +44,8 @@ const ExperienceItem = ({
 
       <FormField
         containerClassName="registration-page__form-field registration-page__form-field--half"
-        inputClassName="input input_theme_normal registrations-edit__input"
-        labelClassName="label"
+        inputClassName="form--input"
+        labelClassName="form--label -black"
         label="Title"
         name={getName(index, "title")}
         id={getId(index, "name")}
@@ -55,8 +55,8 @@ const ExperienceItem = ({
 
       <FormField
         containerClassName="registration-page__form-field registration-page__form-field--half"
-        inputClassName="input input_theme_normal registrations-edit__input"
-        labelClassName="label"
+        inputClassName="form--input"
+        labelClassName="form--label -black"
         label="Company"
         name={getName(index, "company")}
         id={getId(index, "company")}
@@ -66,6 +66,7 @@ const ExperienceItem = ({
 
       <div className="registration-page__work-experiences--inline">
         <DatePicker
+          labelClassName="form--label -black"
           className="registration-page__form-field registration-page__form-field--fourth"
           name={getName(index, "start")}
           label="Start"
@@ -73,6 +74,7 @@ const ExperienceItem = ({
           defaultValue={field["start"]}
         />
         <DatePicker
+          labelClassName="form--label -black"
           className="registration-page__form-field registration-page__form-field--fourth"
           name={getName(index, "end")}
           label="End"

@@ -12,5 +12,4 @@
 //
 //= require rails-ujs
 //= require turbolinks
-// = require validations
 //= require_tree .

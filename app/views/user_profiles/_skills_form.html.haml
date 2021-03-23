@@ -1,1 +1,1 @@
-= react_component("Profile/Skills", { initialSkills: current_user.try(:skills) || [] })
+= react_component("UserSkills", { initialSkills: current_user.try(:skills) || [] },{ class:"profile__form__skills-section"} )

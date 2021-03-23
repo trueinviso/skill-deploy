@@ -16,6 +16,10 @@ const ExperiencePropTypes = {
   user_id: PropTypes.number
 }
 
+const createField = () => ({
+  key: getUniqKey()
+})
+
 class WorkExperienceForm extends PureComponent {
   static propTypes = {
     formName: PropTypes.string.isRequired,
@@ -27,12 +31,12 @@ class WorkExperienceForm extends PureComponent {
   state = {
     fields: this.props.initialWorkExperiences
       ? this.props.initialWorkExperiences
-      : [this.createField()]
+      : [createField()]
   }
 
   onAddNewField = e => {
     e.preventDefault()
-    this.setState(prev => ({ fields: [...prev.fields, this.createField()] }))
+    this.setState(prev => ({ fields: [...prev.fields, createField()] }))
   }
 
   onRemove = currentIndex => {
@@ -60,10 +64,6 @@ class WorkExperienceForm extends PureComponent {
       )
     }))
 
-  createField = () => ({
-    key: getUniqKey()
-  })
-
   getName = (index, name) => {
     // user[work_experiences_attributes][index][name]
     return `${this.props.formName}[${index}][${name}]`
@@ -88,11 +88,8 @@ class WorkExperienceForm extends PureComponent {
             onRemove={this.onRemove}
           />
         ))}
-        <div className="registration-page__form-field">
-          <button
-            className="button button_theme_white"
-            onClick={this.onAddNewField}
-          >
+        <div className="form--field">
+          <button className="button" onClick={this.onAddNewField}>
             Add more experience
           </button>
         </div>

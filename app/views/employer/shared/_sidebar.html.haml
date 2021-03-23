@@ -1,0 +1,36 @@
+- selected || "Select"
+%aside.sidebar.hide-tablet-down
+  %nav.sidebar__nav 
+    %h4.sidebar__nav__heading My Account
+    %ul.sidebar__nav__menu
+      %li.sidebar__nav__menu__item.-selected
+        = link_to "Profile",
+        main_app.edit_user_profile_path,
+        class: "sidebar__nav__menu__item__link" 
+        - if talent?  
+          %span.label.-danger Apply
+      %li.sidebar__nav__menu__item
+        = link_to "Account settings",
+        main_app.edit_user_registration_path,
+        class: "sidebar__nav__menu__item__link"
+
+
+    %h4.sidebar__nav__heading  Job Listings
+    %hr.sidebar__nav__divider
+    %ul.sidebar__nav__menu
+      %li.sidebar__nav__menu__item 
+        = link_to "Mangage listings",
+        main_app.employer_jobs_path,
+        class: "sidebar__nav__menu__item__link"
+      %li.sidebar__nav__menu__item 
+        = link_to "Account settings",
+            main_app.edit_user_registration_path,
+            class: "sidebar__nav__menu__item__link"
+
+    %h4.sidebar__nav__heading Subscription
+    %hr.sidebar__nav__divider
+    %ul.sidebar__nav__menu
+      %li.sidebar__nav__menu__item
+        = link_to "Billing details",
+        unity.edit_subscription_path,
+        class: "sidebar__nav__menu__item__link"

@@ -26,4 +26,13 @@ module ApplicationHelper
   def employer_billing_page?
     current_page?(main_app.edit_employer_billing_path)
   end
+
+  def account_page?
+    controller_name == 'user_profiles'
+  end
+
+  # FIXME: should be fixed in a right way
+  def talent?
+    current_user.roles.find_by(id: 2)
+  end
 end

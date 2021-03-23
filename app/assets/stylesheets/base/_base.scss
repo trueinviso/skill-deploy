@@ -1,3 +1,5 @@
+$color-default-icon: #e7e7e7;
+
 :root {
   //colors
   --primary-color: #ffffff;
@@ -8,7 +10,10 @@
   --text-color: #757575;
   --danger-color: #fc520a;
   --greyish-color: #9d9c9b;
+  --dark-grey-color: #7d7d7d;
+  --light-grrey-color: #{$color-default-icon};
   --border-color: #e6e6e6;
+  --bg-color: #f6f6f6;
 
   // fonts
 

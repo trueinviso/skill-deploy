@@ -1,6 +1,13 @@
-.admin-container.registrations-edit
-  = render "employer/shared/links",
+.page.profile
+  = render "employer/shared/sidebar",
     selected: "Your profile"
-  .registration-page__content
-    %h1.registration-page__heading = Your profile
-    = render "form", action: :put
+  %div.page__main
+    -if talent?
+      %div{ role:"alert", class:"alert -danger" }
+        %span.alert__content You’ll need to submit your profile for review before applying for jobs.
+        %button{"data-dismiss":"alert", "aria-label":"Close", class:"close" }
+          %span{"aria-hidden":true} &times
+
+    .page__content
+      %h1.h1--small Your profile
+      = render "form", action: :put
