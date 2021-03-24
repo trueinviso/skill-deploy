@@ -11,6 +11,17 @@ $color-active: #000000;
   }
 }
 
+.select {
+  & .-invalid {
+    background-color: red;
+  }
+
+  & > .error-message {
+    background-color: red;
+    display: block !important;
+  }
+}
+
 .iconList {
   display: flex;
   gap: 4px;
