@@ -8,9 +8,7 @@ default: &default
   extract_css: true
   check_yarn_integrity: false
 
-  # Additional paths webpack should lookup modules
-  # ['app/assets', 'engine/foo/app/assets']
-  resolved_paths: ["app/javascript", "app/assets/"]
+  additional_paths: ["app/javascript", "app/assets/"]
 
   # Reload manifest.json on all requests so we reload latest compiled packs
   cache_manifest: false
