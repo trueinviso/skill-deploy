@@ -71,7 +71,8 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "dotenv-rails"
   gem "selenium-webdriver"
-  gem 'rspec-rails', '~> 5.0.0'
+  gem "pry"
+  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :development do
