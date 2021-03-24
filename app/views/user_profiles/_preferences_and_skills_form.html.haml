@@ -49,6 +49,7 @@
         %span.form--radio-button
           = jt.radio_button
           = jt.label(class: "form--radio-button")
-  %span.form--label.-black What’s your rate range?*
-  = react_component("RateRane", options: rate_range_options)
+  .profile__form__rate      
+    %span.form--label.-black What’s your rate range?*
+    = react_component("RateRange", options: rate_range_options, name: "user[rate_range_id]", default_value: current_user&.rate_range_id )
   = render "skills_form", form: form
