@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe RateRange do
+  describe "associations" do
+    it { is_expected.to have_many(:users) }
+  end
+
   describe "validations" do
     subject { build :rate_range }
 

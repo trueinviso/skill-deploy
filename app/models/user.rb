@@ -10,6 +10,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
+  belongs_to :rate_range
+
   has_one :user_profile, dependent: :destroy
   has_one :social_media_profile, dependent: :destroy
   has_many :user_permissions, dependent: :destroy
