@@ -62,6 +62,7 @@ gem "sentry-raven", "~> 2.6.0"
 group :test do
   gem "rspec"
   gem "shrine-memory"
+  gem "shoulda-matchers", "~> 4.0"
 end
 
 group :development, :test do
