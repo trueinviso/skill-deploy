@@ -14,7 +14,7 @@ const ManifestPlugin = environment.plugins.get("Manifest")
 const devMode = process.env.NODE_ENV === "development"
 const dotenvFiles = [`.env.${process.env.NODE_ENV}`, ".env"]
 const sassResources = [path.resolve(__dirname, "../../app/assets/stylesheets/_resources.scss")];
-const styleLoader = devMode ? "style-loader" : MiniCssExtractPlugin.loader
+const styleLoader = MiniCssExtractPlugin.loader
 
 
 
