@@ -1,8 +1,7 @@
-.nav__search#search-form
-  = form_tag main_app.jobs_path, method: "get" do
-    .nav__search__field
-      %span.search-icon &#9906;
-      = text_field_tag :search,
-        params[:search],
-        placeholder: "Search"
-    = submit_tag "Search", id: "search-submit"
+= form_tag main_app.jobs_path, class: "nav__search hide-tablet-down", method: "get" do
+  .nav__search__field
+    %span.nav__search__field__icon &#9906;
+    = text_field_tag :search,
+      params[:search],
+      placeholder: "Search"
+  = submit_tag "Search", id: "search-submit"

@@ -1,10 +1,10 @@
 .button {
   --button-font-size: 12px;
-  --button-line-height: 15px;
+  --button-line-height: 44px;
 
   @include desktop-up {
     --button-font-size: 14px;
-    --button-line-height: 17px;
+
   }
 
   background-color: var(--quaternary-color);

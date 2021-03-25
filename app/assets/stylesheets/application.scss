@@ -1,7 +1,10 @@
 @import "legacy/index";
 @import "resources";
 
-@import "layout/**/*";
+@import "layout/page";
+@import "layout/navigation/nav";
+@import "layout/forms";
+@import "layout/sidebar";
 
 // Pages
 @import "pages/**/*";
