@@ -6,12 +6,13 @@
 
   &__nav {
     &__heading {
+      border-bottom: 1px solid var(--tertiary-color);
       color: var(--dark-grey-color);
       font-size: 8px;
       font-weight: var(--font-medium);
       letter-spacing: 1px;
       line-height: 10px;
-      margin-bottom: 8px;
+      padding-bottom: 9px;
       padding-left: var(--spacing-left);
       text-transform: uppercase;
     }
@@ -29,9 +30,11 @@
         margin-bottom: 17px;
         padding: 12px 0 12px var(--spacing-left);
 
+        &:hover,
         &.-selected {
           background-color: var(--bg-color);
           border-right: 3px solid var(--quaternary-color);
+          transition: all ease 0.4s;
 
           a {
             color: var(--quaternary-color);
