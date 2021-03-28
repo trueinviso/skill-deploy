@@ -6,46 +6,35 @@
         "First Name",
         class: "form--label -black -required"
       = p.text_field :first_name,
+        "data-required":true,
         class: "form--input",
-        id: "user-first-name",
-        onfocusout: "validatePresence("#user-first-name");",
         placeholder: "Add..."
-      .error-message#user-first-name-error
     .form--field
       = p.label :last_name,
         "Last Name",
         class: "form--label -black -required"
       = p.text_field :last_name,
-        class: "form--input",
-        id: "user-last-name",
-        onfocusout: "validatePresence("#user-last-name");"
-      .error-message#user-last-name-error
+        "data-required":true,
+        class: "form--input"
     .form--field.profile__form__field.-full
       = p.label :headline,
         "Headline",
         class: "form--label -black"
       = p.text_field :headline,
         class: "form--input",
-        id: "user_headline",
-        placeholder:"Add...",
-        onfocusout: "validatePresence("#user-last-name");"
-      .error-message#user-headline-error
-    .form--field.profile__form__field.-full
+        placeholder:"Add..."
+    .form--field.profile__form__field.-full.-editor
       = p.label :bio,
         "About",
         class: "form--label -black -required"
       = p.rich_text_area :bio,
-        class: "form--textbox",
-        id: "user-bio",
-        onfocusout: "validatePresence("#user-bio");"
-      .error-message#user-bio-error
+        "data-required":true,
+        class: "form--textbox"
     .form--field.profile__form__field.-full
       = p.label :location,
         "Current Location",
         class: "form--label -black -required"
       = p.text_field :location,
-        class: "form--input",
-        id: "user-location",
-        onfocusout: "validatePresence("#user-location");"
-      .error-message#user-location-error
+        "data-required":true,
+        class: "form--input"
     

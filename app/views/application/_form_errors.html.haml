@@ -1,9 +1,11 @@
 - if object.errors.any?
-  #error-explanation
-    %h2
-      #{pluralize(object.errors.count, 'error')} prohibited
-      this #{object.class.name} from being saved:
-
-    %ul
-      - object.errors.full_messages.each do |msg|
-        %li= msg
+  %div{ role:"alert", class:"alert -danger" }
+    .alert__content
+      %h2
+        #{pluralize(object.errors.count, 'error')} prohibited
+        this #{object.class.name} from being saved:
+      %ul.alert__list
+        - object.errors.full_messages.each do |msg|
+          %li= msg
+    %button{"data-dismiss":"alert", "aria-label":"Close", class:"close" }
+      %span{"aria-hidden":true} &times

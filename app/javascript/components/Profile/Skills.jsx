@@ -37,7 +37,7 @@ class Skills extends PureComponent {
   render() {
     return (
       <Fragment>
-        <label className="form--label -required -black" htmlFor="user_skills">
+        <label className="form--label -black" htmlFor="user_skills">
           List skills on your profile
         </label>
         <input
