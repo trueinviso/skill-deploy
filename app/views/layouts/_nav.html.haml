@@ -1,6 +1,6 @@
 %nav.nav
   .nav__container
-    .nav__content
+    %div{ class: "nav__content #{'-no-logged-in' if current_user.blank? }" }
       - if !current_user.blank?
         %a.nav__burger-button.hide-tablet-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
           .burger-button

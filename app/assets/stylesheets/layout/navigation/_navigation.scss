@@ -23,6 +23,10 @@ $nav-height: 81px;
   height: $nav-height;
   justify-content: flex-start;
   margin: 0 auto;
+
+  &.-no-logged-in {
+    justify-content: space-between;
+  }
 }
 .nav__left {
   @extend %flex--vertically-centered;
