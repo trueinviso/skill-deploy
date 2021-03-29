@@ -1,0 +1,36 @@
+.profile-settings {
+  &__sub-heading {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  &__content {
+    max-width: 335px;
+  }
+
+  &__form {
+    margin-top: 43px;
+    & > .form--field {
+      margin-bottom: 34px;
+    }
+
+    &__submit {
+      line-height: 30px !important;
+      margin-top: 14px;
+      max-width: 120px;
+      padding: 0 !important;
+      text-align: left;
+    }
+  }
+}
+
+.profile-settings__notification-form {
+  margin-top: 35px;
+  .form--field {
+    margin-bottom: 30px;
+  }
+}
+
+.profile-settings__close-account {
+  margin-top: 117px;
+  max-width: 172px;
+}

@@ -1,4 +1,7 @@
+// base vars
+
 $color-default-icon: #e7e7e7;
+$nav-height: 81px;
 
 :root {
   //colors
@@ -14,6 +17,7 @@ $color-default-icon: #e7e7e7;
   --light-grrey-color: #{$color-default-icon};
   --border-color: #e6e6e6;
   --bg-color: #f6f6f6;
+  --checkbox-border: #ededed;
 
   // fonts
 

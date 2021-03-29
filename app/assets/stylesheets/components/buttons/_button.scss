@@ -4,7 +4,6 @@
 
   @include desktop-up {
     --button-font-size: 14px;
-
   }
 
   background-color: var(--quaternary-color);
@@ -35,5 +34,13 @@
   &.-diasabled {
     cursor: not-allowed;
     opacity: 0.7;
+  }
+
+  &.-transparent {
+    background-color: transparent;
+  }
+
+  &.-danger {
+    color: var(--danger-color);
   }
 }
