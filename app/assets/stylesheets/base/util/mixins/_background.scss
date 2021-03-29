@@ -1,0 +1,37 @@
+//bg-img--centered
+
+@mixin bg-img--centered(
+  $size: auto 105%,
+  $bg-color: $color-grey--dark,
+  $position: center
+) {
+  background: $bg-color no-repeat $position;
+  background-size: $size;
+}
+
+@mixin bg-img(
+  $position: center,
+  $image: no-image,
+  $size: cover,
+  $bg-color: no-color
+) {
+  background: no-repeat $position;
+  background-size: $size;
+
+  @if ($image != no-image) {
+    @if (str-index($image, "url") == 1) {
+      background-image: $image;
+    } @else {
+      background-image: url($image);
+    }
+  }
+
+  @if ($bg-color != no-color) {
+    background-color: $bg-color;
+  }
+}
+
+@mixin bg-img-ratio($width, $height) {
+  height: 0;
+  padding-top: percentage($height / $width);
+}
