@@ -1,27 +1,5 @@
 @mixin subscriptionPAge {
   .subscription {
     @content;
-
-    margin-top: 46px;
-    margin-bottom: 233px;
-    margin-left: $mobile-margin-left;
-    margin-right: $mobile-margin-right;
-    padding: 0;
-
-    @include desktop {
-      width: 100%;
-      max-width: 1140px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 70px;
-      margin-bottom: 50px;
-      display: grid;
-      grid-gap: 70px;
-      grid-template-columns: repeat(auto-fit, minmax(535px, 1fr));
-    }
-
-    @media (min-width: $breakpoint-medium) and (max-width: 1024px) {
-      padding: 0 24px;
-    }
   }
 }

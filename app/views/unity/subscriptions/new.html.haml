@@ -1,32 +1,35 @@
 .subscription
   = render "unity/subscriptions/details"
   %section.subscription__paymemnt
-    %h1.new-subscription__heading Subscription details
+    %h1.h1--small Subscription details
 
-    .subscription__info
-      %h2.subscription__info__name= Unity::SubscriptionPlan.first.name
-      %span.subscription__info__desc= Unity::SubscriptionPlan.first.description
-    .subscription__total
-      %span Total today
-      %span $#{Unity::SubscriptionPlan.first.price}
+    .subscription__paymemnt__content
+      .subscription__paymemnt__content__title
+        %span.subscription-text.text.-link= Unity::SubscriptionPlan.first.name
+        %span.subscription-text.text $#{Unity::SubscriptionPlan.first.price}/month
+      %p.subscription__paymemnt__content__description= Unity::SubscriptionPlan.first.description
+    .subscription__paymemnt__total
+      %span.text.subscription-text Total today
+      %span.text.subscription-text $#{Unity::SubscriptionPlan.first.price}
 
     = form_for :subscription,
       url: [:subscription],
       method: :create,
       html: { id: "braintree-payment-form",
       "data-validate": "data-validate",
-      class: "subscription__form",
+      class: "subscription__paymemnt__form",
       "no-validate": "no-validate" } do |f|
 
-      %h3.subscription__form__heading Payment details
+      %h3.subscription__paymemnt__form__heading Payment details
 
       = hidden_field_tag :authenticity_token, form_authenticity_token
       = hidden_field_tag :plan_id, Unity::SubscriptionPlan.first.gateway_id
 
       = render "unity/payment_method/card_details", f: f
 
-      %span.subscription__form__notice All sales are final and all prices are USD.
-      .submit-field
+      %p.text.-meta.-center.subscription__paymemnt__form__notice 
+        All sales are final and all prices are USD.
+      .subscription__paymemnt__form__submit
         = f.submit "Get started",
           data: { disable_with: "Please wait..." },
-          class: "button button_theme_primary"
+          class: "button"
