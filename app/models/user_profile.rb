@@ -1,7 +1,11 @@
 class UserProfile < ApplicationRecord
+  STATUSES = { pending: 0, approved: 1, blocked: 2 }.freeze
+
   has_person_name
+  has_rich_text :bio
+
+  enum status: STATUSES
 
   belongs_to :user
-  validates :first_name, :last_name, presence: true
-  has_rich_text :bio
+  validates :first_name, :last_name, :status, presence: true
 end
