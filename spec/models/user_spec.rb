@@ -52,4 +52,20 @@ describe User do
       expect(subject.subscribed?).to be_falsey
     end
   end
+
+  describe "#has_talent_role?" do
+    subject { user.has_talent_role? }
+
+    context "when user has talent role" do
+      let(:user) { create(:user, :with_talent_role) }
+
+      it { is_expected.to eq(true) }
+    end
+
+    context "when user doesn't have talent role" do
+      let(:user) { create(:user) }
+
+      it { is_expected.to eq(false) }
+    end
+  end
 end
