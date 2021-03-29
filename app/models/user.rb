@@ -53,11 +53,6 @@ class User < ApplicationRecord
     reject_if: :all_blank,
     allow_destroy: true
 
-  enum review_status: [
-    :pending,
-    :complete,
-  ]
-
   def active_paid_subscriber?
     return false if gateway_customer.blank?
     return false if subscription.blank?
