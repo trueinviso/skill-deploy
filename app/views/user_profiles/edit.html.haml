@@ -2,7 +2,7 @@
   = render "employer/shared/sidebar",
     selected: "Your profile"
   %div.page__main
-    -if talent?
+    -if current_user.has_talent_role?
       %div{ role:"alert", class:"alert -danger" }
         %span.alert__content You’ll need to submit your profile for review before applying for jobs.
         %button{"data-dismiss":"alert", "aria-label":"Close", class:"close" }
