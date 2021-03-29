@@ -2,8 +2,7 @@
   = render "employer/shared/sidebar",
     selected: "Your profile"
   %div.page__main
-    = render("application/form_errors", object: current_user)
-    -if current_user.has_talent_role?
+    -if current_user.has_talent_role? & current_user.user_profile.pending?s
       %div{ role:"alert", class:"alert -danger" }
   
         %span.alert__content You’ll need to submit your profile for review before applying for jobs.
