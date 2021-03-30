@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def subscription_page?
-    controller_name == 'subscription'
+    controller_name == "subscription"
   end
 
   def manage_job_listing_path
