@@ -1,6 +1,5 @@
 .page.profile
-  = render "employer/shared/sidebar",
-    selected: "Your profile"
+  = render "application/account_sidebar/sidebar"
   %div.page__main
     -if current_user.has_talent_role? & current_user.user_profile.pending?
       %div{ role:"alert", class:"alert -danger" }
