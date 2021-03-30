@@ -28,7 +28,15 @@ module ApplicationHelper
   end
 
   def account_page?
-    controller_name == 'user_profiles'
+    controller_name == "user_profiles"
+  end
+
+  def subscription_page?
+    controller_name == 'subscription'
+  end
+
+  def manage_job_listing_path
+    talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
 
   # FIXME: should be fixed in a right way
@@ -36,3 +44,4 @@ module ApplicationHelper
     current_user.roles.find_by(id: 2)
   end
 end
+
