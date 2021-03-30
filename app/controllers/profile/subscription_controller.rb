@@ -1,6 +1,6 @@
 module Profile
-    class SubscriptionController < ApplicationController
-      def new
-        end
+  class SubscriptionController < ApplicationController
+    def new
     end
+  end
 end

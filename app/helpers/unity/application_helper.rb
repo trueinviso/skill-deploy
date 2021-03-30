@@ -1,6 +1,6 @@
 module Unity
   module ApplicationHelper
-    include ::ApplicationHelper
+    # include ::ApplicationHelper
     def embedded_svg(filename, options = {})
       file = File.read(Rails.root.join("app", "assets", "font", "icon", filename))
       doc = Nokogiri::HTML::DocumentFragment.parse file

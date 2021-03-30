@@ -32,11 +32,11 @@ module ApplicationHelper
   end
 
   def subscription_page?
-    controller_name == 'subscription'
+    controller_name == "subscription"
   end
 
-  def manage_job_listing_path
-    talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
+  def manage_job_listing_path(user)
+    user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
 end
 

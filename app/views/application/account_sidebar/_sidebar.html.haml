@@ -2,6 +2,6 @@
   %nav.sidebar__nav
     = render "application/account_sidebar/my_account_menu"
     = render "application/account_sidebar/listing_menu"
-    - if !talent?
+    - if !current_user.talent?
       = render "application/account_sidebar/subscription_menu"
 
