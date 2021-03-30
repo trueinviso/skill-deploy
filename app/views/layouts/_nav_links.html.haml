@@ -1,5 +1,5 @@
 - has_avatar = !current_user.thumbnail_url.include?("empty_photo_state_icon") 
-.nav__links.hide-tablet-down
+.nav__links.hide-desktop-down
   %ul.nav__menu
     %li.nav__item
       %a{ href: main_app.jobs_path,
@@ -14,12 +14,12 @@
 %ul.nav__menu
   %li.nav__item.mr-0.-centered
     = link_to main_app.new_employer_job_path, class: "button -outline nav__button -plus-icon" do
-      %span.hide-tablet-down Create new listing
-      %span.hide-tablet-up  New listing
-  %li.nav__item.-divider.hide-tablet-down
+      %span.hide-desktop-down Create new listing
+      %span.hide-desktop-up  New listing
+  %li.nav__item.-divider.hide-desktop-down
 
-  %li.nav__item.-centered.-parent.hide-flex-tablet-down
-    %div{ class: "nav__profile#{'-empty' unless has_avatar}" }
+  %li.nav__item.-centered.-parent.hide-flex-desktop-down
+    %div{ class: "nav__profile #{'-empty' unless has_avatar}" }
       = image_tag current_user.thumbnail_url, alt: current_user.username, id: "userAvatar", hidden: !has_avatar
     %ul.nav__nested 
       %li{ class: "nav_nested__item #{'-active' if current_page?(main_app.edit_user_profile_path)}" }

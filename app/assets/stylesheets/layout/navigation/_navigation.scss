@@ -11,7 +11,7 @@ $nav-height: 81px;
   position: relative;
   width: calc(100% - 30px);
 
-  @include tablet-up {
+  @include desktop-up {
     margin: 0 92px;
     width: calc(100% - 184px);
   }
@@ -23,6 +23,10 @@ $nav-height: 81px;
   height: $nav-height;
   justify-content: flex-start;
   margin: 0 auto;
+
+  &.-no-logged-in {
+    justify-content: space-between;
+  }
 }
 .nav__left {
   @extend %flex--vertically-centered;
@@ -31,6 +35,14 @@ $nav-height: 81px;
   margin-right: auto;
 
   @include tablet-up {
+    margin-left: auto;
+  }
+
+  @include mq($breakpoint-mobile + 1, max) {
+    margin-left: auto;
+  }
+
+  @include desktop-up {
     margin-left: 0;
     margin-right: 0;
     & > * {
@@ -49,7 +61,7 @@ $nav-height: 81px;
 }
 
 .nav__search {
-  @include tablet-up {
+  @include desktop-up {
     max-width: 166px;
   }
 
@@ -187,7 +199,7 @@ $nav-height: 81px;
   font-weight: var(--font-medium);
   height: 31px;
 
-  @include tablet-up {
+  @include desktop-up {
     height: 40px;
     min-width: 171.23px;
   }
@@ -207,7 +219,7 @@ $nav-height: 81px;
       margin-right: 8px;
       width: 15px;
 
-      @include tablet-up {
+      @include desktop-up {
         display: inline-block;
       }
     }
