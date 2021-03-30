@@ -1,0 +1,6 @@
+- item_class = "sidebar__nav__menu__item"
+%h4.sidebar__nav__heading Subscription
+%ul.sidebar__nav__menu
+  %li{ class: "#{item_class} #{'-selected' if current_page?(unity.edit_subscription_path)}" }
+    = link_to "Billing details", unity.edit_subscription_path,
+    class: "sidebar__nav__menu__item__link"
