@@ -1,0 +1,11 @@
+.page.job-listing
+  = render "application/account_sidebar/sidebar"
+  .page__main
+    .page__content.job-listing__content
+      = render "unity/subscriptions/details"
+
+      %section
+        %h1.job-listing__heading.h1--small Hire vetted creatives
+        = render "unity/subscriptions/card"
+        %hr.job-listing__divider
+        = render "unity/subscriptions/payment_details"

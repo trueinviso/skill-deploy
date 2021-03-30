@@ -4,18 +4,20 @@ Rails.application.routes.draw do
   mount Unity::Engine => "/"
 
   devise_for :users,
-    path: "/",
-    path_names: {
-      # edit: "account/profile",
-      sign_in:  "sign-in",
-      sign_out: "sign-out",
-    },
-    controllers: {
-      omniauth_callbacks: "users/omniauth_callbacks",
-      registrations: "users/registrations",
-      sessions: "users/sessions",
-      passwords: "users/passwords",
-    }
+             path: "/",
+             path_names: {
+               # edit: "account/profile",
+               sign_in:
+               "sign-in",
+               sign_out:
+               "sign-out",
+             },
+             controllers: {
+               omniauth_callbacks: "users/omniauth_callbacks",
+               registrations: "users/registrations",
+               sessions: "users/sessions",
+               passwords: "users/passwords",
+             }
 
   devise_scope :user do
     get "employer/registrations/edit" => "users/registrations#edit"
@@ -28,26 +30,30 @@ Rails.application.routes.draw do
   resource :join_us, only: :show, path: "join-us"
 
   namespace :profile do
+    
     resource :notifications,
-      only: [:edit, :update]
+             only: [:edit, :update]
 
     resource :pending_review,
-      only: [:show]
+             only: [:show]
+
+    resources :subscription,
+              only: [:new, :create]
   end
 
   resource :user_profile,
-    controller: :user_profiles,
-    path: "profile",
-    except: [:destroy]
+           controller: :user_profiles,
+           path: "profile",
+           except: [:destroy]
 
   resources :jobs,
-    only: [:index, :show]
+            only: [:index, :show]
 
   resources :favorite_jobs,
-    only: [:index]
+            only: [:index]
 
   resources :applied_fors,
-    only: [:index]
+            only: [:index]
 
   namespace :employer do
     root to: "jobs#index"
@@ -57,22 +63,22 @@ Rails.application.routes.draw do
 
     namespace :preview do
       resources :job,
-        controller: :jobs,
-        only: [:show]
+                controller: :jobs,
+                only: [:show]
     end
   end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :jobs,
-        only: [:index]
+                only: [:index]
       resources :favorite_jobs,
-        only: [:index, :create, :destroy]
+                only: [:index, :create, :destroy]
       resource :apply,
-        controller: :apply,
-        only: [:create]
+               controller: :apply,
+               only: [:create]
       resource :thumbnail,
-        only: [:update]
+               only: [:update]
     end
   end
 end

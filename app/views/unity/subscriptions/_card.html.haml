@@ -1,0 +1,9 @@
+.card.-primary
+  .card__header
+  %p.text.-link= Unity::SubscriptionPlan.first.name
+  .card__body
+    $#{Unity::SubscriptionPlan.first.price}/month
+  .card__footer
+  %p.text.-muted.fw-regular= Unity::SubscriptionPlan.first.description
+
+
