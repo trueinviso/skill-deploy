@@ -3,12 +3,14 @@
     font-size: 22px;
     line-height: 30px;
   }
+
   &__content {
     max-width: 335px;
   }
 
   &__form {
     margin-top: 43px;
+
     & > .form--field {
       margin-bottom: 34px;
     }
@@ -25,6 +27,7 @@
 
 .profile-settings__notification-form {
   margin-top: 35px;
+
   .form--field {
     margin-bottom: 30px;
   }
