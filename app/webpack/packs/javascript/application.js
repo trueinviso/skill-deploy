@@ -5,8 +5,7 @@ import { onEachTurbolinksPage } from "~/helpers/turbolinks"
 import alert from "~/components/alert"
 import validations from "~/components/validations"
 import form from "~/components/form"
-
-// console.log('componentRequireContext',componentRequireContext)
+import modal from "~/components/microModal"
 
 Turbolinks.start()
 window.Turbolinks = Turbolinks
@@ -15,6 +14,4 @@ Rails.start()
 onEachTurbolinksPage(alert)
 onEachTurbolinksPage(validations)
 onEachTurbolinksPage(form)
-
-/* Enable to measure turbolinks visit time */
-// require("helpers/measureTurbolinksVisitTiming")
+onEachTurbolinksPage(modal)

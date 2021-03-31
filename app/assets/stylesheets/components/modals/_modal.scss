@@ -1,0 +1,130 @@
+$modal-vertical-margin: 60px;
+$modal-vertical-margin--desktop: 100px;
+.modal {
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  transition: opacity 0.15s ease;
+  white-space: nowrap;
+  z-index: 99;
+
+  &.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transition: opacity 0.25s ease;
+  }
+}
+
+.modal > * {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+.modal__inner {
+  border-radius: 3px;
+  margin: $modal-vertical-margin auto;
+  max-height: calc(100% - 80px);
+  max-width: 500px;
+  opacity: 0;
+  overflow: visible;
+  position: relative;
+  top: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: calc(100% - 20px);
+
+  @include desktop-up {
+    margin: $modal-vertical-margin--desktop auto;
+  }
+
+  .modal.is-open & {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.25s;
+  }
+
+  .modal.-wide & {
+    max-width: 600px;
+  }
+}
+
+.modal__content {
+  display: inline-block;
+  width: 100%;
+}
+
+.modal__box {
+  padding: 0;
+  width: 100%;
+}
+
+.modal__close {
+  cursor: pointer;
+  position: absolute;
+  right: 4px;
+  top: ($modal-vertical-margin + 8px);
+  z-index: 1;
+
+  @include desktop-up {
+    right: 20px;
+  }
+
+  &.-top-right-cornered {
+    background-size: 19px 19px;
+    right: 13px;
+    top: 13px;
+  }
+}
+
+.modal__title {
+  padding-bottom: 30px;
+
+  @include desktop-up {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+.modal__description {
+  padding: 30px 0;
+}
+
+.modal__bg {
+  background-color: var(--primary-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.04);
+  padding: 74px 20px 30px;
+
+  @include tablet-up {
+    padding: 74px 60px 60px;
+  }
+}
+
+.modal__button {
+  width: 100%;
+
+  & + & {
+    margin-top: 20px;
+
+    @include tablet-up {
+      margin-left: 20px;
+      margin-top: 0;
+    }
+  }
+}
+
+.modal__button-row {
+  @include tablet-up {
+    display: flex;
+  }
+}
