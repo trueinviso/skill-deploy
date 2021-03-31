@@ -1,0 +1,20 @@
+.modal.-wide#confirm-close-account-modal{ "aria-hidden": true,
+  "data-trigger-modal": false,
+  "data-micromodal-close": "" }
+  .modal__inner{ role: "dialog", "aria-modal": true,
+    "aria-labelledby": "modal-confirm-close-account" }
+    %buton.close-button.-black.-round.modal__close{ "aria-label": "Close modal",
+      "data-micromodal-close": "" }
+    .modal__content
+      .modal__box
+        .modal__bg
+          %h2.modal__title#confirm-close-account-modal-title
+            Are you sure you want to close account?
+          %p.text.-meta.modal__description
+            As a reminder, by closing your account, you will lose access for all your job listings.
+            Are you sure you want to lose access?
+          .modal__button-row
+            %button.modal__button.button{ data: { "micromodal-close": "" } }
+              Yes, Close
+            %button.modal__button.button.-outline{ data: { "micromodal-close": "" } }
+              Go Back
