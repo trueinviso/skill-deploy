@@ -68,6 +68,14 @@ class User < ApplicationRecord
     :complete,
   ]
 
+  def first_name
+    user_profile&.name&.first
+  end
+
+  def last_name
+    user_profile&.name&.last
+  end
+
   def active_paid_subscriber?
     return false if gateway_customer.blank?
     return false if subscription.blank?
