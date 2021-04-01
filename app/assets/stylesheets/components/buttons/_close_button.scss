@@ -1,0 +1,19 @@
+.close-button {
+  background-image: url($close-icon);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 9px 9px;
+  display: block;
+  height: 32px;
+  padding: 10px;
+  width: 32px;
+
+  &.-black {
+    background-image: url(replace-svg-color($close-icon, $color-black));
+  }
+
+  &.-round {
+    border: 2px solid rgba($color-beige, 0.25);
+    border-radius: 100%;
+  }
+}

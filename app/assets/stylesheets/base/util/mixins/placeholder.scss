@@ -1,11 +1,13 @@
 @mixin placeholder {
-    &.placeholder {
-      @content;
-    }
-    &:-moz-placeholder {
-      @content;
-    }
-    &::-webkit-input-placeholder {
-      @content;
-    }
+  &.placeholder {
+    @content;
   }
+
+  &:placeholder {
+    @content;
+  }
+
+  &::input-placeholder {
+    @content;
+  }
+}

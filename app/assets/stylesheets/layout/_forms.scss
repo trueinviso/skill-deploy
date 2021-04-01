@@ -31,14 +31,19 @@
   }
 
   &.-required {
-    &:after {
+    &::after {
       content: "*";
     }
   }
 }
+
 .form--input {
   @extend %base--field;
   height: 46px;
+
+  &.-text-black {
+    color: var(--quaternary-color);
+  }
 }
 
 .form--textbox {

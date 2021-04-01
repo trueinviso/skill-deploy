@@ -30,6 +30,7 @@
     "dropzone": "^5.8.1",
     "exports-loader": "^2.0.0",
     "imports-loader": "^2.0.0",
+    "micromodal": "^0.4.6",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-import": "12.0.1",

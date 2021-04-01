@@ -1,11 +1,17 @@
+// base vars
+
 $color-default-icon: #e7e7e7;
+$nav-height: 81px;
+$color-black: #000000;
+$color-white: #ffffff;
+$color-beige: #d4d2ce;
 
 :root {
   //colors
-  --primary-color: #ffffff;
+  --primary-color: #{$color-white};
   --secondary-color: #222427;
   --tertiary-color: #f4f4f4;
-  --quaternary-color: #000000;
+  --quaternary-color: #{$color-black};
   --primary-utility-color: #f7f7f7;
   --text-color: #757575;
   --danger-color: #fc520a;
@@ -14,6 +20,8 @@ $color-default-icon: #e7e7e7;
   --light-grrey-color: #{$color-default-icon};
   --border-color: #e6e6e6;
   --bg-color: #f6f6f6;
+  --checkbox-border: #ededed;
+  --beige-color: #{$color-beige};
 
   // fonts
 
