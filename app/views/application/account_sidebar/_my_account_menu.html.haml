@@ -8,6 +8,7 @@
       class: "sidebar__nav__menu__item__link"
     - if talent?
       %span.label.-danger Apply
+    - if !current_user.pending?
       %li.sidebar__nav__menu__item
         = link_to "Account settings",
         main_app.edit_user_registration_path,

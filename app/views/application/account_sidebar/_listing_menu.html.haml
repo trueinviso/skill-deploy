@@ -7,6 +7,7 @@
     class: "sidebar__nav__menu__item__link"
     - if talent?
       %span.label.-danger Upgrade
-  %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
-    = link_to "Saved Job Listings", main_app.favorite_jobs_path,
-    class: "sidebar__nav__menu__item__link"
+  - if !current_user.pending?
+    %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
+      = link_to "Saved Job Listings", main_app.favorite_jobs_path,
+      class: "sidebar__nav__menu__item__link"
