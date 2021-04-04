@@ -1,22 +1,24 @@
 - has_avatar = !current_user.thumbnail_url.include?("empty_photo_state_icon")
 .nav__links.hide-desktop-down
-  %ul.nav__menu
-    %li.nav__item
-      %a{ href: main_app.jobs_path,
-        class: "nav__link  #{'-active' if current_page?(main_app.jobs_path)}" }
-        Job Board
-    %li.nav__item
-      %a{ href: main_app.favorite_jobs_path,
-        class: "nav__link #{'-active' if current_page?(main_app.favorite_jobs_path)}" }
-        Saved Jobs
+  - if !current_user.pending?
+    %ul.nav__menu
+      %li.nav__item
+        %a{ href: main_app.jobs_path,
+          class: "nav__link  #{'-active' if current_page?(main_app.jobs_path)}" }
+          Job Board
+      %li.nav__item
+        %a{ href: main_app.favorite_jobs_path,
+          class: "nav__link #{'-active' if current_page?(main_app.favorite_jobs_path)}" }
+          Saved Jobs
 
 
 %ul.nav__menu
-  %li.nav__item.mr-0.-centered
-    = link_to main_app.new_employer_job_path, class: "button -outline nav__button -plus-icon" do
-      %span.hide-desktop-down Create new listing
-      %span.hide-desktop-up  New listing
-  %li.nav__item.-divider.hide-desktop-down
+  - if !current_user.pending?
+    %li.nav__item.mr-0.-centered
+      = link_to main_app.new_employer_job_path, class: "button -outline nav__button -plus-icon" do
+        %span.hide-desktop-down Create new listing
+        %span.hide-desktop-up  New listing
+    %li.nav__item.-divider.hide-desktop-down
 
   %li.nav__item.-centered.-parent.hide-flex-desktop-down
     %div{ class: "nav__profile #{'-empty' unless has_avatar}" }
