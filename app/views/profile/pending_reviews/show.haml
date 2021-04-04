@@ -1,12 +1,13 @@
-.pending-review
-  .alert.alert-danger
-    Your profile is currently being reviewed and pending approval
-
-  .content
-    = image_tag("join_as_a_creative.png",
-      srcset: { "join_as_a_creative@2x.png" => "2x" })
-    %h3.pending-review__title  Hi #{@profile.name.full}
-    %p.pending-review__description
-      Your profile is currently being reviewed by our membership
-      %br
-      board. You should hear from us shortly
+.page.profile
+  = render "application/account_sidebar/sidebar"
+  .page__main
+    %div{ role: "alert", class: "alert -secondary" }
+      %span.alert__content.text-left
+        Thanks for applying! You’re profile is under review, we will be in touch soon via email.
+      %button.close{ "data-dismiss": "alert", "aria-label": "Close" }
+        %span{ "aria-hidden": true } &times
+    .page__content.text-center
+      = image_tag("message-sent.png",
+      srcset: { "message-sent@2x.png" => "2x", "message-sent@3x.png" => "3x" })
+      %div
+        %span.label.-danger Under Review
