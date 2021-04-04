@@ -17,6 +17,10 @@
     background-color: var(--danger-color);
   }
 
+  &.-secondary {
+    background-color: var(--quaternary-color);
+  }
+
   & > .close {
     border: 2px solid #ffffff40;
     border-radius: 100%;
