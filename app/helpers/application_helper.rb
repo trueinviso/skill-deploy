@@ -38,5 +38,19 @@ module ApplicationHelper
   def manage_job_listing_path(user)
     user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
+
+  # FIXME: should be fixed in a right way
+  def talent?
+    current_user.roles.find_by(id: 2)
+  end
+
+  def photo_uploader_field(record, field_name = nil)
+    type = record.class.name.underscore
+    field_name ||= "#{type}[thumbnail_attributes][file]"
+
+    thumbnail = record.thumbnail_url
+
+    react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
+  end
 end
 
