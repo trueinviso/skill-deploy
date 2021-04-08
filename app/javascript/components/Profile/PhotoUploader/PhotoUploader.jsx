@@ -16,7 +16,7 @@ const updateNavbarAvatar = thumbnail => {
   }
 }
 
-const PhotoUploader = ({ name, thumbnail, currentUser }) => {
+const PhotoUploader = ({ name, thumbnail, record, type }) => {
   const [isProcessing, setProcessing] = useState(false)
   const [preview, setPreview] = useState(thumbnail)
 
@@ -24,8 +24,8 @@ const PhotoUploader = ({ name, thumbnail, currentUser }) => {
     const options = { method: "PUT" }
     const data = new FormData()
     data.append(name, file)
-    data.append(`record_id`, currentUser.id)
-    data.append(`model_type`, "user")
+    data.append(`record_id`, record.id)
+    data.append(`model_type`, type)
     return heyfamFetch(THUMBNAIL_API, data, options, "file")
   }
 
@@ -81,7 +81,7 @@ const PhotoUploader = ({ name, thumbnail, currentUser }) => {
 
 PhotoUploader.propTypes = {
   name: PropTypes.string.isRequired,
-  currentUser: PropTypes.shape({
+  record: PropTypes.shape({
     id: PropTypes.number
   }).isRequired,
   thumbnail: PropTypes.string,
