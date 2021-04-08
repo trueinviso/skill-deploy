@@ -1,9 +1,13 @@
 class Job < ApplicationRecord
+  LOCATIONS = { onsite: 0, remote: 1, onsite_or_remote: 2 }.freeze
+
   include Filterable
   include HasAttachments
 
   attachment :thumbnail
   has_rich_text :description
+
+  enum location: LOCATIONS
 
   belongs_to :user
 

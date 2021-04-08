@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_192055) do
+ActiveRecord::Schema.define(version: 2021_04_08_114006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,8 +130,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "name"
     t.string "company_name"
     t.string "company_website"
-    t.string "location"
-    t.boolean "remote"
     t.text "description"
     t.string "contact_name"
     t.string "contact_email"
@@ -141,6 +139,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "facebook"
     t.string "instagram"
     t.integer "status", default: 0
+    t.integer "location"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -352,10 +351,12 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "provider"
     t.string "uid"
     t.bigint "rate_range_id"
+    t.integer "review_status"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["rate_range_id"], name: "index_users_on_rate_range_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["review_status"], name: "index_users_on_review_status"
   end
 
   create_table "work_experiences", force: :cascade do |t|
