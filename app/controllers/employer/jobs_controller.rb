@@ -9,12 +9,12 @@ module Employer
     end
 
     def new
-      authorize Job
+      authorize [:employer, Job]
       @job = Job.new
     end
 
     def create
-      authorize Job
+      authorize [:employer, Job]
       @job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
       if @job.save
         redirect_to employer_preview_job_path(@job)
@@ -64,12 +64,12 @@ module Employer
           ],
         )
     end
-  end
 
-  private
+    private
 
-  def load_and_authorize_job
-    @job = Job.find(params[:id])
-    authorize @job
+    def load_and_authorize_job
+      @job = Job.find(params[:id])
+      authorize [:employer, @job]
+    end
   end
 end
