@@ -35,4 +35,13 @@ module ApplicationHelper
   def talent?
     current_user.roles.find_by(id: 2)
   end
+
+  def photo_uploader_field(record, field_name = nil)
+    type = record.class.name.underscore
+    field_name ||= "#{type}[thumbnail_attributes][file]"
+
+    thumbnail = record.thumbnail_url
+
+    react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
+  end
 end
