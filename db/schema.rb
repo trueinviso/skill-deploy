@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_075829) do
+ActiveRecord::Schema.define(version: 2021_04_08_114006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,8 +130,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.string "name"
     t.string "company_name"
     t.string "company_website"
-    t.string "location"
-    t.boolean "remote"
     t.text "description"
     t.string "contact_name"
     t.string "contact_email"
@@ -141,6 +139,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.string "facebook"
     t.string "instagram"
     t.integer "status", default: 0
+    t.integer "location"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
