@@ -1,9 +1,10 @@
 = form_for(current_user,
   url: user_profile_path,
-  html: { method: action, class: "form profile__form", "data-form-validator-trigger": true }) do |f|
-  - thumbnail = f.object.thumbnail_url
-  = react_component("PhotoUploader", { thumbnail: thumbnail, currentUser: current_user, type: "user", 
-    name: "user[thumbnail_attributes][file]" })
+  html: { method: action, class: "form profile__form" }) do |f|
+
+  = render("application/form_errors", object: current_user)
+
+  = photo_uploader_field f.object
   = render "user_profile_form", form: f
   = render "preferences_and_skills_form", form: f
   = render "work_experience_form", form: f
