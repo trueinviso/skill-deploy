@@ -1,5 +1,9 @@
 class Job < ApplicationRecord
   include Filterable
+  include HasAttachments
+
+  attachment :thumbnail
+  has_rich_text :description
 
   belongs_to :user
 
@@ -14,11 +18,6 @@ class Job < ApplicationRecord
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
-
-  has_rich_text :description
-
-  include HasAttachments
-  attachment :thumbnail
 
   accepts_nested_attributes_for :job_types
 
