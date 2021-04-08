@@ -49,8 +49,8 @@ JobRole.seed(:id,
   },
   {
     id: 3,
-    name: "Marketing",
-    description: "Marketers for all mediums, Digital Marketers, Social Media, etc.",
+    name: "Video",
+    description: "Video.",
     tags: [
       digital_marketing,
       growth,
