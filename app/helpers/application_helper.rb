@@ -28,7 +28,11 @@ module ApplicationHelper
   end
 
   def account_page?
-    controller_name == 'user_profiles'
+    controller_name == "user_profiles"
+  end
+
+  def create_listing_page?
+    current_page?(main_app.new_employer_job_path)
   end
 
   # FIXME: should be fixed in a right way

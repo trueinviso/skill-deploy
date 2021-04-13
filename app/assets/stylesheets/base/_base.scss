@@ -22,6 +22,7 @@ $color-beige: #d4d2ce;
   --bg-color: #f6f6f6;
   --checkbox-border: #ededed;
   --beige-color: #{$color-beige};
+  --secondary-bg-color: #e3e3e3;
 
   // fonts
 
@@ -43,10 +44,19 @@ $color-beige: #d4d2ce;
   --page-margin: 24px;
   --page-margin--desktop: 112px;
 
-  --container-width: calc(1184px + var(--page-margin) * 2);
+  --container-width: 1040px;
 
   --border-radius: 4px;
+
+  --nav-height: #{$nav-height};
+
+  @include desktop-down {
+    --nav-height: 57px;
+    --logo-width: 54px;
+    --logo-height: 27px;
+  }
 }
+
 //
 html {
   box-sizing: border-box;

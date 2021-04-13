@@ -1,17 +1,11 @@
 -# haml-lint: disable all
 = form_for(job,
   url: employer_jobs_path(job),
-  html: { id: "stripe-payment-form",
-  "data-validate": "data-validate",
-  "no-validate": "no-validate",
-  onsubmit: "return listingPage.validateForm(this);",
-  onchange: "listingPage.checkErrors(this)",
-  "no-validate": "no-validate",
-  multipart: true }) do |f|
+  html: { id: "new-listing-form", "no-validate": "no-validate", multipart: true }) do |f|
 
-  = render "form_errors", object: f.object
   = render "project_details", f: f, job: job
 
-  .create-listing-page__submit-buttons
-    = f.submit "Preview Listing",
-      class: "button button_theme_primary create-listing-page__button", id: "button-submit"
+
+  .listing-form__actions.hide-desktop-up
+    = f.submit "Preview Listing", class: "button"
+    %button.button.-outline-dark Save for later

@@ -5,6 +5,7 @@
 @import "layout/navigation/nav";
 @import "layout/forms";
 @import "layout/sidebar";
+@import "layout/background";
 
 // Pages
 @import "pages/**/*";
@@ -21,3 +22,4 @@
 @import "components/card-details";
 @import "components/checkbox";
 @import "components/modals/modal";
+@import "components/container";
