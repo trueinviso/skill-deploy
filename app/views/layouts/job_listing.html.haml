@@ -2,8 +2,7 @@
 %html
   %head
     = render "application/head_shared_content"
-
-    - if account_page?
+    - if create_listing_page?
       = stylesheet_pack_tag "stylesheets/editor",
         "data-turbolinks-track": "reload",
         defer: true
@@ -11,8 +10,7 @@
         "data-turbolinks-track": "reload",
          defer: true
 
-  %body
-    = render "layouts/nav"
-    = render "application/flash_messages"
+  %body.bg-secondary
+    = render "application/job_listing_header"
     %main
       = yield
