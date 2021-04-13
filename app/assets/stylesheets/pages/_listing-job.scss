@@ -1,0 +1,44 @@
+.listing-page {
+  padding-bottom: 200px;
+  padding-left: var(--page-margin);
+  padding-right: var(--page-margin);
+  padding-top: 58px;
+
+  @include desktop-up {
+    border-radius: 10px;
+    box-shadow: 0 2px 10px 3px rgba(0, 0, 0, 0.04);
+    margin-top: 28px;
+    padding: 80px 170px 200px;
+  }
+
+  .form--field {
+    margin-bottom: 17px;
+  }
+}
+
+.listing-page__sub-heading {
+  font-size: 20px;
+  font-weight: var(--font-medium);
+  line-height: 30px;
+  margin-bottom: 20px;
+  margin-top: 58px;
+}
+
+.listing-page__logo-uploader {
+  margin-bottom: 29px;
+}
+
+.listing-form__row {
+  @include desktop-up {
+    display: grid;
+    grid-gap: 28px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.listing-form__actions {
+  display: grid;
+  grid-gap: 12px;
+  grid-template-columns: 1fr;
+  margin-top: 45px;
+}

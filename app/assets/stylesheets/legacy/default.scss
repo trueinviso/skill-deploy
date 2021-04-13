@@ -6,18 +6,6 @@ body {
   font-family: "Noto Sans", sans-serif;
 }
 
-.container {
-  max-width: 1280px;
-  margin-left: $mobile-margin-left;
-  margin-right: $mobile-margin-right;
-
-  @media only screen and (min-width: $breakpoint-medium) {
-    width: 1123px;
-    margin-left: 191px;
-    margin-right: auto;
-  }
-}
-
 .buttons-group {
   display: grid;
   grid-gap: 15px;
@@ -28,22 +16,22 @@ body {
 }
 
 .admin-container {
-  max-width: 100%;
   margin-top: 28px;
+  max-width: 100%;
   @include tablet {
     margin-left: $mobile-margin-left !important;
     margin-right: $mobile-margin-right !important;
   }
 
   @include desktop {
-    margin-top: 68px;
-    max-width: 1060px;
-    margin-left: auto;
-    margin-right: auto;
+    align-items: start;
     display: grid;
+    grid-auto-columns: 1fr;
     grid-gap: 90px;
     grid-template-columns: max-content 1fr;
-    grid-auto-columns: 1fr;
-    align-items: start;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 68px;
+    max-width: 1060px;
   }
 }

@@ -38,6 +38,10 @@ module ApplicationHelper
   def manage_job_listing_path(user)
     user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
+  
+  def create_listing_page?
+    current_page?(main_app.new_employer_job_path)
+  end
 
   # FIXME: should be fixed in a right way
   def talent?

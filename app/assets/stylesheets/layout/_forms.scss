@@ -100,7 +100,10 @@
     font-size: 12px;
     font-weight: var(--font-medium);
     line-height: 44px;
+    min-width: 112px;
     padding: 0 20px;
+    text-align: center;
+    width: 100%;
   }
 
   input:checked ~ label {
@@ -135,4 +138,25 @@
       }
     }
   }
+}
+
+.form--radio-button-list {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 12px;
+  margin-top: 5px;
+
+  .form--radio-button {
+    width: 100%;
+    @include desktop-up {
+      width: auto;
+    }
+  }
+
+  // .form--radio-button {
+  //   text-align: center;
+  //   label {
+  //     display: block;
+  //   }
+  // }
 }

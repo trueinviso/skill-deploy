@@ -141,7 +141,7 @@
 
 //spacing helpers
 
-$spaceamounts: (0);
+$spaceamounts: (0, 35);
 $sides: (top, bottom, left, right); // Leave this variable alone
 
 @each $space in $spaceamounts {

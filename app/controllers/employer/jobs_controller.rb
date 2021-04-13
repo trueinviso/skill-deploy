@@ -1,7 +1,7 @@
 module Employer
   class JobsController < ApplicationController
     before_action :load_and_authorize_job, only: %i[edit update destroy]
-
+	layout "job_listing"
     def index
       @jobs = policy_scope([:employer, Job])
       @view_component = Employer::JobsComponent

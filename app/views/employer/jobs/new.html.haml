@@ -1,6 +1,6 @@
-.desktop-container.create-listing-page__desktop-container
-  .create-listing-page
-    .header.create-listing-page__header
-      Create a new listing
+= render "form_errors", object: @job
 
-      = render "create_form", job: @job, token: @token
+.container.listing-page
+  %h1 Create a new listing
+
+  = render "create_form", job: @job, token: @token
