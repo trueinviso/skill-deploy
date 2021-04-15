@@ -53,8 +53,8 @@ describe User do
     end
   end
 
-  describe "#has_talent_role?" do
-    subject { user.has_talent_role? }
+  describe "#talent?" do
+    subject { user.talent? }
 
     context "when user has talent role" do
       let(:user) { create(:user, :with_talent_role) }

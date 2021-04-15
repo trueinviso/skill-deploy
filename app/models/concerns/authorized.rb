@@ -9,7 +9,7 @@ module Authorized
     has_many :permissions, through: :user_permissionss
   end
 
-  def has_talent_role?
+  def talent?
     roles.where(name: Role::TALENT).exists?
   end
 end
