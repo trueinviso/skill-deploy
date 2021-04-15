@@ -38,9 +38,16 @@
 
     &__experience-section {
     }
-    
-    &__rate{
+
+    &__rate {
       margin-top: 64px;
+
+      .-invalid {
+        .error-message {
+          display: block;
+          position: absolute;
+        }
+      }
     }
 
     &__skills {

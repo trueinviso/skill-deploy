@@ -8,29 +8,11 @@ const validator = {
     this.error_message_check(id, is_valid, "This field is required")
     return is_valid
   },
-  validate_min_length: function (id, length) {
-    var is_valid, value
-    value = document.querySelector(id).value
-    is_valid = value.length >= length
-    this.set_red_border(is_valid, id)
-    this.error_message_check(
-      id,
-      is_valid,
-      "The minimum length is " + length + " characters"
-    )
-    return is_valid
+  validateMinLength: function (value, length) {
+    return value.length >= length
   },
-  validate_max_length: function (id, length) {
-    var is_valid, value
-    value = document.querySelector(id).value
-    is_valid = value.length <= length
-    this.set_red_border(is_valid, id)
-    this.error_message_check(
-      id,
-      is_valid,
-      "The maximum length is " + length + " characters"
-    )
-    return is_valid
+  validateMaxLength: function (value, length) {
+    return value.length <= length
   },
   validate_subdomain_format: function (id) {
     var VALID_SUBDOMAIN_REGEX, is_valid, value
@@ -130,4 +112,4 @@ const validator = {
   }
 }
 
-export default validator;
+export default validator

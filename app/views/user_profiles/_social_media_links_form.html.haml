@@ -6,49 +6,37 @@
     .form--field
       = p.label :website,
         "Website",
-        class: "form--label -required -black"
+        class: "form--label -black"
       = p.text_field :website,
-        "data-validate":"true",
-        "data-validate-event": "blur",
-        "data-validate-method":"validate_website_url",
+        "data-validate-rule":"url",
         class: "form--input",
         id: "user-website"
-      .error-message#user-website-error
 
     .form--field
       = p.label :twitter,
         "Twitter",
-        class: "form--label -required -black"
+        class: "form--label -black"
       = p.text_field :twitter,
-        "data-validate":"true",
-        "data-validate-event": "blur",
-        "data-validate-method":"validate_website_url",
+        "data-validate-rule":"url",
         class: "form--input",
         id: "user-twitter"
-      .error-message#user-twitter-error
 
     .form--field
       = p.label :facebook,
         "Facebook",
-        class: "form--label -requird -black"
+        class: "form--label -black"
       = p.text_field :facebook,
-        "data-validate":"true",
-        "data-validate-event": "blur",
-        "data-validate-method":"validate_website_url",
+        "data-validate-rule":"url",
         class: "form--input",
         id: "user-facebook"
-      .error-message#user-facebook-error
 
     .form--field
       = p.label :instagram,
         "Instagram",
-        class: "form--label -required -black"
+        class: "form--label -black"
       = p.text_field :instagram,
-        "data-validate":"true",
-        "data-validate-event": "blur",
-        "data-validate-method":"validate_website_url",
+        "data-validate-rule":"url",
         class: "form--input",
         id: "user-instagram"
-      .error-message#user-instagram-error
 
     

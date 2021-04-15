@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { useState } from "react"
+import { useState, useRef, useEffect, useLayoutEffect } from "react"
 import Select from "react-select"
 import styles from "./styles.module.scss"
 import Indicator from "./Indicator"
@@ -43,20 +43,34 @@ const baseProps = {
   isSearchable: false,
   isMulti: false,
   styles: customStyles,
-  getOptionValue: o => o.id
+  getOptionValue: o => o.id,
+  id: "rate-range"
 }
 
-const RateRange = ({ options, name, defaultValue }) => {
-  const [value, setValue] = useState(() =>
-    options?.find(o => o.id === defaultValue)
-  )
+const RateRange = ({ options, name, defaultValue, ...props }) => {
+  const ref = useRef()
+  const [value, setValue] = useState(options?.find(o => o.id === defaultValue))
   const onChange = option => {
     setValue(option)
   }
 
+  useLayoutEffect(() => {
+    const hiddenInput = document
+      .getElementById(baseProps.id)
+      ?.querySelector("[type=hidden]")
+
+    Object.keys(props).map(key => {
+      if (key.includes("data")) {
+        hiddenInput.setAttribute(key, props[key])
+      }
+    })
+  }, [])
+
   return (
     <div className={styles.rateRange}>
       <Select
+        ref={ref}
+        className={styles.select}
         name={name}
         {...baseProps}
         value={value}
