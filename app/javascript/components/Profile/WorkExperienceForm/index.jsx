@@ -13,7 +13,7 @@ const ExperiencePropTypes = {
   title: PropTypes.string,
   title: PropTypes.string,
   updated_at: PropTypes.string,
-  user_id: PropTypes.number
+  userId: PropTypes.number
 }
 
 const createField = () => ({
@@ -29,9 +29,10 @@ class WorkExperienceForm extends PureComponent {
   }
 
   state = {
-    fields: this.props.initialWorkExperiences
-      ? this.props.initialWorkExperiences
-      : [createField()]
+    fields:
+      this.props.initialWorkExperiences?.length > 0
+        ? this.props.initialWorkExperiences
+        : [createField()]
   }
 
   onAddNewField = e => {

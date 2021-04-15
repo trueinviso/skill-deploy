@@ -41,6 +41,7 @@ class UserProfilesController < ApplicationController
         :job_experience_ids,
         :job_type_ids,
         :skills,
+        :rate_range_id,
         social_media_profile_attributes: [
           :facebook,
           :id,

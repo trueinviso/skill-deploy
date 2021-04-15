@@ -1,8 +1,9 @@
 class User < ApplicationRecord
-  acts_as_token_authenticatable
-
+  include Authorized
   include HasAttachments
+
   attachment :thumbnail
+  acts_as_token_authenticatable
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,12 +11,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
+  belongs_to :rate_range, optional: true
+
   has_one :user_profile, dependent: :destroy
   has_one :social_media_profile, dependent: :destroy
-  has_many :user_permissions, dependent: :destroy
-
-  has_many :user_roles, dependent: :destroy
-  has_many :roles, through: :user_roles
 
   has_many :user_job_types, dependent: :destroy
   has_many :job_types, through: :user_job_types
@@ -50,11 +49,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :work_experiences,
     reject_if: :all_blank,
     allow_destroy: true
-
-  enum review_status: [
-    :pending,
-    :complete,
-  ]
 
   def active_paid_subscriber?
     return false if gateway_customer.blank?

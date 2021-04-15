@@ -61,7 +61,9 @@ gem "sentry-raven", "~> 2.6.0"
 
 group :test do
   gem "rspec"
+  gem "factory_bot_rails"
   gem "shrine-memory"
+  gem "shoulda-matchers", "~> 4.0"
 end
 
 group :development, :test do
@@ -71,6 +73,8 @@ group :development, :test do
   gem "capybara", "~> 2.13"
   gem "dotenv-rails"
   gem "selenium-webdriver"
+  gem "pry"
+  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :development do
@@ -86,3 +90,4 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "draper"

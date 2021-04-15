@@ -1,6 +1,10 @@
 require "rails_helper"
 
 describe User do
+  describe "associations" do
+    it { is_expected.to belong_to(:rate_range).optional }
+  end
+
   describe "validations" do
     subject { build(:user) }
 
@@ -46,6 +50,22 @@ describe User do
     it "doesn't have stripe id" do
       subject.subscription.stripe_subscription_id = nil
       expect(subject.subscribed?).to be_falsey
+    end
+  end
+
+  describe "#talent?" do
+    subject { user.talent? }
+
+    context "when user has talent role" do
+      let(:user) { create(:user, :with_talent_role) }
+
+      it { is_expected.to eq(true) }
+    end
+
+    context "when user doesn't have talent role" do
+      let(:user) { create(:user) }
+
+      it { is_expected.to eq(false) }
     end
   end
 end

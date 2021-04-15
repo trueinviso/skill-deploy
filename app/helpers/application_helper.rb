@@ -30,9 +30,4 @@ module ApplicationHelper
   def account_page?
     controller_name == 'user_profiles'
   end
-
-  # FIXME: should be fixed in a right way
-  def talent?
-    current_user.roles.find_by(id: 2)
-  end
 end

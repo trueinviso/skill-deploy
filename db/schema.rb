@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_075829) do
+ActiveRecord::Schema.define(version: 2021_03_26_192055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,6 +152,15 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rate_ranges", force: :cascade do |t|
+    t.integer "from", null: false
+    t.integer "to", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["from"], name: "index_rate_ranges_on_from", unique: true
+    t.index ["to"], name: "index_rate_ranges_on_to", unique: true
   end
 
   create_table "roles", force: :cascade do |t|
@@ -309,6 +318,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.boolean "weekly_newsletter", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0, null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
@@ -341,11 +351,11 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
     t.string "authentication_token", limit: 30
     t.string "provider"
     t.string "uid"
-    t.integer "review_status"
+    t.bigint "rate_range_id"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["rate_range_id"], name: "index_users_on_rate_range_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["review_status"], name: "index_users_on_review_status"
   end
 
   create_table "work_experiences", force: :cascade do |t|
@@ -370,4 +380,5 @@ ActiveRecord::Schema.define(version: 2019_10_20_075829) do
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_job_experiences", "job_experiences"
   add_foreign_key "user_job_experiences", "users"
+  add_foreign_key "users", "rate_ranges"
 end

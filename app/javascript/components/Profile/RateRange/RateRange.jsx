@@ -4,13 +4,6 @@ import Select from "react-select"
 import styles from "./styles.module.scss"
 import Indicator from "./Indicator"
 
-const options = [
-  { value: 100, label: "$75-$100/hr  or  $750-$1000/day" },
-  { value: 50, label: "$10-$20/hr  or  $150-$200/day" },
-  { value: 70, label: "$35-$40/hr  or  $300-$400/day" },
-  { value: 5, label: "$5-$10/hr  or  $100-$150/day" }
-]
-
 const customStyles = {
   indicatorSeparator: () => ({
     display: "none"
@@ -49,11 +42,14 @@ const customStyles = {
 const baseProps = {
   isSearchable: false,
   isMulti: false,
-  styles: customStyles
+  styles: customStyles,
+  getOptionValue: o => o.id
 }
 
-const RateRange = () => {
-  const [value, setValue] = useState(null)
+const RateRange = ({ options, name, defaultValue }) => {
+  const [value, setValue] = useState(() =>
+    options?.find(o => o.id === defaultValue)
+  )
   const onChange = option => {
     setValue(option)
   }
@@ -61,17 +57,27 @@ const RateRange = () => {
   return (
     <div className={styles.rateRange}>
       <Select
+        name={name}
         {...baseProps}
         value={value}
         onChange={onChange}
         options={options}
       />
-      <Indicator value={value?.value} />
+      <Indicator value={value?.to} />
     </div>
   )
 }
 
 RateRange.propTypes = {
+  defaultValue: PropTypes.number,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      from: PropTypes.number,
+      to: PropTypes.number,
+      label: PropTypes.string
+    })
+  ),
   name: PropTypes.string
 }
 
