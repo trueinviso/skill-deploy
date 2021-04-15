@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  include HasRoles
+  include Authorized
   include HasAttachments
 
   attachment :thumbnail
@@ -15,7 +15,6 @@ class User < ApplicationRecord
 
   has_one :user_profile, dependent: :destroy
   has_one :social_media_profile, dependent: :destroy
-  has_many :user_permissions, dependent: :destroy
 
   has_many :user_job_types, dependent: :destroy
   has_many :job_types, through: :user_job_types
