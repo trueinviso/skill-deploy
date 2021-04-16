@@ -1,6 +1,6 @@
 = form_for(current_user,
   url: user_profile_path,
-  html: { method: action, class: "form profile__form" }) do |f|
+  html: { method: action, class: "form profile__form", data:{ "form-validator-trigger": true } }) do |f|
 
   = render("application/form_errors", object: current_user)
 

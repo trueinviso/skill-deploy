@@ -43,10 +43,6 @@ module ApplicationHelper
     current_page?(main_app.new_employer_job_path)
   end
 
-  # FIXME: should be fixed in a right way
-  def talent?
-    current_user.roles.find_by(id: 2)
-  end
 
   def photo_uploader_field(record, field_name = nil)
     type = record.class.name.underscore
