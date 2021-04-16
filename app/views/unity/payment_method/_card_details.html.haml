@@ -6,4 +6,4 @@
 %p.text.-link#card-errors
 %script{ src: "https://js.stripe.com/v3/" }
 :javascript
-  var d = stripe_dropin_setup("#{Unity.config.client_token}")
+  stripe_dropin_setup("#{Unity.config.client_token}")

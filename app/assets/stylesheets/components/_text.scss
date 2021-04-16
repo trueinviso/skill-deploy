@@ -35,7 +35,15 @@
     }
   }
 
+  &.-muted {
+    color: var(--text-color);
+  }
+
   &.-center {
     text-align: center;
   }
+}
+
+.fw-regular {
+  font-weight: var(--font-regular);
 }
