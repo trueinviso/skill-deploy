@@ -31,8 +31,8 @@
       %button.button.button_theme_grey.job__tags__button
         = job.job_locations.first&.name
         - if job.location
-          %button.button.button_theme_grey.job__tags__button
-            Location
+          %button.button.button_theme_grey.job__tags__button 
+            = job.location
 
     %hr.hidden-desktop
     %h3.job__description__header
