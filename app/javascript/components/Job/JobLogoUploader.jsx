@@ -22,6 +22,7 @@ const JobLogoUploader = ({ name, thumbnail }) => {
     const file = e.target.files[0]
     const { thumbnail } = await createPreview(file)
     setPreview(thumbnail)
+    setProcessing(false)
   }
 
   return (
