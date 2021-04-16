@@ -29,9 +29,9 @@
       JobRole.all,
       :id,
       :name,
-      { checked: job.job_roles.first&.id }) do |jr|
+      { checked: job.job_roles.first&.id, required: true },) do |jr|
       %span.form--radio-button
-        = jr.radio_button
+        = jr.radio_button({ "data-required": true, "data-validation-message": "At least one is required.", "data-value": job.job_roles.first&.id  })
         = jr.label
 
 
@@ -44,7 +44,7 @@
       :name,
       { checked: job.job_types.first&.id }) do |jt|
       %span.form--radio-button
-        = jt.radio_button
+        = jt.radio_button({ "data-required": true, "data-validation-message": "At least one is required.", "data-value": job.job_types.first&.id  })
         = jt.label
 
 .form--field.mt-35
@@ -56,26 +56,28 @@
       :name,
       { checked: job.job_experiences.first&.id }) do |jt|
       %span.form--radio-button
-        = jt.radio_button
+        = jt.radio_button({ "data-required": true, "data-validation-message": "At least one is required.", "data-value": job.job_experiences.first&.id  })
         = jt.label
 
+.form--field.mt-35
+  = f.label :job_location_ids, "Job location", class: "form--label -black -required"
+  .form--radio-button-list
+    = f.collection_radio_buttons(:job_location_ids,
+      JobLocation.all,
+      :id,
+      :name,
+      { checked: job.job_locations.first&.id }) do |jt|
+      %span.form--radio-button
+        = jt.radio_button({ "data-required": true, "data-validation-message": "At least one is required.", "data-value": job.job_locations.first&.id })
+        = jt.label
+
+
 .form--field
-  = f.label :location, "Preferred location or timezone (optional)", class: "form--label -black"
+  = f.label :location, "Preferred location or timezone (optional)", class: "form--label -black -required"
   = f.text_field :location,
+    "data-required": "true",
     class: "form--input",
     placeholder: "Add..."
-
-
-= f.label :job_location_ids, "Job location *", class: "label"
-.create-listing-page__radio-button-list
-  = f.collection_radio_buttons(:job_location_ids,
-    JobLocation.all,
-    :id,
-    :name,
-    { checked: job.job_locations.first&.id }) do |jt|
-    = jt.radio_button(class: "create-listing-page__radio-button job_location")
-    = jt.label(class: "create-listing-page__radio-label")
-.error-message#job_location-error
 
 %h2.listing-page__sub-heading Social Links
 .form--field
