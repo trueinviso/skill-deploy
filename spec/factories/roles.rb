@@ -5,5 +5,9 @@ FactoryBot.define do
     trait :talent do
       name { "Talent" }
     end
+
+    trait :employer do
+      name { "Employer" }
+    end
   end
 end

@@ -43,14 +43,8 @@ module ApplicationHelper
     current_page?(main_app.new_employer_job_path)
   end
 
-
-  def photo_uploader_field(record, field_name = nil)
-    type = record.class.name.underscore
-    field_name ||= "#{type}[thumbnail_attributes][file]"
-
-    thumbnail = record.thumbnail_url
-
-    react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
+  def subscription_page?
+    controller_name == "subscription"
   end
 
   def photo_uploader_field(record, field_name = nil)
@@ -60,6 +54,10 @@ module ApplicationHelper
     thumbnail = record.thumbnail_url
 
     react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
+  end
+  
+  def manage_job_listing_path(user)
+    user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
 end
 
