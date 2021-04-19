@@ -27,6 +27,7 @@ class Job < ApplicationRecord
   validates :name,
     :company_name,
     :description,
+    :location,
     presence: true
 
   validates :employer_job_types,
