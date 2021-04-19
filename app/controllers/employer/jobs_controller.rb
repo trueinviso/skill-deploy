@@ -1,5 +1,8 @@
 module Employer
   class JobsController < ApplicationController
+    before_action :load_and_authorize_job, only: %i[edit update destroy]
+    layout "job_listing"
+
     def index
       @jobs = policy_scope([:employer, Job])
       @view_component = Employer::JobsComponent
@@ -21,14 +24,9 @@ module Employer
       end
     end
 
-    def edit
-      @job = Job.find(params[:id])
-      authorize [:employer, @job]
-    end
+    def edit; end
 
     def update
-      @job = Job.find(params[:id])
-      authorize [:employer, @job]
       if @job.update(valid_params[:job])
         redirect_to [:employer, :jobs]
       else
@@ -37,9 +35,8 @@ module Employer
     end
 
     def destroy
-      job = Job.find(params[:id])
-      authorize [:employer, job]
-      job.destroy
+      @job.destroy
+
       redirect_to employer_jobs_path
     end
 
@@ -58,15 +55,22 @@ module Employer
             :job_role_ids,
             :job_type_ids,
             :job_experience_ids,
+            :job_location_ids,
             :location,
             :name,
-            :remote,
             :twitter,
             :facebook,
             :instagram,
             thumbnail_attributes: [:file],
           ],
         )
+    end
+
+    private
+
+    def load_and_authorize_job
+      @job = Job.find(params[:id])
+      authorize [:employer, @job]
     end
   end
 end

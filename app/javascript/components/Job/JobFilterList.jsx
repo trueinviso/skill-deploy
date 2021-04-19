@@ -23,7 +23,7 @@ const typeFilters = [
 const roleFilters = [
   { label: "Design", value: "design" },
   { label: "Development", value: "development" },
-  { label: "Marketing", value: "marketing" },
+  { label: "Video", value: "video" },
   { label: "Photography", value: "photography" }
 ]
 

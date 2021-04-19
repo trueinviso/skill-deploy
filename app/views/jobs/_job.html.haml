@@ -29,10 +29,10 @@
       %button.button.button_theme_grey.job__tags__button
         = job.job_types.first&.name
       %button.button.button_theme_grey.job__tags__button
-        = job.location
-        - if job.remote
-          %button.button.button_theme_grey.job__tags__button
-            Remote
+        = job.job_locations.first&.name
+        - if job.location
+          %button.button.button_theme_grey.job__tags__button 
+            = job.location
 
     %hr.hidden-desktop
     %h3.job__description__header

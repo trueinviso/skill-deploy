@@ -1,13 +1,9 @@
 import PropTypes from "prop-types"
 import { useState } from "react"
 import heyfamFetch from "../../../helpers/heyfamFetch"
-import styles from "./styles.module.scss"
-import classNames from "classnames"
+import Uploader from "~/components/shared/Uploader"
 
 const THUMBNAIL_API = "/api/v1/thumbnail"
-
-const CHANGE_BUTTON_NAME = "Change Your Photo"
-const UPLOAD_BUTTON_NAME = "Upload your photo"
 
 const updateNavbarAvatar = thumbnail => {
   const userAvatar = document.getElementById("userAvatar")
@@ -16,7 +12,7 @@ const updateNavbarAvatar = thumbnail => {
   }
 }
 
-const PhotoUploader = ({ name, thumbnail, currentUser }) => {
+const PhotoUploader = ({ name, thumbnail, record, type }) => {
   const [isProcessing, setProcessing] = useState(false)
   const [preview, setPreview] = useState(thumbnail)
 
@@ -24,8 +20,8 @@ const PhotoUploader = ({ name, thumbnail, currentUser }) => {
     const options = { method: "PUT" }
     const data = new FormData()
     data.append(name, file)
-    data.append(`record_id`, currentUser.id)
-    data.append(`model_type`, "user")
+    data.append(`record_id`, record.id)
+    data.append(`model_type`, type)
     return heyfamFetch(THUMBNAIL_API, data, options, "file")
   }
 
@@ -38,50 +34,19 @@ const PhotoUploader = ({ name, thumbnail, currentUser }) => {
     updateNavbarAvatar(thumbnail)
   }
 
-  const isThumbnail = preview.includes("empty_photo_state_icon")
-
-  const buttonName = isThumbnail ? UPLOAD_BUTTON_NAME : CHANGE_BUTTON_NAME
-
   return (
-    <div className={styles.photoUploader}>
-      <div className={styles.thumbnailContainer}>
-        <i hidden={!isThumbnail} className={styles.icon} />
-        <img
-          hidden={isThumbnail}
-          src={thumbnail}
-          className={styles.thumbnail}
-          alt="uploaded image"
-        />
-      </div>
-      <div>
-        <label
-          role="button"
-          className={classNames({
-            button: true,
-            "-outline": true,
-            "-diasabled": isProcessing,
-            [styles.button]: true
-          })}
-        >
-          <input
-            type="file"
-            onChange={onChange}
-            className={styles.input}
-            name={name}
-            id="profileUploadPicker"
-            accept="image/x-png,image/gif,image/jpeg"
-            disabled={isProcessing}
-          />
-          {buttonName}
-        </label>
-      </div>
-    </div>
+    <Uploader
+      name={name}
+      onChange={onChange}
+      preview={preview}
+      isProcessing={isProcessing}
+    />
   )
 }
 
 PhotoUploader.propTypes = {
   name: PropTypes.string.isRequired,
-  currentUser: PropTypes.shape({
+  record: PropTypes.shape({
     id: PropTypes.number
   }).isRequired,
   thumbnail: PropTypes.string,

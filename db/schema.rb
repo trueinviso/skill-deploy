@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_192055) do
+ActiveRecord::Schema.define(version: 2021_04_16_145022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,15 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.index ["job_id"], name: "index_employer_job_experiences_on_job_id"
   end
 
+  create_table "employer_job_locations", force: :cascade do |t|
+    t.bigint "job_id", null: false
+    t.bigint "job_location_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_employer_job_locations_on_job_id"
+    t.index ["job_location_id"], name: "index_employer_job_locations_on_job_location_id"
+  end
+
   create_table "employer_job_roles", force: :cascade do |t|
     t.bigint "job_role_id"
     t.bigint "job_id"
@@ -107,6 +116,12 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "job_locations", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "job_roles", force: :cascade do |t|
     t.bigint "job_id"
     t.string "name", null: false
@@ -130,8 +145,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "name"
     t.string "company_name"
     t.string "company_website"
-    t.string "location"
-    t.boolean "remote"
     t.text "description"
     t.string "contact_name"
     t.string "contact_email"
@@ -141,6 +154,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "facebook"
     t.string "instagram"
     t.integer "status", default: 0
+    t.string "location"
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
@@ -352,10 +366,12 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
     t.string "provider"
     t.string "uid"
     t.bigint "rate_range_id"
+    t.integer "review_status"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["rate_range_id"], name: "index_users_on_rate_range_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["review_status"], name: "index_users_on_review_status"
   end
 
   create_table "work_experiences", force: :cascade do |t|
@@ -373,6 +389,8 @@ ActiveRecord::Schema.define(version: 2021_03_26_192055) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "employer_job_experiences", "job_experiences"
   add_foreign_key "employer_job_experiences", "jobs"
+  add_foreign_key "employer_job_locations", "job_locations"
+  add_foreign_key "employer_job_locations", "jobs"
   add_foreign_key "employer_job_roles", "job_roles"
   add_foreign_key "employer_job_roles", "jobs"
   add_foreign_key "employer_job_types", "job_types"

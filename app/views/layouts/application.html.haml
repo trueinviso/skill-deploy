@@ -1,18 +1,7 @@
 !!!
 %html
   %head
-    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
-    %title Skill Deploy
-    = csrf_meta_tags
-    - if user_signed_in?
-      %meta{ content: current_user.authentication_token, name: "user-token" }
-      %meta{ content: current_user.email, name: "user-email" }
-
-    %meta{ content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport" }
-    %link{ href: "https://use.typekit.net/yke8vfo.css", rel: "stylesheet" }
-    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
-    = javascript_pack_tag "javascript/polyfills", "data-turbolinks-track": "reload"
-    = javascript_pack_tag "javascript/application", "data-turbolinks-track": "reload"
+    = render "application/head_shared_content"
 
     - if account_page?
       = stylesheet_pack_tag "stylesheets/editor",

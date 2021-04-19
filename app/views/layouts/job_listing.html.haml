@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    = render "application/head_shared_content"
+    - if create_listing_page?
+      = stylesheet_pack_tag "stylesheets/editor",
+        "data-turbolinks-track": "reload"
+     
+
+  %body.bg-secondary
+    = render "application/job_listing_header"
+    %main
+      = yield

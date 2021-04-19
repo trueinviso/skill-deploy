@@ -1,0 +1,14 @@
+%meta{ content: "text/html; charset=UTF-8", "http-equiv": "Content-Type" }
+%meta{ content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport" }
+%title Skill Deploy
+= csrf_meta_tags
+- if user_signed_in?
+  %meta{ content: current_user.authentication_token, name: "user-token" }
+  %meta{ content: current_user.email, name: "user-email" }
+
+%link{ href: "https://use.typekit.net/yke8vfo.css", rel: "stylesheet" }
+= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+= stylesheet_packs_with_chunks_tag 'javascript/application', media: 'all', 
+      'data-turbolinks-track': true
+= javascript_pack_tag "javascript/polyfills", "data-turbolinks-track": "reload"
+= javascript_pack_tag "javascript/application", "data-turbolinks-track": "reload"

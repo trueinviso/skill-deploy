@@ -1,5 +1,9 @@
 class Job < ApplicationRecord
   include Filterable
+  include HasAttachments
+
+  attachment :thumbnail
+  has_rich_text :description
 
   belongs_to :user
 
@@ -12,17 +16,13 @@ class Job < ApplicationRecord
   has_many :employer_job_experiences, dependent: :destroy
   has_many :job_experiences, through: :employer_job_experiences
 
+  has_many :employer_job_locations, dependent: :destroy
+  has_many :job_locations, through: :employer_job_locations
+
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
-  has_rich_text :description
-
-  include HasAttachments
-  attachment :thumbnail
-
   accepts_nested_attributes_for :job_types
-
-  validates_inclusion_of :remote, in: [true, false]
 
   validates :name,
     :company_name,
@@ -33,7 +33,7 @@ class Job < ApplicationRecord
   validates :employer_job_types,
     :employer_job_roles,
     :employer_job_experiences,
-    :remote,
+    :employer_job_locations,
     length: { minimum: 1 }
 
   validates :facebook,
