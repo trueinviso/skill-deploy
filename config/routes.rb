@@ -60,6 +60,8 @@ Rails.application.routes.draw do
 
     resources :jobs
     resources :job_postings, only: %i[create update]
+    resources :job_archives, only: %i[update]
+    resources :job_previews, only: %i[update]
 
     namespace :preview do
       resources :job,
