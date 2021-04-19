@@ -10,7 +10,14 @@
       %a{ href: new_employer_job_path }
         %button.button.button_theme_primary.employer-jobs-list__button
           Post a listing
-
-    = render "jobs", jobs: @jobs
+    %h2
+      Preview
+    = render "jobs", jobs: @view_component.preview
+    %h2
+      Published
+    = render "jobs", jobs: @view_component.published
+    %h2
+      Archived
+    = render "jobs", jobs: @view_component.archived
 /= link_to "Subscribe", unity.new_subscription_path
 /= render "shared/screen_modal"
