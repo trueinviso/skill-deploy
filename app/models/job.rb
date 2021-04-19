@@ -41,7 +41,11 @@ class Job < ApplicationRecord
     :twitter,
     :company_website, url: true
 
-  enum status: [:preview, :published]
+  enum status: [:preview, :published, :archived]
+
+  scope :preview, -> { where(status: :preview) }
+  scope :published, -> { where(status: :published)  }
+  scope :archived, -> { where(status: :archived)  }
 
   def self.job_type_name(job_type_name)
     joins(:job_types)
