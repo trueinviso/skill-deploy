@@ -250,7 +250,6 @@ function createFormWithRules(formEl) {
       if (mutation.type === "childList") {
         const input = mutation.target.querySelector("input:not([readonly])")
 
-      
         if (input === null) return
 
         const decoratedInput = inputDecorator(input)
