@@ -11,10 +11,10 @@ $bullet-icon: "data:image/svg+xml,%3Csvg viewBox='0 0 13 10' fill='none' xmlns='
     &-bold,
     &-italic {
       display: inline-block;
-      visibility: hidden;
+      font-size: 0;
 
       &::first-letter {
-        visibility: visible;
+        font-size: 16px;
       }
     }
 
