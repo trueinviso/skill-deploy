@@ -55,3 +55,5 @@ yarn-debug.log*
 
 # Ignore hidden files
 /**/*.swp
+/**/*.swn
+/**/*.swo

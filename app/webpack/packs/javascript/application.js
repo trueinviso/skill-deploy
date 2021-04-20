@@ -6,7 +6,6 @@ import alert from "~/components/alert"
 import formValidator from "~/components/form-validator/form-validator"
 import form from "~/components/form"
 import modal from "~/components/microModal"
-import "trix/dist/trix.js"
 Turbolinks.start()
 window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts

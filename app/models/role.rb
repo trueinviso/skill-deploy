@@ -1,5 +1,5 @@
 class Role < ApplicationRecord
-  TALENT = "Talent".freeze
+  TALENT = "Job Seeker".freeze
 
   has_many :user_roles, dependent: :destroy
   has_many :users, through: :user_roles
