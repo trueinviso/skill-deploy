@@ -4,27 +4,27 @@ import Dropdown from "../Dropdown"
 const typeFilters = [
   {
     label: "Full Time",
-    value: "full_time"
+    value: "Full Time"
   },
   {
     label: "Part Time",
-    value: "part_time"
+    value: "Part Time"
   },
   {
     label: "Contract",
-    value: "contract"
+    value: "Contract"
   },
   {
     label: "Freelance",
-    value: "freelance"
+    value: "Freelance"
   }
 ]
 
 const roleFilters = [
-  { label: "Design", value: "design" },
-  { label: "Development", value: "development" },
-  { label: "Video", value: "video" },
-  { label: "Photography", value: "photography" }
+  { label: "Design", value: "Design" },
+  { label: "Development", value: "Development" },
+  { label: "Video", value: "Video" },
+  { label: "Photography", value: "Photography" }
 ]
 
 const JobFilterList = ({ activeFilters, updateFilters }) => {

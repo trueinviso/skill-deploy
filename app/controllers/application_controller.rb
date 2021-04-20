@@ -13,19 +13,27 @@ class ApplicationController < ActionController::Base
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # Available from Devise engine
-  
+
   def after_sign_in_path_for(resource)
     return [:new, :session] unless user_signed_in?
-    
+
     stored_location_for(resource) || Receptionist.new(resource).direct
   end
 
   private
 
   def guard_user_profile_reviewed!
+    return if registration_paths?
+
     if current_user.user_profile.pending?
       redirect_to profile_pending_review_path
     end
+  end
+
+  def registration_paths?
+    controller_name == "join_us" ||
+      controller_name == "user_profiles" ||
+      controller_name == "thumbnails"
   end
 
   def guard_user_authenticated!

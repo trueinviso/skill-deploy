@@ -5,9 +5,10 @@ class UserProfilesController < ApplicationController
   end
 
   def create
-    result = current_user.update(permitted_params.merge(review_status: :pending))
+    result = current_user.update(permitted_params)
     if result
       current_user.assign_role("Job Seeker")
+      current_user.user_profile.pending!
       redirect_to root_path
     else
       render :new
