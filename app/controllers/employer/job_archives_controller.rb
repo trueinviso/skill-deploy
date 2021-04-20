@@ -5,7 +5,7 @@ module Employer
       @job = Job.find(params[:id])
       authorize [:employer, @job]
       @job.archived!
-      flash[:notice] = "Rour listing is now archived. #{redirect_link}"
+      flash[:notice] = "Job listing is now archived. #{redirect_link}"
       redirect_to employer_jobs_path
     end
 

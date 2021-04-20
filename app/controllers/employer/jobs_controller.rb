@@ -5,7 +5,7 @@ module Employer
 
     def index
       @jobs = policy_scope([:employer, Job])
-      @view_component = Employer::JobsComponent.new(@jobs)
+      @view_component = Employer::JobsComponent
       authorize [:employer, @jobs]
     end
 
