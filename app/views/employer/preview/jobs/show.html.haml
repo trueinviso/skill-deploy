@@ -8,6 +8,16 @@
       method: :put,
       class: "button button_theme_black job-preview__button"
 
+    = link_to "Preview Listing",
+      employer_job_preview_path(@job),
+      method: :put,
+      class: "button button_theme_black job-preview__button"
+
+    = link_to "Archive Listing",
+      employer_job_archive_path(@job),
+      method: :put,
+      class: "button button_theme_black job-preview__button"
+
     .job-preview__heading.hidden-mobile
       Listing preview
 

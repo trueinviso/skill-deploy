@@ -1,11 +1,11 @@
 module Employer
-  class JobPostingsController < ApplicationController
-    
+  class JobPreviewsController < ApplicationController
+
     def update
       @job = Job.find(params[:id])
       authorize [:employer, @job]
-      @job.published!
-      flash[:notice] = "Congratulations! your listing is now live. #{redirect_link}"
+      @job.preview!
+      flash[:notice] = "Your listing is now a draft. #{redirect_link}"
       redirect_to employer_jobs_path
     end
 

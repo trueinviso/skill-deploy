@@ -1,11 +1,11 @@
 module Employer
-  class JobPostingsController < ApplicationController
-    
+  class JobArchivesController < ApplicationController
+
     def update
       @job = Job.find(params[:id])
       authorize [:employer, @job]
-      @job.published!
-      flash[:notice] = "Congratulations! your listing is now live. #{redirect_link}"
+      @job.archived!
+      flash[:notice] = "Job listing is now archived. #{redirect_link}"
       redirect_to employer_jobs_path
     end
 
