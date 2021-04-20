@@ -1,5 +1,4 @@
 - has_avatar = !current_user.thumbnail_url.include?("empty_photo_state_icon")
-- manage_listing_path = manage_job_listing_path(current_user)
 .nav__links.hide-desktop-down
   %ul.nav__menu
     %li.nav__item
@@ -28,8 +27,8 @@
         #{'-active' if current_page?(main_app.edit_user_profile_path)}" }
         = link_to "My account", main_app.edit_user_profile_path, class: "nav_nested__link"
       %li{ class: "nav_nested__item
-        #{'-active' if current_page?(manage_listing_path)}" }
-        = link_to "Job Listings", manage_listing_path, class: "nav_nested__link"
+        #{'-active' if current_page?(main_app.employer_jobs_path)}" }
+        = link_to "Job Listings", main_app.employer_jobs_path, class: "nav_nested__link"
       %li{ class: "nav_nested__item #{'-active' if current_page?(unity.edit_subscription_path)}" }
         = link_to "Billing details", unity.edit_subscription_path, class: "nav_nested__link"
       %li.nav_nested__item

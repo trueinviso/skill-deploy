@@ -4,7 +4,7 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
-      current_user.update!(review_status: :complete)
+      current_user.user_profile.approved!
 
       flash[:success] = flash_message
       redirect_to main_app.new_employer_job_path
