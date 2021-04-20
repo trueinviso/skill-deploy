@@ -18,8 +18,8 @@ class JobsSerializer
         company_name: job.company_name,
         location: job.location,
         liked: favorite_ids.include?(job.id),
-        thumbnail_url: job.thumbnail_url,
-        job_types: job.job_types.map { |type| { name: type.name } },
+        thumbnailUrl: job.thumbnail_url,
+        jobTypes: job.job_types.map { |type| { name: type.name } },
       }
     end
   end
