@@ -1,11 +1,11 @@
 class TalentMailer < ApplicationMailer
   default from: "hello@skilldeploy.com"
 
-  def welcome(user)
-    @user = user
+  def welcome
+    @user = params[:user]
 
     mail(
-      to: user.user_profile.email,
+      to: @user.email,
       subject: "",
     )
   end
