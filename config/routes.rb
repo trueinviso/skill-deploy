@@ -79,6 +79,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :users, module: :users, only: [] do
+      resource :approve, only: %i[update]
+      resource :block, only: %i[update]
+    end
+  end
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :jobs,
