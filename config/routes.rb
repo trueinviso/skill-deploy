@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   resource :join_us, only: :show, path: "join-us"
 
   namespace :profile do
-
     resource :notifications,
              only: [:edit, :update]
 
