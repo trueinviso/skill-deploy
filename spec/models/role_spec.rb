@@ -7,7 +7,7 @@ describe Role do
     let(:role) { build :role, name: role_name }
 
     context "when role name eql talent" do
-      let(:role_name) { "Talent" }
+      let(:role_name) { "Job Seeker" }
 
       it { is_expected.to eq(true) }
     end
