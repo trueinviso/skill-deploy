@@ -22,6 +22,9 @@ class Job < ApplicationRecord
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  has_many :applied_for, dependent: :destroy
+  has_many :appliers, through: :applied_for, source: :user
+
   accepts_nested_attributes_for :job_types
 
   validates :name,
