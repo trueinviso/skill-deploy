@@ -55,6 +55,12 @@ Rails.application.routes.draw do
   resources :applied_fors,
             only: [:index]
 
+  namespace :talent do
+    resources :jobs, only: [] do
+      resource :apply, only: %i[create]
+    end
+  end
+
   namespace :employer do
     root to: "jobs#index"
 

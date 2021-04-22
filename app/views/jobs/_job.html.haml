@@ -9,7 +9,9 @@
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
-      = react_component("ApplyGig", { title: job.name, buttonTitle: "Apply for this gig" })
+      = link_to  talent_job_apply_path(@job), method: :post do
+        %span.button.button_theme_primary
+          Apply for this gig
       %a{ href: job.company_website }
         %span.button.button_theme_white
           Website
@@ -39,6 +41,6 @@
       About the gig
     .job__description
       = job.description
-    %a{ href: "#" }
+    = link_to  talent_job_apply_path(@job), method: :post do
       %span.button.button_theme_primary.job__button
         Apply for this gig
