@@ -7,7 +7,7 @@ module Talent
     def create
       authorize(@job, policy_class: Talent::ApplyPolicy)
       if current_user.applied_jobs.exists?(@job.id)
-        flash[:notice] = "Already applied." 
+        flash[:notice] = "Already applied this job." 
       else
         current_user.applied_jobs << @job
         flash[:notice] = "You applied the job listing."
