@@ -6,6 +6,7 @@ module Admin
       before_action :load_user, only: :update
 
       def update
+        authorize(@job, policy_class: ApprovePolicy)
         @user.user_profile.approved!
         head :ok, content_type: "text/html"
       end
