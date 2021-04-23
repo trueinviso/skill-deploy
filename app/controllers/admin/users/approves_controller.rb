@@ -6,7 +6,8 @@ module Admin
       before_action :load_user, only: :update
 
       def update
-        @user.approve!
+        @user.user_profile.approved!
+        head :ok, content_type: "text/html"
       end
 
       private

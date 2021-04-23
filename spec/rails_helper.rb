@@ -37,9 +37,10 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
-  config.include AcceptanceHelper
-  config.include TrixEditorHelper
-  config.include DbFillableHelper
+  config.include AcceptanceHelper, type: :feature
+  config.include TrixEditorHelper, type: :feature
+  config.include DbFillableHelper, type: :feature
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
