@@ -59,9 +59,13 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
-    resources :job_postings, only: %i[create update]
-    resources :job_archives, only: %i[update]
-    resources :job_previews, only: %i[update]
+    resources :job_postings, only: [:create, :update]
+    resources :job_archives, only: [:update]
+    resources :job_previews, only: [:update]
+
+    resources :user_profiles,
+      only: [:show],
+      path: "profile"
 
     namespace :preview do
       resources :job,
