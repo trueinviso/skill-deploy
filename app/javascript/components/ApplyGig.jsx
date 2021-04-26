@@ -14,12 +14,16 @@ const ApplyGig = ({ title, buttonTitle }) => {
     >
       {({ onClose }) => (
         <React.Fragment>
-          <h1 className="job__message-modal__content__title">
-            Send {title} a message
-          </h1>
+          <div className="job__message-modal__content__close-button">
+            <button onClick={onClose} className="close-button -round -black">
+            </button>
+          </div>
+
           <form className="job__message-modal__content__form">
+            <h1 className="job__message-modal__content__title">
+              Send a message
+            </h1>
             <div>
-              <label htmlFor="message">Message description *</label>
               <textarea
                 className="text-area"
                 name="message"
@@ -29,9 +33,6 @@ const ApplyGig = ({ title, buttonTitle }) => {
               />
             </div>
             <div className="job__message-modal__content__footer">
-              <button onClick={onClose} className="button button_theme_white">
-                Cancel
-              </button>
               <button type="submit" className="button button_theme_primary">
                 Send message
               </button>

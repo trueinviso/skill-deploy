@@ -181,70 +181,67 @@
   }
 
   &__message-modal {
+    .close-button {
+      float: right;
+    }
+
     &__content {
       margin: auto;
       max-width: 100%;
       background: $color-white;
       border-radius: 6px;
-      padding: 15px;
-      font-family: "Averta";
+      padding: 15px 15px 68px 25px;
+      font-family: $font-primary;
       box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+      max-width: 673px;
+
+      &__close-button {
+        height: 32px;
+      }
+
+      h1 {
+        clear: both;
+      }
 
       @include desktop {
-        padding: 91px 110px;
+        padding: 30px 27px 72px 71px;
         max-width: 826px;
+        height: 508px;
+        width: 50%;
       }
 
       &__title {
         height: 34px;
-        font-family: "Averta";
-        font-size: $font-size-xxlarge;
-        font-weight: $font-weight-bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: 1.21;
-        letter-spacing: normal;
-        color: $color-dark-grey;
-        margin-bottom: 29px;
+        font-family: $font-primary;
+        font-size: 28px;
+        font-weight: var(--font-regular);
+        margin-bottom: 22px;
       }
 
       &__form {
-        label {
-          height: 25px;
-          font-family: "Averta";
-          font-size: $font-size-small;
-          font-weight: $font-weight-bold;
-          font-stretch: normal;
-          font-style: normal;
-          line-height: 2.08;
-          letter-spacing: normal;
-          color: $color-greyish;
-          margin-bottom: 5px;
+        padding-right: 10px;
+
+        @include desktop {
+          padding-right: 44px;
         }
+
         textarea {
-          @include desktop {
-            width: 612px;
-          }
+          border-radius: var(--border-radius);
+          padding: 30px 20px;
+          color: var(--text-color);
         }
       }
 
       &__footer {
         margin-top: 30px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 15px;
-        align-items: center;
-        justify-content: center;
+        width: 100%;
 
-        @include desktop {
-          grid-template-columns: repeat(2, max-content);
-          justify-content: flex-end;
-        }
         button {
+          float: right;
+
           @include desktop {
-            min-width: 187px;
+            max-width: 187px;
           }
-          width: 100%;
         }
       }
     }
@@ -254,7 +251,7 @@
       left: 0px;
       right: 0px;
       bottom: 0px;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.5);
       display: flex;
       outline: none;
     }
