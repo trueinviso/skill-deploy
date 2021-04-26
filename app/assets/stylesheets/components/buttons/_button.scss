@@ -49,6 +49,12 @@
     background-color: transparent;
   }
 
+  &.-white {
+    background-color: white;
+    color: var(--quaternary-color);
+    border: 1px solid var(--quaternary-color);
+  }
+
   &.-danger {
     color: var(--danger-color);
   }

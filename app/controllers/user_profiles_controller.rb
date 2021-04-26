@@ -16,7 +16,7 @@ class UserProfilesController < ApplicationController
   end
 
   def update
-    result = current_user.update(permitted_params)
+    result = current_user.update(skills_to_array(permitted_params))
     if result
       redirect_to edit_user_profile_path
     else
@@ -68,5 +68,10 @@ class UserProfilesController < ApplicationController
           :title,
         ],
       )
+  end
+
+  def skills_to_array(params)
+    params[:skills] = params[:skills].split(",")
+    params
   end
 end
