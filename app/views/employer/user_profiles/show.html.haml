@@ -1,6 +1,7 @@
 .page.employer-profile
-  .page__main
-    %section.page__content.employer-profile__hero-section
+  .sub-header.hidden-mobile
+  .page__main.employer-profile__wrapper
+    %section.employer-profile__hero-section
       .employer-profile__image
         - if @profile.user.thumbnail.present?
           = image_tag @profile.user.thumbnail_url
@@ -25,38 +26,43 @@
       .employer-profile__social-links
         = render "user_profiles/social_links"
 
-    %section.page__content
-      .employer-profile__heading
-        About
-      .employer-profile__bio
-        = @profile.bio[:body]
-      - @profile.user.job_roles.each do |role|
-        .employer-profile__role
-          .details
-            = role.name
+    .employer-profile__right-section
+      %section
+        .employer-profile__details-wrapper
+          .employer-profile__heading
+            About
+          .employer-profile__bio
+            = @profile.bio[:body]
+          - @profile.user.job_roles.each do |role|
+            .employer-profile__role
+              .details
+                = role.name
 
-    %section.page__content
-      .employer-profile__heading.-work-experience
-        Work Experience
-      .employer-profile__work-experiences
-        - @profile.user.work_experiences.each do |we|
-          .employer-profile__work-experience
-            = we.title
-            .employer-profile__work-experience__date
-              = "#{we.start.strftime("%b %Y")} - #{we.current_role? ? "Current Role" : we.end.strftime("%b %Y")}"
+      %section
+        .employer-profile__details-wrapper
+          .employer-profile__heading.-work-experience
+            Work Experience
+          .employer-profile__work-experiences
+            - @profile.user.work_experiences.each do |we|
+              .employer-profile__work-experience
+                = we.title
+                .employer-profile__work-experience__date
+                  = "#{we.start.strftime("%b %Y")} - #{we.current_role? ? "Current Role" : we.end.strftime("%b %Y")}"
 
-    %section.page__content
-      .employer-profile__heading.-work-preferences
-        Work Preferences
-      - @profile.user.job_types.each do |type|
-        .employer-profile__role
-          .details
-            = type.name
+      %section
+        .employer-profile__details-wrapper
+          .employer-profile__heading.-work-preferences
+            Work Preferences
+          - @profile.user.job_types.each do |type|
+            .employer-profile__role
+              .details
+                = type.name
 
-    %section.page__content
-      .employer-profile__heading.-skills
-        Skills
-      - @profile.user.skills.each do |skill|
-        .employer-profile__role
-          .details
-            = skill
+      %section
+        .employer-profile__details-wrapper
+          .employer-profile__heading.-skills
+            Skills
+          - @profile.user.skills.each do |skill|
+            .employer-profile__role
+              .details
+                = skill

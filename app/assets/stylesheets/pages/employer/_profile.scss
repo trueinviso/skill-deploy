@@ -1,16 +1,81 @@
 .employer-profile {
+  padding-top: 68px;
+  background-color: white;
+
+  @include tablet-up {
+    padding-top: 0px;
+    grid-template-columns: auto;
+
+    .page__main > :first-child:not([role="alert"]) {
+      margin-top: 0px;
+    }
+
+    .sub-header {
+      background-color: var(--bg-color);
+    }
+  }
+
+  &__wrapper {
+    @include tablet-up {
+      display: flex;
+      justify-content: center;
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 50px;
+      position: relative;
+      top: -150px;
+    }
+  }
+
+  &__right-section {
+    @include tablet-up {
+      width: 60%;
+      max-width: 800px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0px 2px 10px 3px rgba(0, 0, 0, 0.04);
+    }
+  }
+
   &__hero-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    @include tablet-up {
+      margin-right: 27px;
+      width: 28%;
+      max-width: 400px;
+      height: 636px;
+      border-radius: 6px;
+      box-shadow: 0px 2px 10px 3px rgba(0, 0, 0, 0.04);
+    }
   }
 
   section {
-    padding-bottom: 55px;
+    padding-left: 24px;
+    padding-right: 24px;
+    background-color: white;
 
-    &:not(:last-child) {
-      border-bottom: 1px solid var(--border-color);
+    @include tablet-up {
+      &:not(:last-child) > .employer-profile__details-wrapper {
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .employer-profile__details-wrapper {
+        margin-left: 10%;
+        margin-right: 10%;
+        padding-bottom: 55px;
+      }
+    }
+
+    @include tablet-down {
+      padding-bottom: 55px;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--border-color);
+      }
     }
   }
 
@@ -45,6 +110,11 @@
     border-bottom-right-radius: 50% 50%;
     border-bottom-left-radius: 50% 50%;
     margin-bottom: 20px;
+    overflow: hidden;
+
+    @include tablet-up {
+      margin-top: 40px;
+    }
   }
 
   &__social-links {
@@ -68,6 +138,7 @@
     display: block;
     font-size: 18px;
     margin-bottom: 15px;
+    padding-top: 40px;
 
     &.-work-experience, &.-skills {
       margin-bottom: 40px;
