@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def edit_listing_page?
-    current_page?(main_app.edit_employer_job_path)
+    controller_name == "employer/jobs" && action_name == "edit"
   end
 
   def subscription_page?
