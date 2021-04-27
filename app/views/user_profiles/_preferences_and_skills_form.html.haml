@@ -2,19 +2,17 @@
   %h1.h1--small Preferences and skills
 
   .profile__form__skills
-    = form.label :job_role_ids, "Where do you want to work?", class: "form--label -black -required"
+    = form.label :job_location_ids, "Where do you want to work?", class: "form--label -black -required"
     .form--radio-list.profile__form__skills__list
-      = form.collection_radio_buttons(:job_types,
-        JobRole.all,
+      = form.collection_radio_buttons(:job_location_ids,
+        JobLocation.all,
         :id,
         :name,
-        { checked: current_user.job_roles.first&.id, class:"22" }) do |jr|
+        { checked: current_user.job_locations.first&.id }) do |jr|
         %span.form--radio-button
           = jr.radio_button({ "data-required":true, "data-validation-message": "At least one is required.", "data-value": current_user.job_roles.first&.id })
           = jr.label
 
-    
-        
   .profile__form__skills
     = form.label :job_role_ids, "Type of skills*", class: "form--label -black -required"
     .form--radio-list.profile__form__skills__list
