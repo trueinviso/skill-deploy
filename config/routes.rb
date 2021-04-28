@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     root to: "jobs#index"
 
     resources :jobs
-    resources :job_postings, only: [:create, :update]
+    resources :job_postings, only: [:update]
     resources :job_archives, only: [:update]
     resources :job_previews, only: [:update]
 
