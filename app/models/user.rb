@@ -29,6 +29,9 @@ class User < ApplicationRecord
   has_many :user_job_experiences, dependent: :destroy
   has_many :job_experiences, through: :user_job_experiences
 
+  has_many :user_job_locations, dependent: :destroy
+  has_many :job_locations, through: :user_job_locations
+
   has_many :work_experiences
 
   has_many :jobs
