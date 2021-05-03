@@ -80,10 +80,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, module: :users, only: [] do
-      resource :approve, only: %i[update]
-      resource :block, only: %i[update]
-    end
+    resources :user_profiles, only: [:update]
   end
 
   namespace :api, defaults: { format: :json } do
