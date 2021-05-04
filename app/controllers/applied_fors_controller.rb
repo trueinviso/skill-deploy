@@ -12,6 +12,7 @@ class AppliedForsController < ApplicationController
   def create
     authorize(applied_for)
     if applied_for.save
+      send_job_listing_talent_apply_notification
       flash[:notice] = t(".success")
     else
       flash[:notice] = t(".failure")
@@ -27,5 +28,11 @@ class AppliedForsController < ApplicationController
 
   def job
     @job ||= Job.find(params[:job_id])
+  end
+
+  def send_job_listing_talent_apply_notification
+    EmployerMailer.with(user: @job.user, talent: current_user)
+                  .job_listing_talent_apply_notification
+                  .deliver_later
   end
 end
