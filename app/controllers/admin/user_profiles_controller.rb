@@ -2,7 +2,7 @@
 
 module Admin
   class UserProfilesController < ApplicationController
-    before_action :load_user_profile, only: :update
+    before_action :user_profile, only: :update
 
     def update
       user_profile.assign_attributes(status_param)

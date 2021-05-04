@@ -11,7 +11,7 @@ RSpec.describe "User profile", type: :request do
   describe "change users profile status to approve" do
     before do
       sign_in(admin)
-      patch "/admin/user_profiles/#{talent_profile.user.id}", params: { user_profile: { status: :approved } }
+      patch "/admin/user_profiles/#{talent_profile.id}", params: { user_profile: { status: :approved } }
     end
 
     it "returns a 200" do
@@ -28,7 +28,7 @@ RSpec.describe "User profile", type: :request do
   describe "change users profile status to blocked" do
     before do
       sign_in(admin)
-      patch "/admin/user_profiles/#{talent_profile.user.id}", params: { user_profile: { status: :blocked } }
+      patch "/admin/user_profiles/#{talent_profile.id}", params: { user_profile: { status: :blocked } }
     end
     
     it "returns a 200" do
