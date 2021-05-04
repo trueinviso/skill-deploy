@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   has_many :user_job_locations, dependent: :destroy
   has_many :job_locations, through: :user_job_locations
-  
+
   has_many :applied_for, dependent: :destroy
   has_many :applied_jobs, through: :applied_for, source: :job
 
