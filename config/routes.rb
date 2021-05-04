@@ -52,13 +52,7 @@ Rails.application.routes.draw do
             only: [:index]
 
   resources :applied_fors,
-            only: [:index]
-
-  namespace :talent do
-    resources :jobs, only: [] do
-      resource :apply, only: %i[create]
-    end
-  end
+            only: [:index, :create]
 
   namespace :employer do
     root to: "jobs#index"
