@@ -54,11 +54,17 @@ Rails.application.routes.draw do
   resources :applied_fors,
             only: [:index, :create]
 
+  namespace :talent do
+    resources :jobs, only: [] do
+      resource :apply, only: %i[create]
+    end
+  end
+
   namespace :employer do
     root to: "jobs#index"
 
     resources :jobs
-    resources :job_postings, only: [:create, :update]
+    resources :job_postings, only: [:update]
     resources :job_archives, only: [:update]
     resources :job_previews, only: [:update]
 
@@ -71,6 +77,10 @@ Rails.application.routes.draw do
                 controller: :jobs,
                 only: [:show]
     end
+  end
+
+  namespace :admin do
+    resources :user_profiles, only: [:update]
   end
 
   namespace :api, defaults: { format: :json } do

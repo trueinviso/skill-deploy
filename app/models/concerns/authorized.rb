@@ -12,4 +12,8 @@ module Authorized
   def talent?
     roles.where(name: Role::TALENT).exists?
   end
+
+  def admin?
+    roles.where(name: Role::ADMIN).exists?
+  end
 end

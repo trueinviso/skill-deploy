@@ -11,7 +11,7 @@ RSpec.feature "Apply job lising", type: :feature do
       sign_in(user_profile.user)
       visit job_path(job)
       click_on("Apply for this gig", match: :first)
-      expect(page).to have_text("You applied the job listing")
+      expect(page).to have_text("You applied to the job listing")
     end
 
     scenario "when talent apply the second time same job" do
@@ -19,7 +19,7 @@ RSpec.feature "Apply job lising", type: :feature do
       sign_in(user_profile.user)
       visit job_path(job)
       click_on("Apply for this gig", match: :first)
-      expect(page).to have_text("Could not apply the job")
+      expect(page).to have_text("Could not apply to the job")
     end
   end
 end

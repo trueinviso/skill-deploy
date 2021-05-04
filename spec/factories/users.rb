@@ -13,5 +13,9 @@ FactoryBot.define do
     trait :with_employer_role do
       after(:create) { |u| u.roles << Role.find_or_create_by(name: "Employer") }
     end
+
+    trait :with_admin_role do
+      after(:create) { |u| u.roles << create(:role, :admin) }
+    end
   end
 end
