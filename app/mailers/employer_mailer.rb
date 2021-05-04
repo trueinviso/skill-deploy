@@ -4,10 +4,10 @@ class EmployerMailer < ApplicationMailer
   def job_listing_publish_notification
     @job = params[:job]
     @user = @job.user
-    
+
     mail(
       to: @user.email,
-      subject: "You job is live now",
+      subject: "You job is now live!",
     )
   end
 
@@ -17,7 +17,7 @@ class EmployerMailer < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Talent applied your job listing",
+      subject: "Talent has applied to your job listing",
     )
   end
 end
