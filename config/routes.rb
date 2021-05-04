@@ -52,7 +52,7 @@ Rails.application.routes.draw do
             only: [:index]
 
   resources :applied_fors,
-            only: [:index]
+            only: [:index, :create]
 
   namespace :talent do
     resources :jobs, only: [] do
