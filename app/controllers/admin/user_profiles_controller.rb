@@ -6,7 +6,7 @@ module Admin
 
     def update
       user_profile.assign_attributes(status_param)
-      authorize [:admin, @user_profile]
+      authorize [:admin, user_profile]
       user_profile.save!
       head :ok, content_type: "text/html"
     end
