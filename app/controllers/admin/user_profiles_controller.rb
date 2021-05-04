@@ -5,16 +5,16 @@ module Admin
     before_action :load_user_profile, only: :update
 
     def update
-      @user_profile.assign_attributes(status_param)
+      user_profile.assign_attributes(status_param)
       authorize [:admin, @user_profile]
-      @user_profile.save
+      user_profile.save!
       head :ok, content_type: "text/html"
     end
 
     private
 
-    def load_user_profile
-      @user_profile = UserProfile.find(params[:id])
+    def user_profile
+      @user_profile ||= UserProfile.find(params[:id])
     end
 
     def status_param
