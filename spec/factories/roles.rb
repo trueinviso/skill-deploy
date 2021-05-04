@@ -3,7 +3,7 @@ FactoryBot.define do
     name { "Some role" }
 
     trait :talent do
-      name { "Talent" }
+      name { "Job Seeker" }
     end
 
     trait :employer do
