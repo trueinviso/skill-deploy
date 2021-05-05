@@ -2,6 +2,7 @@ import { array, func, string, number, bool } from "prop-types"
 import React from "react"
 import FavoriteJobIcon from "./FavoriteJobIcon"
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
+import checkIcon from "./../../../assets/font/icon/check.svg"
 
 const JobListItem = ({
   id,
@@ -45,6 +46,10 @@ const JobListItem = ({
               {jobType.name}
             </div>
           ))}
+        </div>
+        <div className="job-card__applied-state">
+          <img src={checkIcon} alt="check-icon" />
+          <div>Applied</div>
         </div>
       </div>
     </a>

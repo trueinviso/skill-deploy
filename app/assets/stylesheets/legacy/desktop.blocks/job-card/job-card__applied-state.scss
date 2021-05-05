@@ -1,0 +1,23 @@
+.job-card__applied-state {
+  @include desktop {
+    display: flex;
+    width: 91px;
+    height: 28px;
+    background: black;
+    color: white;
+    font-family: "neue-haas-grotesk-text", sans-serif;
+    font-size: 11px;
+    grid-column-start: 3;
+    justify-self: right;
+    justify-content: center;
+    border-radius: 3px;
+
+    & > div {
+      color: white;
+      font-weight: normal;
+      font-size: 11px;
+      align-self: center;
+      margin-left: 5px;
+    }
+  }
+}

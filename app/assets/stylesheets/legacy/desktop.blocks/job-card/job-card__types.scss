@@ -3,16 +3,20 @@
     display: grid;
     display: -ms-grid;
 
-    grid-template-columns: repeat(4, 117px);
-    -ms-grid-columns: 117px 117px 117px 117px;
+    grid-template-columns: repeat(4, auto);
+    -ms-grid-columns: auto auto auto auto;
 
-    grid-column-start: 2;
+    grid-column-start: 1;
+    grid-column-end: 2;
     grid-gap: 10px;
   }
 
   & > .button {
-    line-height: 36px;
-    height: 36px;
-    padding: 0;
+    line-height: 28px;
+    height: 28px;
+    padding: 0px 15px;
+    white-space: nowrap;
+    background: #F6F6F6;
+    color: black;
   }
 }
