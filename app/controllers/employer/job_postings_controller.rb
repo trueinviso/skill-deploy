@@ -17,7 +17,7 @@ module Employer
     end
 
     def send_job_listing_publish_notification
-      EmployerMailer.with(job: @job).job_listing_publish_notification.deliver_later
+      EmployerMailer.job_listing_publish_notification(@job).deliver_later
     end
   end
 end

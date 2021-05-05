@@ -23,9 +23,7 @@ module Admin
     end
 
     def send_welcome_email
-      TalentMailer.with(user: user_profile.user)
-                  .welcome
-                  .deliver_later
+      TalentMailer.welcome(user_profile.user).deliver_later
     end
   end
 end

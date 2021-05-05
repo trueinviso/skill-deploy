@@ -1,8 +1,8 @@
 class EmployerMailer < ApplicationMailer
   default from: "team@skilldeploy.com"
 
-  def job_listing_publish_notification
-    @job = params[:job]
+  def job_listing_publish_notification(job)
+    @job = job
     @user = @job.user
 
     mail(
@@ -11,9 +11,10 @@ class EmployerMailer < ApplicationMailer
     )
   end
 
-  def job_listing_talent_apply_notification
-    @user = params[:user]
-    @talent = params[:talent]
+  def job_listing_talent_apply_notification(job, talent)
+    @job = job
+    @user = job.user
+    @talent = talent
 
     mail(
       to: @user.email,
