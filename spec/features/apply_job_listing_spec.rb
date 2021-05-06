@@ -12,6 +12,9 @@ RSpec.feature "Apply job lising", type: :feature do
       visit job_path(job)
       click_on("Apply for this gig", match: :first)
       expect(page).to have_text("You applied to the job listing")
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.last.to).to include(job.user.email)
+      expect(ActionMailer::Base.deliveries.last.subject).to include("Talent has applied to your job listing")
     end
 
     scenario "when talent apply the second time same job" do
@@ -20,6 +23,7 @@ RSpec.feature "Apply job lising", type: :feature do
       visit job_path(job)
       click_on("Apply for this gig", match: :first)
       expect(page).to have_text("Could not apply to the job")
+      expect(ActionMailer::Base.deliveries.count).to eq(0)
     end
   end
 end

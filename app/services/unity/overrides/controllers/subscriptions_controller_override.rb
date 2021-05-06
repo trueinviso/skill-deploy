@@ -16,7 +16,7 @@ Unity::SubscriptionsController.class_eval do
   private
 
   def flash_message
-    "Thank you for your payment! Your subscription is now active  " \
+    "Thank you for your payment! Your subscription is now active. " \
     "#{view_context.link_to('View your account', main_app.edit_user_profile_path)}"
       .html_safe
   end
