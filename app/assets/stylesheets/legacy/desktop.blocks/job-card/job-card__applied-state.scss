@@ -12,6 +12,12 @@
     justify-content: center;
     border-radius: 3px;
 
+    & > img {
+      width: 11px;
+      height: 8px;
+      align-self: center;
+    }
+    
     & > div {
       color: white;
       font-weight: normal;
