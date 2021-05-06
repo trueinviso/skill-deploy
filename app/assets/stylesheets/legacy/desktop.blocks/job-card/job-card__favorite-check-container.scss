@@ -1,0 +1,7 @@
+.job-card__favorite-check-container {
+  @include desktop {
+    & > img {
+      display: none;
+    }
+  }
+}
