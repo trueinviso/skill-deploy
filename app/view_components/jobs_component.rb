@@ -10,6 +10,10 @@ class JobsComponent
     @favorites ||= FavoriteJob.where(user_id: user.id).pluck(:job_id)
   end
 
+  def applied_fors
+    @applied_fors ||= AppliedFor.where(user_id: user.id).pluck(:job_id)
+  end
+
   def job_roles
     @job_roles ||= JobRole.all
   end

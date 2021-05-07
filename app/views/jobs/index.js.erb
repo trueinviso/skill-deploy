@@ -11,7 +11,7 @@ $(".jobs-index__card-list").html(
   "<%=
     escape_javascript(
       render partial: "jobs",
-        locals: { jobs: @jobs, favorites: @favorites }
+        locals: { jobs: @jobs, favorites: @favorites, applied_fors: @applied_fors }
     )
   %>"
 );

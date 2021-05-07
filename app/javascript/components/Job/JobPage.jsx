@@ -12,7 +12,8 @@ class JobPage extends PureComponent {
   static propTypes = {
     filters: PropTypes.any,
     initialJobs: PropTypes.arrayOf(PropTypes.object),
-    favorites: PropTypes.array
+    favorites: PropTypes.array,
+    appliedFors: PropTypes.array,
   }
 
   state = {
@@ -31,7 +32,7 @@ class JobPage extends PureComponent {
   }
 
   render() {
-    const { favorites } = this.props
+    const { favorites, appliedFors } = this.props
     const { jobs } = this.state
     return (
       <Fragment>
@@ -45,7 +46,7 @@ class JobPage extends PureComponent {
         </div>
         <div className="desktop-container job-list__desktop-container">
           <div className="jobs-list">
-            <JobList jobs={jobs} favorites={favorites} />
+            <JobList jobs={jobs} favorites={favorites} appliedFors={appliedFors} />
           </div>
         </div>
       </Fragment>
