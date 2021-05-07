@@ -1,10 +1,8 @@
-.admin-container.favorite-jobs
-  .left-section
-    = render "employer/shared/links",
-        selected: "Saved projects"
-  .right-section
+.page.favorite-jobs
+  = render "application/account_sidebar/sidebar"
+  %div.page__main
     .favorite-jobs__heading.hidden-mobile
-      Saved projects
+      Saved job listings
 
     = react_component("FavoriteJobPage", { jobs: @jobs.as_json(methods: :job_types),
       favorites: @favorites })
