@@ -1,19 +1,19 @@
 .employer-job-card
   = render "image", resource: job
   .employer-job-card__titles
-    .header.employer-job-card__header= job.name
+    .employer-job-card__header= job.name
     .employer-job-card__company-name= job.company_name
-    = job.status
+
+  .employer-job-card__types
+    - job.job_types.each do |type|
+      .employer-job-card__type-mark= type.name
 
   .employer-job-card__button-list
-    - if job.preview?
-      %a{ href: employer_preview_job_path(job.id) }
-        %button.button.button_theme_white.employer-job-card__button
-          Preview
-
+    %button.employer-job-card__button
+      = link_to "Archive",
+        employer_job_archive_path(job.id),
+        method: :put,
+        class: ""
     %a{ href: edit_employer_job_path(job.id) }
-      %button.button.button_theme_white.employer-job-card__button
+      %button.employer-job-card__button
         Edit
-
-    = form_tag employer_job_path(job), method: :delete, data: { confirm: "Are you sure?" } do
-      = submit_tag "Delete", class: "button button_theme_white employer-job-card__button"
