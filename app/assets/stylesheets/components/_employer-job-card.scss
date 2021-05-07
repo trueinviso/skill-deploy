@@ -20,9 +20,13 @@
     grid-row-start: 3;
     display: grid;
     display: -ms-grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(4, max-content);
     -ms-grid-columns: auto auto auto auto;
     grid-gap: 10px;
+    
+    @include tablet-down {
+      float: left; 
+    }
   }
 
   &__type-mark {
