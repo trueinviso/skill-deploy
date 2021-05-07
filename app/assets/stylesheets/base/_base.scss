@@ -1,4 +1,4 @@
-// base vars
+/* stylelint-disable declaration-no-important */
 
 $color-default-icon: #e7e7e7;
 $nav-height: 81px;
@@ -57,6 +57,9 @@ $color-beige: #d4d2ce;
   }
 }
 
+[hidden] {
+  display: none !important;
+}
 //
 html {
   box-sizing: border-box;

@@ -34,7 +34,7 @@ const Uploader = ({
           className={classNames({
             button: true,
             "-outline": true,
-            "-diasabled": isProcessing,
+            "-disabled": isProcessing,
             [styles.button]: true
           })}
         >
