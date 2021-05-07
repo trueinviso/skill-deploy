@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import React, { PureComponent } from "react"
-import activeIcon from "./../../../assets/font/icon/save-active.svg"
-import inactiveIcon from "./../../../assets/font/icon/save-inactive.svg"
+import activeIcon from "./../../../assets/font/icon/save_active.svg"
+import inactiveIcon from "./../../../assets/font/icon/save_inactive.svg"
 import heyfamFetch from "../../helpers/heyfamFetch"
 
 const FAVORITE_JOBS_API = "/api/v1/favorite_jobs"

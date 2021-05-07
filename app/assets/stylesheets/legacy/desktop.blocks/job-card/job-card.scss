@@ -1,8 +1,8 @@
 .job-card {
 
   @include desktop {
-    grid-template-columns: 75px auto 15px;
-    -ms-grid-columns: 75px auto 15px;
+    grid-template-columns: 75px auto 46px;
+    -ms-grid-columns: 75px auto 46px;
     border-radius: 0;
     border: none;
     border-bottom: 1px solid $color-beige;
