@@ -32,6 +32,7 @@ const PhotoUploader = ({ name, thumbnail, record, type }) => {
     const { thumbnail } = await fileUpload(file)
     setPreview(thumbnail)
     updateNavbarAvatar(thumbnail)
+    setProcessing(false)
   }
 
   return (
