@@ -1,7 +1,7 @@
 .employer-job-card
   = render "image", resource: job
   .employer-job-card__titles
-    .header.employer-job-card__header= job.name
+    .employer-job-card__header= job.name
     .employer-job-card__company-name= job.company_name
 
   .employer-job-card__types
@@ -9,9 +9,6 @@
       .employer-job-card__type-mark= type.name
 
   .employer-job-card__button-list
-    -# %a{ href: employer_job_archive_path(job.id) }
-    -#   %button.employer-job-card__button
-    -#     Archive
     %button.employer-job-card__button
       = link_to "Archive",
         employer_job_archive_path(job.id),
