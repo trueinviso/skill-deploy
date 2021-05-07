@@ -2,6 +2,8 @@ import { array, func, string, number, bool } from "prop-types"
 import React from "react"
 import FavoriteJobIcon from "./FavoriteJobIcon"
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
+import checkIcon from "./../../../assets/font/icon/check.svg"
+import checkAppliedIcon from "./../../../assets/font/icon/check_applied.svg"
 
 const JobListItem = ({
   id,
@@ -31,7 +33,11 @@ const JobListItem = ({
         <div className={"employer-job-card__image " + imageWrapperClass()}>
           <img src={thumbnailUrl} className={thumbnailClass()} alt="job-logo" />
         </div>
-        <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
+        <div className="job-card__favorite-check-container">
+          <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
+          <img src={checkAppliedIcon} alt="check-icon" />
+        </div>
+        
         <div className="job-card__details">
           <div className="header job-card__header">{name}</div>
           <div className="job-card__company-name">{companyName}</div>
@@ -45,6 +51,10 @@ const JobListItem = ({
               {jobType.name}
             </div>
           ))}
+        </div>
+        <div className="job-card__applied-state">
+          <img src={checkIcon} alt="check-icon" />
+          <div>Applied</div>
         </div>
       </div>
     </a>

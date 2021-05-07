@@ -1,18 +1,5 @@
 .job-card__types {
   @include desktop {
-    display: grid;
-    display: -ms-grid;
-
-    grid-template-columns: repeat(4, 117px);
-    -ms-grid-columns: 117px 117px 117px 117px;
-
-    grid-column-start: 2;
-    grid-gap: 10px;
-  }
-
-  & > .button {
-    line-height: 36px;
-    height: 36px;
-    padding: 0;
+    
   }
 }

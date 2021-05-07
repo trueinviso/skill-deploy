@@ -1,0 +1,10 @@
+.job-card__favorite-check-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+
+  & > img {
+    width: 34px;
+    height: 34px;
+  }
+}
