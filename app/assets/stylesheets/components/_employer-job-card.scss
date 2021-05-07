@@ -1,0 +1,62 @@
+.employer-job-card {
+  border-radius: 10px;
+  padding: 45px 20px 45px 21px;
+  margin-bottom: 13px;
+  background: white;
+  box-shadow: 0px 2px 10px 3px rgba(0,0,0,0.04);
+
+  @include tablet-up {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 75px auto;
+    -ms-grid-columns: 75px auto;
+    grid-template-rows: auto 26px auto;
+    -ms-grid-rows: auto 26px auto;
+  }
+
+  &__types {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: repeat(4, auto);
+    -ms-grid-columns: auto auto auto auto;
+    grid-gap: 10px;
+  }
+
+  &__type-mark {
+    line-height: 28px;
+    background: #f6f6f6;
+    border-radius: 3px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    text-align: center;
+    padding-left: 14px;
+    padding-right: 14px;
+    white-space: nowrap;
+  }
+
+  &__button-list {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: 80px 80px;
+    -ms-grid-columns: 80px 80px;
+    grid-gap: 7px;
+    grid-row-start: 3;
+    justify-content: right;
+  }
+
+  &__button {
+    background: white;
+    border: 1px solid #E7E7E7;
+    border-radius: 3px;
+    color: black;
+    font-size: 11px;
+    font-weight: normal;
+    width: 80px;
+    height: 28px;
+    text-align: center;
+  }
+}

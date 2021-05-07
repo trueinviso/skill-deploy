@@ -1,0 +1,21 @@
+.employer-jobs-list {
+  &__heading {
+    font-size: 22px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.36;
+    letter-spacing: normal;
+    color: #444444;
+    margin-top: 116px;
+    margin-bottom: 67px;
+  }
+
+  .employer-job-card {
+    border-radius: 10px;
+    padding: 50px 20px 51px 21px;
+    margin-bottom: 13px;
+    background: white;
+    box-shadow: 0px 2px 10px 3px rgba(0,0,0,0.04);
+  }
+}

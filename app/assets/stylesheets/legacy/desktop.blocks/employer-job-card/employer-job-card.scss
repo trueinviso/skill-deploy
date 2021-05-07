@@ -1,7 +1,7 @@
 .employer-job-card {
   @media only screen and (min-width: $breakpoint-medium) {
     display: grid;
-    grid-template-columns: 0.25fr 1fr 1fr;
-    padding: 51px 44px 53px 41px;
+    grid-template-columns: 75px auto 46px;
+    -ms-grid-columns: 75px auto 46px;
   }
 }

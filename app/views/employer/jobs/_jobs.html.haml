@@ -12,8 +12,7 @@
     //------ Cards -------//
     %ul
       - jobs.each do |job|
-        %li
-          - cache job do
-            = render partial: "job",
-              locals: { job: job }
+        - cache job do
+          = render partial: "job",
+            locals: { job: job }
 

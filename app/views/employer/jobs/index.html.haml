@@ -1,23 +1,14 @@
-.admin-container.employer-jobs-list
-  .employer-jobs-list__left-column
-    = render "employer/shared/links",
-      selected: @view_component.header
+.page.employer-jobs-list
+  = render "application/account_sidebar/sidebar"
+  %div.page__main
+    = render("application/form_errors", object: current_user)
 
-  .employer-jobs-list__right-column
-    .employer-admin-header
-      .employer-jobs-list__header
-        = @view_component.header
-      %a{ href: new_employer_job_path }
-        %button.button.button_theme_primary.employer-jobs-list__button
-          Post a listing
-    %h2
+    .employer-jobs-list__heading
       Active job listings
     = render "jobs", jobs: @jobs.published
-    %h2
+    .employer-jobs-list__heading
       Draft job listings
     = render "jobs", jobs: @jobs.preview
-    %h2
+    .employer-jobs-list__heading
       Archived job listings
     = render "jobs", jobs: @jobs.archived
-/= link_to "Subscribe", unity.new_subscription_path
-/= render "shared/screen_modal"
