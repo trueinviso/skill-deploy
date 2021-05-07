@@ -27,7 +27,6 @@ const PhotoUploader = ({ name, thumbnail, record, type }) => {
 
   const onChange = async e => {
     setProcessing(true)
-    console.log("hello")
     const file = e.target.files[0]
     e.target.value = null // clear file value
     const { thumbnail } = await fileUpload(file)
