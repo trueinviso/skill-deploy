@@ -20,7 +20,7 @@ RSpec.feature "Create job lising", type: :feature do
       find("span", text: "Mid-level").click
       find("span", text: "Onsite or Remote").click
       fill_in "Preferred location or timezone (optional)", with: "UTC"
-      click_on("Preview listing")
+      click_on("Preview Listing")
       expect(page).to have_text("Listing preview")
     end
 
@@ -31,7 +31,7 @@ RSpec.feature "Create job lising", type: :feature do
       visit root_path
       click_on "Create new listing"
       fill_in "Preferred location or timezone (optional)", with: "UTC"
-      click_on("Preview listing")
+      click_on("Preview Listing")
       expect(page).to have_text("Field is required.")
     end
   end
