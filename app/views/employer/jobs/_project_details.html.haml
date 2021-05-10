@@ -16,10 +16,10 @@
       "data-required": "true",
       class: "form--input"
 
-.form-field
+.form--field.-editor
   = f.label :description, "Job description", class: "form--label -black -required"
   = f.rich_text_area :description,
-    "data-required": "true",
+    "data-required": true,
     class: "form--textbox"
 
 .form--field.mt-35
