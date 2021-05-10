@@ -1,4 +1,5 @@
 = react_component "JobPage", { search: params[:search],
     initialJobs: @view_component.jobs.as_json(methods: :job_types),
     favorites: @view_component.favorites,
+    applied_fors: @view_component.applied_fors,
     api: api_v1_jobs_path }

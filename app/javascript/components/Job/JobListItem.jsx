@@ -11,7 +11,8 @@ const JobListItem = ({
   name,
   jobTypes,
   favorites,
-  thumbnailUrl
+  thumbnailUrl,
+  appliedFors,
 }) => {
   const thumbnailClass = () => {
     return emptyThumbnailIcon()
@@ -35,7 +36,9 @@ const JobListItem = ({
         </div>
         <div className="job-card__favorite-check-container">
           <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
+        { appliedFors.includes(id) &&
           <img src={checkAppliedIcon} alt="check-icon" />
+        }
         </div>
         
         <div className="job-card__details">
@@ -52,10 +55,12 @@ const JobListItem = ({
             </div>
           ))}
         </div>
-        <div className="job-card__applied-state">
-          <img src={checkIcon} alt="check-icon" />
-          <div>Applied</div>
-        </div>
+        { appliedFors.includes(id) &&
+          <div className="job-card__applied-state">
+            <img src={checkIcon} alt="check-icon" />
+            <div>Applied</div>
+          </div>
+        }
       </div>
     </a>
   )
@@ -76,6 +81,7 @@ JobListItem.propTypes = {
   twitter: string,
   updatedAt: string,
   userId: number,
-  favorites: array
+  favorites: array,
+  appliedFors: array,
 }
 export default JobListItem
