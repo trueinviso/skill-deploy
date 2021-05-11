@@ -9,10 +9,10 @@
     = link_to "Your profile",
       main_app.edit_user_profile_path,
       class: "dropdown__link employer-jobs-list__dropdown__link"
-
-    = link_to "Billing details",
-      unity.edit_subscription_path,
-      class: "dropdown__link employer-jobs-list__dropdown__link"
+    - if employer_role?
+      = link_to "Billing details",
+        unity.edit_subscription_path,
+        class: "dropdown__link employer-jobs-list__dropdown__link"
 
 %aside.side-nav
   %nav

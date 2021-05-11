@@ -25,9 +25,10 @@
             main_app.favorite_jobs_path,
             class: "sidebar__nav__menu__item__link"
 
-    %h4.sidebar__nav__heading Subscription
-    %ul.sidebar__nav__menu
-      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(unity.edit_subscription_path)}" }
-        = link_to "Billing details",
-        unity.edit_subscription_path,
-        class: "sidebar__nav__menu__item__link"
+    - if employer_role?
+      %h4.sidebar__nav__heading Subscription
+      %ul.sidebar__nav__menu
+        %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(unity.edit_subscription_path)}" }
+          = link_to "Billing details",
+          unity.edit_subscription_path,
+          class: "sidebar__nav__menu__item__link"
