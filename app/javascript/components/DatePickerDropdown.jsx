@@ -11,7 +11,8 @@ class DatePickerDropdown extends PureComponent {
     placeholder: PropTypes.string,
     className: PropTypes.string,
     onChange: PropTypes.func,
-    defaultValue: PropTypes.string
+    value: PropTypes.string,
+    error: PropTypes.string
   }
 
   static defaultProps = {
@@ -21,23 +22,13 @@ class DatePickerDropdown extends PureComponent {
 
   constructor(props) {
     super(props)
-    const date = new Date(this.props.defaultValue)
-    this.state = {
-      date: this.props.defaultValue ? date.setDate(date.getDate() + 2) : ""
-    }
 
     this.ref = createRef()
   }
 
-  handleChange = date =>
-    this.setState(
-      {
-        date
-      },
-      () => {
-        this.props.onChange && this.props.onChange(this.state.date)
-      }
-    )
+  handleChange = date => {
+    this.props.onChange && this.props.onChange(date)
+  }
 
   render() {
     const {
@@ -46,19 +37,26 @@ class DatePickerDropdown extends PureComponent {
       placeholder,
       className,
       labelClassName,
-      defaultValue
+      errorClassName,
+      value,
+      error
     } = this.props
-    const { date } = this.state
+
+    const date = new Date(value)
+
     return (
       <div className={className} ref={this.ref}>
         <label className={labelClassName}>{label}</label>
         <DatePicker
-          selected={date}
+          selected={value? date.setDate(date.getDate() + 2) : ""}
           name={name}
           placeholderText={placeholder}
           onChange={this.handleChange}
           dateFormat={dateFormat}
         />
+        {
+          error && <div className={errorClassName}>{error}</div>
+        }
       </div>
     )
   }
