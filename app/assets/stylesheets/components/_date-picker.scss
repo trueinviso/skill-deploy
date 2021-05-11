@@ -1,0 +1,11 @@
+.date-picker {
+  &__error {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    margin-bottom: -25px;
+    font-size: 12px;
+    color: red;
+    white-space: nowrap;
+  }
+}
