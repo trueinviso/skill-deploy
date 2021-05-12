@@ -14,7 +14,7 @@ RSpec.feature "Create job lising", type: :feature do
       click_on "Create new listing"
       fill_in "Job title", with: "name"
       fill_in "Company", with: "company"
-      fill_in_trix_editor "#job_description", with: "some desctiption" 
+      fill_in_trix_editor "#job_description", with: "some desctiption"
       find("span", text: "Design").click
       find("span", text: "Part Time").click
       find("span", text: "Mid-level").click

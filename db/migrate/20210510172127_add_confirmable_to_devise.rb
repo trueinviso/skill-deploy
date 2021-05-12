@@ -8,6 +8,6 @@ class AddConfirmableToDevise < ActiveRecord::Migration[6.0]
       t.string   :unconfirmed_email
     end
 
-    add_index :users, :confirmation_token,   unique: true
+    add_index :users, :confirmation_token, unique: true
   end
 end
