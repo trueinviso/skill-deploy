@@ -21,7 +21,7 @@
       margin-top: 70px;
       margin-bottom: 31px;
       font-size: $font-size-large;
-      font-weight: normal;
+      font-weight: 500;
       font-style: normal;
       font-stretch: normal;
       line-height: 1.36;
@@ -39,9 +39,13 @@
   &__details {
     @include desktop {
       margin-top: 0;
+      width: 50%;
     }
     .page-heading {
       margin-bottom: 58px;
+      font-size: 28px;
+      font-weight: 500;
+      line-height: 37px;
     }
     margin-top: 50px;
     margin-bottom: 13px;
@@ -80,6 +84,14 @@
 
   &__card-summary {
     margin-bottom: 20px;
+    width: fit-content;
+    padding-left: 27px;
+    padding-right: 27px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border: 1px solid #EDEDED;
+    border-radius: 4px;
+
     &__card-type {
       height: 30px;
       font-size: $font-size-normal;
@@ -96,9 +108,10 @@
       font-weight: normal;
       font-style: normal;
       font-stretch: normal;
+      font-size: 12px;
       line-height: 1.5;
       letter-spacing: normal;
-      color: $color-brown-grey;
+      color: black;
       margin-left: 22px;
     }
   }
@@ -106,8 +119,9 @@
   .update-button {
     max-width: 222px;
   }
-  .cancel-subscription {
-    max-width: 75px;
+  &__cancel-subscription {
+    margin-top: 84px;
+    width: 188px;
     padding: 0 10px;
   }
 
