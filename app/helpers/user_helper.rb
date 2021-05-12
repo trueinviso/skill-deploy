@@ -7,4 +7,13 @@ module UserHelper
     end
     false
   end
+
+  def talent_role?
+    current_user.user_roles.each do |user_role|
+      if user_role.role.name === 'Job Seeker'
+        return true
+      end
+    end
+    false
+  end
 end

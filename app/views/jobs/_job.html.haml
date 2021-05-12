@@ -9,8 +9,12 @@
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
-      = link_to  applied_fors_path(job_id: @job.id), method: :post do
-        %span.button.button_theme_primary
+      - if talent_role?
+        = link_to  applied_fors_path(job_id: @job.id), method: :post do
+          %span.button.button_theme_primary
+            Apply for this gig
+      - else
+        %span.button.button_theme_primary.-disabled
           Apply for this gig
       %a{ href: job.company_website }
         %span.button.button_theme_white
@@ -41,6 +45,11 @@
       About the gig
     .job__description
       = job.description
-    = link_to  applied_fors_path(job_id: @job.id), method: :post do
-      %span.button.button_theme_primary.job__button
+    - if talent_role?
+      = link_to  applied_fors_path(job_id: @job.id), method: :post do
+        %span.button.button_theme_primary.job__button
+          Apply for this gig
+    - else
+      %span.button.button_theme_primary.job__button.-disabled
         Apply for this gig
+
