@@ -1,6 +1,5 @@
 module Unity
   module ApplicationHelper
-    include UserHelper
     # include ::ApplicationHelper
     def embedded_svg(filename, options = {})
       file = File.read(Rails.root.join("app", "assets", "font", "icon", filename))

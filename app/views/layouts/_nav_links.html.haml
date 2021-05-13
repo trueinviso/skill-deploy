@@ -29,7 +29,7 @@
       %li{ class: "nav_nested__item
         #{'-active' if current_page?(main_app.employer_jobs_path)}" }
         = link_to "Job Listings", main_app.employer_jobs_path, class: "nav_nested__link"
-      - if employer_role?
+      - if current_user.employer?
         %li{ class: "nav_nested__item #{'-active' if current_page?(unity.edit_subscription_path)}" }
           = link_to "Billing details", unity.edit_subscription_path, class: "nav_nested__link"
       %li.nav_nested__item
