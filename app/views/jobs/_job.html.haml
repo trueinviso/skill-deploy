@@ -11,7 +11,7 @@
     .job__button_group
       = link_to  applied_fors_path(job_id: @job.id), method: :post do
         %span.button.button_theme_primary
-          Apply for this gig
+          Apply now
       %a{ href: job.company_website }
         %span.button.button_theme_white
           Website
@@ -43,4 +43,4 @@
       = job.description
     = link_to  applied_fors_path(job_id: @job.id), method: :post do
       %span.button.button_theme_primary.job__button
-        Apply for this gig
+        Apply now
