@@ -11,6 +11,7 @@ module Employer
     def new
       authorize [:employer, Job]
       @job = Job.new
+      render layout: "job_listing"
     end
 
     def create
@@ -23,7 +24,9 @@ module Employer
       end
     end
 
-    def edit; end
+    def edit
+      render layout: "job_listing"
+    end
 
     def update
       if @job.update(valid_params[:job])

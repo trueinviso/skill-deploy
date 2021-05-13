@@ -1,29 +1,4 @@
 .job_preview
-  .job-preview__header
-    .job-preview__heading.hidden-desktop
-      Listing preview
-
-    = link_to "Post Listing",
-      employer_job_posting_path(@job),
-      method: :put,
-      class: "button button_theme_black job-preview__button"
-
-    = link_to "Preview Listing",
-      employer_job_preview_path(@job),
-      method: :put,
-      class: "button button_theme_black job-preview__button"
-
-    = link_to "Archive Listing",
-      employer_job_archive_path(@job),
-      method: :put,
-      class: "button button_theme_black job-preview__button"
-
-    .job-preview__heading.hidden-mobile
-      Listing preview
-
-
-    %a.button.button_theme_white.job-preview__button{ href: edit_employer_job_path(@job) }
-      Edit listing
   .job-preview__content
     = render "jobs/job",
     job: @job,

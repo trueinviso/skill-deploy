@@ -44,7 +44,11 @@ module ApplicationHelper
   end
 
   def edit_listing_page?
-    controller_name == "employer/jobs" && action_name == "edit"
+    controller_path == "employer/jobs" && action_name == "edit"
+  end
+
+  def employer_preview_job_path?
+    controller_path == "employer/preview/jobs" && action_name == "show"
   end
 
   def subscription_page?

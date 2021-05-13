@@ -2,7 +2,7 @@
   %nav.nav
     .nav__container
       .nav__content.-between
-        = link_to main_app.root_path, class: "hide-desktop-down" do
+        = link_to main_app.employer_jobs_path, class: "hide-desktop-down" do
           .close-button.-round.-black{ "aria-label": "back", role: "button" }
         = link_to main_app.root_path, class: "hide-desktop-up", "aria-label" => "logo" do
           .logo
@@ -12,9 +12,17 @@
             %span.burger-button__line
             %span.burger-button__line
             %span.burger-button__line
-        .nav__actions.hide-desktop-down
-          - if current_page?(main_app.new_employer_job_path)
+        .hide-desktop-down
+          - if create_listing_page?
             %button.button.-outline-dark.-medium{ form: "new-listing-form", type: "submit" } Preview listing
-          -# - if current_page?(main_app.employer_preview_job_path)
-            %button.button.-outline-dark.-medium Save for later
-            %button.button.-medium Publish listing
+        - if employer_preview_job_path?
+          .nav__actions
+            - if @job.status != :published
+              = link_to "Save for later",
+                employer_job_preview_path(@job),
+                method: :put,
+                class: "button -outline-dark"
+              = link_to "Publish listing",
+                employer_job_posting_path(@job),
+                method: :put,
+                class: "button"
