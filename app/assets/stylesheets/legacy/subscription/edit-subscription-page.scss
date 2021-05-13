@@ -39,7 +39,7 @@
   &__details {
     @include desktop {
       margin-top: 0;
-      width: 50%;
+      max-width: 422px;
     }
     .page-heading {
       margin-bottom: 58px;
@@ -69,7 +69,6 @@
 
     &__desc {
       max-width: 255px;
-      height: 42px;
       font-family: Averta;
       color: $color-brown-grey;
       font-weight: normal;
@@ -85,11 +84,8 @@
   &__card-summary {
     margin-bottom: 20px;
     width: fit-content;
-    padding-left: 27px;
-    padding-right: 27px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border: 1px solid #EDEDED;
+    padding: 8px 27px 8px 27px;
+    border: 1px solid var(--checkbox-border);
     border-radius: 4px;
 
     &__card-type {
@@ -104,14 +100,12 @@
     }
     &__card-number {
       height: 21px;
-      color: $color-brown-grey;
       font-weight: normal;
       font-style: normal;
       font-stretch: normal;
       font-size: 12px;
       line-height: 1.5;
       letter-spacing: normal;
-      color: black;
       margin-left: 22px;
     }
   }
