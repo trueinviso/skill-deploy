@@ -15,14 +15,14 @@
         .hide-desktop-down
           - if create_listing_page?
             %button.button.-outline-dark.-medium{ form: "new-listing-form", type: "submit" } Preview listing
-        - if employer_preview_job_path?
-          .nav__actions
-            - if @job.status != :published
-              = link_to "Save for later",
-                employer_job_preview_path(@job),
-                method: :put,
-                class: "button -outline-dark"
-              = link_to "Publish listing",
-                employer_job_posting_path(@job),
-                method: :put,
-                class: "button"
+          - if employer_preview_job_path?
+            .nav__actions
+              - if @job.status != :published
+                = link_to "Save for later",
+                  employer_job_preview_path(@job),
+                  method: :put,
+                  class: "button -outline-dark"
+                = link_to "Publish listing",
+                  employer_job_posting_path(@job),
+                  method: :put,
+                  class: "button"
