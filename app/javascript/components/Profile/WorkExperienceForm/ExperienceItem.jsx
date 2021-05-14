@@ -104,6 +104,7 @@ const ExperienceItem = ({
         />
 
         <div className="registration-page__form-field registration-page__form-field--fourth">
+          <input type="hidden" value="0" name={getName(index, "current_role")} />
           <input
             className="radio-button"
             type="checkbox"

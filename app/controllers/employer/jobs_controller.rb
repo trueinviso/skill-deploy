@@ -1,6 +1,7 @@
 module Employer
   class JobsController < ApplicationController
     before_action :load_and_authorize_job, only: %i[edit update destroy]
+    layout "job_listing", except: [:index]
 
     def index
       @jobs = policy_scope([:employer, Job])
@@ -23,7 +24,8 @@ module Employer
       end
     end
 
-    def edit; end
+    def edit
+    end
 
     def update
       if @job.update(valid_params[:job])

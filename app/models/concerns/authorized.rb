@@ -20,4 +20,8 @@ module Authorized
   def admin?
     roles.where(name: Role::ADMIN).exists?
   end
+
+  def employer?
+    roles.where(name: Role::EMPLOYER).exists?
+  end
 end

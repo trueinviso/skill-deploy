@@ -289,5 +289,5 @@
 .nav__actions {
   display: grid;
   grid-gap: 13px;
-  grid-template-columns: repeat(auto-fill, minmax(133px, 1fr));
+  grid-template-columns: repeat(2, minmax(133px, 1fr));
 }

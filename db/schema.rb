@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_27_141947) do
-
+ActiveRecord::Schema.define(version: 2021_05_10_172127) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,7 +21,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_141947) do
     t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness",
+                                                  unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_141947) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index ["record_type", "record_id", "name", "blob_id"],
+            name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -62,7 +63,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_141947) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
+    t.index ["attachable_type", "attachable_id"],
+            name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
   create_table "employer_job_experiences", force: :cascade do |t|
@@ -231,7 +233,8 @@ ActiveRecord::Schema.define(version: 2021_04_27_141947) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
+    t.index ["taggable_type", "taggable_id"],
+            name: "index_taggings_on_taggable_type_and_taggable_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -375,7 +378,12 @@ ActiveRecord::Schema.define(version: 2021_04_27_141947) do
     t.string "provider"
     t.string "uid"
     t.bigint "rate_range_id"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["rate_range_id"], name: "index_users_on_rate_range_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
