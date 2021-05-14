@@ -13,10 +13,6 @@ module Authorized
     roles.where(name: Role::TALENT).exists?
   end
 
-  def employer?
-    roles.where(name: Role::Employer).exists?
-  end
-
   def admin?
     roles.where(name: Role::ADMIN).exists?
   end
