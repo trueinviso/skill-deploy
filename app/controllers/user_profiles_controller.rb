@@ -5,7 +5,7 @@ class UserProfilesController < ApplicationController
   end
 
   def create
-    result = current_user.update(permitted_params)
+    result = current_user.update(skills_to_array(permitted_params))
     if result
       current_user.assign_role("Job Seeker")
       current_user.user_profile.pending!
