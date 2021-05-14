@@ -8,11 +8,9 @@ class Receptionist
   end
 
   def direct
-    if current_user.nil?
-      [:new, :user, :session]
-    else
-      direct_by_role(current_user.roles.first)
-    end
+    return [:jobs] if current_user.talent?
+    return [:employer_jobs] if current_user.employer?
+    [:new, :user, :session]
   end
 
   def direct_by_role(role)
