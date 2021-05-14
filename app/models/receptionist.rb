@@ -11,7 +11,11 @@ class Receptionist
     if current_user.nil?
       [:new, :user, :session]
     else
-      direct_by_role(current_user.roles.first)
+      if current_user.talent?
+        [:jobs]
+      else
+        [:employer_jobs]
+      end
     end
   end
 
