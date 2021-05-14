@@ -13,6 +13,23 @@ const ExperienceItem = ({
   onRemove
 }) => {
   const ref = React.useRef(null)
+  const [startDateError, setStartDateError] = React.useState(null)
+  const [endDateError, setEndDateError] = React.useState(null)
+
+  React.useEffect(() => {
+    const checkDates = () => {
+      if (field.start && field.end && !field.current_role) {
+        if (field.start > field.end) {
+          setStartDateError('*The start date must be before the end date.')
+          return;
+        }
+      }
+      setStartDateError(null)
+    }
+
+    checkDates();
+  }, [field])
+
   const onRemoveItem = React.useCallback(
     e => {
       e.preventDefault()
@@ -32,12 +49,12 @@ const ExperienceItem = ({
     <div className="registration-page__work-experiences__section" ref={ref}>
       <input
         type="hidden"
-        name={getName(index, "id")}
-        defaultValue={field["id"]}
+        name={"id"}
+        value={field["id"]}
       />
       <input
         type="hidden"
-        name={getName(index, "_destroy")}
+        name={"_destroy"}
         className="destroy"
         value="0"
       />
@@ -47,10 +64,10 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Title"
-        name={getName(index, "title")}
+        name={"title"}
         id={getId(index, "name")}
         onChange={onChange(index)}
-        defaultValue={field["title"]}
+        value={field["title"]}
       />
 
       <FormField
@@ -58,28 +75,32 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Company"
-        name={getName(index, "company")}
+        name={"company"}
         id={getId(index, "company")}
         onChange={onChange(index)}
-        defaultValue={field["company"]}
+        value={field["company"]}
       />
 
       <div className="registration-page__work-experiences--inline">
         <DatePicker
           labelClassName="form--label -black"
-          className="registration-page__form-field registration-page__form-field--fourth"
-          name={getName(index, "start")}
+          errorClassName="date-picker__error"
+          className="registration-page__form-field registration-page__form-field--fourth relative"
+          name={"start"}
           label="Start"
-          onChange={onChangeDate(index, getName(index, "start"))}
-          defaultValue={field["start"]}
+          onChange={onChangeDate(index, 'start')}
+          value={field["start"]}
+          error={startDateError}
         />
         <DatePicker
           labelClassName="form--label -black"
-          className="registration-page__form-field registration-page__form-field--fourth"
-          name={getName(index, "end")}
+          errorClassName="date-picker__error"
+          className={`registration-page__form-field registration-page__form-field--fourth relative ${field.current_role ? 'invisible' : ''}`}
+          name={"end"}
           label="End"
-          onChange={onChangeDate(index, getName(index, "end"))}
-          defaultValue={field["end"]}
+          onChange={onChangeDate(index, 'end')}
+          value={field["end"]}
+          error={endDateError}
         />
 
         <div className="registration-page__form-field registration-page__form-field--fourth">
@@ -87,10 +108,10 @@ const ExperienceItem = ({
             className="radio-button"
             type="checkbox"
             value="1"
-            name={getName(index, "current_role")}
+            name={"current_role"}
             onChange={onChange(index)}
             id={getId(index, "current_role")}
-            defaultChecked={field["current_role"]}
+            checked={field["current_role"]}
           />
           <label className="radio-label" htmlFor={getId(index, "current_role")}>
             Current role

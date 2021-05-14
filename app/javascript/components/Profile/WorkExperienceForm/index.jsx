@@ -11,13 +11,13 @@ const ExperiencePropTypes = {
   id: PropTypes.number,
   start: PropTypes.string,
   title: PropTypes.string,
-  title: PropTypes.string,
   updated_at: PropTypes.string,
   userId: PropTypes.number
 }
 
 const createField = () => ({
-  key: getUniqKey()
+  key: getUniqKey(),
+  current_role: false
 })
 
 class WorkExperienceForm extends PureComponent {
@@ -47,22 +47,27 @@ class WorkExperienceForm extends PureComponent {
   }
 
   onChange = currentIndex => e => {
-    const value = e.target.value
     const name = e.target.name
+    const value = e.target.value
     this.setState(prev => ({
-      fields: prev.fields.map((field, index) =>
-        currentIndex === index ? { ...field, [name]: value } : field
-      )
+      fields: prev.fields.map((field, index) => {
+        if (name === 'current_role') {
+          delete field.end
+          return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : {...field, current_role: false}
+        } else {
+          return currentIndex === index ? {...field, [name]: value} : field
+        }
+      })
     }))
   }
 
   onChangeDate = (currentIndex, name) => date =>
     this.setState(prev => ({
-      fields: prev.fields.map((field, index) =>
-        currentIndex === index
+      fields: prev.fields.map((field, index) => {
+        return currentIndex === index
           ? { ...field, [name]: new Date(date).toISOString() }
           : field
-      )
+      })
     }))
 
   getName = (index, name) => {
