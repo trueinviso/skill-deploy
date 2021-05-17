@@ -3,10 +3,11 @@
     %div{ class: "nav__content #{'-no-logged-in' if current_user.blank? }" }
       - if !current_user.blank?
         %a.nav__burger-button.hide-desktop-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
-          .burger-button
+          .burger-button#burger-button{ onclick: "toggleBurgerButton()"}
             %span.burger-button__line
             %span.burger-button__line
             %span.burger-button__line
+          .menu-close-button.hidden#menu-close-button{ onclick: "toggleBurgerButton()"}
         
       %div.nav__left
         = link_to main_app.root_path,"aria-label" => "logo" do

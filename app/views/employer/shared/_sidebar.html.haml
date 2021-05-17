@@ -1,4 +1,4 @@
-%aside.sidebar.hide-tablet-down
+%aside.sidebar.hide-desktop-down
   %nav.sidebar__nav
     %h4.sidebar__nav__heading My Account
     %ul.sidebar__nav__menu
@@ -17,7 +17,7 @@
     %h4.sidebar__nav__heading Job Listings
     %ul.sidebar__nav__menu
       %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.employer_jobs_path)}" }
-        = link_to "Manage listings",
+        = link_to "Manage Job Listings",
         main_app.employer_jobs_path,
         class: "sidebar__nav__menu__item__link"
       %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
@@ -32,3 +32,45 @@
           = link_to "Billing details",
           unity.edit_subscription_path,
           class: "sidebar__nav__menu__item__link"
+
+.mobile-sidebar__container.hidden.hide-desktop-up#mobile-sidebar__container
+  %aside.mobile-sidebar
+    %nav.mobile-sidebar__nav
+      %h4.mobile-sidebar__nav__heading My Account
+      %ul.mobile-sidebar__nav__menu
+        %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_profile_path)}" }
+          = link_to "Profile",
+          main_app.edit_user_profile_path,
+          class: "mobile-sidebar__nav__menu__item__link"
+          - if current_user.talent? && current_user.user_profile.pending?
+            %span.label.-danger Apply
+        %li.mobile-sidebar__nav__menu__item
+          = link_to "Account settings",
+          main_app.edit_user_registration_path,
+          class: "mobile-sidebar__nav__menu__item__link"
+
+
+      %h4.mobile-sidebar__nav__heading Job Listings
+      %ul.mobile-sidebar__nav__menu
+        %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(main_app.employer_jobs_path)}" }
+          = link_to "Manage Job Listings",
+          main_app.employer_jobs_path,
+          class: "mobile-sidebar__nav__menu__item__link"
+        %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
+          = link_to "Saved Job Listings",
+              main_app.favorite_jobs_path,
+              class: "mobile-sidebar__nav__menu__item__link"
+
+      - if current_user.employer?
+        %h4.mobile-sidebar__nav__heading Subscription
+        %ul.mobile-sidebar__nav__menu
+          %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(unity.edit_subscription_path)}" }
+            = link_to "Billing details",
+            unity.edit_subscription_path,
+            class: "mobile-sidebar__nav__menu__item__link"
+
+      %ul.mobile-sidebar__nav__menu
+        %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(main_app.employer_jobs_path)}" }
+          = link_to "Sign Out",
+          main_app.destroy_user_session_path,
+          class: "mobile-sidebar__nav__menu__item__link"
