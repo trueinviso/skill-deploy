@@ -10,6 +10,7 @@ class Receptionist
   def direct
     return [:jobs] if current_user.talent?
     return [:employer_jobs] if current_user.employer?
+    return [:root] if current_user
     [:new, :user, :session]
   end
 
