@@ -59,6 +59,7 @@ gem "jbuilder", "~> 2.5"
 gem "name_of_person"
 
 gem "sentry-raven", "~> 2.6.0"
+gem 'sendgrid-ruby'
 
 group :test do
   gem "factory_bot_rails"
