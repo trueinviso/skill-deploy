@@ -17,7 +17,7 @@
 
       .employer-profile__buttons-group
         .employer-profile__message-button
-          = react_component("ApplyGig", { title: name, buttonTitle: "Send a message" })
+          %button.button{ data:{ "micromodal-trigger": "send-message-modal" }} Send a message
 
         .button.-white.employer-profile__website-button
           %a{ href: @profile.user.social_media_profile&.website }
@@ -66,3 +66,5 @@
             .employer-profile__role
               .details
                 = skill
+
+= render "application/modals/send_message_modal"

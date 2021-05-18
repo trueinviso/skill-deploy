@@ -1,0 +1,18 @@
+.modal.-wide#send-message-modal{ "aria-hidden": true,
+  "data-trigger-modal": false,
+  "data-micromodal-close": "" }
+  .modal__inner{ role: "dialog", "aria-modal": true,
+    "aria-labelledby": "send-message-modal" }
+    %buton.close-button.-black.-round.modal__close{ "aria-label": "Close modal",
+      "data-micromodal-close": "" }
+    .modal__content
+      .modal__box
+        .modal__bg
+          %h2.modal__title.job__message-modal__content__title#send-message-modal-title
+            Send a message
+          = form_for :message, url: message_index_path,  data:{ "form-validator-trigger": true } do |f|
+            = hidden_field_tag "profile_id", params[:id]
+            .form--field
+              = f.text_area :body, class: "text-area", data: { required: true } , cols:30, rows:10
+            .modal__button-row.job__message-modal__content__footer
+              = f.button "Send message", type: "submit", class: "modal__button button"

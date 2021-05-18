@@ -78,6 +78,10 @@ Rails.application.routes.draw do
                 only: [:show]
     end
   end
+  
+
+  resources :message,
+    only: [:create]
 
   namespace :admin do
     resources :user_profiles, only: [:update]
