@@ -9,7 +9,7 @@ module Employer
       end
 
       def resolve
-        user.jobs.includes(:job_types)
+        user.jobs
       end
     end
 
