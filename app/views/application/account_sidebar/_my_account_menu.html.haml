@@ -6,9 +6,9 @@
     = link_to "Profile",
       main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if current_user.talent?
+    - if !current_user.talent? && current_user.employer?
       %span.label.-danger Apply
-      %li.sidebar__nav__menu__item
-        = link_to "Account settings",
-        main_app.edit_user_registration_path,
-        class: "sidebar__nav__menu__item__link"
+    %li.sidebar__nav__menu__item
+      = link_to "Account settings",
+      main_app.edit_user_registration_path,
+      class: "sidebar__nav__menu__item__link"

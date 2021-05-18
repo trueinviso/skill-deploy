@@ -1,0 +1,6 @@
+#banner-message{ role:"alert" }
+  - if @banner_message.present?
+    %div{ class: "banner-message" }
+      .banner-message__content
+        .banner-message__text= @banner_message
+        %button.banner-message__close
