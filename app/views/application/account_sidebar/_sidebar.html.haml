@@ -1,7 +1,8 @@
+- is_new_profile = current_page?(new_user_profile_path)
 %aside.sidebar.hide-tablet-down
   %nav.sidebar__nav
     = render "application/account_sidebar/my_account_menu"
     = render "application/account_sidebar/listing_menu"
-    - if !current_user.talent?
+    - if !current_user.talent? and !is_new_profile
       = render "application/account_sidebar/subscription_menu"
 

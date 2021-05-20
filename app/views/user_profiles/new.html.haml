@@ -1,5 +1,15 @@
 
-.admin-container.registrations-edit
-  .registration-page__content
-    %h1.registration-page__heading Create your profile
-    = render "form", action: :post
+.page.profile
+  = render "application/account_sidebar/sidebar"
+  %div.page__main
+    = render "application/banner_messages"
+    = render("application/form_errors", object: current_user)
+
+    .page__content
+      %h1.h1--small Create your profile
+      = render "form", action: :post
+
+-#.admin-container.registrations-edit
+-#  .registration-page__content
+-#    %h1.registration-page__heading Create your profile
+-#    = render "form", action: :post
