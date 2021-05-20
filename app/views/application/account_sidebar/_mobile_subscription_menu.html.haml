@@ -1,6 +1,6 @@
-- item_class = "mobile-sidebar__nav__menu__item"
+- nav_item_class = "mobile-sidebar__nav__menu__item"
 %h4.mobile-sidebar__nav__heading Subscription
 %ul.mobile-sidebar__nav__menu
-  %li{ class: "#{item_class} #{'-selected' if current_page?(unity.edit_subscription_path)}" }
+  %li{ class: "#{nav_item_class} #{'-selected' if current_page?(unity.edit_subscription_path)}" }
     = link_to "Billing details", unity.edit_subscription_path,
     class: "mobile-sidebar__nav__menu__item__link"

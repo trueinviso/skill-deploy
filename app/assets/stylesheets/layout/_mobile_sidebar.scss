@@ -1,11 +1,24 @@
 .mobile-sidebar {
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
   --spacing-left: 23px;
   background-color: var(--primary-color);
   padding-top: 57px;
   width: 338px;
   height: 100%;
+  position: absolute;
+  left: -338px;
+  top: 0;
+  z-index: 1;
 
-  &__container {
+  &.active {
+    left: 0;
+  }
+
+  &__background {
     position: absolute;
     width: 100vw;
     height: max(100%, calc(100vh - var(--nav-height)));
