@@ -33,18 +33,21 @@
 
         %span.subscription__card-summary__card-type= view_component.card_brand
         %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
-      = form_for :payment_method,
-        url: unity.payment_method_path,
-        method: :put,
-        html: { id: "braintree-payment-form",
-        class: "subscription--edit__form #{view_component.subscription ? "hidden" : ""}",
-        "data-validate": "data-validate",
-        "no-validate": "no-validate" } do |f|
-        .subscription__card-details#cardDetails
-          = render "unity/payment_method/card_details", f: f
-          = f.submit "Update Payment Method",
-            data: { disable_with: "Please wait..." },
-            class: "button button_theme_white update-button"
-      %button.button.-outline.subscription__cancel-subscription{ onClick: "togglePaymentForm(this)" }
+      %button.subscription__change-payment-method{ onclick: "togglePaymentForm(this)" }
+        Change payment method
+      .subscription__payment-method-form
+        = form_for :payment_method,
+          url: unity.payment_method_path,
+          method: :put,
+          html: { id: "braintree-payment-form",
+          class: "subscription--edit__form #{view_component.subscription ? "hidden" : ""}",
+          "data-validate": "data-validate",
+          "no-validate": "no-validate" } do |f|
+          .subscription__card-details#cardDetails
+            = render "unity/payment_method/card_details", f: f
+            = f.submit "Update Payment Method",
+              data: { disable_with: "Please wait..." },
+              class: "button button_theme_white update-button"
+      %button.button.-outline.subscription__cancel-subscription
         Cancel subscription
 
