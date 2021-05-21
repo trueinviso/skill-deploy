@@ -29,7 +29,7 @@ module Employer
 
     def update
       if @job.update(valid_params[:job])
-        redirect_to [:employer, :jobs]
+        redirect_to employer_preview_job_path(@job)
       else
         render :edit
       end
