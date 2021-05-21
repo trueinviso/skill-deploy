@@ -1,5 +1,5 @@
 class UserProfile < ApplicationRecord
-  STATUSES = { pending: 0, approved: 1, blocked: 2 }.freeze
+  STATUSES = { draft: 0, approved: 1, blocked: 2, pending: 3 }.freeze
 
   has_person_name
   has_rich_text :bio

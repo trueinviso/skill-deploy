@@ -9,7 +9,7 @@ class UserProfilesController < ApplicationController
     result = current_user.update(skills_to_array(permitted_params))
     if result
       current_user.assign_role("Job Seeker")
-      current_user.user_profile.pending!
+      current_user.user_profile.draft!
       redirect_to root_path
     else
       render :new
@@ -17,8 +17,9 @@ class UserProfilesController < ApplicationController
   end
 
   def update
-    result = current_user.update(skills_to_array(permitted_params))
-    if result
+    result = current_user.assign_attributes(skills_to_array(permitted_params))
+    authorize current_user.user_profile
+    if current_user.save
       redirect_to edit_user_profile_path
     else
       render :edit
@@ -62,6 +63,7 @@ class UserProfilesController < ApplicationController
           :id,
           :last_name,
           :location,
+          :status,
         ],
         work_experiences_attributes: [
           :_destroy,
