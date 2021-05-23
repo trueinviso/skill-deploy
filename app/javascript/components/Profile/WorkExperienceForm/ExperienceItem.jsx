@@ -3,6 +3,16 @@ import PropTypes from "prop-types"
 import DatePicker from "./../../DatePickerDropdown"
 import FormField from "./../../shared/FormField"
 
+function getDateFromDateString(dateString) {
+  if (!dateString)
+    return null
+  const year = parseInt(dateString.slice(0, 4))
+  const month = parseInt(dateString.slice(5, 7)) - 1
+  const day = parseInt(dateString.slice(8, 10))
+  const date = dateString ? new Date(year, month, day) : null
+  return date
+}
+
 const ExperienceItem = ({
   index,
   field,
@@ -45,16 +55,19 @@ const ExperienceItem = ({
     [index]
   )
 
+  const startDate = getDateFromDateString(field['start'])?.toISOString()
+  const endDate  = getDateFromDateString(field['end'])?.toISOString()
+
   return (
     <div className="registration-page__work-experiences__section" ref={ref}>
       <input
         type="hidden"
-        name={"id"}
+        name={getName(index, "id")}
         value={field["id"]}
       />
       <input
         type="hidden"
-        name={"_destroy"}
+        name={getName(index, "_destroy")}
         className="destroy"
         value="0"
       />
@@ -64,7 +77,7 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Title"
-        name={"title"}
+        name={getName(index, "title")}
         id={getId(index, "name")}
         onChange={onChange(index)}
         value={field["title"]}
@@ -75,7 +88,7 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Company"
-        name={"company"}
+        name={getName(index, "company")}
         id={getId(index, "company")}
         onChange={onChange(index)}
         value={field["company"]}
@@ -86,20 +99,20 @@ const ExperienceItem = ({
           labelClassName="form--label -black"
           errorClassName="date-picker__error"
           className="registration-page__form-field registration-page__form-field--fourth relative"
-          name={"start"}
+          name={getName(index, "start")}
           label="Start"
           onChange={onChangeDate(index, 'start')}
-          value={field["start"]}
+          value={startDate}
           error={startDateError}
         />
         <DatePicker
           labelClassName="form--label -black"
           errorClassName="date-picker__error"
           className={`registration-page__form-field registration-page__form-field--fourth relative ${field.current_role ? 'invisible' : ''}`}
-          name={"end"}
+          name={getName(index, "end")}
           label="End"
           onChange={onChangeDate(index, 'end')}
-          value={field["end"]}
+          value={endDate}
           error={endDateError}
         />
 
@@ -109,7 +122,7 @@ const ExperienceItem = ({
             className="radio-button"
             type="checkbox"
             value="1"
-            name={"current_role"}
+            name={getName(index, "current_role")}
             onChange={onChange(index)}
             id={getId(index, "current_role")}
             checked={field["current_role"]}

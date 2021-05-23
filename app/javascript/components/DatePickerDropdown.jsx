@@ -48,7 +48,7 @@ class DatePickerDropdown extends PureComponent {
       <div className={className} ref={this.ref}>
         <label className={labelClassName}>{label}</label>
         <DatePicker
-          selected={value? date.setDate(date.getDate() + 2) : ""}
+          selected={value ? date : ""}
           name={name}
           placeholderText={placeholder}
           onChange={this.handleChange}

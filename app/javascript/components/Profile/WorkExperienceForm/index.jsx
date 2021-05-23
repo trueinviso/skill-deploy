@@ -20,6 +20,12 @@ const createField = () => ({
   current_role: false
 })
 
+const getFieldNameFromFormName = name => {
+  const regex = /(?<=\[).*?(?=\])/g
+  const fields = name.match(regex)
+  return fields[2]
+}
+
 class WorkExperienceForm extends PureComponent {
   static propTypes = {
     formName: PropTypes.string.isRequired,
@@ -46,12 +52,15 @@ class WorkExperienceForm extends PureComponent {
     }))
   }
 
+
+
   onChange = currentIndex => e => {
-    const name = e.target.name
+    const name = getFieldNameFromFormName(e.target.name)
     const value = e.target.value
+
     this.setState(prev => ({
       fields: prev.fields.map((field, index) => {
-        if (name === 'current_role') {
+        if (name.includes('current_role')) {
           delete field.end
           return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : {...field, current_role: false}
         } else {
