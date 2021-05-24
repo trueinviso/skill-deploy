@@ -43,14 +43,7 @@ const ExperienceItem = ({
   const onRemoveItem = React.useCallback(
     e => {
       e.preventDefault()
-      // mark as destroy
-      if (field["id"] !== undefined) {
-        ref.current.querySelector("input[name*='_destroy']").value = 1
-        ref.current.style.display = "none"
-      } else {
-        // Remove from the page
-        onRemove(index)
-      }
+      onRemove(index)
     },
     [index]
   )
@@ -59,7 +52,11 @@ const ExperienceItem = ({
   const endDate  = getDateFromDateString(field['end'])?.toISOString()
 
   return (
-    <div className="registration-page__work-experiences__section" ref={ref}>
+    <div
+      className="registration-page__work-experiences__section"
+      ref={ref}
+      style={{ display: field['destroy'] ? 'none' : 'block'}}
+    >
       <input
         type="hidden"
         name={getName(index, "id")}
@@ -69,7 +66,7 @@ const ExperienceItem = ({
         type="hidden"
         name={getName(index, "_destroy")}
         className="destroy"
-        value="0"
+        value={field['destroy'] ? 1 : 0}
       />
 
       <FormField
