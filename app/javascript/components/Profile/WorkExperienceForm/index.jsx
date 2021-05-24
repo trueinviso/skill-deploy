@@ -60,8 +60,9 @@ class WorkExperienceForm extends PureComponent {
 
     this.setState(prev => ({
       fields: prev.fields.map((field, index) => {
-        if (name.includes('current_role')) {
-          delete field.end
+        if (name === 'current_role') {
+          if (currentIndex === index)
+            delete field.end
           return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : {...field, current_role: false}
         } else {
           return currentIndex === index ? {...field, [name]: value} : field
@@ -88,7 +89,7 @@ class WorkExperienceForm extends PureComponent {
 
   render() {
     const { fields } = this.state
-
+    console.log(fields)
     return (
       <Fragment>
         {fields.map((field, index) => (
