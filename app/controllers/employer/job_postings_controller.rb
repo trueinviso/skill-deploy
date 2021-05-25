@@ -7,6 +7,10 @@ module Employer
       @job.published!
       send_job_listing_publish_notification
       flash[:notice] = "Congratulations! your listing is now live. #{redirect_link}"
+      SendgridManager.send(current_user.email, ENV['SENDGRID_EMAIL_JOB_LISTING_PUBLISHED_TEMPLATE'], {
+        website_url: main_app.root_url,
+        job_listing_url: job_url(@job)
+      })
       redirect_to employer_jobs_path
     end
 
