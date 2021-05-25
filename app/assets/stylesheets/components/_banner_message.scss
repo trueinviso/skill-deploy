@@ -39,7 +39,7 @@
 
   &__close {
     display: none;
-    background: asset-data-url("icon/message_close.svg");
+    background: url($message-close-icon);
     width: 24px;
     height: 24px;
     @include desktop {
