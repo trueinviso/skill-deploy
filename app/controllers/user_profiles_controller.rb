@@ -26,7 +26,7 @@ class UserProfilesController < ApplicationController
 
   def edit
     @user_profile = current_user.user_profile
-    if current_user.employer? && !current_user.talent?
+    if current_user.employer_only?
       flash[:banner_message] = "You'll need to submit your profile for review before applying for jobs."
     end
   end
