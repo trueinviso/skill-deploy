@@ -1,15 +1,15 @@
 
-- is_profile_selected = current_page?(main_app.edit_user_profile_path)
-- is_account_settings_selected = current_page?(main_app.edit_user_registration_path)
+- profile_selected = current_page?(main_app.edit_user_profile_path)
+- account_settings_selected = current_page?(main_app.edit_user_registration_path)
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if is_profile_selected}" }
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected}" }
     = link_to "Profile",
       main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
     - if current_user.talent?
       %span.label.-danger Apply
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if is_account_settings_selected}" }
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
     = link_to "Account settings",
     main_app.edit_user_registration_path,
     class: "sidebar__nav__menu__item__link"
