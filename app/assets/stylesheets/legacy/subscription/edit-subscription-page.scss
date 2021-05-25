@@ -113,6 +113,18 @@
   .update-button {
     max-width: 222px;
   }
+
+  &__change-payment-method {
+    width: 100%;
+    color: var(--danger-color);
+    font-size: $font-size-normal;
+    font-weight: 500;
+  }
+
+  &__payment-method-form {
+    max-width: 350px;
+  }
+
   &__cancel-subscription {
     margin-top: 84px;
     width: 188px;
