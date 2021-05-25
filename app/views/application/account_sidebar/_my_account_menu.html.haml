@@ -1,15 +1,15 @@
 
 - is_selected = current_page?(main_app.edit_user_profile_path)
-- is_new_profile = current_page?(new_user_profile_path)
+- new_profile_page = current_page?(new_user_profile_path)
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if is_selected or is_new_profile}" }
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if is_selected || new_profile_page}" }
     = link_to "Profile",
-      is_new_profile ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
+      new_profile_page ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
     - if !current_user.talent? && current_user.employer?
       %span.label.-danger Apply
-    - if !is_new_profile
+    - if !new_profile_page
       %li.sidebar__nav__menu__item
         = link_to "Account settings",
         main_app.edit_user_registration_path,

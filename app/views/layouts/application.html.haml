@@ -10,10 +10,6 @@
       = javascript_pack_tag "javascript/editor",
         "data-turbolinks-track": "reload",
          defer: true
-    - if edit_user_profile_page?
-      = javascript_include_tag "banner-message",
-        "data-turbolinks-track": "reload",
-         defer: true
     - if subscription_page?
       = javascript_include_tag "unity/application", "data-turbolinks-track": "reload"
 

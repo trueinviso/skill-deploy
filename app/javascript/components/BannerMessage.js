@@ -17,4 +17,4 @@ const bannerMessage = () => {
   }
 }
 
-bannerMessage()
+export default bannerMessage

@@ -37,65 +37,67 @@
     margin-top: 4px;
 
     @include desktop {
-    font-size: 16px;
+      font-size: 16px;
     }
-}
+  }
 
-&__row {
+  &__row {
     margin-top: 46px;
     display: grid;
     grid-template-columns: 1;
     grid-gap: 15px;
 
     @include desktop {
-    grid-gap: 50px;
-    grid-template-columns: repeat(2,1fr);
+      grid-gap: 50px;
+      grid-template-columns: repeat(2,1fr);
     }
-}
+  }
 
-&__card {
+  &__card {
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
     border: solid 1px $color-beige;
     padding: 33px 16px 51px;
     text-align: center;
 
     @include desktop {
-    padding: 79px 88px 88px;
+      padding: 79px 88px 88px;
     }
 
     &__title {
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: normal;
-    letter-spacing: normal;
-    text-align: center;
-    font-size: $font-size-medium;
-    color: $color-dark-grey;
-    margin-top: 50px;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      font-size: $font-size-medium;
+      color: $color-dark-grey;
+      margin-top: 50px;
     }
 
     &__description {
-    color: $color-brown-grey;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: center;
-    margin-top: 12px;
-    margin-bottom: 73px;
-    height: 105px;
-
-    @include desktop {
-        height: 84px;
-    }
-
+      color: $color-brown-grey;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      margin-top: 12px;
+      margin-bottom: 73px;
     }
 
     .button {
-    width: 220px;
+      width: 220px;
+      margin: auto auto 0 auto;
     }
-}
 
+    img {
+      width: 247px;
+      height: 205px;
+      margin: 0 auto 0 auto;
+    }
+  }
 }
