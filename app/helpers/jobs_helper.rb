@@ -20,12 +20,4 @@ module JobsHelper
   def show_payment_form?
     !current_user.paying_subscriber?
   end
-
-  def job_archived?(job)
-    if job.status == 'archived'
-      true
-    else
-      false
-    end
-  end
 end

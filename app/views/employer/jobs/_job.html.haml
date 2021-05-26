@@ -8,7 +8,7 @@
     - job.job_types.each do |type|
       .employer-job-card__type-mark= type.name
 
-  - if !job_archived?(job)
+  - if !job.archived?
     .employer-job-card__button-list
       %button.employer-job-card__button
         = link_to "Archive",
