@@ -1,37 +1,6 @@
-- has_avatar = !current_user.thumbnail_url.include?("empty_photo_state_icon")
-.nav__links.hide-desktop-down
+- if current_user.employer?
   %ul.nav__menu
-    %li.nav__item
-      %a{ href: main_app.jobs_path,
-        class: "nav__link  #{'-active' if current_page?(main_app.jobs_path)}" }
-        Job Board
-    %li.nav__item
-      %a{ href: main_app.favorite_jobs_path,
-        class: "nav__link #{'-active' if current_page?(main_app.favorite_jobs_path)}" }
-        Saved Jobs
-
-
-%ul.nav__menu
-  %li.nav__item.mr-0.-centered
-    = link_to main_app.new_employer_job_path, class: "button -outline nav__button -plus-icon" do
-      %span.hide-desktop-down Create new listing
-      %span.hide-desktop-up  New listing
-  %li.nav__item.-divider.hide-desktop-down
-
-  %li.nav__item.-centered.-parent.hide-flex-desktop-down
-    %div{ class: "nav__profile #{'-empty' unless has_avatar}" }
-      = image_tag current_user.thumbnail_url, alt: current_user.username, id: "userAvatar",
-        hidden: !has_avatar
-    %ul.nav__nested
-      %li{ class: "nav_nested__item
-        #{'-active' if current_page?(main_app.edit_user_profile_path)}" }
-        = link_to "My account", main_app.edit_user_profile_path, class: "nav_nested__link"
-      %li{ class: "nav_nested__item
-        #{'-active' if current_page?(main_app.employer_jobs_path)}" }
-        = link_to "Job Listings", main_app.employer_jobs_path, class: "nav_nested__link"
-      - if current_user.employer?
-        %li{ class: "nav_nested__item #{'-active' if current_page?(unity.edit_subscription_path)}" }
-          = link_to "Billing details", unity.edit_subscription_path, class: "nav_nested__link"
-      %li.nav_nested__item
-        = link_to "Sign out", main_app.destroy_user_session_path,
-          class: "nav_nested__link"
+    %li.nav__item.mr-0.-centered
+      = link_to main_app.new_employer_job_path, class: "button -outline nav__button -plus-icon" do
+        %span.hide-desktop-down Create new listing
+        %span.hide-desktop-up  New listing
