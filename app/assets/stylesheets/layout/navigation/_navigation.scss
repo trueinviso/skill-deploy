@@ -23,6 +23,10 @@
     @extend %flex-row-space-between;
   }
 
+  &.-padding-x {
+    padding: 0 17px 0 17px;
+  }
+
   &.-no-logged-in {
     justify-content: space-between;
   }
