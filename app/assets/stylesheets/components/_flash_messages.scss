@@ -38,6 +38,7 @@
 
   &__close {
     display: none;
+    background: url($message-close-icon);
     width: 24px;
     height: 24px;
     @include desktop {
