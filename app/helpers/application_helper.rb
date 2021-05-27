@@ -67,19 +67,5 @@ module ApplicationHelper
   def manage_job_listing_path(user)
     user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
-
-  def current_page_title
-    if current_page?(main_app.edit_user_profile_path)
-      'Profile'
-    elsif employer_jobs_page?
-      'Manage Listings'
-    elsif saved_jobs_page?
-      'Saved Job Listings'
-    elsif edit_profile_page?
-      'Account Settings'
-    elsif current_page?(unity.edit_subscription_path)
-      'Billing Details'
-    end
-  end
 end
 
