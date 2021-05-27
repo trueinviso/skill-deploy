@@ -33,7 +33,7 @@
 
         %span.subscription__card-summary__card-type= view_component.card_brand
         %span.subscription__card-summary__card-number **** **** **** #{view_component.card_last4}
-      %button.subscription__change-payment-method{ onclick: "togglePaymentForm(this)" }
+      %button.subscription__change-payment-method#change-payment-method
         Change payment method
       .subscription__payment-method-form
         = form_for :payment_method,
