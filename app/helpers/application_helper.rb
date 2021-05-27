@@ -7,6 +7,10 @@ module ApplicationHelper
     current_page?(main_app.edit_user_registration_path)
   end
 
+  def edit_user_profile_page?
+    current_page?(edit_user_profile_path)
+  end
+
   def edit_social_profile_page?
     current_page?(main_app.edit_profile_social_path)
   end
@@ -44,7 +48,11 @@ module ApplicationHelper
   end
 
   def edit_listing_page?
-    controller_name == "employer/jobs" && action_name == "edit"
+    controller_path == "employer/jobs" && action_name == "edit"
+  end
+
+  def employer_preview_job_path?
+    controller_path == "employer/preview/jobs" && action_name == "show"
   end
 
   def subscription_page?

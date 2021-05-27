@@ -1,7 +1,7 @@
 = form_for(job,
   url: employer_job_path(job),
   method: :put,
-  html: { method: :put, multipart: true, onsubmit: "return listingPage.validateForm(this);",
+  html: { id: "edit-listing-form", method: :put, multipart: true, onsubmit: "return listingPage.validateForm(this);",
   onchange: "listingPage.checkErrors(this)" }) do |f|
 
   = render "form_errors", object: job

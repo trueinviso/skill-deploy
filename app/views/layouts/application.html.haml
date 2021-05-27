@@ -3,7 +3,7 @@
   %head
     = render "application/head_shared_content"
 
-    - if account_page? || create_listing_page?
+    - if account_page? || create_listing_page? || edit_listing_page?
       = stylesheet_pack_tag "stylesheets/editor",
         "data-turbolinks-track": "reload",
         defer: true
@@ -17,5 +17,6 @@
   %body
     = render "layouts/nav"
     = render "application/flash_messages"
+
     %main
       = yield

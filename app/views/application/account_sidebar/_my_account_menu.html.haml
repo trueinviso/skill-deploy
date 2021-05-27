@@ -1,14 +1,15 @@
 
-- is_selected = current_page?(main_app.edit_user_profile_path)
+- profile_selected = current_page?(main_app.edit_user_profile_path)
+- account_settings_selected = current_page?(main_app.edit_user_registration_path)
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if is_selected}" }
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected}" }
     = link_to "Profile",
       main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if current_user.talent?
+    - if ShowApplyLabel.call(current_user)
       %span.label.-danger Apply
-      %li.sidebar__nav__menu__item
-        = link_to "Account settings",
-        main_app.edit_user_registration_path,
-        class: "sidebar__nav__menu__item__link"
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
+    = link_to "Account settings",
+    main_app.edit_user_registration_path,
+    class: "sidebar__nav__menu__item__link"

@@ -22,10 +22,8 @@ const skipedInptuTypes = ["submit"]
 function handleSubmitButton(submitter, valid) {
   if (valid) {
     submitter.disable = false
-    submitter.classList.remove("-disabled")
   } else {
     submitter.disable = true
-    submitter.classList.add("-disabled")
   }
 }
 
