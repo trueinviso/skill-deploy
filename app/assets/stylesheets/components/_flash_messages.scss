@@ -1,4 +1,4 @@
-.banner-message {
+.flash-message--banner_message {
   background: var(--danger-color);
   padding: 27px 0 24px 0;
   border-radius: 4px;
@@ -11,7 +11,7 @@
     color: $color-primary;
   }
 
-  &__content {
+  .flash-message__content {
     position: relative;
     display: flex;
     justify-content: left;
@@ -19,7 +19,7 @@
     margin: 0 22px;
   }
 
-  &__text {
+  .flash-message__text {
     text-align: left;
     font-family: Averta;
     font-size: $font-size-normal;
@@ -37,7 +37,7 @@
     }
   }
 
-  &__close {
+  .flash-message__close {
     display: none;
     background: url($message-close-icon);
     width: 24px;
