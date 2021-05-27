@@ -4,7 +4,7 @@ module Employer
     layout "job_listing", except: [:index]
 
     def index
-      @jobs = policy_scope([:employer, Job])
+      @jobs = Employer::FindJobs.new(policy_scope([:employer, Job])).call
       @view_component = Employer::JobsComponent
       authorize [:employer, @jobs]
     end
@@ -29,7 +29,7 @@ module Employer
 
     def update
       if @job.update(valid_params[:job])
-        redirect_to [:employer, :jobs]
+        redirect_to employer_preview_job_path(@job)
       else
         render :edit
       end
@@ -62,12 +62,10 @@ module Employer
             :twitter,
             :facebook,
             :instagram,
-            thumbnail_attributes: [:file],
+            { thumbnail_attributes: [:file] },
           ],
         )
     end
-
-    private
 
     def load_and_authorize_job
       @job = Job.find(params[:id])
