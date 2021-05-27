@@ -18,5 +18,3 @@ const flashMessage = () => {
 }
 
 flashMessage()
-
-console.log('sldksdffjskdlfj')
