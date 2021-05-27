@@ -7,7 +7,7 @@
     = link_to "Profile",
       main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if current_user.talent?
+    - if ShowApplyLabel.call(current_user)
       %span.label.-danger Apply
   %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
     = link_to "Account settings",
