@@ -101,7 +101,7 @@ class User < ApplicationRecord
   end
 
   def pending_talent?
-    talent? && user_profile.pending?
+    talent_only? && user_profile.pending?
   end
 
   def unlimited?
