@@ -1,15 +1,17 @@
-module ShowApplyLabel
-  extend self
+module Protocols
+  module ShowApplyLabel
+    extend self
 
-  def call(user)
-    user.pending_talent? ||
-      employer_without_profile?(user)
-  end
+    def call(user)
+      user.pending_talent? ||
+        employer_without_profile?(user)
+    end
 
-  private
+    private
 
-  def employer_without_profile?(user)
-    user.employer_only? &&
-      user.user_profile.blank?
+    def employer_without_profile?(user)
+      user.employer_only? &&
+        user.user_profile.blank?
+    end
   end
 end
