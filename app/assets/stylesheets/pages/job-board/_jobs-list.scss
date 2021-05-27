@@ -1,0 +1,44 @@
+.jobs-list__filters-container {
+  display: grid;
+  display: -ms-grid;
+
+  -ms-grid-columns: 187px 33px 197px 1fr;
+  -ms-grid-rows: 79px;
+
+  grid-template-columns: 187px 33px 197px 1fr;
+  grid-template-rows: 79px;
+
+  grid-gap: 10px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  align-items: center;
+  padding: 0;
+
+  background: $color-white;
+  padding: 0 18px 0 18px;
+  border-radius: 10px;
+
+  @include desktop-down {
+    width: 100vw;
+    -ms-grid-columns: 197px 1fr;
+    -ms-grid-rows: 79px 79px;
+    grid-template-columns: 197px 1fr;
+    grid-template-rows: 79px 79px;
+  }
+}
+
+.jobs-list__filters-separator-container {
+  display: block;
+  @include desktop-down {
+    display: none;
+  }
+}
+
+.jobs-list__filters-separator {
+  height: 39px;
+  width: 1px;
+  background: $color-greyish;
+  margin: auto;
+}

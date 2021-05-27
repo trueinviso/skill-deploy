@@ -79,6 +79,8 @@ module ApplicationHelper
       'Account Settings'
     elsif current_page?(unity.edit_subscription_path)
       'Billing Details'
+    elsif current_page?(main_app.root_path)
+      'Job Board'
     end
   end
 end

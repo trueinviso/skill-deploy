@@ -4,10 +4,10 @@
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
   %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected}" }
-    = link_to "Profile",
+    = link_to "Talent Profile",
       main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if current_user.talent?
+    - if current_user.employer?
       %span.label.-danger Apply
   %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
     = link_to "Account settings",

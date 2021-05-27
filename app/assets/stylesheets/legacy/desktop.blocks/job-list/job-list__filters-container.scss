@@ -3,20 +3,24 @@
     display: grid;
     display: -ms-grid;
 
-    -ms-grid-columns: 197px 1fr;
-    -ms-grid-rows: 71px;
+    -ms-grid-columns: 187px 1fr 197px 1fr;
+    -ms-grid-rows: 79px;
 
-    grid-template-columns: 197px 1fr;
-    grid-template-rows: 71px;
+    grid-template-columns: 187px 1fr 197px 1fr;
+    grid-template-rows: 79px;
 
     grid-gap: 10px;
 
     margin-left: auto;
     margin-right: auto;
 
-    width: 75vw;
+    width: 100%;
     align-items: center;
     padding: 0;
+
+    background: $color-white;
+    padding: 0 18px 0 18px;
+    border-radius: 10px;
 
     @media only screen and (max-width: 875px) {
       width: 90vw;

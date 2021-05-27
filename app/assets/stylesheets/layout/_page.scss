@@ -1,7 +1,7 @@
 .page {
   background-color: var(--bg-color);
   display: grid;
-  grid-gap: 85px;
+  grid-gap: 47px;
   grid-template-columns: auto;
   margin-bottom: 30px;
 
@@ -13,7 +13,8 @@
 
   &__main {
     @include desktop-up {
-      margin: 0 96px 75px 0;
+      margin: 0 47px 75px 0;
+      max-width: calc(100vw - var(--sidebar-width) - 47px - 47px);
     }
 
     [role="alert"] {
@@ -23,7 +24,7 @@
     @include desktop-up {
       & > :first-child {
         &:not([role="alert"]) {
-          margin-top: 75px;
+          margin-top: 43px;
         }
       }
     }
