@@ -36,7 +36,7 @@ class JobPage extends PureComponent {
     const { jobs } = this.state
     return (
       <Fragment>
-        <div className="jobs-list__filters-container scrollable">
+        <div className="jobs-list__filters-container">
           <form className="nav__search" action="/jobs" acceptCharset="UTF-8" method="get">
             <input name="utf8" type="hidden" value="✓"/>
             <div className="nav__search__field">

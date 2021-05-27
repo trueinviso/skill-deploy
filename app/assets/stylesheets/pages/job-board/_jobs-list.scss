@@ -4,11 +4,13 @@
 
   -ms-grid-columns: 187px 33px 197px 1fr;
   -ms-grid-rows: 79px;
-
   grid-template-columns: 187px 33px 197px 1fr;
   grid-template-rows: 79px;
 
   grid-gap: 10px;
+  grid-row-gap: 0px;
+  -ms-grid-gap: 10px;
+  -ms-grid-row-gap: 0px;
 
   margin-left: auto;
   margin-right: auto;
@@ -23,22 +25,29 @@
   @include desktop-down {
     width: 100vw;
     -ms-grid-columns: 197px 1fr;
-    -ms-grid-rows: 79px 79px;
+    -ms-grid-rows: 79px 1px 79px;
     grid-template-columns: 197px 1fr;
-    grid-template-rows: 79px 79px;
+    grid-template-rows: 79px 1px 79px;
   }
 }
 
 .jobs-list__filters-separator-container {
   display: block;
   @include desktop-down {
-    display: none;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    -ms-grid-column-start: 1;
+    -ms-grid-column-end: 3;
   }
 }
 
 .jobs-list__filters-separator {
   height: 39px;
   width: 1px;
-  background: $color-greyish;
+  background: $color-concrete;
   margin: auto;
+  @include desktop-down {
+    width: 100%;
+    height: 1px;
+  }
 }
