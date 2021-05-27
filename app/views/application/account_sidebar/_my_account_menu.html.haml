@@ -8,7 +8,7 @@
     = link_to "Profile",
       new_profile_page ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if current_user.employer_only?
+    - if Protocols::ShowApplyLabel.call(current_user)
       %span.label.-danger Apply
   - if !new_profile_page
     %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
