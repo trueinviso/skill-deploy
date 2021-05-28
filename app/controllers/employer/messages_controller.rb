@@ -1,18 +1,28 @@
 module Employer
   class MessagesController < ApplicationController
-    before_action only: :create
+    before_action :applied_for, only: :create
 
     def create
-      @profile = UserProfile.find(params[:profile_id])
-      if params[:message][:body]
-        send_message_notification(params[:message][:body])
-        redirect_to employer_user_profile_url(@profile)
+      @message = Message.new(message_params)
+      if @message.save
+        send_message_notification(@message)
+        flash[:notice] = t(".success")
+      else
+        flash[:notice] = t(".failure")
       end
+      redirect_to employer_user_profile_url(@profile)
     end
 
     private
 
-    def send_message_notification(body)
+    def applied_for
+      @applied_for = AppliedFor.find(params[:appllied_for_id])
+    end
+
+    def message_params
+    end
+
+    def send_message_notification(_message)
       SendgridManager.send(current_user.email,
                            ENV["SENDGRID_RECRUITER_MESSAGE_TO_THE_TALENT_TEMPLATE"],
                            { name: @profile.first_name,

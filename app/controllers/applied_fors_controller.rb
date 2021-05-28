@@ -31,16 +31,13 @@ class AppliedForsController < ApplicationController
   end
 
   def send_job_listing_talent_apply_notification
-
-    SendgridManager.send(current_user.email,ENV['SENDGRID_SEND_JOB_LISTING_APPLY_NOTIFICATION_TEMPLATE'],
-      { name: current_user.first_name, 
-        headline: job.name,
-        about:job.description&.body&.to_plain_text,
-        skills:current_user.skills,
-        avatar_url:current_user.thumbnail_url,
-        profile_url:employer_user_profile_url(current_user),
-        website_url: main_app.root_url 
-      }
-  )
+    SendgridManager.send(current_user.email, ENV["SENDGRID_SEND_JOB_LISTING_APPLY_NOTIFICATION_TEMPLATE"],
+                         { name: current_user.first_name,
+                           headline: job.name,
+                           about: job.description&.body&.to_plain_text,
+                           skills: current_user.skills,
+                           avatar_url: current_user.thumbnail_url,
+                           profile_url: employer_user_profile_url(current_user),
+                           website_url: main_app.root_url })
   end
 end

@@ -58,8 +58,9 @@ gem "jbuilder", "~> 2.5"
 # gem 'capistrano-rails', group: :development
 gem "name_of_person"
 
+gem "sendgrid-ruby"
 gem "sentry-raven", "~> 2.6.0"
-gem 'sendgrid-ruby'
+gem "sidekiq"
 
 group :test do
   gem "factory_bot_rails"

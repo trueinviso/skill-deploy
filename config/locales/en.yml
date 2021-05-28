@@ -17,3 +17,8 @@ en:
     update:
       success: "Your profile is %{status} now"
       failure: "Could save changes"
+  employer:
+    messages:
+      create:
+        success: "Your messages was sent"
+        failure: "Could not sent your message"
