@@ -1,4 +1,4 @@
-class SendgridManager 
+class SendgridManager
     def self.send(to, template_id,subsitutions = {})
       data = {
         "personalizations": [
@@ -16,7 +16,7 @@ class SendgridManager
         },
         "template_id": template_id
       }
-    
+
       sg = SendGrid::API.new(api_key: ENV['SENDGRID_WEB_API_KEY'])
       begin
         response = sg.client.mail._("send").post(request_body: data)

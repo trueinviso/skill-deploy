@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_172127) do
+ActiveRecord::Schema.define(version: 2021_05_28_140633) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,8 +22,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.bigint "record_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness",
-                                                  unique: true
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -32,8 +32,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"],
-            name: "index_active_storage_attachments_uniqueness", unique: true
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
   create_table "active_storage_blobs", force: :cascade do |t|
@@ -63,8 +62,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["attachable_type", "attachable_id"],
-            name: "index_attachments_on_attachable_type_and_attachable_id"
+    t.index ["attachable_type", "attachable_id"], name: "index_attachments_on_attachable_type_and_attachable_id"
   end
 
   create_table "employer_job_experiences", force: :cascade do |t|
@@ -160,6 +158,16 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
+  end
+
   create_table "permissions", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -233,8 +241,7 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_type", "taggable_id"],
-            name: "index_taggings_on_taggable_type_and_taggable_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable_type_and_taggable_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -410,6 +417,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
   add_foreign_key "employer_job_roles", "jobs"
   add_foreign_key "employer_job_types", "job_types"
   add_foreign_key "employer_job_types", "jobs"
+  add_foreign_key "messages", "users", column: "recipient_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_job_experiences", "job_experiences"
   add_foreign_key "user_job_experiences", "users"
