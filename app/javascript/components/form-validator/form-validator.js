@@ -63,7 +63,7 @@ function createFormWithRules(formEl) {
     handleSubmitButton(event.submitter, isReadyToSubmit || false)
     if (isReadyToSubmit) {
       // resubmit form
-      event.target.submit()
+      event.submitter.click()
     }
   })
 
