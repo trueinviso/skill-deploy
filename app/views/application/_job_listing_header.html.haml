@@ -1,17 +1,9 @@
 %header
   %nav.nav
     .nav__container
-      .nav__content.-between
-        = link_to main_app.employer_jobs_path, class: "hide-desktop-down" do
+      .nav__content.-between.-padding-x
+        = link_to main_app.employer_jobs_path do
           .close-button.-round.-black{ "aria-label": "back", role: "button" }
-        = link_to main_app.root_path, class: "hide-desktop-up", "aria-label" => "logo" do
-          .logo
-        -# haml-lint:disable LineLength
-        %a.nav__burger-button.hide-desktop-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
-          .burger-button
-            %span.burger-button__line
-            %span.burger-button__line
-            %span.burger-button__line
         .hide-desktop-down
           - if create_listing_page?
             %button.button.-outline-dark.-medium{ form: "new-listing-form", type: "submit" } Preview listing
