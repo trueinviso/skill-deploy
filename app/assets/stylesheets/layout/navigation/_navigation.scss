@@ -5,13 +5,11 @@
 }
 
 .nav__container {
-  margin: 0 15px;
   position: relative;
-  width: calc(100% - 30px);
+  width: 100%;
 
   @include desktop-up {
-    margin: 0 92px;
-    width: calc(100% - 184px);
+    width: 100%;
   }
 }
 
@@ -19,11 +17,14 @@
   align-items: center;
   display: flex;
   height: var(--nav-height);
-  justify-content: flex-start;
   margin: 0 auto;
 
   &.-between {
     @extend %flex-row-space-between;
+  }
+
+  &.-padding-x {
+    padding: 0 17px 0 17px;
   }
 
   &.-no-logged-in {
@@ -31,14 +32,17 @@
   }
 }
 
-.nav__left {
-  @extend %flex--vertically-centered;
+.nav__logo {
+  display: none;
 
-  margin-left: var(--page-margin--desktop);
-  margin-right: auto;
+  @include desktop-up {
+    width: var(--sidebar-width);
+    height: 100%;
+    display: flex;;
 
-  @include tablet-up {
-    margin-left: auto;
+    & > * {
+      margin: auto;
+    }
   }
 
   @include mq($breakpoint-mobile + 1, max) {
@@ -54,6 +58,40 @@
         margin-right: 31px;
       }
     }
+  }
+}
+
+.nav__sign-out-text {
+  @include desktop-up {
+    margin-right: 104px;
+  }
+}
+
+.nav__right {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+
+  @include desktop-up {
+    display: flex;
+    justify-content: space-between;
+    width: calc(100% - var(--sidebar-width));
+    height: 100%;
+    padding: 0 43px;
+  }
+}
+
+.nav__burger-button {
+  margin: auto 0 auto 17px;
+}
+
+.nav__page-title {
+  display: flex;
+  height: 100%;
+  text-align: center;
+  & p {
+    margin: auto;
   }
 }
 
@@ -128,6 +166,11 @@
   display: flex;
   height: 100%;
   list-style-type: none;
+
+  @include desktop-down {
+    justify-self: flex-end;
+    margin-right: 17px;
+  }
 }
 
 .nav__item {
