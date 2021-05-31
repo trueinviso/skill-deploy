@@ -1,7 +1,6 @@
-.banner-message {
+.flash-message {
   background: var(--danger-color);
   padding: 27px 0 24px 0;
-  border-radius: 4px;
 
   @include desktop {
     padding: 27px 0;
@@ -14,7 +13,7 @@
   &__content {
     position: relative;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     margin: 0 22px;
   }

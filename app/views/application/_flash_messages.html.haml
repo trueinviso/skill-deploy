@@ -9,9 +9,8 @@
               %button.flash-message__close &times;
 
 - if defined?(type) && type == :banner_message
-  #banner-message{ role:"alert" }
-    - if flash[:banner_message].present?
-      %div{ class: "banner-message"}
-        .banner-message__content
-          .banner-message__text= flash[:banner_message]
-          %button.banner-message__close#banner-message__close
+  - if flash[:banner_message].present?
+    %div{ class: "banner-message"}
+      .banner-message__content
+        .banner-message__text= flash[:banner_message]
+      %button.close
