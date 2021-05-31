@@ -11,7 +11,7 @@
   }
 
   &__heading {
-    font-size: $font-size-xlarge;
+    font-size: var(--font-size-xlarge);
     font-weight: 600;
     font-style: normal;
     font-stretch: normal;
@@ -37,7 +37,7 @@
     margin-top: 4px;
 
     @include desktop {
-      font-size: 16px;
+      font-size: $font-size-medium;
     }
   }
 
@@ -72,8 +72,8 @@
       line-height: normal;
       letter-spacing: normal;
       text-align: center;
-      font-size: $font-size-medium;
-      color: $color-dark-grey;
+      font-size: 16px;
+      color: var(--secondary-color);
       margin-top: 50px;
     }
 
