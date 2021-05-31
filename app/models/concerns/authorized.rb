@@ -20,4 +20,12 @@ module Authorized
   def employer?
     roles.where(name: Role::EMPLOYER).exists?
   end
+
+  def employer_only?
+    roles == [Role.find_by(name: Role::EMPLOYER)]
+  end
+
+  def talent_only?
+    roles == [Role.find_by(name: Role::TALENT)]
+  end
 end
