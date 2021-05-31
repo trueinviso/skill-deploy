@@ -1,16 +1,8 @@
-- if !defined?(type)
-  .flash-messages#flash-messages
-    - if flash.any?
-      - flash.each do |name, msg|
-        - if msg.present? && name != 'banner_message'
-          %div{ class: "flash-message flash-message--#{name}" }
-            .flash-message__content
-              .flash-message__text= msg.html_safe
-              %button.flash-message__close &times;
-
-- if defined?(type) && type == :banner_message
-  - if flash[:banner_message].present?
-    %div{ class: "banner-message"}
-      .banner-message__content
-        .banner-message__text= flash[:banner_message]
-      %button.close
+.flash-messages#flash-messages
+  - if flash.any?
+    - flash.each do |name, msg|
+      - if !(type == :nav_message && name == 'banner_message')
+        %div{ class: "flash-message flash-message--#{name}" }
+          .flash-message__content
+            .flash-message__text= msg.html_safe
+          %button.flash-message__close

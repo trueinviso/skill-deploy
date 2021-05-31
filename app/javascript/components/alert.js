@@ -1,5 +1,6 @@
 const ALERT_CONTAINER_CLASSNAME = ".alert"
-const BANNER_MESSAGE_CONTAINER_CLASSNAME = ".banner-message"
+const BANNER_MESSAGE_CONTAINER_CLASSNAME = ".flash-message--banner_message"
+const FLASH_MESSAGE_CONTAINER_CLASSNAME = ".flash-message"
 import { fadeOut } from "~/helpers/animation"
 import attachEvent from "~/helpers/attachEvent"
 
@@ -11,7 +12,8 @@ const alert = () => {
 
   const listeners = [
     ...document.querySelectorAll(`${ALERT_CONTAINER_CLASSNAME} .close`),
-    ...document.querySelectorAll(`${BANNER_MESSAGE_CONTAINER_CLASSNAME} .close`),
+    ...document.querySelectorAll(`${BANNER_MESSAGE_CONTAINER_CLASSNAME} .flash-message__close`),
+    ...document.querySelectorAll(`${FLASH_MESSAGE_CONTAINER_CLASSNAME} .flash-message__close`),
   ].map(alert => attachEvent("click", onClick, alert))
 
   return () => {

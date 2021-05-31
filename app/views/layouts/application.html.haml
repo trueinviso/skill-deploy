@@ -16,7 +16,7 @@
 
   %body
     = render "layouts/nav"
-    = render "application/flash_messages"
+    = render "application/flash_messages", type: :nav_message
 
     %main
       = yield
