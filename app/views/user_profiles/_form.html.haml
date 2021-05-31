@@ -1,6 +1,6 @@
 = form_for(current_user,
   url: user_profile_path,
-  html: { method: action, class: "form profile__form" }) do |f|
+  html: { method: action, class: "form profile__form", data: { "form-validator-trigger": true } }) do |f|
 
   = render("application/form_errors", object: current_user)
 
@@ -12,15 +12,13 @@
 
   = f.button "Submit your profile for review",
       value: "pending",
-      name: "[user][user_profile_attributes]status",
+      name: "user[user_profile_attributes][status]",
       type: "submit",
       class: "button",
-      data: { disable_with: false },
       id: "edit-profile"
   = f.button "Save for later",
       value: "draft",
-      name: "[user][user_profile_attributes]status",
+      name: "user[user_profile_attributes][status]",
       type: "submit",
       class: "button",
-      data: { disable_with: false },
       id: "edit-profile"
