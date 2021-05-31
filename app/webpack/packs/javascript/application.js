@@ -6,6 +6,7 @@ import alert from "~/components/alert"
 import formValidator from "~/components/form-validator/form-validator"
 import form from "~/components/form"
 import modal from "~/components/microModal"
+import flashMessages from "~/components/flashMessages"
 Turbolinks.start()
 window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts
@@ -14,3 +15,4 @@ onEachTurbolinksPage(alert)
 onEachTurbolinksPage(formValidator)
 onEachTurbolinksPage(form)
 onEachTurbolinksPage(modal)
+onEachTurbolinksPage(flashMessages)
