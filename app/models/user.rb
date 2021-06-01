@@ -44,11 +44,11 @@ class User < ApplicationRecord
 
   ########### Unity Gateway Models
   has_one :subscription,
-    class_name: "Unity::Subscription"
+          class_name: "Unity::Subscription"
   has_one :payment_method,
-    class_name: "Unity::PaymentMethod"
+          class_name: "Unity::PaymentMethod"
   has_one :gateway_customer,
-    class_name: "Unity::GatewayCustomer"
+          class_name: "Unity::GatewayCustomer"
   #################################
 
   accepts_nested_attributes_for :user_profile
@@ -60,13 +60,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_job_types
 
   accepts_nested_attributes_for :work_experiences,
-    reject_if: :all_blank,
-    allow_destroy: true
+                                reject_if: :all_blank,
+                                allow_destroy: true
 
-  enum review_status: [
-    :pending,
-    :complete,
-  ]
+  enum review_status: { pending: 0, complete: 1 }
 
   def first_name
     user_profile&.name&.first
@@ -79,6 +76,7 @@ class User < ApplicationRecord
   def active_paid_subscriber?
     return false if gateway_customer.blank?
     return false if subscription.blank?
+
     subscription.active?
   end
 
@@ -111,6 +109,7 @@ class User < ApplicationRecord
   def unlimited_subscription
     subs = subscriptions.select { |s| s.active? && s.unlimited? }
     raise MultipleUnlimitedError if subs.count > 1
+
     subs.first
   end
 
@@ -137,6 +136,7 @@ class User < ApplicationRecord
   class MultipleUnlimitedError < StandardError; end
 
   private
+
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
