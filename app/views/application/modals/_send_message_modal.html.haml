@@ -10,8 +10,8 @@
         .modal__bg
           %h2.modal__title.job__message-modal__content__title#send-message-modal-title
             Send a message
-          = form_for :message, url: message_index_path,  data:{ "form-validator-trigger": true } do |f|
-            = hidden_field_tag "profile_id", params[:id]
+          = form_for :message, url: employer_messages_path,  data:{ "form-validator-trigger": true } do |f|
+            = hidden_field_tag "applied_for_id", params[:id]
             .form--field
               = f.text_area :body, class: "text-area", data: { required: true } , cols:30, rows:10
             .modal__button-row.job__message-modal__content__footer
