@@ -20,6 +20,7 @@ module Employer
     end
 
     def message_params
+      params.require(:message).permit(:body)
     end
 
     def send_message_notification(_message)
