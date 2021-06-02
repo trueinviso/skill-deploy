@@ -1,8 +1,8 @@
 .flash-messages#flash-messages
   - if flash.any?
     - flash.each do |name, msg|
-      - if msg.present?
+      - if !(type == :nav_message && name == 'banner_message')
         %div{ class: "flash-message flash-message--#{name}" }
           .flash-message__content
             .flash-message__text= msg.html_safe
-            %button.flash-message__close &times;
+          %button.flash-message__close

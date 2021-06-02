@@ -7,6 +7,10 @@ module ApplicationHelper
     current_page?(main_app.edit_user_registration_path)
   end
 
+  def edit_user_profile_page?
+    current_page?(edit_user_profile_path)
+  end
+
   def edit_social_profile_page?
     current_page?(main_app.edit_profile_social_path)
   end
