@@ -1,23 +1,18 @@
 class AppliersSerializer
-  attr_reader :user, :appliers
+  include JSONAPI::Serializer
+  set_key_transform :camelcase
 
-  def initialize(user, appliers)
-    @user = user
-    @appliers = appliers
+  attributes :first_name do |object|
+    object.user_profile.first_name
   end
 
-  def self.build(user, appliers)
-    new(user, appliers).build
+  attributes :last_name do |object|
+    object.user_profile.last_name
   end
 
-  def build
-    appliers.map do |applier|
-      {
-        first_name: applier.user_profile.first_name,
-        last_name: applier.user_profile.last_name,
-        thumbnail_url: applier.thumbnail_url,
-        profile_url: "needs 203 PR to work correct",
-      }
-    end
+  attributes :avatar_url, &:thumbnail_url
+
+  link :profile_url do |object|
+    # need 203 PR for this link/route
   end
 end
