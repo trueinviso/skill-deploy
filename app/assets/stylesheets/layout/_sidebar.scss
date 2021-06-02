@@ -2,7 +2,7 @@
   --spacing-left: 93px;
   background-color: var(--primary-color);
   padding-top: 57px;
-  width: 338px;
+  width: var(--sidebar-width);
 
   &__nav {
     &__heading {

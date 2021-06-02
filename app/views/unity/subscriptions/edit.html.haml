@@ -1,5 +1,6 @@
 -# haml-lint:disable all
 -# rubocop:disable all
+- @title = "Billing Details"
 - view_component = Employer::BillingComponent.new(current_user)
 .page
   = render "employer/shared/sidebar",

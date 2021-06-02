@@ -8,7 +8,6 @@ import form from "~/components/form"
 import modal from "~/components/microModal"
 import burgerButton from '~/components/BurgerButton'
 import paymentForm from '~/components/billing'
-import bannerMessage from "~/components/BannerMessage"
 Turbolinks.start()
 window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts
@@ -19,4 +18,4 @@ onEachTurbolinksPage(form)
 onEachTurbolinksPage(modal)
 onEachTurbolinksPage(burgerButton)
 onEachTurbolinksPage(paymentForm)
-onEachTurbolinksPage(bannerMessage)
+

@@ -1,29 +1,28 @@
 %nav.nav
   .nav__container
     %div{ class: "nav__content #{'-no-logged-in' if current_user.blank? }" }
-      - if !current_user.blank?
-        %a.nav__burger-button.hide-desktop-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
-          .burger-button#burger-button
-            %span.burger-button__line
-            %span.burger-button__line
-            %span.burger-button__line
-        
-      %div.nav__left
+      %div.nav__logo
         = link_to main_app.root_path,"aria-label" => "logo" do
           .logo
-        - if !current_user.blank?
-          = render "layouts/nav_search"
-
       - if !current_user.blank?
-        = render "layouts/nav_links"
+        %div.nav__right
+          %a.nav__burger-button.hide-desktop-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
+            .burger-button#burger-button
+              %span.burger-button__line
+              %span.burger-button__line
+              %span.burger-button__line
+          .nav__page-title
+            %p
+              = @title || "Hey Fam!"
+          = render "layouts/nav_links"
       - elsif %w(registrations).include?(controller_name)
-        %p.nav--sign-out-text.text.-base.hide-flex-desktop-down
+        %p.nav__sign-out-text.text.-base.hide-flex-desktop-down
           Already have an account?&nbsp
           = link_to "Sign in",
             new_user_session_path,
             class: "text -link"
       - elsif %w(sessions).include?(controller_name)
-        %p.nav--sign-out-text.text.-base.hide-flex-desktop-down
+        %p.nav__sign-out-text.text.-base.hide-flex-desktop-down
           Don't have an account?&nbsp
           = link_to "Sign up",
             new_user_registration_path,
