@@ -22,19 +22,6 @@ const createField = () => ({
   destroy: false
 })
 
-/**
- * Get the attribute name from the name of an input element
- * control name pattern: user[work_experiences_attributes][index][name]
- * Example:
- * controlName: "user[work_experiences_attributes][0][company]"
- * return value: "company"
-*/
-const getAttributeNameFromControlName = controlName => {
-  const controlNameRegex = /(?<=\[).*?(?=\])/g
-  const attributeName = controlName.match(controlNameRegex)[2] // example: ["work_experiences_attributes", "0", "company"]
-  return attributeName
-}
-
 class WorkExperienceForm extends PureComponent {
   static propTypes = {
     formName: PropTypes.string.isRequired,
@@ -68,8 +55,7 @@ class WorkExperienceForm extends PureComponent {
 
 
 
-  onChange = currentIndex => e => {
-    const name = getAttributeNameFromControlName(e.target.name)
+  onChange = (currentIndex, name) => e => {
     const value = e.target.value
 
     this.setState(prev => ({

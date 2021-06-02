@@ -3,16 +3,6 @@ import PropTypes from "prop-types"
 import DatePicker from "./../../DatePickerDropdown"
 import FormField from "./../../shared/FormField"
 
-function getDateFromDateString(dateString) {
-  if (!dateString)
-    return null
-  const year = parseInt(dateString.slice(0, 4))
-  const month = parseInt(dateString.slice(5, 7)) - 1
-  const day = parseInt(dateString.slice(8, 10))
-  const date = dateString ? new Date(year, month, day) : null
-  return date
-}
-
 const ExperienceItem = ({
   index,
   field,
@@ -48,8 +38,10 @@ const ExperienceItem = ({
     [index]
   )
 
-  const startDate = getDateFromDateString(field['start'])?.toISOString()
-  const endDate  = getDateFromDateString(field['end'])?.toISOString()
+  let startDate = new Date(Date.parse(field['start']))
+  let endDate = new Date(Date.parse(field['end']))
+  startDate = !isNaN(startDate.getTime()) ? startDate.toISOString() : ''
+  endDate = !isNaN(endDate.getTime()) ? endDate.toISOString() : ''
 
   return (
     <div
@@ -76,7 +68,7 @@ const ExperienceItem = ({
         label="Title"
         name={getName(index, "title")}
         id={getId(index, "name")}
-        onChange={onChange(index)}
+        onChange={onChange(index, 'title')}
         value={field["title"]}
       />
 
@@ -87,7 +79,7 @@ const ExperienceItem = ({
         label="Company"
         name={getName(index, "company")}
         id={getId(index, "company")}
-        onChange={onChange(index)}
+        onChange={onChange(index, 'company')}
         value={field["company"]}
       />
 
@@ -120,7 +112,7 @@ const ExperienceItem = ({
             type="checkbox"
             value="1"
             name={getName(index, "current_role")}
-            onChange={onChange(index)}
+            onChange={onChange(index, 'current_role')}
             id={getId(index, "current_role")}
             checked={field["current_role"]}
           />
