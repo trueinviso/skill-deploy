@@ -50,17 +50,17 @@
       padding-right: 14px;
       white-space: nowrap;
     }
-  
+
     &__button-list {
       display: grid;
       display: -ms-grid;
-      grid-template-columns: 80px 80px;
-      -ms-grid-columns: 80px 80px;
+      grid-template-columns: 80px 80px auto;
+      -ms-grid-columns: 80px 80px auto;
       grid-gap: 7px;
       grid-row-start: 3;
       justify-content: right;
     }
-  
+
     &__button {
       background: $color-white;
       border: 1px solid $color-default-icon;

@@ -18,3 +18,6 @@
       %a{ href: edit_employer_job_path(job.id) }
         %button.employer-job-card__button
           Edit
+      - if job.appliers.any?
+        %button.employer-job-card__button
+          = react_component("Applicants", { title: 'Applicants', buttonTitle: "Applicants", appliers: job.appliers })
