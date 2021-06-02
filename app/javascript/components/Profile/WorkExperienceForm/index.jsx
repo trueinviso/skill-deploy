@@ -24,9 +24,10 @@ const createField = () => ({
 
 /**
  * Get the attribute name from the name of an input element
- * Example
- * input: "user[work_experiences_attributes][0][company]"
- * output: "company"
+ * control name pattern: user[work_experiences_attributes][index][name]
+ * Example:
+ * controlName: "user[work_experiences_attributes][0][company]"
+ * return value: "company"
 */
 const getAttributeNameFromControlName = controlName => {
   const controlNameRegex = /(?<=\[).*?(?=\])/g
@@ -55,17 +56,14 @@ class WorkExperienceForm extends PureComponent {
   }
 
   onRemove = currentIndex => {
-    if (this.state.fields[currentIndex]['id'] !== undefined) {
-      this.setState(prev => ({
-        fields: prev.fields.map((field, index) => {
-          return index === currentIndex ? {...field, destroy: true} : field
-        })
-      }))
-    } else {
-      this.setState(prev => ({
-        fields: prev.fields.filter((_, index) => index !== currentIndex)
-      }))
-    }
+    this.setState(prev => ({
+      fields: prev.fields[currentIndex]['id'] !== undefined ?
+          prev.fields.map((field, index) => {
+            return index === currentIndex ? {...field, destroy: true} : field
+          })
+        :
+          prev.fields.filter((_, index) => index !== currentIndex)
+    }))
   }
 
 
