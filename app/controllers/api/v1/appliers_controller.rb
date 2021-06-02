@@ -4,11 +4,10 @@ module Api
       before_action :job, only: :index
 
       def index
-        applies = AppliersSerializer.build(
-          current_user,
-          job.appliers,
-        )
-        render status: :ok, json: { applies: applies }
+        authorize(job, policy_class: ApplierPolicy)
+        appliers = job.appliers.includes(:user_profile, :thumbnail)
+        applies_json = AppliersSerializer.new(appliers).serializable_hash.to_json
+        render status: :ok, json: applies_json
       end
 
       private
