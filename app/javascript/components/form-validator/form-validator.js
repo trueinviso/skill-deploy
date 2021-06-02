@@ -58,12 +58,10 @@ function createFormWithRules(formEl) {
     handleSubmitButton(event.submitter, false)
     if (isReadyToSubmit) return
 
-    event.preventDefault()
     isReadyToSubmit = await form.submit()
     handleSubmitButton(event.submitter, isReadyToSubmit || false)
-    if (isReadyToSubmit) {
-      // resubmit form
-      event.submitter.click()
+    if (!isReadyToSubmit) {
+      event.preventDefault()
     }
   })
 
