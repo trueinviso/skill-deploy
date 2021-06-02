@@ -7,7 +7,6 @@ import formValidator from "~/components/form-validator/form-validator"
 import form from "~/components/form"
 import modal from "~/components/microModal"
 import burgerButton from '~/components/BurgerButton'
-import paymentForm from '~/components/billing'
 Turbolinks.start()
 window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts
@@ -17,5 +16,3 @@ onEachTurbolinksPage(formValidator)
 onEachTurbolinksPage(form)
 onEachTurbolinksPage(modal)
 onEachTurbolinksPage(burgerButton)
-onEachTurbolinksPage(paymentForm)
-
