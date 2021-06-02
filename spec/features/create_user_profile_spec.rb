@@ -21,9 +21,7 @@ RSpec.feature "Create user profile", type: :feature do
       find("span", text: "Part Time").click
       find("#rate-range").click.find("#react-select-2-option-0").click
       click_on("Submit your profile for review")
-      click_on("Submit your profile for review")
-      expect(user_profile.reload.status).to eq("pending")
-      expect(page).to have_text("Hi name last name")
+      expect(page).to have_text("Your profile is pending now")
     end
 
     scenario "when not all required data filled in" do
@@ -51,8 +49,7 @@ RSpec.feature "Create user profile", type: :feature do
       find("span", text: "Part Time").click
       find("#rate-range").click.find("#react-select-2-option-0").click
       click_on("Save for later")
-      expect(user_profile.reload.status).to eq("draft")
-      expect(page).to have_current_path(root_path)
+      expect(page).to have_text("Your profile is draft now")
     end
   end
 end
