@@ -2,7 +2,7 @@
 
 module Api
   module V1
-    class ApplierPolicy < ApplicationPolicy
+    class ApplicantPolicy < ApplicationPolicy
       def index?
         user && record.user == user
       end

@@ -1,9 +1,9 @@
 import PropTypes from "prop-types"
 import styles from "./styles.module"
 
-const Applier = ({ attributes, profilePath }) => {
+const Applicant = ({ attributes, profilePath }) => {
   return (
-    <a href={profilePath} className={styles.applier}>
+    <a href={profilePath} className={styles.applicant}>
       <img
         className={styles.avatar}
         src={attributes.avatar_url}
@@ -18,7 +18,7 @@ const Applier = ({ attributes, profilePath }) => {
   )
 }
 
-Applier.propTypes = {
+Applicant.propTypes = {
   id: PropTypes.string,
   profilePath: PropTypes.string,
   attributes: PropTypes.shape({
@@ -27,4 +27,4 @@ Applier.propTypes = {
     last_name: PropTypes.string
   })
 }
-export default Applier
+export default Applicant

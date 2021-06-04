@@ -1,19 +1,19 @@
 import { string } from "prop-types"
 import React from "react"
 import useSWR from "swr"
-import Applier from "./Applier"
+import Applicant from "./Applicant"
 import styles from "./styles.module"
 
 const Applicants = ({ apiPath, profilePath }) => {
-  const { data: appliers } = useSWR(apiPath)
+  const { data: applicants } = useSWR(apiPath)
 
   return (
     <div className={styles.list}>
-      {appliers?.data.map(applier => (
-        <Applier
-          key={applier.id}
-          {...applier}
-          profilePath={profilePath.replace("id", applier.id)}
+      {applicants?.data.map(applicant => (
+        <Applicant
+          key={applicant.id}
+          {...applicant}
+          profilePath={profilePath.replace("id", applicant.id)}
         />
       ))}
     </div>

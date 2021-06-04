@@ -93,7 +93,7 @@ Rails.application.routes.draw do
                controller: :apply,
                only: [:create]
       resources :jobs, only: [] do
-        resources :appliers, only: [:index]
+        resources :applicants, only: [:index]
       end
       resource :thumbnail,
                only: [:update]

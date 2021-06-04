@@ -23,7 +23,7 @@ class Job < ApplicationRecord
   has_many :tags, through: :taggings
 
   has_many :applied_for, dependent: :destroy
-  has_many :appliers, through: :applied_for, source: :user
+  has_many :applicants, through: :applied_for, source: :user
 
   accepts_nested_attributes_for :job_types
 
@@ -83,5 +83,9 @@ class Job < ApplicationRecord
       facebook: facebook,
       twitter: twitter,
     }
+  end
+
+  def published_with_applicants?
+    published? && applicants.any?
   end
 end

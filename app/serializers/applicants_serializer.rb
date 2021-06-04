@@ -1,4 +1,4 @@
-class AppliersSerializer
+class ApplicantsSerializer
   include JSONAPI::Serializer
   set_key_transform :camelcase
 
