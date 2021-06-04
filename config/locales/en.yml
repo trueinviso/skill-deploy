@@ -21,4 +21,4 @@ en:
     messages:
       create:
         success: "Your messages was sent"
-        failure: "Could not sent your message"
+        failure: "Could not send your message"
