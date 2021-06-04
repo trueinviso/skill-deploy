@@ -80,3 +80,7 @@ body {
 button {
   color: inherit;
 }
+
+body.ReactModal__Body--open {
+  overflow: hidden;
+}

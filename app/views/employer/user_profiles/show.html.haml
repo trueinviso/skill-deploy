@@ -47,7 +47,7 @@
               .employer-profile__work-experience
                 = we.title
                 .employer-profile__work-experience__date
-                  = "#{we.start.strftime("%b %Y")} - #{we.current_role? ? "Current Role" : we.end.strftime("%b %Y")}"
+                  = "#{we.start&.strftime("%b %Y")} - #{we.current_role? ? "Current Role" : we.end&.strftime("%b %Y")}"
 
       %section
         .employer-profile__details-wrapper
