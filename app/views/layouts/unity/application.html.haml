@@ -12,10 +12,11 @@
 
     %link{ href: "https://use.typekit.net/yke8vfo.css", rel: "stylesheet" }
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
-    = javascript_include_tag "application", "data-turbolinks-track": "reload"
     = javascript_include_tag "unity/application", "data-turbolinks-track": "reload"
     = javascript_pack_tag "javascript/polyfills", "data-turbolinks-track": "reload"
     = javascript_pack_tag "javascript/application", "data-turbolinks-track": "reload"
+    - if current_page?(unity.edit_subscription_path)
+      = javascript_pack_tag "javascript/billing", "data-turbolinks-track": "reload"
   %body
     = render "layouts/nav"
     %main
