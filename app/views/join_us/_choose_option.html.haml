@@ -1,0 +1,10 @@
+= link_to option[:path], class: "join-us__option-item" do
+  .join-us__option
+    .join-us__option__logo
+      = image_tag(option[:img])
+    .join-us__option__content
+      %h2.text-base.font-medium
+      = option[:title]
+      %p.join-us__option__content__desc.text-base.font-regular
+        = option[:description]
+    .join-us__option__arrow.hide-tablet-down
