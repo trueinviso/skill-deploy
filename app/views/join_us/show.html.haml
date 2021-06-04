@@ -1,28 +1,22 @@
-.join-us
-  %h1.join-us__heading What are you looking for?
-  %h2.join-us__sub-heading Tell us how we can help
+:ruby
+  options = [ 
+    { name: "recruiter",
+      path: unity.new_subscription_path, 
+      title: t("join_us.recruiter.title"), 
+      description: t("join_us.recruiter.description"), 
+      img: "job_board.png"
+    },  
+    { name:'talent', 
+     path:'#',
+     title: t("join_us.talent.title"), 
+     description: t("join_us.talent.description"), 
+     img: "get_matched.png"
+    } ]
 
-  .join-us__row
-    %section.join-us__card
-      = image_tag("hire_creatives.png",
-        srcset: { "hire_creatives@2x.png" => "2x" })
-      %h3.join-us__card__title Join as a creative
-      %p.join-us__card__description
-        Apply as a creative and get access to hundreds of projects
-        on the gig board once your profile is approved by the
-        membership board.
-      = link_to "Create your profile",
-        new_user_profile_path,
-        class: "button button_theme_primary"
-    %section.join-us__card
-      = image_tag("join_as_a_creative.png",
-        srcset: { "join_as_a_creative@2x.png" => "2x" })
-      %h3.join-us__card__title  Hire creatives
-      %p.join-us__card__description
-        Post your projects on the Gig board and quickly receive
-        a short list of the top verified creatives ready to
-        help propel your team forward. No more sifting through
-        applications and resumes.
-      = link_to "Get started",
-        unity.new_subscription_path,
-        class: "button button_theme_primary"
+.join-us
+  %h1.join-us__heading.h1--small.font-regular Select how you’d like to get started
+
+  .join-us__content
+    - options.each do |option|
+      = render "choose_option", option: option
+    = link_to "Apply as Talent", new_user_profile_path, class: "join_us__btn"

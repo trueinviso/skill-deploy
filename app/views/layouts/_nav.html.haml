@@ -4,11 +4,10 @@
       %div.nav__logo
         = link_to main_app.root_path,"aria-label" => "logo" do
           .logo
-
       - if !current_user.blank?
         %div.nav__right
           %a.nav__burger-button.hide-desktop-up#mobile-nav-button{ role: "button", "aria-label": "nav-button" }
-            .burger-button
+            .burger-button#burger-button
               %span.burger-button__line
               %span.burger-button__line
               %span.burger-button__line

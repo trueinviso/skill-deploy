@@ -7,10 +7,23 @@
         class: "sidebar__nav__menu__item__link"
     = render "application/account_sidebar/listing_menu"
     = render "application/account_sidebar/my_account_menu"
-    - if !current_user.talent?
+    - if !current_user.talent? && !current_page?(new_user_profile_path)
       = render "application/account_sidebar/subscription_menu"
     %ul.sidebar__nav__menu
       %li{ class: "sidebar__nav__menu__item" }
         = link_to "Sign out",
         main_app.destroy_user_session_path,
         class: "sidebar__nav__menu__item__link"
+
+.mobile-sidebar__background.hidden.hide-desktop-up#mobile-sidebar__container
+%aside.mobile-sidebar#mobile-sidebar
+  %nav.mobile-sidebar__nav
+    = render "application/account_sidebar/mobile_my_account_menu"
+    = render "application/account_sidebar/mobile_listing_menu"
+    - if current_user.employer?
+      = render "application/account_sidebar/mobile_subscription_menu"
+    %ul.mobile-sidebar__nav__menu
+      %li{ class: "mobile-sidebar__nav__menu__item #{'-selected' if current_page?(main_app.employer_jobs_path)}" }
+        = link_to "Sign Out",
+        main_app.destroy_user_session_path,
+        class: "mobile-sidebar__nav__menu__item__link"

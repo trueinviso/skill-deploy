@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resources :confirmations, only: :index
 
-  resource :join_us, only: :show, path: "join-us"
+  resource :join_us, only: [:show,:create], path: "join-us"
 
   namespace :profile do
     resource :notifications,

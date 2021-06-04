@@ -3,4 +3,8 @@ class JoinUsController < ApplicationController
 
   def show
   end
+
+  def create
+    redirect_to main_app.new_user_profile_path
+  end
 end

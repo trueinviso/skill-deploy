@@ -27,7 +27,7 @@
 
   &.-outline {
     background-color: var(--primary-color);
-    border: 1px solid var(--light-grrey-color);
+    border: 1px solid var(--light-grey-color);
     color: var(--quaternary-color);
   }
 
@@ -51,8 +51,8 @@
 
   &.-white {
     background-color: white;
-    color: var(--quaternary-color);
     border: 1px solid var(--quaternary-color);
+    color: var(--quaternary-color);
   }
 
   &.-danger {

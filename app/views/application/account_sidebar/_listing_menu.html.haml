@@ -1,13 +1,15 @@
 - item_class = "sidebar__nav__menu__item"
 - manage_listing_path = manage_job_listing_path(current_user)
+
 %h4.sidebar__nav__heading Job Listings
 %ul.sidebar__nav__menu
   %li{ class: "#{item_class} #{'-selected' if current_page?(manage_listing_path)}" }
     = link_to "Manage Job Listings",
     manage_listing_path,
     class: "sidebar__nav__menu__item__link"
-    - if current_user.talent?
+    - if current_user.talent? || current_page?(new_user_profile_path)
       %span.label.-danger Upgrade
-  %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
-    = link_to "Saved Job Listings", main_app.favorite_jobs_path,
-    class: "sidebar__nav__menu__item__link"
+  - if !current_page?(new_user_profile_path)
+    %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
+      = link_to "Saved Job Listings", main_app.favorite_jobs_path,
+      class: "sidebar__nav__menu__item__link"

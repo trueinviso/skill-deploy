@@ -1,15 +1,17 @@
-
+- new_profile_page = current_page?(new_user_profile_path)
 - profile_selected = current_page?(main_app.edit_user_profile_path)
 - account_settings_selected = current_page?(main_app.edit_user_registration_path)
+
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected}" }
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected || new_profile_page }" }
     = link_to "Talent Profile",
-      main_app.edit_user_profile_path,
+      new_profile_page ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
     - if Protocols::ShowApplyLabel.call(current_user)
       %span.label.-danger Apply
-  %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
-    = link_to "Account settings",
-    main_app.edit_user_registration_path,
-    class: "sidebar__nav__menu__item__link"
+  - if !new_profile_page
+    %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
+      = link_to "Account settings",
+      main_app.edit_user_registration_path,
+      class: "sidebar__nav__menu__item__link"

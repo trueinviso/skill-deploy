@@ -33,30 +33,32 @@ const ExperienceItem = ({
   const onRemoveItem = React.useCallback(
     e => {
       e.preventDefault()
-      // mark as destroy
-      if (field["id"] !== undefined) {
-        ref.current.querySelector("input[name*='_destroy']").value = 1
-        ref.current.style.display = "none"
-      } else {
-        // Remove from the page
-        onRemove(index)
-      }
+      onRemove(index)
     },
     [index]
   )
 
+  let startDate = new Date(Date.parse(field['start']))
+  let endDate = new Date(Date.parse(field['end']))
+  startDate = !isNaN(startDate.getTime()) ? startDate.toISOString() : ''
+  endDate = !isNaN(endDate.getTime()) ? endDate.toISOString() : ''
+
   return (
-    <div className="registration-page__work-experiences__section" ref={ref}>
+    <div
+      className="registration-page__work-experiences__section"
+      ref={ref}
+      style={{ display: field['destroy'] ? 'none' : 'block'}}
+    >
       <input
         type="hidden"
-        name={"id"}
+        name={getName(index, "id")}
         value={field["id"]}
       />
       <input
         type="hidden"
-        name={"_destroy"}
+        name={getName(index, "_destroy")}
         className="destroy"
-        value="0"
+        value={field['destroy'] ? 1 : 0}
       />
 
       <FormField
@@ -64,9 +66,9 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Title"
-        name={"title"}
+        name={getName(index, "title")}
         id={getId(index, "name")}
-        onChange={onChange(index)}
+        onChange={onChange(index, 'title')}
         value={field["title"]}
       />
 
@@ -75,9 +77,9 @@ const ExperienceItem = ({
         inputClassName="form--input"
         labelClassName="form--label -black"
         label="Company"
-        name={"company"}
+        name={getName(index, "company")}
         id={getId(index, "company")}
-        onChange={onChange(index)}
+        onChange={onChange(index, 'company')}
         value={field["company"]}
       />
 
@@ -86,20 +88,20 @@ const ExperienceItem = ({
           labelClassName="form--label -black"
           errorClassName="date-picker__error"
           className="registration-page__form-field registration-page__form-field--fourth relative"
-          name={"start"}
+          name={getName(index, "start")}
           label="Start"
           onChange={onChangeDate(index, 'start')}
-          value={field["start"]}
+          value={startDate}
           error={startDateError}
         />
         <DatePicker
           labelClassName="form--label -black"
           errorClassName="date-picker__error"
           className={`registration-page__form-field registration-page__form-field--fourth relative ${field.current_role ? 'invisible' : ''}`}
-          name={"end"}
+          name={getName(index, "end")}
           label="End"
           onChange={onChangeDate(index, 'end')}
-          value={field["end"]}
+          value={endDate}
           error={endDateError}
         />
 
@@ -109,8 +111,8 @@ const ExperienceItem = ({
             className="radio-button"
             type="checkbox"
             value="1"
-            name={"current_role"}
-            onChange={onChange(index)}
+            name={getName(index, "current_role")}
+            onChange={onChange(index, 'current_role')}
             id={getId(index, "current_role")}
             checked={field["current_role"]}
           />

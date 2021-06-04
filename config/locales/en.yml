@@ -3,3 +3,10 @@ en:
     create:
       success: "You applied to the job listing"
       failure: "Could not apply to the job"
+  join_us:
+    recruiter:
+      title: "The Job Board"
+      description: "Get access to our highly vetted team of designers, developers, photographers and videographers by creating a listing and posting it to the job board."
+    talent:
+      title: "Get Matched"
+      description: "Skip the selection and interview process by allowing us to match you with the best highly vetted team member to fit your project needs or available position."

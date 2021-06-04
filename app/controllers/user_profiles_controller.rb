@@ -2,6 +2,7 @@ class UserProfilesController < ApplicationController
   skip_before_action :guard_user_registered!, only: [:new, :create]
 
   def new
+    flash[:banner_message] = "You'll need to submit your profile for review before applying for jobs."
   end
 
   def create
