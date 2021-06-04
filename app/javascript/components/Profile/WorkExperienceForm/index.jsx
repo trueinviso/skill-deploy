@@ -12,12 +12,14 @@ const ExperiencePropTypes = {
   start: PropTypes.string,
   title: PropTypes.string,
   updated_at: PropTypes.string,
-  userId: PropTypes.number
+  userId: PropTypes.number,
+  destroy: PropTypes.bool
 }
 
 const createField = () => ({
   key: getUniqKey(),
-  current_role: false
+  current_role: false,
+  destroy: false
 })
 
 class WorkExperienceForm extends PureComponent {
@@ -42,17 +44,23 @@ class WorkExperienceForm extends PureComponent {
 
   onRemove = currentIndex => {
     this.setState(prev => ({
-      fields: prev.fields.filter((_, index) => index !== currentIndex)
+      fields: prev.fields[currentIndex]['id'] !== undefined ?
+          prev.fields.map((field, index) => {
+            return index === currentIndex ? {...field, destroy: true} : field
+          })
+        :
+          prev.fields.filter((_, index) => index !== currentIndex)
     }))
   }
 
-  onChange = currentIndex => e => {
-    const name = e.target.name
+
+
+  onChange = (currentIndex, name) => e => {
     const value = e.target.value
+
     this.setState(prev => ({
       fields: prev.fields.map((field, index) => {
         if (name === 'current_role') {
-          delete field.end
           return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : {...field, current_role: false}
         } else {
           return currentIndex === index ? {...field, [name]: value} : field
