@@ -37,3 +37,13 @@
   display: block;
   height: 2px;
 }
+
+.burger-button__close {
+  background: url($menu-close-icon) no-repeat center;
+  width: 20px;
+  height: 14px;
+
+  &>* {
+    display: none;
+  }
+}
