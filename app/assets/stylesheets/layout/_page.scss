@@ -1,15 +1,15 @@
 .page {
-  position: relative;
   background-color: var(--bg-color);
   display: grid;
   grid-gap: 47px;
   grid-template-columns: auto;
-  margin-bottom: 30px;
+  min-height: calc(100vh - var(--nav-height));
+  padding-bottom: 30px;
+  position: relative;
 
   @include desktop-up {
     grid-template-columns: auto 1fr;
-    margin-bottom: 0;
-    min-height: calc(100vh - #{$nav-height});
+    padding-bottom: 0;
   }
 
   &__main {
