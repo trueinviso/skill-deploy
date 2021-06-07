@@ -69,8 +69,8 @@ Rails.application.routes.draw do
     resources :job_previews, only: [:update]
 
     resources :user_profiles,
-              only: [:show],
-              path: "profile"
+      only: [:show],
+      path: "profile"
 
     namespace :preview do
       resources :job,
