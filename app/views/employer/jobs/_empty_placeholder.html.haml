@@ -1,0 +1,7 @@
+.manage-listings__placeholder
+  = image_tag("manage_listing_placeholder.png",
+        srcset: { "manage_listing_placeholder@2x.png" => "2x", "manage_listing_placeholder@3x" => "3x" }, class: 'manage-listings__placeholder-img')
+  %h1.manage-listings__heading Get started by creating your first listing
+  %h2.manage-listings__subheading.mt-20.mb-35 Quickly get introduced to the top talent you’ve been looking for. Meet highly vetted designers, developers, photographers and more.
+  = link_to main_app.new_employer_job_path, class: "button create_listing__button -outline -plus-icon manage-listings_btn" do
+    %span Create new listing

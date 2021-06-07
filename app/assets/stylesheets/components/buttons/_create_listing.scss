@@ -1,0 +1,26 @@
+.create_listing__button {
+  border-color: var(--quaternary-color) !important;
+  font-weight: var(--font-medium);
+  height: 40px;
+  min-width: 171px;
+
+  &.-plus-icon {
+    align-items: center;
+    display: flex;
+
+    &::before {
+      background-image: url(replace-svg-color($plus-icon, "000000"));
+      background-position: center 1px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      content: "";
+      height: 45px;
+      margin-right: 8px;
+      width: 15px;
+
+      @include desktop-up {
+        display: inline-block;
+      }
+    }
+  }
+}

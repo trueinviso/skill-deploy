@@ -1,16 +1,7 @@
-.jobs-index__wrapper
-  - if jobs.empty?
-    .align-center.align-vertical.row
-      .jobs-index__empty-image
-        = image_tag("empty_state_graphic")
-      .small-12.medium-9.columns
-        .jobs-index__sub-heading
-          Looks like you don"t have any live projects yet.
-          Gather your project details and start your project.
-
-  - else
-    //------ Cards -------//
-    %div
-      - jobs.each do |job|
-        - cache job do
-          = render partial: "job", locals: { job: job }
+- if !jobs.empty? 
+  .manage-listings__heading
+    = title
+  .manage-listings_jobs
+    - jobs.each do |job|
+      - cache job do
+        = render partial: "job", locals: { job: job }
