@@ -20,7 +20,8 @@ module Api
       def applicants
         job
           .applicants
-          .includes(:user_profile, :thumbnail)
+          .includes(:user_profile, :thumbnail, :applied_for)
+          .order("applied_fors.created_at ASC")
       end
 
       def job
