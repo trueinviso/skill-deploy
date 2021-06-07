@@ -10,7 +10,7 @@ RSpec.feature "Create user profile", type: :feature do
       run_fixtures("tags|job_roles|job_type|job_experiences|job_locations")
       sign_in(user_profile.user)
       visit join_us_path
-      click_on "Create your profile"
+      click_on "Apply as Talent"
       fill_in "First Name", with: "name"
       fill_in "Last Name", with: "last name"
       fill_in_trix_editor "#user_user_profile_attributes_bio", with: "some bio"
@@ -27,7 +27,7 @@ RSpec.feature "Create user profile", type: :feature do
     scenario "when not all required data filled in" do
       sign_in(user_profile.user)
       visit join_us_path
-      click_on "Create your profile"
+      click_on "Apply as Talent"
       fill_in "First Name", with: "name"
       fill_in "Last Name", with: "last name"
       click_on("Submit your profile for review")
@@ -38,7 +38,7 @@ RSpec.feature "Create user profile", type: :feature do
       run_fixtures("tags|job_roles|job_type|job_experiences|job_locations")
       sign_in(user_profile.user)
       visit join_us_path
-      click_on "Create your profile"
+      click_on "Apply as Talent"
       fill_in "First Name", with: "name"
       fill_in "Last Name", with: "last name"
       fill_in_trix_editor "#user_user_profile_attributes_bio", with: "some bio"
