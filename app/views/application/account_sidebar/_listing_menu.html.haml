@@ -4,7 +4,7 @@
 %h4.sidebar__nav__heading Job Listings
 %ul.sidebar__nav__menu
   %li{ class: "#{item_class} #{'-selected' if current_page?(manage_listing_path)}" }
-    = link_to "Manage Job Listings",
+    = link_to "Manage Listings",
     manage_listing_path,
     class: "sidebar__nav__menu__item__link"
     - if current_user.talent? || current_page?(new_user_profile_path)
