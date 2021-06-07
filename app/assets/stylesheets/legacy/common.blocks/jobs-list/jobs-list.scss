@@ -1,6 +1,4 @@
 .jobs-list {
-  margin-left: $mobile-margin-left;
-  margin-right: $mobile-margin-right;
   @include desktop {
     margin: 0;
   }

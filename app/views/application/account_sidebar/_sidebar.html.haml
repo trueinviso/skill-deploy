@@ -1,7 +1,12 @@
 %aside.sidebar.hide-desktop-down
   %nav.sidebar__nav
-    = render "application/account_sidebar/my_account_menu"
+    %ul.sidebar__nav__menu
+      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.root_path)}" }
+        = link_to "Job Board",
+        main_app.root_path,
+        class: "sidebar__nav__menu__item__link"
     = render "application/account_sidebar/listing_menu"
+    = render "application/account_sidebar/my_account_menu"
     - if !current_user.talent? && !current_page?(new_user_profile_path)
       = render "application/account_sidebar/subscription_menu"
     %ul.sidebar__nav__menu
