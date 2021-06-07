@@ -5,7 +5,7 @@
 %h4.sidebar__nav__heading My Account
 %ul.sidebar__nav__menu
   %li{ class: "sidebar__nav__menu__item #{'-selected' if profile_selected || new_profile_page }" }
-    = link_to "Talent Profile",
+    = link_to "Profile",
       new_profile_page ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
     - if Protocols::ShowApplyLabel.call(current_user)

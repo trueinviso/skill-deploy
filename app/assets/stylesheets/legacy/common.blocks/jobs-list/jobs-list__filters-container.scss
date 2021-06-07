@@ -1,5 +1,7 @@
 .jobs-list__filters-container {
-  display: none;
+  margin-left: $mobile-margin-left;
+  margin-right: $mobile-margin-right;
+  display: grid;
   grid-column: 197px 1fr;
   grid-gap: 16px;
 }

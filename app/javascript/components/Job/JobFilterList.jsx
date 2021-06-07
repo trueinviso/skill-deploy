@@ -86,7 +86,6 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
       <Dropdown
         name="type"
         onChange={onChangeFilter}
-        containerClassName="scrollable"
         buttonClassName="dropdown__button--hidden"
         contentClassName="dropdown__content--inline"
         placeholder="All Creative Types"

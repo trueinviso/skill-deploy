@@ -2,7 +2,7 @@
 .page.profile
   = render "application/account_sidebar/sidebar"
   %div.page__main
-    = render "application/flash_messages", type: :page_message
+    = render "application/banner_messages"
     = render("application/form_errors", object: current_user)
 
     .page__content

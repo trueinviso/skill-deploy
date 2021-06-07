@@ -1,10 +1,18 @@
 %aside.sidebar.hide-desktop-down
   %nav.sidebar__nav
+    %h4.sidebar__nav__heading My Account
     %ul.sidebar__nav__menu
-      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.root_path)}" }
-        = link_to "Job Board",
-          main_app.root_path,
-          class: "sidebar__nav__menu__item__link"
+      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_profile_path)}" }
+        = link_to "Profile",
+        main_app.edit_user_profile_path,
+        class: "sidebar__nav__menu__item__link"
+        - if current_user.talent_only?
+          %span.label.-danger Apply
+      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_registration_path)}" }
+        = link_to "Account settings",
+        main_app.edit_user_registration_path,
+        class: "sidebar__nav__menu__item__link"
+
 
     %h4.sidebar__nav__heading Job Listings
     %ul.sidebar__nav__menu
@@ -16,19 +24,6 @@
         = link_to "Saved Job Listings",
             main_app.favorite_jobs_path,
             class: "sidebar__nav__menu__item__link"
-
-    %h4.sidebar__nav__heading My Account
-    %ul.sidebar__nav__menu
-      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_profile_path)}" }
-        = link_to "Talent Profile",
-        main_app.edit_user_profile_path,
-        class: "sidebar__nav__menu__item__link"
-        - if current_user.talent? && current_user.user_profile.pending?
-          %span.label.-danger Apply
-      %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_registration_path)}" }
-        = link_to "Account settings",
-        main_app.edit_user_registration_path,
-        class: "sidebar__nav__menu__item__link"
 
     - if current_user.employer?
       %h4.sidebar__nav__heading Subscription

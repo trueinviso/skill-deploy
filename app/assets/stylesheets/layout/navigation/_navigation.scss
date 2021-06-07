@@ -104,12 +104,7 @@
 
 .nav__search {
   @include desktop-up {
-    max-width: 187px;
-  }
-
-  @include desktop-down {
-    grid-column-start: 1;
-    grid-column-end: 3;
+    max-width: 166px;
   }
 
   &__field {
@@ -272,7 +267,10 @@
       height: 45px;
       margin-right: 8px;
       width: 15px;
-      display: inline-block;
+
+      @include desktop-up {
+        display: inline-block;
+      }
     }
   }
 }
