@@ -6,21 +6,26 @@ class UserProfilesController < ApplicationController
   end
 
   def create
-    result = current_user.update(skills_to_array(permitted_params))
-    if result
+    current_user.assign_attributes(skills_to_array(permitted_params))
+    authorize current_user.user_profile
+    if current_user.save
       current_user.assign_role("Job Seeker")
-      current_user.user_profile.pending!
+      flash[:notice] = t(".success", status: current_user.user_profile.status)
       redirect_to root_path
     else
+      flash[:notice] = t(".failure")
       render :new
     end
   end
 
   def update
-    result = current_user.update(skills_to_array(permitted_params))
-    if result
+    current_user.assign_attributes(skills_to_array(permitted_params))
+    authorize current_user.user_profile
+    if current_user.save
+      flash[:notice] = t(".success", status: current_user.user_profile.status)
       redirect_to edit_user_profile_path
     else
+      flash[:notice] = t(".failure")
       render :edit
     end
   end
@@ -62,6 +67,7 @@ class UserProfilesController < ApplicationController
           :id,
           :last_name,
           :location,
+          :status,
         ],
         work_experiences_attributes: [
           :_destroy,

@@ -10,3 +10,10 @@ en:
     talent:
       title: "Get Matched"
       description: "Skip the selection and interview process by allowing us to match you with the best highly vetted team member to fit your project needs or available position."
+  user_profiles:
+    create:
+      success: "Your profile is %{status} now"
+      failure: "Could save changes"
+    update:
+      success: "Your profile is %{status} now"
+      failure: "Could save changes"

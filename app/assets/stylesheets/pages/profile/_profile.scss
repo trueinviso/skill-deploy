@@ -69,5 +69,24 @@
       margin-top: 59px;
       width: 172px;
     }
+
+    &__submit-button {
+
+      @include desktop-up {
+        width: 284px;
+      }
+    }
+
+    &__save-later-button {
+      background: $color-white !important;
+      color: $color-black !important;
+      border: 1px solid $color-black !important;
+      margin-top: 12px;
+      @include desktop-up {
+        width: 167px;
+        margin-left: 20px;
+        margin-top: 0px;
+      }
+    }
   }
 }
