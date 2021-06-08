@@ -29,7 +29,7 @@ module Employer
     end
 
     def send_message_notification
-      SendGridSenderJob.perform_later(message, applied_for)
+      TalentMailer.send_employer_message(message, applied_for).deliver_later
     end
   end
 end
