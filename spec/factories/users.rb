@@ -8,7 +8,7 @@ FactoryBot.define do
     confirmed_at { Time.now }
 
     trait :with_talent_role do
-      after(:create) { |u| u.roles << create(:role, :talent) }
+      after(:create) { |u| u.roles << Role.find_or_create_by(name: "Job Seeker") }
     end
 
     trait :with_employer_role do
@@ -16,7 +16,11 @@ FactoryBot.define do
     end
 
     trait :with_admin_role do
-      after(:create) { |u| u.roles << create(:role, :admin) }
+      after(:create) { |u| u.roles << Role.find_or_create_by(name: "Admin") }
+    end
+
+    trait :with_profile do
+      after(:create) { |user| create(:user_profile, user: user) }
     end
   end
 end

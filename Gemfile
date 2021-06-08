@@ -14,6 +14,7 @@ gem "aws-sdk-s3"
 gem "font-awesome-rails"
 gem "haml"
 gem "image_processing"
+gem "jsonapi-serializer"
 gem "mini_magick", ">=4.3.5"
 gem "mq-sass"
 gem "omniauth-google-oauth2"
@@ -60,23 +61,23 @@ gem "name_of_person"
 gem "sentry-raven", "~> 2.6.0"
 
 group :test do
-  gem "rspec"
   gem "factory_bot_rails"
-  gem "shrine-memory"
+  gem "rspec"
   gem "shoulda-matchers", "~> 4.0"
+  gem "shrine-memory"
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem "webdrivers"
   gem "capybara"
   gem "capybara-webkit"
   gem "dotenv-rails"
-  gem "selenium-webdriver"
   gem "pry"
   gem "rspec-rails", "~> 5.0.0"
+  gem "selenium-webdriver"
+  gem "webdrivers"
 end
 
 group :development do
@@ -91,5 +92,5 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "draper"
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]

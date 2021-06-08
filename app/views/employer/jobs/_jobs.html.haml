@@ -10,9 +10,7 @@
 
   - else
     //------ Cards -------//
-    %ul
+    %div
       - jobs.each do |job|
         - cache job do
-          = render partial: "job",
-            locals: { job: job }
-
+          = render partial: "job", locals: { job: job }

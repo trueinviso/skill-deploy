@@ -92,6 +92,9 @@ Rails.application.routes.draw do
       resource :apply,
                controller: :apply,
                only: [:create]
+      resources :jobs, only: [] do
+        resources :applicants, only: [:index]
+      end
       resource :thumbnail,
                only: [:update]
     end

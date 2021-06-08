@@ -8,13 +8,15 @@
     - job.job_types.each do |type|
       .employer-job-card__type-mark= type.name
 
-  - if !job.archived?
-    .employer-job-card__button-list
-      %button.employer-job-card__button
-        = link_to "Archive",
-          employer_job_archive_path(job.id),
-          method: :put,
-          class: ""
-      %a{ href: edit_employer_job_path(job.id) }
-        %button.employer-job-card__button
-          Edit
+  .employer-job-card__button-list
+    - if !job.archived?
+      = link_to "Archive",
+        employer_job_archive_path(job.id),
+        method: :put,
+        class: "employer-job-card__button"
+
+    = link_to "Edit",
+      edit_employer_job_path(job.id),
+      class: "employer-job-card__button"
+    - if job.published_with_applicants?
+      = react_component("Applicants", { openBtnClassName:"employer-job-card__button", api_path: api_v1_job_applicants_path(job.id), profile_path: employer_user_profile_path(:id) })

@@ -35,9 +35,6 @@ class User < ApplicationRecord
   has_many :applied_for, dependent: :destroy
   has_many :applied_jobs, through: :applied_for, source: :job
 
-  has_many :applied_for, dependent: :destroy
-  has_many :applied_jobs, through: :applied_for, source: :job
-
   has_many :work_experiences
 
   has_many :jobs
