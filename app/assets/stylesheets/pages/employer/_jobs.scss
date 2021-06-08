@@ -16,7 +16,6 @@
 
     @include tablet-up {
       display: grid;
-      display: grid;
       grid-columns: 75px auto;
       grid-rows: auto 26px auto;
       grid-template-columns: 75px auto;
@@ -24,7 +23,6 @@
     }
 
     &__types {
-      display: grid;
       display: grid;
       grid-column-end: 2;
       grid-column-start: 1;

@@ -1,4 +1,3 @@
-
 .employer-job-card
   = render "image", resource: job
   .employer-job-card__titles
@@ -8,7 +7,6 @@
   .employer-job-card__types
     - job.job_types.each do |type|
       .employer-job-card__type-mark= type.name
-
 
   .employer-job-card__button-list
     - if !job.archived?
