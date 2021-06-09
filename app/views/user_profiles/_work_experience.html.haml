@@ -10,6 +10,6 @@
             at
             = work.company
             %span
-            = work.start.strftime("%B %Y")
+            = work.start&.strftime("%B %Y")
             %span -
-            = work.current_role? ? "Current" : work.end.strftime("%B %Y")
+            = work.current_role? ? "Current" : work.end&.strftime("%B %Y")
