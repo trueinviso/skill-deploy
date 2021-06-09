@@ -33,6 +33,7 @@
 }
 
 .nav__logo {
+  margin-left: 24px;
   display: none;
 
   @include desktop-down {
