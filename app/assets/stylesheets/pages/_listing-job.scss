@@ -28,6 +28,19 @@
   margin-bottom: 29px;
 }
 
+.listing-page__message-bar {
+  padding: 16px 17px 16px 17px;
+  width: 100%;
+  background: $color-white;
+
+  @include desktop-up {
+    margin: 28px auto 0 auto;
+    width: var(--container-width);
+    background: none;
+    padding: 0;
+  }
+}
+
 .listing-form__row {
   @include desktop-up {
     display: grid;

@@ -16,6 +16,10 @@
     @include desktop-up {
       margin: 0 47px 75px 0;
       max-width: calc(100vw - var(--sidebar-width) - 47px - 47px);
+
+      & .flash-messages {
+        margin-bottom: 28px;
+      }
     }
 
     [role="alert"] {

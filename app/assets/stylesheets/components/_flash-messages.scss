@@ -57,7 +57,6 @@
   background: var(--danger-color);
   padding: 27px 0 24px 0;
   border-radius: 4px;
-  margin-bottom: 27px;
   position: relative;
 
   @include desktop {
@@ -73,7 +72,7 @@
     display: flex;
     justify-content: left;
     align-items: center;
-    margin: 0 22px;
+    margin: 0;
   }
 
   .flash-message__text {
@@ -86,6 +85,12 @@
     line-height: normal;
     letter-spacing: normal;
     color: $color-white;
+    margin-left: 27px;
+    margin-right: 55px;
+
+    @include desktop-up {
+      margin-left: 40px;
+    }
 
     a {
       color: $color-primary;
@@ -95,11 +100,14 @@
   }
 
   .flash-message__close {
-    display: none;
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     background: url($message-close-icon);
     width: 24px;
     height: 24px;
-    @include desktop {
+    @include desktop-up {
       display: block;
       position: absolute;
       right: 27px;
