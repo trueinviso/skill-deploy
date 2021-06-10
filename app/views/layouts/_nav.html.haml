@@ -5,7 +5,7 @@
         = link_to main_app.root_path,"aria-label" => "logo" do
           .logo
       - if !current_user.blank?
-        - if current_page?(join_us_path)
+        - if current_page?(main_app.join_us_path)
           %div.nav__sign-out-button
             = link_to "Sign Out",
             main_app.destroy_user_session_path
