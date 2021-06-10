@@ -29,6 +29,12 @@
         }
       }
     }
+
+    @include desktop-down {
+      &.disabled {
+        display: none;
+      }
+    }
   }
 
   &__content {

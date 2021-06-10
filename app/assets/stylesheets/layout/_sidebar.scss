@@ -4,6 +4,14 @@
   padding-top: 57px;
   width: var(--sidebar-width);
 
+  
+  @include desktop-down {
+    width: 100%;
+    &.active {
+      display: block !important;
+    }
+  }
+
   &__nav {
     &__heading {
       border-bottom: 1px solid var(--tertiary-color);
