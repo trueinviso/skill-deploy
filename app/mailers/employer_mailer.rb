@@ -1,5 +1,6 @@
 class EmployerMailer < ApplicationMailer
-  default from: "team@skilldeploy.com"
+  default from: "arthur@kswindustries.co"
+  default body: "not used"
 
   def job_listing_publish_notification(job)
     @job = job
@@ -12,13 +13,17 @@ class EmployerMailer < ApplicationMailer
   end
 
   def job_listing_talent_apply_notification(job, talent)
-    @job = job
-    @user = job.user
-    @talent = talent
-
     mail(
-      to: @user.email,
-      subject: "Talent has applied to your job listing",
-    )
+      to: job.user.email,
+      subject: "",
+      template_id: ENV.fetch("SENDGRID_SEND_JOB_LISTING_APPLY_NOTIFICATION_TEMPLATE"),
+      dynamic_template_data: {
+          name: talent.first_name,
+          headline: job.name,
+          about: job.description&.body&.to_plain_text,
+          skills: talent.skills,
+          avatar_url: talent.thumbnail_url,
+          profile_url: employer_user_profile_url(talent),
+          website_url: root_url })
   end
 end

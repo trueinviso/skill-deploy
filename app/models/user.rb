@@ -44,11 +44,11 @@ class User < ApplicationRecord
 
   ########### Unity Gateway Models
   has_one :subscription,
-          class_name: "Unity::Subscription"
+    class_name: "Unity::Subscription"
   has_one :payment_method,
-          class_name: "Unity::PaymentMethod"
+    class_name: "Unity::PaymentMethod"
   has_one :gateway_customer,
-          class_name: "Unity::GatewayCustomer"
+    class_name: "Unity::GatewayCustomer"
   #################################
 
   accepts_nested_attributes_for :user_profile
@@ -60,8 +60,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :user_job_types
 
   accepts_nested_attributes_for :work_experiences,
-                                reject_if: :all_blank,
-                                allow_destroy: true
+    reject_if: :all_blank,
+    allow_destroy: true
 
   enum review_status: { pending: 0, complete: 1 }
 
