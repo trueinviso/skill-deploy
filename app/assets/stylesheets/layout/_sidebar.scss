@@ -4,9 +4,9 @@
   padding-top: 57px;
   width: var(--sidebar-width);
 
-  
   @include desktop-down {
     width: 100%;
+    --spacing-left: 23px;
     &.active {
       display: block !important;
     }
