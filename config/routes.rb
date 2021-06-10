@@ -1,7 +1,13 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   root to: "jobs#index"
 
   mount Unity::Engine => "/"
+
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => "/sidekiq"
+  end
 
   devise_for :users,
              path: "/",
@@ -67,10 +73,12 @@ Rails.application.routes.draw do
     resources :job_postings, only: [:update]
     resources :job_archives, only: [:update]
     resources :job_previews, only: [:update]
+    resources :messages, only: [:create]
+    resources :applied_fors, only: [:show]
 
     resources :user_profiles,
-      only: [:show],
-      path: "profile"
+              only: [:show],
+              path: "profile"
 
     namespace :preview do
       resources :job,

@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class TalentMailer < ApplicationMailer
-  default from: "team@skilldeploy.com"
+  default from: "admin@skilldeploy.com"
+  default body: "not used"
 
   def welcome(user)
     @user = user

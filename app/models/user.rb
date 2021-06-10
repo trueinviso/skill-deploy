@@ -35,6 +35,9 @@ class User < ApplicationRecord
   has_many :applied_for, dependent: :destroy
   has_many :applied_jobs, through: :applied_for, source: :job
 
+  has_many :messages, class_name: "Message", foreign_key: "recipient_id"
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+
   has_many :work_experiences
 
   has_many :jobs
@@ -60,10 +63,7 @@ class User < ApplicationRecord
     reject_if: :all_blank,
     allow_destroy: true
 
-  enum review_status: [
-    :pending,
-    :complete,
-  ]
+  enum review_status: { pending: 0, complete: 1 }
 
   def first_name
     user_profile&.name&.first
@@ -76,6 +76,7 @@ class User < ApplicationRecord
   def active_paid_subscriber?
     return false if gateway_customer.blank?
     return false if subscription.blank?
+
     subscription.active?
   end
 
@@ -108,6 +109,7 @@ class User < ApplicationRecord
   def unlimited_subscription
     subs = subscriptions.select { |s| s.active? && s.unlimited? }
     raise MultipleUnlimitedError if subs.count > 1
+
     subs.first
   end
 
@@ -132,4 +134,10 @@ class User < ApplicationRecord
   end
 
   class MultipleUnlimitedError < StandardError; end
+
+  private
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
+  end
 end
