@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EmployerMailer < ApplicationMailer
-  default from: "arthur@kswindustries.co"
+  default from: ENV.fetch("EMPLOYER_MAILER_FROM_EMAIL")
   default body: "not used"
 
   def job_listing_publish_notification(job)

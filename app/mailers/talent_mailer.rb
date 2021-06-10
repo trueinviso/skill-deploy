@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class TalentMailer < ApplicationMailer
-  default from: "arthur@kswindustries.co"
+  default from: ENV.fetch("TALENT_MAILER_FROM_EMAIL")
   default body: "not used"
 
   def welcome(user)
