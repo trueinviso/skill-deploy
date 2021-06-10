@@ -1,15 +1,12 @@
-- @title = "Manage Job Listings"
-.page.employer-jobs-list
+- @title = "Manage Listings"
+.page.manage-listings
   = render "application/account_sidebar/sidebar"
-  %div.page__main
+  %div.page__main.manage-listings__content
     = render("application/form_errors", object: current_user)
 
-    .employer-jobs-list__heading.h1--small
-      Active job listings
-    = render "jobs", jobs: @jobs.published
-    .employer-jobs-list__heading.h1--small
-      Draft job listings
-    = render "jobs", jobs: @jobs.preview
-    .employer-jobs-list__heading.h1--small
-      Archived job listings
-    = render "jobs", jobs: @jobs.archived
+    -if @jobs.empty?
+      = render "empty_placeholder"
+    -else
+      = render "jobs", jobs: @jobs.published, title: "Active job listings"
+      = render "jobs", jobs: @jobs.preview, title: "Draft job listings"
+      = render "jobs", jobs: @jobs.archived, title: "Archived job listings"
