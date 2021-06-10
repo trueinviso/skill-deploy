@@ -5,7 +5,7 @@ class SendgridDeviseMailer < Devise::Mailer
   def password_change(record, _opts = {})
     SendgridManager.send(
       record.email,
-      TEMPLATE_IDS[:password_change],
+      SendgridManager::TEMPLATE_IDS[:password_change],
       password_change_data(record),
     )
   end
@@ -13,7 +13,7 @@ class SendgridDeviseMailer < Devise::Mailer
   def reset_password_instructions(record, token, _opts = {})
     SendgridManager.send(
       record.email,
-      TEMPLATE_IDS[:reset_password_instructions],
+      SendgridManager::TEMPLATE_IDS[:reset_password_instructions],
       reset_password_data(record, token),
     )
   end
