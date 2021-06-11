@@ -26,6 +26,10 @@
 
 .listing-page__logo-uploader {
   margin-bottom: 29px;
+
+  & .error-message {
+    display: block;
+  }
 }
 
 .listing-form__row {

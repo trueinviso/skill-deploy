@@ -90,6 +90,7 @@
   @extend %base--field;
   height: 240px;
   padding: 20px;
+  overflow: hidden;
 }
 
 .form--radio-button {

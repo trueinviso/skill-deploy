@@ -93,6 +93,10 @@
   & p {
     margin: auto;
   }
+  @include desktop-down {
+    font-size: var(--font-size-normal);
+    font-weight: var(--font-medium);
+  }
 }
 
 .nav__links {
