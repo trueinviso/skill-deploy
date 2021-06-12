@@ -8,12 +8,14 @@
     = f.label :name, "Job title", class: "form--label -black -required"
     = f.text_field :name,
       "data-required": "true",
+      maxlength: "100",
       class: "form--input"
 
   .form--field
     = f.label :company_name, "Company", class: "form--label -black -required"
     = f.text_field :company_name,
       "data-required": "true",
+      maxlength: "100",
       class: "form--input"
 
 .form--field.-editor
@@ -76,6 +78,7 @@
   = f.label :location, "Preferred location or timezone (optional)", class: "form--label -black -required"
   = f.text_field :location,
     "data-required": "true",
+    maxlength: "100",
     class: "form--input",
     placeholder: "Add..."
 
@@ -83,25 +86,29 @@
 .form--field
   = f.label :company_website, "Website", class: "form--label -black"
   = f.text_field :company_website,
-     "data-validate-rule":"url",
+    "data-validate-rule":"url",
+    maxlength: "100",
     class: "form--input",
     placeholder: "Add..."
 .form--field
   = f.label :twitter, "Twitter", class: "form--label -black"
   = f.text_field :twitter,
-   "data-validate-rule":"url",
+    "data-validate-rule":"url",
+    maxlength: "100",
     class: "form--input",
     placeholder: "Add..."
 
 .form--field
   = f.label :facebook, "Facebook", class: "form--label -black"
   = f.text_field :facebook,
-   "data-validate-rule":"url",
+    "data-validate-rule":"url",
+    maxlength: "100",
     class: "form--input",
     placeholder: "Add..."
 .form--field
   = f.label :instagram, "Instagram", class: "form--label -black"
   = f.text_field :instagram,
-   "data-validate-rule":"url",
+    "data-validate-rule":"url",
+    maxlength: "100",
     class: "form--input",
     placeholder: "Add..."

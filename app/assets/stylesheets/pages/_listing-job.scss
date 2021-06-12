@@ -26,6 +26,10 @@
 
 .listing-page__logo-uploader {
   margin-bottom: 29px;
+
+  & .error-message {
+    display: block;
+  }
 }
 
 .listing-page__message-bar {
@@ -54,4 +58,9 @@
   grid-gap: 12px;
   grid-template-columns: 1fr;
   margin-top: 45px;
+
+  @include desktop-up {
+    grid-template-columns: 155px 150px;
+    grid-gap: 21px;
+  }
 }

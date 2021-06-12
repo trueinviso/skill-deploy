@@ -1,0 +1,17 @@
+.hidden-mobile {
+  display: none !important;
+  @include desktop-up {
+    display: block !important;
+  }
+}
+
+.hidden-desktop {
+  display: block !important;
+  @include desktop-up {
+    display: none !important;
+  }
+}
+
+.hidden {
+  display: none !important;
+}

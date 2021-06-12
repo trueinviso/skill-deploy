@@ -11,7 +11,8 @@ const Uploader = ({
   onChange,
   changeButtonText,
   uploadButtonText,
-  preview
+  preview,
+  filePath
 }) => {
   const isThumbnail = preview.includes("empty_photo_state_icon")
 
@@ -46,6 +47,7 @@ const Uploader = ({
             id="profileUploadPicker"
             accept="image/x-png,image/gif,image/jpeg"
             disabled={isProcessing}
+            value={filePath}
           />
           {buttonName}
         </label>
