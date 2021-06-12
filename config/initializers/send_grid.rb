@@ -1,12 +1,9 @@
 if (Rails.env.production? || Rails.env.staging?) && ENV["MAILTRAP_CATCH_MAIL"] != "true"
-  ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    user_name: "apikey",
-    password: ENV.fetch("SENDGRID_API_KEY"),
-    domain: "heyfam.com",
-    address: "smtp.sendgrid.net",
-    port: 587,
-    authentication: :plain,
-    enable_starttls_auto: true,
-  }
+  Rails.application.configure do
+    config.action_mailer.delivery_method = :sendgrid_actionmailer
+    config.action_mailer.sendgrid_actionmailer_settings = {
+      api_key: ENV["SENDGRID_WEB_API_KEY"],
+      raise_delivery_errors: false
+    }
+  end
 end

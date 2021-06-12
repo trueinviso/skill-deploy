@@ -4,6 +4,7 @@ import FavoriteJobIcon from "./FavoriteJobIcon"
 import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
 import checkIcon from "./../../../assets/font/icon/check.svg"
 import checkAppliedIcon from "./../../../assets/font/icon/check_applied.svg"
+import classnames from "classnames"
 
 const JobListItem = ({
   id,
@@ -12,7 +13,7 @@ const JobListItem = ({
   jobTypes,
   favorites,
   thumbnailUrl,
-  appliedFors,
+  appliedFors
 }) => {
   const thumbnailClass = () => {
     return emptyThumbnailIcon()
@@ -23,44 +24,46 @@ const JobListItem = ({
   const imageWrapperClass = () => {
     return emptyThumbnailIcon() ? "" : "employer-job-card__image--avatar"
   }
-
-  const emptyThumbnailIcon = () => {
-    return thumbnailUrl.includes("empty_photo_state_icon")
-  }
+  const isNoImg = thumbnailUrl.includes("empty_photo_state_icon")
 
   return (
     <a href={`/jobs/${id}`}>
-      <div className="job-card">
-        <div className={"employer-job-card__image " + imageWrapperClass()}>
-          <img src={thumbnailUrl} className={thumbnailClass()} alt="job-logo" />
+      <div className="job-card -with-favorite">
+        <div
+          className={classnames(
+            "job-card__image",
+            isNoImg ? "-empty" : "-present"
+          )}
+        >
+          {!isNoImg ? <img src={thumbnailUrl} alt="job-logo" /> : null}
         </div>
         <div className="job-card__favorite-check-container">
           <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
-        { appliedFors.includes(id) &&
-          <img src={checkAppliedIcon} alt="check-icon" />
-        }
+          {appliedFors.includes(id) && (
+            <img src={checkAppliedIcon} alt="check-icon" />
+          )}
         </div>
-        
-        <div className="job-card__details">
-          <div className="header job-card__header">{name}</div>
-          <div className="job-card__company-name">{companyName}</div>
+
+        <div className="job-card__header">
+          <div className="job-card__header__title">{name}</div>
+          <div className="job-card__header__sub-title">{companyName}</div>
         </div>
         <div className="job-card__types">
           {jobTypes.map(jobType => (
             <div
               key={jobType.id || jobType.name}
-              className="button button_theme_grey job-card__button"
+              className="job-card__type-mark -dark"
             >
               {jobType.name}
             </div>
           ))}
         </div>
-        { appliedFors.includes(id) &&
+        {appliedFors.includes(id) && (
           <div className="job-card__applied-state">
             <img src={checkIcon} alt="check-icon" />
             <div>Applied</div>
           </div>
-        }
+        )}
       </div>
     </a>
   )
@@ -82,6 +85,6 @@ JobListItem.propTypes = {
   updatedAt: string,
   userId: number,
   favorites: array,
-  appliedFors: array,
+  appliedFors: array
 }
 export default JobListItem

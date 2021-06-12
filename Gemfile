@@ -21,6 +21,7 @@ gem "omniauth-google-oauth2"
 gem "pundit"
 gem "react-rails"
 gem "roda"
+gem "sendgrid-actionmailer"
 gem "shrine"
 gem "unity", git: "https://github.com/trueinviso/unity.git"
 gem "webpacker", "~> 5.x"
@@ -58,7 +59,9 @@ gem "jbuilder", "~> 2.5"
 # gem 'capistrano-rails', group: :development
 gem "name_of_person"
 
+gem "sendgrid-ruby"
 gem "sentry-raven", "~> 2.6.0"
+gem "sidekiq"
 
 group :test do
   gem "factory_bot_rails"

@@ -2,6 +2,11 @@ import { string } from "prop-types"
 import React from "react"
 import Modal from "./shared/Modal"
 
+/**
+ * @deprecated better to use views/application/modals/send_message_modal
+ * @param {*} param0 
+ * @returns 
+ */
 const ApplyGig = ({ title, buttonTitle }) => {
   return (
     <Modal
@@ -15,11 +20,17 @@ const ApplyGig = ({ title, buttonTitle }) => {
       {({ onClose }) => (
         <React.Fragment>
           <div className="job__message-modal__content__close-button">
-            <button onClick={onClose} className="close-button -round -black">
-            </button>
+            <button
+              onClick={onClose}
+              className="close-button -round -black"
+            ></button>
           </div>
 
-          <form className="job__message-modal__content__form">
+          <form
+            action="/message"
+            method="post"
+            className="job__message-modal__content__form"
+          >
             <h1 className="job__message-modal__content__title">
               Send a message
             </h1>

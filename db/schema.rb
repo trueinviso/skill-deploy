@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_10_172127) do
+ActiveRecord::Schema.define(version: 2021_05_28_140633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -158,6 +158,16 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
     t.integer "status", default: 0
     t.string "location"
     t.index ["user_id"], name: "index_jobs_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "sender_id", null: false
+    t.bigint "recipient_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipient_id"], name: "index_messages_on_recipient_id"
+    t.index ["sender_id"], name: "index_messages_on_sender_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -410,6 +420,8 @@ ActiveRecord::Schema.define(version: 2021_05_10_172127) do
   add_foreign_key "employer_job_roles", "jobs"
   add_foreign_key "employer_job_types", "job_types"
   add_foreign_key "employer_job_types", "jobs"
+  add_foreign_key "messages", "users", column: "recipient_id"
+  add_foreign_key "messages", "users", column: "sender_id"
   add_foreign_key "taggings", "tags"
   add_foreign_key "user_job_experiences", "job_experiences"
   add_foreign_key "user_job_experiences", "users"

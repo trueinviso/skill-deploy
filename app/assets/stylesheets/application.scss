@@ -5,7 +5,6 @@
 @import "layout/navigation/nav";
 @import "layout/forms";
 @import "layout/sidebar";
-@import "layout/mobile_sidebar";
 @import "layout/background";
 
 // Pages
@@ -22,6 +21,7 @@
 @import "components/alert";
 @import "components/card-details";
 @import "components/card";
+@import "components/job-card";
 @import "components/checkbox";
 @import "components/modals/modal";
 @import "components/container";

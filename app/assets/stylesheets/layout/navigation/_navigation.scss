@@ -33,7 +33,15 @@
 }
 
 .nav__logo {
+  margin-left: 24px;
   display: none;
+
+  @include desktop-down {
+    &.home {
+      display: block !important;
+      margin-left: 17px;
+    }
+  }
 
   @include desktop-up {
     width: var(--sidebar-width);
@@ -80,9 +88,23 @@
     height: 100%;
     padding: 0 43px;
   }
+
+  @include desktop-down {
+    &.home {
+      grid-template-columns: 1fr;
+
+      & .nav__back-button {
+        display: none;
+      }
+
+      & .nav__page-title {
+        display: none;
+      }
+    }
+  }
 }
 
-.nav__burger-button {
+.nav__back-button {
   margin: auto 0 auto 17px;
 }
 

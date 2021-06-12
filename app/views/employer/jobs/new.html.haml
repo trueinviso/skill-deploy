@@ -1,4 +1,6 @@
-= render "form_errors", object: @job
+.listing-page__message-bar
+  = render "application/flash_messages", type: :page_message
+  = render "form_errors", object: @job
 
 .container.listing-page
   %h1.hidden-mobile Create a new listing
