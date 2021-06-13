@@ -9,7 +9,15 @@
     .header.job-card__header= job.name
     .job-card__company-name= job.company_name
   .job-card__types
+    - job.job_roles.each do |role|
+      .button.button_theme_grey.job-card__button
+        = role.name
     - job.job_types.each do |type|
       .button.button_theme_grey.job-card__button
         = type.name
-
+    - job.job_experiences.each do |experience|
+      .button.button_theme_grey.job-card__button
+        = experience.name    
+    - job.job_locations.each do |location|
+      .button.button_theme_grey.job-card__button
+        = location.name    

@@ -10,7 +10,10 @@ const JobListItem = ({
   id,
   companyName,
   name,
+  jobRoles,
   jobTypes,
+  jobExperiences,
+  jobLocations,
   favorites,
   thumbnailUrl,
   appliedFors
@@ -49,6 +52,14 @@ const JobListItem = ({
           <div className="job-card__header__sub-title">{companyName}</div>
         </div>
         <div className="job-card__types">
+          {jobRoles.map(jobRole => (
+            <div
+              key={jobRole.id || jobRole.name}
+              className="job-card__type-mark -dark"
+            >
+              {jobRole.name}
+            </div>
+          ))}
           {jobTypes.map(jobType => (
             <div
               key={jobType.id || jobType.name}
@@ -56,6 +67,22 @@ const JobListItem = ({
             >
               {jobType.name}
             </div>
+          ))}
+          {jobExperiences.map(jobExperience => (
+              <div
+                  key={jobExperience.id || jobExperience.name}
+                  className="job-card__type-mark -dark"
+              >
+                {jobExperience.name}
+              </div>
+          ))}
+          {jobLocations.map(jobLocation => (
+              <div
+                  key={jobLocation.id || jobLocation.name}
+                  className="job-card__type-mark -dark"
+              >
+                {jobLocation.name}
+              </div>
           ))}
         </div>
         {appliedFors.includes(id) && (
