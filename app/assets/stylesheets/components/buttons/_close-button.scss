@@ -13,7 +13,11 @@
   }
 
   &.-round {
-    border: 2px solid rgba($color-beige, 0.25);
-    border-radius: 100%;
+    @include desktop-up {
+      border: 2px solid rgba($color-beige, 0.25);
+      border-radius: 100%;
+      width: 49px;
+      height: 49px;
+    }
   }
 }

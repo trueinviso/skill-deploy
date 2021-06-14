@@ -34,7 +34,7 @@ RSpec.feature "Create user profile", type: :feature do
       expect(page).to have_text("Field is required.")
     end
 
-    scenario "save for later" do
+    scenario "save for draft" do
       run_fixtures("tags|job_roles|job_type|job_experiences|job_locations")
       sign_in(user_profile.user)
       visit join_us_path
@@ -48,7 +48,7 @@ RSpec.feature "Create user profile", type: :feature do
       find("span", text: "Mid-level").click
       find("span", text: "Part Time").click
       find("#rate-range").click.find("#react-select-2-option-0").click
-      click_on("Save for later")
+      click_on("Save for Draft")
       expect(page).to have_text("Your profile is draft now")
     end
   end

@@ -23,12 +23,26 @@
     @extend %flex-row-space-between;
   }
 
-  &.-padding-x {
-    padding: 0 17px 0 17px;
-  }
-
   &.-no-logged-in {
     justify-content: space-between;
+  }
+
+  &.job-listing-header {job
+    @include desktop-up {
+      display: grid;
+      grid-template-columns: 92px auto 60px auto 1fr auto 97px;
+    }
+    @include desktop-down {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+  }
+
+  & .gap {
+    @include desktop-down {
+      display: none;
+    }
   }
 }
 
