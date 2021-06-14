@@ -5,8 +5,14 @@
     .job-card__header__sub-title= job.company_name
 
   .job-card__types
+    - job.job_roles.each do |role|
+      .job-card__type-mark= role.name
     - job.job_types.each do |type|
       .job-card__type-mark= type.name
+    - job.job_experiences.each do |experience|
+      .job-card__type-mark= experience.name
+    - job.job_locations.each do |location|
+      .job-card__type-mark= location.name     
 
 
   .job-card__actions

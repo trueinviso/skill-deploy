@@ -35,6 +35,8 @@
       %button.button.button_theme_grey.job__tags__button
         = job.job_types.first&.name
       %button.button.button_theme_grey.job__tags__button
+        = job.job_experiences.first&.name  
+      %button.button.button_theme_grey.job__tags__button
         = job.job_locations.first&.name
         - if job.location
           %button.button.button_theme_grey.job__tags__button
