@@ -14,11 +14,7 @@
             .close-button.-round.-black{ "aria-label": "back", role: "button" }
         %div.gap
         - if employer_preview_job_path?
-          .nav__page-title.hide-flex-desktop-down
-            %p
-              = @title
-        - else 
-          .nav__page-title
+          .nav__page-title{ class: (employer_preview_job_path? ? ".hide-flex-desktop-down" : nil )}
             %p
               = @title
         %div.gap
