@@ -13,10 +13,9 @@
           = link_to main_app.employer_jobs_path do
             .close-button.-round.-black{ "aria-label": "back", role: "button" }
         %div.gap
-        - if employer_preview_job_path?
-          .nav__page-title{ class: (employer_preview_job_path? ? ".hide-flex-desktop-down" : nil )}
-            %p
-              = @title
+        .nav__page-title{ class: (employer_preview_job_path? ? ".hide-flex-desktop-down" : nil )}
+          %p
+            = @title
         %div.gap
         %div
           - if create_listing_page?
