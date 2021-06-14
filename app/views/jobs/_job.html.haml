@@ -11,11 +11,11 @@
     .job__button_group
       - if current_user.talent?
         = link_to  applied_fors_path(job_id: @job.id), method: :post do
-          %span.button.button_theme_primary
-            Apply for this gig
+          %span.button
+            Apply now
       - else
-        %span.button.button_theme_primary.-disabled
-          Apply for this gig
+        %span.button.-disabled
+          Apply now
       %a{ href: job.company_website }
         %span.button.button_theme_white
           Website
@@ -44,13 +44,13 @@
 
     %hr.hidden-desktop
     %h3.job__description__header
-      About the gig
+      Job Description
     .job__description
       = job.description
     - if current_user.talent?
       = link_to  applied_fors_path(job_id: @job.id), method: :post do
-        %span.button.button_theme_primary.job__button
-          Apply for this gig
+        %span.button.job__button
+          Apply now
     - else
-      %span.button.button_theme_primary.job__button.-disabled
-        Apply for this gig
+      %span.button.job__button.-disabled
+        Apply now

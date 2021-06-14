@@ -1,12 +1,23 @@
 %header
   %nav.nav
     .nav__container
-      .nav__content.-between.-padding-x
-        = link_to main_app.employer_jobs_path do
-          .close-button.-round.-black{ "aria-label": "back", role: "button" }
-        .nav__page-title
-          %p
-            Create New Listing  
+      .nav__content.job-listing-header
+        %div.gap
+        - if create_listing_page?
+          = link_to main_app.employer_jobs_path do
+            .close-button.-round.-black{ "aria-label": "back", role: "button" }
+        - elsif current_page?(employer_preview_job_path)
+          = link_to request.referer.present? ? request.referer : main_app.employer_jobs_path do
+            .back-button.-round.-black{ "aria-label": "back", role: "button" }
+        - else
+          = link_to main_app.employer_jobs_path do
+            .close-button.-round.-black{ "aria-label": "back", role: "button" }
+        %div.gap
+        - if employer_preview_job_path?
+          .nav__page-title{ class: (employer_preview_job_path? ? ".hide-flex-desktop-down" : nil )}
+            %p
+              = @title
+        %div.gap
         %div
           - if create_listing_page?
             %button.button.-outline-dark.-medium.hidden-mobile{ form: "new-listing-form", type: "submit" } Preview listing
@@ -17,7 +28,7 @@
           - if employer_preview_job_path?
             .nav__actions
               - if @job.status != :published
-                = link_to "Save for later",
+                = link_to "Save for Draft",
                   employer_job_preview_path(@job),
                   method: :put,
                   class: "button -outline-dark"
@@ -25,3 +36,4 @@
                   employer_job_posting_path(@job),
                   method: :put,
                   class: "button"
+        %div.gap

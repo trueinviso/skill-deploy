@@ -1,3 +1,6 @@
 .bg-secondary {
   background-color: var(--secondary-bg-color);
+  @include desktop-down {
+    background-color: $color-white;
+  }
 }
