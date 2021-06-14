@@ -27,7 +27,7 @@
     justify-content: space-between;
   }
 
-  &.job-listing-header {job
+  &.job-listing-header {
     @include desktop-up {
       display: grid;
       grid-template-columns: 92px auto 60px auto 1fr auto 97px;
