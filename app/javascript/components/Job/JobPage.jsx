@@ -53,7 +53,7 @@ class JobPage extends PureComponent {
               updateFilters={this.updateFilters}
           />
         </div>
-        <div className={`job-list__desktop-container ${'scrollable'}`}>
+        <div className={`jobs-list__container ${'scrollable'}`}>
           <div className="jobs-list">
             <JobList jobs={jobs} favorites={favorites} appliedFors={appliedFors} />
           </div>
