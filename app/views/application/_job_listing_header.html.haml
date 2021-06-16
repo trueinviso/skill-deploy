@@ -18,7 +18,7 @@
             %button.button.-outline-dark.-medium.hidden-desktop{ form: "edit-listing-form", type: "submit" } Preview
           - if employer_preview_job_path?
             .nav__actions
-              - if @job.status != :published
+              - if !@job.published?
                 = link_to "Save for Draft",
                   employer_job_preview_path(@job),
                   method: :put,
