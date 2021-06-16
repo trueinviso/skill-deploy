@@ -4,7 +4,7 @@ module Protocols
 
     def call(user)
       user.pending_talent? ||
-        employer_without_profile?(user)
+        user.employer_only?
     end
 
     private
