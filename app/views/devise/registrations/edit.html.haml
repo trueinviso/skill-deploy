@@ -24,14 +24,18 @@
               placeholder: "********************",
               class: "form--input -text-black"
           .form--field
+            .button.profile-settings__form__change-password.-transparent.-danger#change-password Change password
             = f.label :current_password,
-              "Current password",
-              class: "form--label -black -required"
+              "New password",
+              class: "form--label -black -required hidden",
+              id: "new-password-label"
             = f.password_field :current_password,
               placeholder: "********************",
-              class: "form--input -text-black"
-            = f.submit "Update password",
-              class: "profile-settings__form__submit button -transparent -danger"
+              class: "form--input -text-black hidden",
+              id: "new-password-field"
+          = f.submit "Save new password",
+            class: "profile-settings__form__submit button hidden",
+            id: "save-new-password"
       %section
         %h1.profile-settings__sub-heading Notifications
         = form_for(current_user.user_profile,

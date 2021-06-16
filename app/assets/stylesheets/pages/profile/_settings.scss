@@ -2,6 +2,7 @@
   &__sub-heading {
     font-size: 22px;
     line-height: 30px;
+    margin-top: 119px;
   }
 
   &__content {
@@ -15,10 +16,17 @@
       margin-bottom: 34px;
     }
 
-    &__submit {
+    &__change-password {
+      text-align: left;
+      width: 120px;
       line-height: 30px !important;
       margin-top: 14px;
-      max-width: 120px;
+      padding: 0 !important;
+    }
+
+    &__submit {
+      line-height: 30px !important;
+      width: 172px;
       padding: 0 !important;
       text-align: left;
     }
