@@ -6,7 +6,11 @@
   }
 
   &__content {
-    max-width: 335px;
+    width: 335px;
+
+    @include desktop-down {
+      width: 100%;
+    }
   }
 
   &__form {
@@ -43,5 +47,9 @@
 
 .profile-settings__close-account {
   margin-top: 117px;
-  max-width: 172px;
+  width: 172px;
+
+  @include desktop-down {
+    width: 100%;
+  }
 }
