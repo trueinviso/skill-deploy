@@ -58,6 +58,9 @@
   }
 
   @include desktop-up {
+    background-color: var(--sidenav-bg-color);
+    border-bottom: 1px solid var(--tertiary-color);
+    border-right: 1px solid var(--tertiary-color);
     width: var(--sidebar-width);
     height: 100%;
     display: flex;;

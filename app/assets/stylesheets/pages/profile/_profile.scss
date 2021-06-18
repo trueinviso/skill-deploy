@@ -1,6 +1,4 @@
 .profile {
-  background: #FFFFFF;
-
   &__form {
     @include desktop-up {
       max-width: 696px;

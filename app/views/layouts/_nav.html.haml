@@ -15,7 +15,7 @@
               .back-button#back-button
             .nav__page-title
               %p
-                = @title || "Hey Fam!"
+                = @title
             = render "layouts/nav_links"
       - elsif %w(registrations).include?(controller_name)
         %p.nav__sign-out-text.text.-base.hide-flex-desktop-down

@@ -3,8 +3,8 @@ module Protocols
     extend self
 
     def call(user)
-      user.pending_talent? ||
-        user.employer_only?
+      user.user_profile&.draft? ||
+        (user.employer_only? && user.user_profile&.draft?)
     end
   end
 end

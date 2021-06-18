@@ -1,4 +1,8 @@
 .job-listing {
+  @include desktop-down {
+    background-color: var(--primary-color);
+  }
+
   .subscription__paymemnt__form {
     margin-top: 0;
   }
@@ -16,9 +20,10 @@
   flex-direction: column;
   @include desktop-up {
     display: grid;
-    grid-gap: 102px;
-    grid-template-columns: 387px 370px;
+    grid-gap: 20px;
+    grid-template-columns: 50% 50%;
     justify-content: space-between;
+    max-width: 1039px;
     padding-left: 59px;
     padding-right: 51px;
   }
