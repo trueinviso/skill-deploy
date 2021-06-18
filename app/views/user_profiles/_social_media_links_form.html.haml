@@ -10,7 +10,8 @@
       = p.text_field :website,
         "data-validate-rule":"url",
         class: "form--input",
-        id: "user-website"
+        id: "user-website",
+        maxLength: "200"
 
     .form--field
       = p.label :twitter,
@@ -19,7 +20,8 @@
       = p.text_field :twitter,
         "data-validate-rule":"url",
         class: "form--input",
-        id: "user-twitter"
+        id: "user-twitter",
+        maxLength: "200"
 
     .form--field
       = p.label :facebook,
@@ -28,7 +30,8 @@
       = p.text_field :facebook,
         "data-validate-rule":"url",
         class: "form--input",
-        id: "user-facebook"
+        id: "user-facebook",
+        maxLength: "200"
 
     .form--field
       = p.label :instagram,
@@ -37,6 +40,5 @@
       = p.text_field :instagram,
         "data-validate-rule":"url",
         class: "form--input",
-        id: "user-instagram"
-
-    
+        id: "user-instagram",
+        maxLength: "200"

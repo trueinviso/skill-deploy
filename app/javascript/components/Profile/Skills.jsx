@@ -25,6 +25,10 @@ class Skills extends PureComponent {
         ...config,
         items: this.props.initialSkills
       })
+      const inputElements = document.getElementsByClassName('choices__input')
+      for (let i = 0; i < inputElements.length; i++) {
+        inputElements[i].maxLength = "50"
+      }
     }
   }
 
@@ -46,6 +50,7 @@ class Skills extends PureComponent {
           type="text"
           ref={this.ref}
           name="user[skills]"
+          maxLength="10"
         />
         <span className="choices__helper-text">
           Add up to 15 skills to display on your profile. Hit enter after each

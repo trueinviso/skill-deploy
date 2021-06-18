@@ -7,6 +7,7 @@
         class: "form--label -black -required"
       = p.text_field :first_name,
         "data-required":true,
+        maxlength: "50",
         class: "form--input",
         placeholder: "Add..."
     .form--field
@@ -15,6 +16,7 @@
         class: "form--label -black -required"
       = p.text_field :last_name,
         "data-required":true,
+        maxlength: "50",
         class: "form--input"
     .form--field.profile__form__field.-full
       = p.label :headline,
@@ -22,6 +24,7 @@
         class: "form--label -black"
       = p.text_field :headline,
         class: "form--input",
+        maxlength: "20",
         placeholder:"Add..."
     .form--field.profile__form__field.-full.-editor
       = p.label :bio,
@@ -29,6 +32,7 @@
         class: "form--label -black -required"
       = p.rich_text_area :bio,
         "data-required":true,
+        maxlength: "2000",
         class: "form--textbox"
     .form--field.profile__form__field.-full
       = p.label :location,
@@ -36,4 +40,6 @@
         class: "form--label -black -required"
       = p.text_field :location,
         "data-required":true,
-        class: "form--input"
+        maxlength: "50",
+        class: "form--input",
+        placeholder: "Add..."

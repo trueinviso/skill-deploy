@@ -1,5 +1,11 @@
 .profile {
+  background: #FFFFFF;
+
   &__form {
+    @include desktop-up {
+      max-width: 696px;
+    }
+
     section {
       &:not(:last-child) {
         margin-bottom: 98px;
