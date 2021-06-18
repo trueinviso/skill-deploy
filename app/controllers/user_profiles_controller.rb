@@ -82,7 +82,7 @@ class UserProfilesController < ApplicationController
   end
 
   def skills_to_array(params)
-    params[:skills] = params[:skills].split(",")
+    params[:skills] = params[:skills]&.split(",")
     params
   end
 end
