@@ -5,15 +5,14 @@
   margin-bottom: 50px;
 
   @media only screen and (min-width: $breakpoint-medium) {
-    margin-top: 15px;
-    position: relative;
+    margin-top: 80px;
     top: -67px;
     display: grid;
     grid-template-columns: 400px 1fr;
     grid-gap: 27px;
     align-items: flex-start;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 95px;
+    padding-right: 92px;
     margin-left: 0;
     margin-right: 0;
   }

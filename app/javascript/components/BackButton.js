@@ -17,14 +17,15 @@ function backButton() {
     }
   }
 
-  const removeBackButtonEvent =  attachEvent(
-    'click',
-    handleBackButton,
-    backButton
-  )
-  
-  return function cleanup() {
-    removeBackButtonEvent()
+  if (backButton) {
+    const removeBackButtonEvent =  attachEvent(
+      'click',
+      handleBackButton,
+      backButton
+    )
+    return function cleanup() {
+      removeBackButtonEvent()
+    }
   }
 }
 
