@@ -71,6 +71,7 @@ const ExperienceItem = ({
         id={getId(index, "name")}
         onChange={onChange(index, 'title')}
         value={field["title"]}
+        maxLength="50"
       />
 
       <FormField
@@ -82,6 +83,7 @@ const ExperienceItem = ({
         id={getId(index, "company")}
         onChange={onChange(index, 'company')}
         value={field["company"]}
+        maxLength="50"
       />
 
       <div className="registration-page__work-experiences--inline">

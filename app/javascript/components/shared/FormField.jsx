@@ -12,7 +12,8 @@ const FormField = ({
   children,
   onChange,
   value,
-  defaultValue
+  defaultValue,
+  maxLength
 }) => (
   <div className={containerClassName}>
     <label htmlFor={id} className={labelClassName}>
@@ -27,6 +28,7 @@ const FormField = ({
       id={id}
       value={value}
       defaultValue={defaultValue}
+      maxLength={maxLength}
     />
     {children}
   </div>
@@ -43,7 +45,8 @@ FormField.propTypes = {
   children: PropTypes.node,
   onChange: PropTypes.func,
   value: PropTypes.string,
-  defaultValue: PropTypes.string
+  defaultValue: PropTypes.string,
+  maxLength: PropTypes.string
 }
 
 FormField.defaultProps = {
