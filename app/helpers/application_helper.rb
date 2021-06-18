@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def job_page?
+    controller_path == "jobs" && action_name == "show"
+  end
+  
   def employer_jobs_page?
     current_page?(main_app.employer_jobs_path)
   end
@@ -53,6 +57,10 @@ module ApplicationHelper
 
   def employer_preview_job_path?
     controller_path == "employer/preview/jobs" && action_name == "show"
+  end
+
+  def edit_employer_job_path?
+    controller_path == "employer/jobs" && action_name == "edit"
   end
 
   def subscription_page?
