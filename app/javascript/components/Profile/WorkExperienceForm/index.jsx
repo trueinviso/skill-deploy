@@ -2,6 +2,7 @@ import PropTypes from "prop-types"
 import React, { PureComponent, Fragment } from "react"
 import getUniqKey from "./../../../helpers/genUniqKey"
 import ExperienceItem from "./ExperienceItem"
+import styles from "./styles.module.scss"
 
 const ExperiencePropTypes = {
   company: PropTypes.string,
@@ -103,8 +104,9 @@ class WorkExperienceForm extends PureComponent {
           />
         ))}
         <div className="form--field">
-          <button className="button" onClick={this.onAddNewField}>
-            Add more experience
+          <button className={styles.button} onClick={this.onAddNewField}>
+            <i className={styles.icon} />
+            Add another role
           </button>
         </div>
       </Fragment>

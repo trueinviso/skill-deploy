@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import DatePicker from "./../../DatePickerDropdown"
 import FormField from "./../../shared/FormField"
+import styles from "./styles.module.scss"
 
 const ExperienceItem = ({
   index,
@@ -116,17 +117,16 @@ const ExperienceItem = ({
             id={getId(index, "current_role")}
             checked={field["current_role"]}
           />
-          <label className="radio-label" htmlFor={getId(index, "current_role")}>
+          <label className="radio-label current-role" htmlFor={getId(index, "current_role")}>
             Current role
           </label>
+          <button
+            onClick={onRemoveItem}
+            className={styles.deleteButton}
+          >
+          </button>
         </div>
       </div>
-      <button
-        onClick={onRemoveItem}
-        className="button button--danger registrations-edit__input"
-      >
-        Remove
-      </button>
     </div>
   )
 }
