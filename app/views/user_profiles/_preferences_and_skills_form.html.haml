@@ -14,7 +14,7 @@
           = jr.label
 
   .profile__form__skills
-    = form.label :job_role_ids, "Type of skills*", class: "form--label -black -required"
+    = form.label :job_role_ids, "Type of skills", class: "form--label -black -required"
     .form--radio-list.profile__form__skills__list
       = form.collection_radio_buttons(:job_role_ids,
         JobRole.all,
@@ -37,7 +37,7 @@
           = jt.radio_button({ "data-required":true, "data-validation-message": "At least one is required.", "data-value": current_user.job_experiences.first&.id  })
           = jt.label
   .profile__form__skills
-    = form.label :job_types, "What type(s) of work are you interested in?", class: "form--label -black"
+    = form.label :job_types, "What type(s) of work are you interested in?", class: "form--label -black -required"
     .form--radio-list.profile__form__skills__list
       = form.collection_radio_buttons(:job_type_ids,
         JobType.all,
@@ -47,7 +47,7 @@
         %span.form--radio-button
           = jt.radio_button({ "data-required":true, "data-validation-message": "At least one is required.", "data-value": current_user.job_types.first&.id  })
           = jt.label(class: "form--radio-button")
-  .profile__form__rate      
+  .profile__form__rate
     %span.form--label.-black What’s your rate range?*
     = react_component("RateRange", options: rate_range_options, name: "user[rate_range_id]", default_value: current_user&.rate_range_id, 'data-required': true )
   = render "skills_form", form: form

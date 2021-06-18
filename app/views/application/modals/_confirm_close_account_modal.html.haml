@@ -11,10 +11,10 @@
           %h2.modal__title#confirm-close-account-modal-title
             Are you sure you want to close your account?
           %p.text.-meta.modal__description
-            As a reminder, by closing your account, you will lose access for all your job listings.
+            As a reminder, by closing your account, you will lose access to all your job listings.
             Are you sure you want to lose access?
           .modal__button-row
             %button.modal__button.button{ data: { "micromodal-close": "" } }
-              Yes, Close
+              = link_to "Yes, Close.", registration_path(current_user), method: :delete
             %button.modal__button.button.-outline{ data: { "micromodal-close": "" } }
               Go Back
