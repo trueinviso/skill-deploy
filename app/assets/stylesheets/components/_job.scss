@@ -236,8 +236,6 @@
         width: 100%;
 
         button {
-          float: right;
-
           @include desktop {
             max-width: 187px;
           }
