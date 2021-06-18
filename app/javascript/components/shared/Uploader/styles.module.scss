@@ -4,10 +4,6 @@
   display: grid;
   grid-gap: 26px;
   grid-template-columns: 100px 176px;
-  margin-top: 50px;
-  @include desktop-down {
-    margin-top: 0;
-  }
 }
 
 .thumbnailContainer {
