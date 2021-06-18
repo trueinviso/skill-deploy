@@ -48,9 +48,10 @@
 
 .nav__logo {
   margin-left: 24px;
-  display: none;
 
   @include desktop-down {
+    margin-left: 24px;
+
     &.home {
       display: block !important;
       margin-left: 17px;
@@ -67,10 +68,6 @@
     }
   }
 
-  @include mq($breakpoint-mobile + 1, max) {
-    margin-left: auto;
-  }
-
   @include desktop-up {
     margin-left: 0;
     margin-right: 0;
@@ -80,6 +77,26 @@
         margin-right: 31px;
       }
     }
+  }
+}
+
+.nav__sign-out-button {
+  font-size: 14px;
+  font-weight: var(--font-medium);
+
+  @include desktop-up {
+    margin-left: auto;
+    margin-right: 104px;
+    font-size: 14px;
+  }
+
+  @include desktop-down {
+    margin-left: auto;
+    margin-right: 9px;
+  }
+
+  @include tablet-down {
+    font-size: 12px;
   }
 }
 
