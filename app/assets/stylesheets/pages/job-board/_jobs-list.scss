@@ -1,3 +1,13 @@
+.jobs-list {
+  &__container {
+    margin: 10px auto 79px auto;
+
+    @include desktop-down {
+      margin: 17px auto 79px auto;
+    }
+  }
+}
+
 .jobs-list__filters-container {
   display: grid;
   display: -ms-grid;
@@ -23,11 +33,13 @@
   border-radius: 10px;
 
   @include desktop-down {
-    width: 100vw;
     -ms-grid-columns: 197px 1fr;
     -ms-grid-rows: 79px 1px 79px;
     grid-template-columns: 197px 1fr;
     grid-template-rows: 79px 1px 79px;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0;
   }
 }
 
