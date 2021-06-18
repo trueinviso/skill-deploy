@@ -8,7 +8,7 @@ function changePassword() {
     const newPasswordField = document.getElementById('new-password-field')
     const saveNewPasswordButton = document.getElementById('save-new-password')
 
-    if (newPasswordField && newPasswordField) {
+    if (newPasswordField && newPasswordLabel) {
       newPasswordLabel.classList.toggle('hidden')
       newPasswordField.classList.toggle('hidden')
       changePasswordButton.classList.toggle('hidden')
