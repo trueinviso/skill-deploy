@@ -12,7 +12,7 @@ module Api
 
       def serialize_applicants
         ApplicantsSerializer
-          .new(applicants)
+          .new(applicants, { params: { job: job, context: self } })
           .serializable_hash
           .to_json
       end

@@ -13,7 +13,7 @@ const Applicants = ({ apiPath, profilePath }) => {
         <Applicant
           key={applicant.id}
           {...applicant}
-          profilePath={profilePath.replace("id", applicant.id)}
+          profilePath={applicant.links.profile_url}
         />
       ))}
     </div>
