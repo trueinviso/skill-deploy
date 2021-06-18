@@ -66,10 +66,13 @@
       }
 
       &--fourth {
-        width: 25%;
+        .current-role {
+          width: 100%;
+          font-size: 12px;
+        }
+
         &:not(:last-child) {
           margin-right: 10px;
-          // padding-right: 10px;
         }
       }
 

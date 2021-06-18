@@ -2,31 +2,23 @@
   %nav.nav
     .nav__container
       .nav__content.job-listing-header
-        %div.gap
-        - if create_listing_page?
-          = link_to main_app.employer_jobs_path do
-            .close-button.-round.-black{ "aria-label": "back", role: "button" }
-        - elsif current_page?(employer_preview_job_path)
-          = link_to request.referer.present? ? request.referer : main_app.employer_jobs_path do
-            .back-button.-round.-black{ "aria-label": "back", role: "button" }
-        - else
-          = link_to main_app.employer_jobs_path do
-            .close-button.-round.-black{ "aria-label": "back", role: "button" }
-        %div.gap
+        .gap
+        = render_job_back_button
+        .gap
         .nav__page-title{ class: (employer_preview_job_path? ? ".hide-flex-desktop-down" : nil )}
           %p
             = @title
-        %div.gap
+        .gap
         %div
           - if create_listing_page?
             %button.button.-outline-dark.-medium.hidden-mobile{ form: "new-listing-form", type: "submit" } Preview listing
             %button.button.-outline-dark.-medium.hidden-desktop{ form: "new-listing-form", type: "submit" } Preview
-          - elsif current_page?(edit_employer_job_path)
+          - elsif edit_employer_job_path?
             %button.button.-outline-dark.-medium.hidden-mobile{ form: "edit-listing-form", type: "submit" } Preview listing
             %button.button.-outline-dark.-medium.hidden-desktop{ form: "edit-listing-form", type: "submit" } Preview
           - if employer_preview_job_path?
             .nav__actions
-              - if @job.status != :published
+              - if !@job.published?
                 = link_to "Save for Draft",
                   employer_job_preview_path(@job),
                   method: :put,
@@ -35,4 +27,17 @@
                   employer_job_posting_path(@job),
                   method: :put,
                   class: "button"
-        %div.gap
+          - elsif job_page?
+            .nav__actions
+              - if !@view_component.favorites.include?(@job.id)
+                %button{ class: "button -outline-dark", id: "favorite-job-button", value: @job.id } Save listing
+              - else
+                %div
+              - if current_user.talent?
+                = link_to  applied_fors_path(job_id: @job.id), method: :post do
+                  %span.button
+                    Apply now
+              - else
+                %span.button.-disabled
+                  Apply now
+        .gap

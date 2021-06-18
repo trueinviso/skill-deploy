@@ -7,6 +7,8 @@ import formValidator from "~/components/form-validator/form-validator"
 import form from "~/components/form"
 import modal from "~/components/microModal"
 import backButton from "~/components/BackButton"
+import changePassword from "~/components/change_password"
+import favoriteJob from "~/components/favorite_job"
 Turbolinks.start()
 window.Turbolinks = Turbolinks
 ReactRailsUJS.detectEvents() // Must be called _after_ turbolinks starts
@@ -16,3 +18,5 @@ onEachTurbolinksPage(formValidator)
 onEachTurbolinksPage(form)
 onEachTurbolinksPage(modal)
 onEachTurbolinksPage(backButton)
+onEachTurbolinksPage(changePassword)
+onEachTurbolinksPage(favoriteJob)
