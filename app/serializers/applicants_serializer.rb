@@ -12,7 +12,8 @@ class ApplicantsSerializer
 
   attributes :avatar_url, &:thumbnail_url
 
-  link :profile_url do |object|
-    # need 203 PR for this link/route
+  link :profile_url do |object, params|
+    params[:context]
+      .employer_applied_for_path(object.applied_for.find_by(job_id: params[:job].id))
   end
 end
