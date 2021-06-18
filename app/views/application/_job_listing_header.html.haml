@@ -40,4 +40,6 @@
               - else
                 %span.button.-disabled
                   Apply now
+          - elsif current_page?(employer_user_profile_path)
+            %button.button.-medium{ data:{ "micromodal-trigger": "send-message-modal" }} Send a message
         .gap

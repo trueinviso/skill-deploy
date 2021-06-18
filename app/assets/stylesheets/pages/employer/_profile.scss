@@ -2,7 +2,7 @@
   padding-top: 68px;
   background-color: white;
 
-  @include tablet-up {
+  @include desktop-up {
     padding-top: 0px;
     grid-template-columns: auto;
 
@@ -16,7 +16,7 @@
   }
 
   &__wrapper {
-    @include tablet-up {
+    @include desktop-up {
       display: flex;
       justify-content: center;
       margin-right: 0;
@@ -24,11 +24,12 @@
       margin-bottom: 50px;
       position: relative;
       top: -150px;
+      max-width: 100%;
     }
   }
 
   &__right-section {
-    @include tablet-up {
+    @include desktop-up {
       width: 60%;
       max-width: 800px;
       border-radius: 6px;
@@ -43,7 +44,7 @@
     align-items: center;
     text-align: center;
 
-    @include tablet-up {
+    @include desktop-up {
       margin-right: 27px;
       width: 28%;
       max-width: 400px;
@@ -58,7 +59,7 @@
     padding-right: 24px;
     background-color: white;
 
-    @include tablet-up {
+    @include desktop-up {
       &:not(:last-child) > .employer-profile__details-wrapper {
         border-bottom: 1px solid var(--border-color);
       }
@@ -112,7 +113,7 @@
     margin-bottom: 20px;
     overflow: hidden;
 
-    @include tablet-up {
+    @include desktop-up {
       margin-top: 40px;
     }
   }
