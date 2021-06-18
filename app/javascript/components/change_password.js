@@ -3,6 +3,8 @@ import attachEvent from "~/helpers/attachEvent";
 function changePassword() {
   const changePasswordButton = document.getElementById('change-password')
 
+  if (!changePasswordButton) return;
+
   const handleChangePassword = () => {
     const newPasswordLabel = document.getElementById('new-password-label')
     const newPasswordField = document.getElementById('new-password-field')

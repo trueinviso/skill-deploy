@@ -69,7 +69,6 @@
 
     &__desc {
       max-width: 255px;
-      font-family: Averta;
       color: $color-brown-grey;
       font-weight: normal;
       font-style: normal;
@@ -134,20 +133,25 @@
   &__cancel-modal {
     &__content {
       margin: auto;
-      max-width: 500px;
+      max-width: 546px;
       background: $color-white;
-      border-radius: 6px;
-      padding: 50px;
-      font-family: Averta;
+      border-radius: 12px;
+      padding: 24px 90px 97px 90px;
+
+      @media only screen and (max-width: 1069px) {
+        padding: 15px 10px 150px 10px;
+      }
 
       hr {
         margin: 20px 0;
       }
 
-      .close-icon {
+      .close-button {
         position: absolute;
-        top: 0;
-        right: 0;
+        margin-left: 102%;
+        @media only screen and (max-width: 1069px) {
+          margin-left: 90%;
+        }
       }
 
       &__header {
@@ -158,19 +162,58 @@
         justify-items: baseline;
         height: 50px;
 
-        &__title {
-          align-self: flex-end;
-          font-size: $font-size-xlarge;
-          margin: 0;
-        }
       }
+
+      &__text {
+        text-align: center;
+        font-size: var(--font-size-normal);
+        line-height: 21px;
+        font-weight: var(--font-regular);
+        max-width: 78%;
+      }
+
+      &__title {
+        font-size: var(--font-size-xxlarge);
+        text-align: center;
+        line-height: 34px;
+        margin-bottom: 16px;
+      }
+
       &__footer {
         margin-top: 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        grid-gap: 20px;
+        display: flex;
+        justify-content: center;
+
+        @media only screen and (max-width: 1069px) {
+          flex-direction: column;
+        }
+
+        .button {
+          font-size: var(--font-size-small);
+          max-width: 150px;
+
+          @media only screen and (max-width: 1069px) {
+            max-width: none;
+            margin-bottom: 10px;
+          }
+        }
+
+        .button:first-of-type {
+          background: $color-white;
+          border: 1px solid var(--checkbox-border);
+          color: #000000;
+          margin-right: 13px;
+        }
       }
     }
+
+    &__content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 53px;
+    }
+
     &__overlay {
       position: fixed;
       top: 0px;

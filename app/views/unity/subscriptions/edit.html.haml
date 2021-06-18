@@ -13,7 +13,7 @@
         %div
           %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
           %span.subscription__details__price $#{view_component.price}/mo
-        %p.subscription__details__desc Post unlimited projects on the Gig board every month. Cancel anytime.
+        %p.subscription__details__desc Post unlimited projects or listings on the job board every month.  Cancel any time.
         - if view_component.subscription.canceled_at.present?
           %div
             %span.renewal-message.expiration-date  Expires on
@@ -22,12 +22,6 @@
         %div
           %h3.subscription__details__name Total subscription
           %span.subscription__details__price $#{view_component.price}/mo
-        %hr
-        - if view_component.subscription
-          %div
-            %span Cancel your subscription
-            = react_component("Subscription/CancelSubscriptionModal", { apiPath: subscription_delete_path })
-
 
       %h3.subscription--edit__heading Payment details
       .subscription__card-summary.-outline#cardSummary
@@ -49,6 +43,6 @@
             = f.submit "Update Payment Method",
               data: { disable_with: "Please wait..." },
               class: "button button_theme_white update-button"
-      %button.button.-outline.subscription__cancel-subscription
-        Cancel subscription
+        - if view_component.subscription.present?
+          = react_component("CancelSubscriptionModal", { apiPath: subscription_delete_path })
 

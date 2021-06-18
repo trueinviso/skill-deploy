@@ -7,7 +7,7 @@
     = link_to manage_listing_path,
       class: "sidebar__nav__menu__item__link" do
       Manage Listings
-      - if current_user.talent? || current_page?(new_user_profile_path)
+      - if !current_user.paying_subscriber? || current_page?(new_user_profile_path)
         %span.label.-danger.sidebar__nav__upgrade Upgrade
   - if !current_page?(new_user_profile_path)
     %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
