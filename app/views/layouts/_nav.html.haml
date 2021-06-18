@@ -7,7 +7,7 @@
       - if !current_user.blank?
         - if current_page?(main_app.join_us_path)
           %div.nav__sign-out-button
-            = link_to "Sign Out",
+            = link_to "Sign out",
             main_app.destroy_user_session_path
         - else
           %div.nav__right
