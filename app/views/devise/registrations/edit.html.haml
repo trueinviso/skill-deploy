@@ -17,19 +17,19 @@
             = f.email_field :email,
               class: "form--input -text-black"
           .form--field
-            = f.label :password,
+            = f.label :current_password,
               "Password",
               class: "form--label -black -required"
-            = f.password_field :password,
+            = f.password_field :current_password,
               placeholder: "********************",
               class: "form--input -text-black"
           .form--field
-            .button.profile-settings__form__change-password.-transparent.-danger#change-password Change password
-            = f.label :current_password,
+            .profile-settings__form__change-password.-transparent.-danger#change-password Change password
+            = f.label :password,
               "New password",
               class: "form--label -black -required hidden",
               id: "new-password-label"
-            = f.password_field :current_password,
+            = f.password_field :password,
               placeholder: "********************",
               class: "form--input -text-black hidden",
               id: "new-password-field"

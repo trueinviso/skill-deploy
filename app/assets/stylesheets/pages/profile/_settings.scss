@@ -21,11 +21,20 @@
     }
 
     &__change-password {
+      --button-font-size: 12px;
+
+      @include desktop-up {
+        --button-font-size: 14px;
+      }
+
       text-align: left;
-      width: 120px;
-      line-height: 30px !important;
-      margin-top: 14px;
-      padding: 0 !important;
+      line-height: 30px;
+      padding: 0;
+      color: var(--danger-color);
+      cursor: pointer;
+      font-family: "neue-haas-grotesk-text", sans-serif;
+      font-size: var(--button-font-size);
+      font-weight: var(--font-medium);
     }
 
     &__submit {
