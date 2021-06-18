@@ -22,7 +22,7 @@ function backButton() {
     handleBackButton,
     backButton
   )
-  
+
   return function cleanup() {
     removeBackButtonEvent()
   }
