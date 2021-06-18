@@ -7,7 +7,7 @@
         class: "sidebar__nav__menu__item__link"
     = render "application/account_sidebar/listing_menu"
     = render "application/account_sidebar/my_account_menu"
-    - if !current_user.talent? && !current_page?(new_user_profile_path)
+    - if current_user.paying_subscriber? && !current_page?(new_user_profile_path)
       = render "application/account_sidebar/subscription_menu"
     %ul.sidebar__nav__menu
       %li{ class: "sidebar__nav__menu__item" }

@@ -2,7 +2,7 @@ module ApplicationHelper
   def job_page?
     controller_path == "jobs" && action_name == "show"
   end
-  
+
   def employer_jobs_page?
     current_page?(main_app.employer_jobs_path)
   end
@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def manage_job_listing_path(user)
-    user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
+    user.paying_subscriber? ? main_app.employer_jobs_path : main_app.new_profile_subscription_path
   end
 
   def create_listing_page?
@@ -74,9 +74,5 @@ module ApplicationHelper
     thumbnail = record.thumbnail_url
 
     react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
-  end
-
-  def manage_job_listing_path(user)
-    user.talent? ? main_app.new_profile_subscription_path : main_app.employer_jobs_path
   end
 end

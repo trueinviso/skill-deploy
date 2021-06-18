@@ -91,7 +91,7 @@ class User < ApplicationRecord
   end
 
   def paying_subscriber?
-    subscriptions.any?
+    subscription&.active?
   end
 
   def registering?
