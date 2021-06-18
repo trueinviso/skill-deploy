@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
   layout "job_listing", only: :show
-  
+
   def index
     @view_component = JobsComponent.new(current_user, jobs)
   end
