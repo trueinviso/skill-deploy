@@ -17,7 +17,7 @@ import {
 } from "./helpers"
 import attachEvent from "~/helpers/attachEvent"
 
-const skipedInptuTypes = ["submit"]
+const skippedInputTypes = ["submit"]
 
 function handleSubmitButton(submitter, valid) {
   if (valid) {
@@ -204,7 +204,7 @@ function createFormWithRules(formEl) {
   }
 
   const fields = [...formEl].map(input => {
-    if (input.name && !skipedInptuTypes.includes(input.type)) {
+    if (input.name && !skippedInputTypes.includes(input.type)) {
       const errorElement = document.createElement("span")
       errorElement.classList = FORM_ERROR_MESSAGE_CLASS_NAME
 

@@ -1,6 +1,9 @@
 class JobPolicy < ApplicationPolicy
   def index?
-    user.present?
-    # user.role?(:job_seeker)
+    !user.pending_talent?
+  end
+
+  def show?
+    !user.pending_talent?
   end
 end

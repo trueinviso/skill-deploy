@@ -2,9 +2,9 @@ module Protocols
   module ShowApplyLabel
     extend self
 
-    def call(user)
+    def allow?(user)
       user.user_profile&.draft? ||
-        (user.employer_only? && user.user_profile&.draft?)
+        (user.employer_only? && !user.user_profile&.approved?)
     end
   end
 end
