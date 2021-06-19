@@ -8,6 +8,6 @@ class UserProfilePolicy < ApplicationPolicy
   end
 
   def update?
-    record.draft? || record.pending?
+    record.draft? || record.approved?
   end
 end
