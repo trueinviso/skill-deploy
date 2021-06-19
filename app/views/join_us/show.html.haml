@@ -1,15 +1,15 @@
 :ruby
-  options = [ 
+  options = [
     { name: "recruiter",
-      path: unity.new_subscription_path, 
-      title: t("join_us.recruiter.title"), 
-      description: t("join_us.recruiter.description"), 
+      path: unity.new_subscription_path,
+      title: t("join_us.recruiter.title"),
+      description: t("join_us.recruiter.description"),
       img: "job_board.png"
-    },  
-    { name:'talent', 
+    },
+    { name:'talent',
      path:'#',
-     title: t("join_us.talent.title"), 
-     description: t("join_us.talent.description"), 
+     title: t("join_us.talent.title"),
+     description: t("join_us.talent.description"),
      img: "get_matched.png"
     } ]
 
@@ -19,4 +19,4 @@
   .join-us__content
     - options.each do |option|
       = render "choose_option", option: option
-    = link_to "Apply as Talent", new_user_profile_path, class: "join_us__btn"
+    = link_to "Apply as Talent", edit_user_profile_path, class: "join_us__btn"
