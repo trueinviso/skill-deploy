@@ -3,7 +3,7 @@ module Protocols
     extend self
 
     def allow?(user)
-      user.user_profile&.draft? ||
+      user.pending_talent? ||
         (user.employer_only? && !user.user_profile&.approved?)
     end
   end

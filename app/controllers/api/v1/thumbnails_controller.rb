@@ -1,8 +1,6 @@
 module Api
   module V1
     class ThumbnailsController < ApplicationController
-      skip_before_action :guard_user_registered!, only: [:update]
-
       def update
         record = ThumbnailUpdater.call!(current_user, update_params)
         if record

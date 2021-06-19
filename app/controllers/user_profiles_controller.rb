@@ -1,11 +1,4 @@
 class UserProfilesController < ApplicationController
-  skip_before_action :guard_user_registered!, only: [:new, :create]
-
-  def new
-    authorize UserProfile
-    flash[:banner_message] = t(".draft")
-  end
-
   def create
     current_user.assign_attributes(skills_to_array(permitted_params))
     authorize current_user.user_profile

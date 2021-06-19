@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   before_action :guard_user_authenticated!,
-                :guard_user_registered!,
                 :guard_user_profile_reviewed!, unless: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -25,23 +24,22 @@ class ApplicationController < ActionController::Base
   def guard_user_profile_reviewed!
     return if registration_paths?
 
-    if current_user.user_profile.pending?
-      redirect_to profile_pending_review_path
+    if current_user.pending_talent?
+      redirect_to new_profile_subscription_path
     end
   end
 
   def registration_paths?
     controller_name == "join_us" ||
+      controller_name == "profiles" ||
       controller_name == "user_profiles" ||
-      controller_name == "thumbnails"
+      controller_name == "thumbnails" ||
+      controller_name == "subscription" ||
+      controller_name == "notifications"
   end
 
   def guard_user_authenticated!
     redirect_to [:new, :user, :registration] if !user_signed_in?
-  end
-
-  def guard_user_registered!
-    redirect_to [:join_us] if current_user.registering?
   end
 
   def user_not_authorized
