@@ -2,7 +2,8 @@ class UserProfilesController < ApplicationController
   skip_before_action :guard_user_registered!, only: [:new, :create]
 
   def new
-    flash[:banner_message] = "You'll need to submit your profile for review before applying for jobs."
+    authorize UserProfile
+    flash[:banner_message] = t(".draft")
   end
 
   def create
@@ -22,7 +23,6 @@ class UserProfilesController < ApplicationController
     current_user.assign_attributes(skills_to_array(permitted_params))
     authorize current_user.user_profile
     if current_user.save
-      flash[:notice] = t(".success", status: current_user.user_profile.status)
       redirect_to edit_user_profile_path
     else
       flash[:notice] = t(".failure")
@@ -32,9 +32,7 @@ class UserProfilesController < ApplicationController
 
   def edit
     @user_profile = current_user.user_profile
-    if !@user_profile.approved?
-      flash[:banner_message] = "You'll need to submit your profile for review before applying for jobs."
-    end
+    flash[:banner_message] = t(".#{@user_profile.status}")
   end
 
   def show

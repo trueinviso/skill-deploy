@@ -99,7 +99,7 @@ class User < ApplicationRecord
   end
 
   def pending_talent?
-    talent_only? && (user_profile.pending? || user_profile.draft?)
+    talent_only? && !user_profile&.approved?
   end
 
   def unlimited?

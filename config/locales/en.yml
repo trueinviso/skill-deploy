@@ -1,8 +1,8 @@
 en:
   applied_fors:
     create:
-      success: "You applied to the job listing"
-      failure: "Could not apply to the job"
+      success: "You applied to this job listing"
+      failure: "There was an error applying to this job"
   join_us:
     recruiter:
       title: "The Job Board"
@@ -11,12 +11,17 @@ en:
       title: "Get Matched"
       description: "Skip the selection and interview process by allowing us to match you with the best highly vetted team member to fit your project needs or available position."
   user_profiles:
+    new:
+      draft: "You'll need to submit your profile for review before applying for jobs."
     create:
-      success: "Your profile is %{status} now"
-      failure: "Could save changes"
+      failure: "There was an error creating your profile"
     update:
-      success: "Your profile is %{status} now"
-      failure: "Could save changes"
+      failure: "There was an error updating your profile"
+    edit:
+      draft: "You'll need to submit your profile for review before applying for jobs."
+      pending: "Application under review, you can make changes once review is complete."
+      blocked: "Application under review, you can make changes once review is complete."
+      approved: ""
   employer:
     messages:
       create:

@@ -1,3 +1,4 @@
+- @title = "Talent Profile"
 
 .page.profile
   = render "application/account_sidebar/sidebar"
@@ -6,5 +7,4 @@
     = render("application/form_errors", object: current_user)
 
     .page__content
-      %h1.h1--small Create your profile
       = render "form", action: :post

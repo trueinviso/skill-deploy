@@ -8,10 +8,9 @@
     = link_to "Talent Profile",
       new_profile_page ? main_app.new_user_profile_path : main_app.edit_user_profile_path,
       class: "sidebar__nav__menu__item__link"
-    - if Protocols::ShowApplyLabel.call(current_user)
+    - if Protocols::ShowApplyLabel.allow?(current_user)
       %span.label.-danger Apply
-  - if !new_profile_page
-    %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
-      = link_to "Account settings",
-      main_app.edit_user_registration_path,
-      class: "sidebar__nav__menu__item__link"
+  %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
+    = link_to "Account settings",
+    main_app.edit_user_registration_path,
+    class: "sidebar__nav__menu__item__link"
