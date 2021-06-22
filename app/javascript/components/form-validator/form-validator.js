@@ -5,7 +5,8 @@ import {
   TRIGGER_FORM_SELECTOR,
   FORM_ERROR_MESSAGE_CLASS_NAME,
   FORM_FIELD_ERROR_CLASS_NAME,
-  INPUT_ATTRIBUTES
+  INPUT_ATTRIBUTES,
+  SKIP_FORM_TRIGGER_VALIDATION
 } from "./constants"
 import {
   noop,
@@ -13,7 +14,8 @@ import {
   insertAfter,
   defaulErrorMessages,
   skipArgs,
-  getValueByName
+  getValueByName,
+  attrHelper
 } from "./helpers"
 import attachEvent from "~/helpers/attachEvent"
 
@@ -54,7 +56,19 @@ function createFormWithRules(formEl) {
 
   let isReadyToSubmit = false
 
+  formEl.addEventListener("click", event => {
+    if (attrHelper(event.target).has(SKIP_FORM_TRIGGER_VALIDATION)) {
+      fields.forEach(field => {
+        if (field.isRequired) {
+          field.unregister()
+        }
+      })
+    }
+  })
+
   formEl.addEventListener("submit", async event => {
+    console.log("submit", event.target)
+
     handleSubmitButton(event.submitter, false)
     if (isReadyToSubmit) return
 
@@ -227,12 +241,20 @@ function createFormWithRules(formEl) {
       }
 
       const unregister = registerField(input, errorElement)
-      return () => {
-        unregister()
-        errorElement?.remove()
+      return {
+        name: input.name,
+        isRequired: decoratedInput.isRequired(),
+        unregister: () => {
+          unregister()
+          errorElement?.remove()
+        }
       }
     }
-    return noop
+    return {
+      isRequired: false,
+      name: input.name,
+      unregister: noop
+    }
   })
 
   const config = {
@@ -279,8 +301,8 @@ function formValidator() {
 
   return () => {
     registeredForms.forEach(form => {
-      form.fields.forEach(unregister => {
-        unregister()
+      form.fields.forEach(field => {
+        field.unregister()
       })
       form.observer.disconnect()
       form.undecorate()
