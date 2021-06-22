@@ -1,4 +1,5 @@
 import { createForm } from "final-form"
+
 import createFocusDecorator from "final-form-focus"
 import createValidationStrategy from "./validation-strategy"
 import {
@@ -58,17 +59,16 @@ function createFormWithRules(formEl) {
 
   formEl.addEventListener("click", event => {
     if (attrHelper(event.target).has(SKIP_FORM_TRIGGER_VALIDATION)) {
-      fields.forEach(field => {
-        if (field.isRequired) {
-          field.unregister()
-        }
-      })
+      observers
+        .filter(observer => observer.isRequired)
+        .forEach(observer => observer.remove())
+      fields
+        .filter(field => field.isRequired)
+        .forEach(field => field.unregister())
     }
   })
 
   formEl.addEventListener("submit", async event => {
-    console.log("submit", event.target)
-
     handleSubmitButton(event.submitter, false)
     if (isReadyToSubmit) return
 
@@ -80,6 +80,7 @@ function createFormWithRules(formEl) {
   })
 
   const registered = {}
+  const observers = []
 
   const radioFields = {}
   function registerField(input, errorContainer) {
@@ -137,7 +138,7 @@ function createFormWithRules(formEl) {
 
         if (!registered[name]) {
           if (input.type === "hidden") {
-            const observer = new MutationObserver(mutationList => {
+            const callbackObserver = mutationList => {
               mutationList.forEach(function (mutation) {
                 switch (mutation.type) {
                   case "attributes":
@@ -149,9 +150,17 @@ function createFormWithRules(formEl) {
                     break
                 }
               })
-            })
+            }
+
+            let observer = new MutationObserver(callbackObserver)
             observer.observe(input, {
               attributes: true
+            })
+            observers.push({
+              name: input.name,
+              observer,
+              isRequired: decoratedInput.isRequired(),
+              remove: () => observer.disconnect()
             })
           }
 
@@ -276,7 +285,15 @@ function createFormWithRules(formEl) {
           const errorElement = document.createElement("span")
           errorElement.classList = FORM_ERROR_MESSAGE_CLASS_NAME
           insertAfter(input, errorElement)
-          registerField(input, errorElement)
+          const unregister = registerField(input, errorElement)
+          fields.push({
+            name: input.name,
+            isRequired: decoratedInput.isRequired(),
+            unregister: () => {
+              unregister()
+              errorElement?.remove()
+            }
+          })
         }
       }
     }
@@ -290,7 +307,8 @@ function createFormWithRules(formEl) {
     form,
     fields,
     formUnsubscribe,
-    observer
+    observer,
+    observers
   }
 }
 
@@ -301,6 +319,7 @@ function formValidator() {
 
   return () => {
     registeredForms.forEach(form => {
+      form.observers.forEach(observer => observer.remove())
       form.fields.forEach(field => {
         field.unregister()
       })
