@@ -11,17 +11,17 @@
       .subscription__details
         %h1.page-heading Billing details
         %div
-          %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
-          %span.subscription__details__price $#{view_component.price}/mo
+          %h3.subscription__details__name #{view_component.current_plan_name} subscription
+          %span.subscription__details__price $#{view_component.current_plan_price}/mo
         %p.subscription__details__desc Post unlimited projects or listings on the job board every month.  Cancel any time.
-        - if view_component.subscription.canceled_at.present?
+        - if view_component.cancelled_at.present?
           %div
-            %span.renewal-message.expiration-date  Expires on
+            %span.renewal-message.expiration-date Expires on
             %span= view_component.expiration_date
         %hr
         %div
           %h3.subscription__details__name Total subscription
-          %span.subscription__details__price $#{view_component.price}/mo
+          %span.subscription__details__price $#{view_component.current_plan_price}/mo
 
       %h3.subscription--edit__heading Payment details
       .subscription__card-summary.-outline#cardSummary
@@ -35,7 +35,7 @@
           url: unity.payment_method_path,
           method: :put,
           html: { id: "braintree-payment-form",
-          class: "subscription--edit__form #{view_component.subscription ? "hidden" : ""}",
+          class: "subscription--edit__form #{view_component.gateway_subscription ? "hidden" : ""}",
           "data-validate": "data-validate",
           "no-validate": "no-validate" } do |f|
           .subscription__card-details#cardDetails
@@ -43,6 +43,8 @@
             = f.submit "Update Payment Method",
               data: { disable_with: "Please wait..." },
               class: "button button_theme_white update-button"
-        - if view_component.subscription.present?
+        - if view_component.awaiting_cancellation?
+          Your subscription is set to cancel on #{view_component.cancelled_at}. If you would like to resume your subscription...
+        - elsif view_component.active_subscription?
           = react_component("CancelSubscriptionModal", { apiPath: subscription_delete_path })
 

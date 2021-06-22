@@ -6,10 +6,6 @@ module Employer
       @user = user
     end
 
-    def cancel_at_period_end
-      subscription.cancel_at_period_end
-    end
-
     def card
       @card ||= stripe_customer
         .sources
@@ -28,10 +24,28 @@ module Employer
       card.last4
     end
 
+    def current_plan_name
+      gateway_subscription
+        .plan_name
+    end
+
+    def current_plan_price
+      gateway_subscription
+        .price
+    end
+
+    def cancelled_at
+      gateway_subscription
+        .cancelled_at
+    end
+
     def expiration_date
-      Time
-        .at(subscription.current_period_end)
-        .strftime("%B %d, %Y")
+      gateway_subscription
+        .expiration_date
+    end
+
+    def gateway_subscription
+      user.gateway_subscription
     end
 
     def plans
@@ -40,23 +54,22 @@ module Employer
       )
     end
 
-    def price
-      subscription.plan.amount / 100
-    end
-
     def selected
       "Billing details"
+    end
+
+    def awaiting_cancellation?
+      user.subscription.present? &&
+        user.awaiting_cancellation?
+    end
+
+    def active_subscription?
+      user.paying_subscriber?
     end
 
     def stripe_customer
       @stripe_customer ||= Stripe::Customer.retrieve(
         user.gateway_customer.gateway_id,
-      )
-    end
-
-    def subscription
-      @subscription ||= Stripe::Subscription.retrieve(
-        user.subscription.gateway_id,
       )
     end
   end
