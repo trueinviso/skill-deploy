@@ -25,7 +25,7 @@ class UserProfilesController < ApplicationController
 
   def edit
     @user_profile = current_user.user_profile
-    flash[:banner_message] = t(".#{@user_profile.status}")
+    flash[:banner_message] = t(".#{@user_profile.status}") if !@user_profile.approved?
   end
 
   def show

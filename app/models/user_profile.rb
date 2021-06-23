@@ -8,4 +8,10 @@ class UserProfile < ApplicationRecord
 
   belongs_to :user
   validates :first_name, :last_name, :status, presence: true
+  validates :bio,
+    :headline,
+    :location,
+    presence: true,
+    on: :update,
+    if: :pending?
 end

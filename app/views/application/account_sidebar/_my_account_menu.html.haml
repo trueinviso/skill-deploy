@@ -10,6 +10,6 @@
     - if Protocols::ShowApplyLabel.allow?(current_user)
       %span.label.-danger Apply
   %li{ class: "sidebar__nav__menu__item #{'-selected' if account_settings_selected}" }
-    = link_to "Account settings",
+    = link_to "Account Settings",
     main_app.edit_user_registration_path,
     class: "sidebar__nav__menu__item__link"

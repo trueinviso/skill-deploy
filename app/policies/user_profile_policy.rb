@@ -1,9 +1,14 @@
 class UserProfilePolicy < ApplicationPolicy
   def create?
-    record.draft? || record.pending?
+    record.draft?
   end
 
   def update?
-    record.draft? || record.approved?
+    user.id == record.user_id &&
+      (
+        record.draft? ||
+        record.approved? ||
+        record.pending?
+      )
   end
 end

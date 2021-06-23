@@ -8,4 +8,4 @@
 
   .listing-form__actions
     = f.submit "Preview Listing", class: "button"
-    %button.button.-outline-dark Save for Draft
+    %button{ class:"button -outline-dark", data:{ "form-skip-validate-required": true } }  Save for Draft
