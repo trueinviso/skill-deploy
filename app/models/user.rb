@@ -63,6 +63,8 @@ class User < ApplicationRecord
     reject_if: :all_blank,
     allow_destroy: true
 
+  validates_associated :user_profile
+
   enum review_status: { pending: 0, complete: 1 }
 
   def first_name
@@ -101,6 +103,16 @@ class User < ApplicationRecord
   def pending_talent?
     registering? ||
       (talent_only? && !user_profile&.approved?)
+  end
+
+  def approve!
+    talent_role = Role.find_by(name: Role::TALENT)
+
+    if !roles.include?(talent_role)
+      roles << talent_role
+    end
+
+    user_profile.approved!
   end
 
   def unlimited?
