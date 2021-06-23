@@ -26,7 +26,7 @@
         - if current_user.talent? && current_user.user_profile.pending?
           %span.label.-danger Apply
       %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(main_app.edit_user_registration_path)}" }
-        = link_to "Account settings",
+        = link_to "Account Settings",
         main_app.edit_user_registration_path,
         class: "sidebar__nav__menu__item__link"
 
@@ -34,12 +34,12 @@
       %h4.sidebar__nav__heading Subscription
       %ul.sidebar__nav__menu
         %li{ class: "sidebar__nav__menu__item #{'-selected' if current_page?(unity.edit_subscription_path)}" }
-          = link_to "Billing details",
+          = link_to "Billing Details",
           unity.edit_subscription_path,
           class: "sidebar__nav__menu__item__link"
 
     %ul.sidebar__nav__menu
       %li{ class: "sidebar__nav__menu__item" }
-        = link_to "Sign out",
+        = link_to "Sign Out",
         main_app.destroy_user_session_path,
         class: "sidebar__nav__menu__item__link"

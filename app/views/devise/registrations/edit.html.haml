@@ -1,11 +1,11 @@
-- @title = "Account settings"
+- @title = "Account Settings"
 .page.profile-settings
   = render "application/account_sidebar/sidebar"
   .page__main
     = render "form_errors", object: @user
     .page__content
       .profile-settings__content
-        %h1.h1--small Account settings
+        %h1.h1--small Account Settings
         = form_for(resource,
           as: resource_name,
           url: registration_path(resource_name),
