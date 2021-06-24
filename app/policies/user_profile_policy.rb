@@ -5,10 +5,6 @@ class UserProfilePolicy < ApplicationPolicy
 
   def update?
     user.id == record.user_id &&
-      (
-        record.draft? ||
-        record.approved? ||
-        record.pending?
-      )
+      ( record.draft? || record.approved? )
   end
 end
