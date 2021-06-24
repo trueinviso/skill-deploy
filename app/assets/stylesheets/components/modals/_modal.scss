@@ -49,8 +49,8 @@ $modal-vertical-margin--desktop: 100px;
   }
 
   @include tablet-down {
-    width: 100%;
     max-width: 100%;
+    width: 100%;
   }
 
   .modal.is-open & {
@@ -61,6 +61,14 @@ $modal-vertical-margin--desktop: 100px;
 
   .modal.-wide & {
     max-width: 600px;
+
+    @include tablet-down {
+      width: 100%;
+    }
+  }
+
+  .modal.cancel-subscription-modal & {
+    max-width: 535px;
 
     @include tablet-down {
       width: 100%;

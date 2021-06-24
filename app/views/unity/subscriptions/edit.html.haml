@@ -44,5 +44,14 @@
               data: { disable_with: "Please wait..." },
               class: "button button_theme_white update-button"
         - if view_component.subscription.present?
-          = react_component("CancelSubscriptionModal", { apiPath: subscription_delete_path })
+          .subscription__details__footer
+            - if @subscription.pending_cancellation?
+              = link_to "Resume subscription",
+                subscription_path(plan_id: Unity::SubscriptionPlan.first.gateway_id),
+                method: :put,
+                class: 'button',
+                data: { disable_with: 'Please wait...'}
+            - else
+              %button.button.-outline{ data:{ "micromodal-trigger": "cancel-subscription-modal" }} Cancel subscription
 
+= render "application/modals/cancel_subscription_modal"
