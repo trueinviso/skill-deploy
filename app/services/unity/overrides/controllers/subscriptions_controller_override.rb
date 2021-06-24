@@ -18,11 +18,12 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       flash[:banner_message] = "Subscription cancelled successfully."
-      render json: "Success", status: 200
     else
       flash[:banner_message] = "Subscription failed to cancel."
-      render json: "Failed", status: 400
     end
+
+    redirect_to unity.edit_subscription_path
+
   end
 
   private
