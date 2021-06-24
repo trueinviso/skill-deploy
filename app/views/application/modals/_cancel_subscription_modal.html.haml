@@ -16,6 +16,4 @@
           .subscription__cancel-modal__footer
             %button.button.-outline{ data: { "micromodal-close": "" } }
               Keep my subscription
-            %button.modal__button.button{ data: { "micromodal-close": "" } }
-              = link_to "Cancel subscription", subscription_path, method: :delete
-            
+            = link_to "Cancel subscription", subscription_path, method: :delete, class: "modal__button button", data: { disable_with: 'Please wait...'}
