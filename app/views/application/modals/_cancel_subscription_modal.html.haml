@@ -1,0 +1,21 @@
+.modal.cancel-subscription-modal#cancel-subscription-modal{ "aria-hidden": true,
+  "data-trigger-modal": false,
+  "data-micromodal-close": "" }
+  .modal__inner{ role: "dialog", "aria-modal": true,
+    "aria-labelledby": "modal-cancel-subscription" }
+    %buton.close-button.-black.-round.modal__close{ "aria-label": "Close modal",
+      "data-micromodal-close": "" }
+    .modal__content
+      .modal__box
+        .subscription__cancel-modal__body.modal__bg
+          %h2.modal__title.text-center.font-regular.mt-20#confirm-close-account-modal-title
+            Are you sure you want to cancel your subscription?
+          %p.subscription__cancel-modal__description
+            By closing your account you will lose access
+            to all Skill Deploy talent and listings.
+          .subscription__cancel-modal__footer
+            %button.button.-outline{ data: { "micromodal-close": "" } }
+              Keep my subscription
+            %button.modal__button.button{ data: { "micromodal-close": "" } }
+              = link_to "Cancel subscription", subscription_path, method: :delete
+            

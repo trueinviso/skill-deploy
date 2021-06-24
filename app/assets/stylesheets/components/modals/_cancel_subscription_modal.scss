@@ -1,0 +1,33 @@
+.subscription__cancel-modal__body {
+  @include tablet-up {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+}
+
+.subscription__cancel-modal__description {
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-regular);
+  line-height: 21px;
+  margin: 0 auto;
+  max-width: 78%;
+  text-align: center;
+}
+
+.subscription__cancel-modal__footer {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 53px;
+  @extend %flex-col--centered;
+  .button {
+    font-size: var(--font-size-small);
+    max-width: 150px;
+  }
+
+  @include tablet-up {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 315px;
+  }
+}

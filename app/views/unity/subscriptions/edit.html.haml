@@ -48,4 +48,6 @@
             - if @subscription.pending_cancellation?
               = link_to "Resume subscription", subscription_path(plan_id: Unity::SubscriptionPlan.first.gateway_id), method: :put, class: 'button'
             - else
-              = react_component("CancelSubscriptionModal", { apiPath: subscription_delete_path })
+              %button.button.-outline{ data:{ "micromodal-trigger": "cancel-subscription-modal" }} Cancel subscription
+              
+= render "application/modals/cancel_subscription_modal"
