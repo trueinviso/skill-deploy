@@ -13,6 +13,18 @@ Unity::SubscriptionsController.class_eval do
     end
   end
 
+  def destroy
+    result = cancel_subscription
+
+    if result.success?
+      flash[:banner_message] = "Subscription cancelled successfully."
+      render json: "Success", status: 200
+    else
+      flash[:banner_message] = "Subscription failed to cancel."
+      render json: "Failed", status: 400
+    end
+  end
+
   private
 
   def flash_message
