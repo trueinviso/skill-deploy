@@ -43,10 +43,6 @@ module ApplicationHelper
     controller_name == "subscription"
   end
 
-  def manage_job_listing_path(user)
-    user.paying_subscriber? ? main_app.employer_jobs_path : main_app.new_profile_subscription_path
-  end
-
   def create_listing_page?
     current_page?(main_app.new_employer_job_path)
   end

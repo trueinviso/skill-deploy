@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   before_action :guard_user_authenticated!,
+                :sync_subscription,
                 :guard_user_profile_reviewed!, unless: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -25,7 +26,7 @@ class ApplicationController < ActionController::Base
     return if registration_paths?
 
     if current_user.pending_talent?
-      redirect_to new_profile_subscription_path
+      redirect_to unity.new_subscription_path
     end
   end
 
@@ -43,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    redirect_to(request.referrer || [:root])
+    redirect_to(request.referrer || unity.new_subscription_path
   end
 
   def set_raven_context
@@ -58,5 +59,9 @@ class ApplicationController < ActionController::Base
     )
   rescue => exception
     puts exception
+  end
+
+  def sync_subscription
+    SubscriptionSyncer.new(current_user.subscription).call
   end
 end

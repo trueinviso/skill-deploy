@@ -96,6 +96,10 @@ class User < ApplicationRecord
     subscription&.active?
   end
 
+  def past_due_subscriber?
+    subscription&.past_due?
+  end
+
   def registering?
     roles.empty?
   end
@@ -103,6 +107,14 @@ class User < ApplicationRecord
   def pending_talent?
     registering? ||
       (talent_only? && !user_profile&.approved?)
+  end
+
+  def pending_employer?
+    employer? && !user_profile&.approved?
+  end
+
+  def active_employer?
+    employer? && paying_subscriber?
   end
 
   def approve!

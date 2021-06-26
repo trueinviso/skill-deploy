@@ -10,20 +10,20 @@ Rails.application.routes.draw do
   end
 
   devise_for :users,
-             path: "/",
-             path_names: {
-               # edit: "account/profile",
-               sign_in:
-               "sign-in",
-               sign_out:
-               "sign-out",
-             },
-             controllers: {
-               omniauth_callbacks: "users/omniauth_callbacks",
-               registrations: "users/registrations",
-               sessions: "users/sessions",
-               passwords: "users/passwords",
-             }
+    path: "/",
+    path_names: {
+      # edit: "account/profile",
+      sign_in:
+      "sign-in",
+      sign_out:
+      "sign-out",
+    },
+    controllers: {
+      omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "users/registrations",
+      sessions: "users/sessions",
+      passwords: "users/passwords",
+    }
 
   devise_scope :user do
     get "employer/registrations/edit" => "users/registrations#edit"
@@ -36,29 +36,18 @@ Rails.application.routes.draw do
   resource :join_us, only: [:show,:create], path: "join-us"
 
   namespace :profile do
-    resource :notifications,
-             only: [:edit, :update]
-
-    resource :pending_review,
-             only: [:show]
-
-    resources :subscription,
-              only: [:new, :create]
+    resource :notifications, only: [:edit, :update]
+    resource :pending_review, only: [:show]
   end
 
   resource :user_profile,
-           controller: :user_profiles,
-           path: "profile",
-           except: [:destroy]
+    controller: :user_profiles,
+    path: "profile",
+    except: [:destroy]
 
-  resources :jobs,
-            only: [:index, :show]
-
-  resources :favorite_jobs,
-            only: [:index]
-
-  resources :applied_fors,
-            only: [:index, :create]
+  resources :jobs, only: [:index, :show]
+  resources :favorite_jobs, only: [:index]
+  resources :applied_fors, only: [:index, :create]
 
   namespace :talent do
     resources :jobs, only: [] do
@@ -77,13 +66,13 @@ Rails.application.routes.draw do
     resources :applied_fors, only: [:show]
 
     resources :user_profiles,
-              only: [:show],
-              path: "profile"
+      only: [:show],
+      path: "profile"
 
     namespace :preview do
       resources :job,
-                controller: :jobs,
-                only: [:show]
+        controller: :jobs,
+        only: [:show]
     end
   end
 
@@ -93,18 +82,16 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :jobs,
-                only: [:index]
-      resources :favorite_jobs,
-                only: [:index, :create, :destroy]
+      resources :jobs, only: [:index]
+      resources :favorite_jobs, only: [:index, :create, :destroy]
       resource :apply,
-               controller: :apply,
-               only: [:create]
+        controller: :apply,
+        only: [:create]
+
       resources :jobs, only: [] do
         resources :applicants, only: [:index]
       end
-      resource :thumbnail,
-               only: [:update]
+      resource :thumbnail, only: [:update]
     end
   end
 

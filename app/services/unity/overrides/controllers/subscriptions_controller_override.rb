@@ -4,7 +4,6 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
-      current_user.user_profile.approved!
 
       flash[:banner_message] = banner_message
       redirect_to main_app.new_employer_job_path
@@ -36,5 +35,18 @@ Unity::SubscriptionsController.class_eval do
 
   def banner_message
     "Thank you for your oder, a receipt has been sent to your email. You can now create and publish your first listing!"
+  end
+
+  def verify_subscription_state
+    case action_name.to_sym
+    when :create, :new
+      if current_user.subscription.present?
+        redirect_to action: :edit
+      end
+    when :edit, :update
+      if current_user.subscription.blank?
+        redirect_to action: :new
+      end
+    end
   end
 end
