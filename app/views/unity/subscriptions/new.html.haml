@@ -1,15 +1,12 @@
-.subscription
-  = render "unity/subscriptions/details"
-  %section.subscription__paymemnt
-    %h1.h1--small Subscription details
+- @title = "Manage Listings"
+.page.job-listing
+  = render "application/account_sidebar/sidebar"
+  .page__main
+    .page__content.job-listing__content
+      = render "unity/subscriptions/details"
 
-    .subscription__paymemnt__content
-      .subscription__paymemnt__content__title
-        %span.subscription-text.text.-link= Unity::SubscriptionPlan.first.name
-        %span.subscription-text.text $#{Unity::SubscriptionPlan.first.price}/month
-      %p.subscription__paymemnt__content__description= Unity::SubscriptionPlan.first.description
-    .subscription__paymemnt__total
-      %span.text.subscription-text Total today
-      %span.text.subscription-text $#{Unity::SubscriptionPlan.first.price}
-
-    = render "unity/subscriptions/payment_details"
+      %section
+        %h1.job-listing__heading.h1--small Hire vetted creatives
+        = render "unity/subscriptions/card"
+        %hr.job-listing__divider
+        = render "unity/subscriptions/payment_details"

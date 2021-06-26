@@ -1,5 +1,5 @@
 - item_class = "sidebar__nav__menu__item"
-- manage_listing_path = manage_job_listing_path(current_user)
+- manage_listing_path = current_user.paying_subscriber? ? main_app.employer_jobs_path : unity.new_subscription_path
 
 %h4.sidebar__nav__heading Job Listings
 %ul.sidebar__nav__menu

@@ -45,7 +45,7 @@ Unity::SubscriptionsController.class_eval do
       end
     when :edit, :update
       if current_user.subscription.blank?
-        redirect_to main_app.new_profile_subscription_path
+        redirect_to action: :new
       end
     end
   end

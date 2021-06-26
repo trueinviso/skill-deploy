@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     return if registration_paths?
 
     if current_user.pending_talent?
-      redirect_to new_profile_subscription_path
+      redirect_to unity.new_subscription_path
     end
   end
 
@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    redirect_to(request.referrer || [:new, :profile, :subscription])
+    redirect_to(request.referrer || unity.new_subscription_path
   end
 
   def set_raven_context
