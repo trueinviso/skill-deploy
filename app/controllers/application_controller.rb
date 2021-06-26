@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_not_authorized
-    redirect_to(request.referrer || [:root])
+    redirect_to(request.referrer || [:new, :profile, :subscription])
   end
 
   def set_raven_context

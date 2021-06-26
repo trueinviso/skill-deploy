@@ -1,9 +1,9 @@
 class JobPolicy < ApplicationPolicy
   def index?
-    !user.pending_talent?
+    Protocols::CanViewJobBoard.allow?(user)
   end
 
   def show?
-    !user.pending_talent?
+    Protocols::CanViewJobBoard.allow?(user)
   end
 end

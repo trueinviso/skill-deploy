@@ -9,7 +9,7 @@
       Manage Listings
       - if !current_user.paying_subscriber?
         %span.label.-danger.sidebar__nav__upgrade Upgrade
-  - if !current_user.pending_talent?
+  - if Protocols::CanViewJobBoard.allow?(current_user)
     %li{ class: "#{item_class} #{'-selected' if current_page?(main_app.favorite_jobs_path)}" }
       = link_to "Saved Job Listings", main_app.favorite_jobs_path,
       class: "sidebar__nav__menu__item__link"

@@ -8,6 +8,7 @@ class SubscriptionSyncer
   def call
     return if subscription.blank?
     sync_subscription
+    remove_cancelled_subscription
   end
 
   private
@@ -24,5 +25,11 @@ class SubscriptionSyncer
   def gateway_subscription
     @gateway_subscription ||= Stripe::Subscription
       .retrieve(subscription.gateway_id)
+  end
+
+  def remove_cancelled_subscription
+    if subscription.reload.canceled?
+      subscription.destroy
+    end
   end
 end
