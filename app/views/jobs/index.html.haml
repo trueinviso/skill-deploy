@@ -2,8 +2,6 @@
 .page.favorite-jobs
   = render "application/account_sidebar/sidebar"
   %div.page__main
-    -#.favorite-jobs__heading.hidden-mobile
-    -#  Saved job listings
     = react_component "JobPage", { search: params[:search],
       initialJobs: @view_component.jobs.as_json(methods: :job_types),
       favorites: @view_component.favorites,
