@@ -34,9 +34,14 @@
               - else
                 %div
               - if current_user.talent?
-                = link_to  applied_fors_path(job_id: @job.id), method: :post do
-                  %span.button
-                    Apply now
+                - if current_user.applied?(@job)
+                  .button
+                    = image_tag font_path("icon/check_applied")
+                    Applied
+                - else
+                  = link_to  applied_fors_path(job_id: @job.id), method: :post do
+                    %span.button
+                      Apply now
               - else
                 %span.button.-disabled
                   Apply now

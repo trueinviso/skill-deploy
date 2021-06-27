@@ -10,9 +10,14 @@
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
       - if current_user.talent?
-        = link_to  applied_fors_path(job_id: @job.id), method: :post do
-          %span.button
-            Apply now
+        - if current_user.applied?(@job)
+          .button
+            = image_tag font_path("icon/check_applied")
+            Applied
+        - else
+          = link_to  applied_fors_path(job_id: @job.id), method: :post do
+            %span.button
+              Apply now
       - else
         %span.button.-disabled
           Apply now
@@ -35,7 +40,7 @@
       %button.button.button_theme_grey.job__tags__button
         = job.job_types.first&.name
       %button.button.button_theme_grey.job__tags__button
-        = job.job_experiences.first&.name  
+        = job.job_experiences.first&.name
       %button.button.button_theme_grey.job__tags__button
         = job.job_locations.first&.name
         - if job.location
@@ -48,9 +53,14 @@
     .job__description
       = job.description
     - if current_user.talent?
-      = link_to  applied_fors_path(job_id: @job.id), method: :post do
-        %span.button.job__button
-          Apply now
+      - if current_user.applied?(@job)
+        .button.job__button
+          = image_tag font_path("icon/check_applied")
+          Applied
+      - else
+        = link_to  applied_fors_path(job_id: @job.id), method: :post do
+          %span.button.job__button
+            Apply now
     - else
       %span.button.job__button.-disabled
         Apply now

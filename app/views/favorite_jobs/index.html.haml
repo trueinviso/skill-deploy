@@ -3,7 +3,6 @@
   = render "application/account_sidebar/sidebar"
   %div.page__main
     .favorite-jobs__heading.hidden-mobile
-      Saved job listings
     = react_component("FavoriteJobPage", { jobs: @view_component.jobs.as_json(methods: :job_types),
         favorites: @view_component.favorites,
         applied_fors: @view_component.applied_fors })

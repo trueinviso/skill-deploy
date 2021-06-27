@@ -86,9 +86,9 @@ const JobListItem = ({
           ))}
         </div>
         {appliedFors.includes(id) && (
-          <div className="job-card__applied-state">
+          <div className="button job__button">
             <img src={checkIcon} alt="check-icon" />
-            <div>Applied</div>
+            Applied
           </div>
         )}
       </div>

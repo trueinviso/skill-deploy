@@ -158,6 +158,12 @@ class User < ApplicationRecord
     user
   end
 
+  def applied?(job)
+    AppliedFor
+      .find_by(job: job, user: self)
+      .present?
+  end
+
   class MultipleUnlimitedError < StandardError; end
 
   private

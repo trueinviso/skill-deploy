@@ -34,9 +34,13 @@ module JobsHelper
   private
 
   def back_button_href
-    return main_app.employer_jobs_path if create_listing_page?
-    return request.referrer if employer_preview_job_path? && request.referrer.present?
-    main_app.employer_jobs_path
+    return request.referrer if go_to_last_uri?
+    main_app.root_path
+  end
+
+  def go_to_last_uri?
+    request.referrer.present? &&
+      URI(request.referrer).to_s != request.url
   end
 
   def back_button_class_list
