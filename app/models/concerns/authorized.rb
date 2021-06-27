@@ -28,4 +28,9 @@ module Authorized
   def talent_only?
     roles == [Role.find_by(name: Role::TALENT)]
   end
+
+  def approved_talent?
+    talent? && user_profile&.approved?
+  end
+
 end
