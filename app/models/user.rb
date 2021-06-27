@@ -109,6 +109,10 @@ class User < ApplicationRecord
       (talent_only? && !user_profile&.approved?)
   end
 
+  def approved_talent?
+    talent? && user_profile&.approved?
+  end
+
   def pending_employer?
     employer? && !user_profile&.approved?
   end
