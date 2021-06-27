@@ -9,8 +9,9 @@ class Receptionist
 
   def direct
     return [:join_us] if current_user.registering?
-    return [:jobs] if current_user.talent?
+    return "/subscription/new" if current_user.employer? && !current_user.active_paid_subscriber?
     return [:employer_jobs] if current_user.employer?
+    return [:jobs] if current_user.talent?
     return [:root] if current_user
     [:new, :user, :session]
   end

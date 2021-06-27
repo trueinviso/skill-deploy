@@ -30,7 +30,7 @@ module Employer
     end
 
     def index?
-      user.employer?
+      user.employer? && user.active_paid_subscriber?
     end
 
     def new?
