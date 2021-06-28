@@ -1,7 +1,7 @@
 -# haml-lint: disable all
 = form_for(job,
   url: employer_jobs_path(job),
-  html: { id: "new-listing-form", "no-validate": "no-validate", multipart: true ,  data:{ "form-validator-trigger": true } }) do |f|
+  html: { id: "new-listing-form", "no-validate": "no-validate", multipart: true ,  data: { "form-validator-trigger": true } }) do |f|
 
   = render "project_details", f: f, job: job
 

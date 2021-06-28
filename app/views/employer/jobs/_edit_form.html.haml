@@ -1,8 +1,8 @@
 = form_for(job,
   url: employer_job_path(job),
   method: :put,
-  html: { id: "edit-listing-form", method: :put, multipart: true, onsubmit: "return listingPage.validateForm(this);",
-  onchange: "listingPage.checkErrors(this)" }) do |f|
+  data: { "form-validator-trigger": true },
+  html: { "no-validate": "no-validate", multipart: true }) do |f|
 
   = render "form_errors", object: job
   = render "project_details", f: f, job: job
