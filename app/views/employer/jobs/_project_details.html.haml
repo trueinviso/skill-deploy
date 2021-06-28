@@ -26,12 +26,12 @@
 
 .form--field.mt-35
   = f.label :job_type_ids, "Type of skills", class: "form--label -black -required"
-  .form--radio-button-list
+  .form--radio-list.form--radio-button-list
     = f.collection_radio_buttons(:job_role_ids,
       JobRole.all,
       :id,
       :name,
-      { checked: job.job_roles.first&.id, required: true },) do |jr|
+      { checked: job.job_roles.first&.id },) do |jr|
       %span.form--radio-button
         = jr.radio_button({ "data-required": true, "data-validation-message": "At least one is required.", "data-value": job.job_roles.first&.id  })
         = jr.label
@@ -39,7 +39,7 @@
 
 .form--field.mt-35
   = f.label :job_roles, "Type of role", class: "form--label -black -required"
-  .form--radio-button-list
+  .form--radio-list.form--radio-button-list
     = f.collection_radio_buttons(:job_type_ids,
       JobType.all,
       :id,
@@ -51,7 +51,7 @@
 
 .form--field.mt-35
   = f.label :job_experiences, "Preferred Experience Level", class: "form--label -black -required"
-  .form--radio-button-list
+  .form--radio-list.form--radio-button-list
     = f.collection_radio_buttons(:job_experience_ids,
       JobExperience.all,
       :id,
@@ -63,7 +63,7 @@
 
 .form--field.mt-35
   = f.label :job_location_ids, "Job location", class: "form--label -black -required"
-  .form--radio-button-list
+  .form--radio-list.form--radio-button-list
     = f.collection_radio_buttons(:job_location_ids,
       JobLocation.all,
       :id,

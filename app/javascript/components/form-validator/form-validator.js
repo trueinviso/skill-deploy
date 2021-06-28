@@ -1,5 +1,5 @@
 import { createForm } from "final-form"
-
+import Rails from "rails-ujs"
 import createFocusDecorator from "final-form-focus"
 import createValidationStrategy from "./validation-strategy"
 import {
@@ -25,6 +25,7 @@ const skippedInputTypes = ["submit"]
 function handleSubmitButton(submitter, valid) {
   if (valid) {
     submitter.disable = false
+    Rails.enableElement(submitter)
   } else {
     submitter.disable = true
   }
@@ -42,9 +43,9 @@ function createFormWithRules(formEl) {
   })
 
   const undecorate = focusDecorator(form)
-  const submitter = document.querySelector('[type="submit"]')
   const formUnsubscribe = form.subscribe(
-    btn => {
+    () => {
+      const submitter = formEl.querySelector('[type="submit"]')
       if (submitter && submitter.disabled) {
         handleSubmitButton(submitter, true)
       }

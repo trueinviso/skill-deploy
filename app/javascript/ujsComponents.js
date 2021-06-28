@@ -9,4 +9,4 @@ export { default as UserSkills } from "components/Profile/Skills"
 export { default as ProfileWorkExperienceForm } from "components/Profile/WorkExperienceForm"
 export { default as RateRange } from "components/Profile/RateRange"
 export { default as Applicants } from "~/components/Applicants"
-export { default as CancelSubscriptionModal } from "~/components/Subscription/CancelSubscriptionModal"
+
