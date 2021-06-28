@@ -16,7 +16,8 @@
 
   %body
     = render "layouts/nav"
-    = render "application/flash_messages", type: :nav_message
+    - if current_user.blank?
+      = render "application/flash_messages", type: :nav_message, classes: "-no-radius"
 
     %main
       = yield

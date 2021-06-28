@@ -13,7 +13,7 @@ class JobPage extends PureComponent {
     filters: PropTypes.any,
     initialJobs: PropTypes.arrayOf(PropTypes.object),
     favorites: PropTypes.array,
-    appliedFors: PropTypes.array,
+    appliedFors: PropTypes.array
   }
 
   state = {
@@ -32,30 +32,52 @@ class JobPage extends PureComponent {
   }
 
   render() {
-    const { favorites, appliedFors } = this.props
+    const { favorites, appliedFors, search } = this.props
     const { jobs } = this.state
+
     return (
       <Fragment>
         <div className="jobs-list__filters-container">
-          <form className="nav__search" action="/jobs" acceptCharset="UTF-8" method="get">
-            <input name="utf8" type="hidden" value="✓"/>
+          <form
+            className="nav__search"
+            action="/jobs"
+            acceptCharset="UTF-8"
+            method="get"
+          >
+            <input name="utf8" type="hidden" value="✓" />
             <div className="nav__search__field">
               <span className="nav__search__field__icon">&#9906;</span>
-              <input type="text" name="search" id="search" placeholder="Search"/>
+              <input
+                type="text"
+                name="search"
+                id="search"
+                defaultValue={search}
+                placeholder="Search"
+              />
             </div>
-            <input type="submit" name="commit" value="Search" id="search-submit" data-disable-width="Search"/>
+            <input
+              type="submit"
+              name="commit"
+              value="Search"
+              id="search-submit"
+              data-disable-width="Search"
+            />
           </form>
           <div className="jobs-list__filters-separator-container">
             <div className="jobs-list__filters-separator"></div>
           </div>
           <JobFilterList
-              activeFilters={this.state.activeFilters}
-              updateFilters={this.updateFilters}
+            activeFilters={this.state.activeFilters}
+            updateFilters={this.updateFilters}
           />
         </div>
-        <div className={`jobs-list__container ${'scrollable'}`}>
+        <div className={`jobs-list__container ${"scrollable"}`}>
           <div className="jobs-list">
-            <JobList jobs={jobs} favorites={favorites} appliedFors={appliedFors} />
+            <JobList
+              jobs={jobs}
+              favorites={favorites}
+              appliedFors={appliedFors}
+            />
           </div>
         </div>
       </Fragment>

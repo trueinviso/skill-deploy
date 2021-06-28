@@ -1,7 +1,6 @@
 import { array, func, string, number, bool } from "prop-types"
 import React from "react"
 import FavoriteJobIcon from "./FavoriteJobIcon"
-import emptyImg from "./../../../assets/font/icon/empty_photo_state_icon_3x.svg"
 import checkIcon from "./../../../assets/font/icon/check.svg"
 import checkAppliedIcon from "./../../../assets/font/icon/check_applied.svg"
 import classnames from "classnames"
@@ -18,79 +17,59 @@ const JobListItem = ({
   thumbnailUrl,
   appliedFors
 }) => {
-  const thumbnailClass = () => {
-    return emptyThumbnailIcon()
-      ? "employer-job-card__image_empty"
-      : "image_present"
-  }
-
-  const imageWrapperClass = () => {
-    return emptyThumbnailIcon() ? "" : "employer-job-card__image--avatar"
-  }
   const isNoImg = thumbnailUrl.includes("empty_photo_state_icon")
+
+  const types = React.useMemo(
+    () => jobRoles.concat(jobTypes).concat(jobExperiences).concat(jobLocations),
+    [id]
+  )
+
+  const isApplied = appliedFors.includes(id)
 
   return (
     <a href={`/jobs/${id}`}>
       <div className="job-card -with-favorite">
-        <div
-          className={classnames(
-            "job-card__image",
-            isNoImg ? "-empty" : "-present"
-          )}
-        >
-          {!isNoImg ? <img src={thumbnailUrl} alt="job-logo" /> : null}
-        </div>
-        <div className="job-card__favorite-check-container">
-          <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
-          {appliedFors.includes(id) && (
-            <img src={checkAppliedIcon} alt="check-icon" />
-          )}
+        <div className="job-card__header">
+          <div
+            className={classnames(
+              "job-card__image",
+              isNoImg ? "-empty" : "-present"
+            )}
+          >
+            {!isNoImg ? <img src={thumbnailUrl} alt="job-logo" /> : null}
+          </div>
+          <div className="job-card__title-section">
+            <div className="job-card__header__title">{name}</div>
+            <div className="job-card__header__sub-title">{companyName}</div>
+          </div>
+          <div className="job-card__favorite-check-container">
+            <FavoriteJobIcon key={id} favorites={favorites} job_id={id} />
+            {isApplied ? (
+              <img
+                className="hide-tablet-up mr-0"
+                src={checkAppliedIcon}
+                alt="check-icon"
+              />
+            ) : null}
+          </div>
         </div>
 
-        <div className="job-card__header">
-          <div className="job-card__header__title">{name}</div>
-          <div className="job-card__header__sub-title">{companyName}</div>
-        </div>
         <div className="job-card__types">
-          {jobRoles.map(jobRole => (
-            <div
-              key={jobRole.id || jobRole.name}
-              className="job-card__type-mark -dark"
-            >
-              {jobRole.name}
+          {types.map((type, index) => (
+            <div key={index} className="job-card__type-mark">
+              {type.name}
             </div>
           ))}
-          {jobTypes.map(jobType => (
+          {isApplied ? (
             <div
-              key={jobType.id || jobType.name}
-              className="job-card__type-mark -dark"
+              style={{ minWidth: 91, marginLeft: "auto" }}
+              className="job-card__type-mark -dark hide-tablet-down"
             >
-              {jobType.name}
+              <img src={checkIcon} alt="check-icon" />
+              Applied
             </div>
-          ))}
-          {jobExperiences.map(jobExperience => (
-              <div
-                  key={jobExperience.id || jobExperience.name}
-                  className="job-card__type-mark -dark"
-              >
-                {jobExperience.name}
-              </div>
-          ))}
-          {jobLocations.map(jobLocation => (
-              <div
-                  key={jobLocation.id || jobLocation.name}
-                  className="job-card__type-mark -dark"
-              >
-                {jobLocation.name}
-              </div>
-          ))}
+          ) : null}
         </div>
-        {appliedFors.includes(id) && (
-          <div className="button job__button">
-            <img src={checkIcon} alt="check-icon" />
-            Applied
-          </div>
-        )}
       </div>
     </a>
   )

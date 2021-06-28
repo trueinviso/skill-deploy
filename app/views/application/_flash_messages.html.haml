@@ -1,8 +1,9 @@
-.flash-messages#flash-messages
-  - if flash.any?
-    - flash.each do |name, msg|
-      - if !(type == :nav_message && name == 'banner_message')
-        %div{ class: "flash-message flash-message--#{name}" }
-          .flash-message__content
-            .flash-message__text= msg.html_safe
-          %button.flash-message__close
+- classes ||= nil
+- if flash.any?
+  - flash.each do |name, msg|
+    - if !(type == :nav_message && name == 'banner_message')
+      %div{ class: "alert #{classes} -#{name === 'alert' ? 'danger' : name}", role: "alert" }
+        .alert__content
+          .alert__text= msg.html_safe
+        %button{"data-dismiss":"alert", "aria-label":"Close", class:"close" }
+          %span{"aria-hidden":true} &times
