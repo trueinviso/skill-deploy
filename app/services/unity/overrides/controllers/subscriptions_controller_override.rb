@@ -16,6 +16,7 @@ Unity::SubscriptionsController.class_eval do
     result = cancel_subscription
 
     if result.success?
+      send_cancellation_email
       flash[:banner_message] = "Subscription cancelled successfully."
     else
       flash[:banner_message] = "Subscription failed to cancel."
@@ -48,5 +49,20 @@ Unity::SubscriptionsController.class_eval do
         redirect_to action: :new
       end
     end
+  end
+
+  def send_cancellation_email
+    SendgridManager.send(
+      current_user.email,
+      SendgridManager::TEMPLATE_IDS[:cancel_subscription],
+      dynamic_template_data,
+    )
+  end
+
+  def dynamic_template_data
+    {
+      name: current_user.user_profile.first_name,
+      cancellation_date: current_user.subscription.cancellation_date,
+    }
   end
 end
