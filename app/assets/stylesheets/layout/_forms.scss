@@ -89,12 +89,11 @@
 .form--textbox {
   @extend %base--field;
   height: 240px;
-  padding: 20px;
   overflow: hidden;
+  padding: 20px;
 }
 
 .form--radio-button {
-  position: relative;
   label {
     background: var(--primary-color);
     border: 1px solid var(--light-grey-color);
