@@ -9,8 +9,28 @@
   padding: 27px;
   text-align: center;
 
+  &.-no-radius {
+    border-radius: 0;
+  }
+
   &__content {
     width: 100%;
+  }
+
+  &__text {
+    color: var(--color-primary);
+    font-stretch: normal;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: normal;
+    line-height: normal;
+    text-align: left;
+
+    a {
+      color: var(--color-primary);
+      font-size: var(--body-font-size);
+      font-weight: bold;
+    }
   }
 
   &__list {
@@ -19,7 +39,9 @@
     }
   }
 
-  &.-danger {
+  &.-danger,
+  &.-notice,
+  &.-banner_message {
     background-color: var(--danger-color);
   }
 
