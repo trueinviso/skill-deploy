@@ -18,8 +18,23 @@ class SendgridDeviseMailer < Devise::Mailer
     )
   end
 
+  def confirmation_instructions(record, token, _opts = {})
+    SendgridManager.send(
+      record.email,
+      SendgridManager::TEMPLATE_IDS[:confirmation_instructions],
+      confirmation_data(record, token),
+    )
+  end
+
   private
 
+  def confirmation_data(record, token)
+    {
+      name: record.user_profile.first_name,
+      confirmation_email: record.email,
+      confirmation_url: confirmation_url(record, confirmation_token: token),
+    }
+  end
 
   def password_change_data(record)
     {
