@@ -11,23 +11,28 @@
         .gap
         %div
           - if create_listing_page?
-            %button.button.-outline-dark.-medium.hidden-mobile{ form: "new-listing-form", type: "submit" } Preview listing
-            %button.button.-outline-dark.-medium.hidden-desktop{ form: "new-listing-form", type: "submit" } Preview
+            %button.button.-outline-dark.-medium.hidden-mobile{ form: "new-listing-form", name: "job[status]", value: "preview", type: "submit" } Preview listing
+            %button.button.-outline-dark.-medium.hidden-desktop{ form: "new-listing-form", name: "job[status]", value: "preview", type: "submit" } Preview
           - elsif edit_employer_job_path?
-            = link_to "Preview listing",
-              employer_preview_job_path(@job),
-              class: "button -outline-dark -medium hidden-mobile"
+            %button.button.-outline-dark.medium.hidden-mobile{
+              type: "submit",
+              name: "job[status]",
+              value: "preview",
+              form: "edit_job_#{@job.id}"
+            } Preview listing
 
-            = link_to "Preview",
-              employer_preview_job_path(@job),
-              class: "button -outline-dark -medium hidden-desktop"
+            %button.button.-outline-dark.medium.hidden-desktop{
+              type: "submit",
+              name: "job[status]",
+              value: "preview",
+              form: "edit_job_#{@job.id}"
+            } Preview listing
 
           - if employer_preview_job_path?
             .nav__actions
               - if !@job.published?
-                = link_to "Save for Draft",
-                  employer_job_preview_path(@job),
-                  method: :put,
+                = link_to "Publish later",
+                  employer_jobs_path,
                   class: "button -outline-dark"
                 = link_to "Publish listing",
                   employer_job_posting_path(@job),
@@ -39,7 +44,7 @@
                 %button{ class: "button -outline-dark", id: "favorite-job-button", value: @job.id } Save listing
               - else
                 %div
-              - if current_user.talent?
+              - if ShowApplyButton.call(current_user, @job)
                 - if current_user.applied?(@job)
                   .button
                     = image_tag font_path("icon/check_applied")

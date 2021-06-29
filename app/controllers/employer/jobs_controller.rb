@@ -18,7 +18,7 @@ module Employer
       authorize [:employer, Job]
       @job = Job.new(valid_params[:job].merge!(user_id: current_user.id))
       if @job.save
-        redirect_to employer_preview_job_path(@job)
+        redirect_to update_path
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Employer
 
     def update
       if @job.update(valid_params[:job])
-        redirect_to employer_preview_job_path(@job)
+        redirect_to update_path
       else
         render :edit
       end
@@ -42,6 +42,11 @@ module Employer
     end
 
     private
+
+    def update_path
+      return employer_preview_job_path(@job) if @job.preview?
+      employer_jobs_path
+    end
 
     def valid_params
       params
@@ -59,6 +64,7 @@ module Employer
             :job_location_ids,
             :location,
             :name,
+            :status,
             :twitter,
             :facebook,
             :instagram,

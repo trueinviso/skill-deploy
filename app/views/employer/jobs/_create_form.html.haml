@@ -7,5 +7,15 @@
 
 
   .listing-form__actions
-    = f.submit "Preview Listing", class: "button"
-    %button{ class:"button -outline-dark", data:{ "form-skip-validate-required": true } }  Save for Draft
+    = f.button "Preview Listing",
+      name: "job[status]",
+      type: "submit",
+      value: "preview",
+      class: "button"
+
+    = f.button "Save for Later",
+      class: "button -outline-dark",
+      data: { "form-skip-validate-required": true },
+      name: "job[status]",
+      type: "submit",
+      value: "draft"

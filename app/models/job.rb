@@ -31,20 +31,23 @@ class Job < ApplicationRecord
     :company_name,
     :description,
     :location,
-    presence: true
+    presence: true,
+    unless: :draft?
 
   validates :employer_job_types,
     :employer_job_roles,
     :employer_job_experiences,
     :employer_job_locations,
-    length: { minimum: 1 }
+    length: { minimum: 1 },
+    unless: :draft?
 
   validates :facebook,
     :instagram,
     :twitter,
-    :company_website, url: true
+    :company_website, url: true,
+    unless: :draft?
 
-  enum status: [:preview, :published, :archived]
+  enum status: [:preview, :published, :archived, :draft]
 
   def self.job_type_name(job_type_name)
     joins(:job_types)

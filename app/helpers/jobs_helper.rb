@@ -35,6 +35,7 @@ module JobsHelper
 
   def back_button_href
     return request.referrer if go_to_last_uri?
+    return main_app.employer_jobs_path if current_user.employer?
     main_app.root_path
   end
 
