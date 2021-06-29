@@ -14,7 +14,7 @@ class UserProfilePolicy < ApplicationPolicy
     # to allow the update.
     # Prevent users from turning off overlay to make changes
     # by checking if profile was already under review.
-    !record.status_was == "pending" &&
+    record.status_was != "pending" &&
       (
         record.draft? ||
         record.approved? ||
