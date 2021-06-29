@@ -23,6 +23,15 @@ const modal = () => {
     debugMode: false
   }
 
+  const getMicroModalSettings = () => ({
+    onShow: handleShow,
+    disableScroll: true,
+    disableFocus: true,
+    awaitOpenAnimation: false,
+    awaitCloseAnimation: false,
+    debugMode: false
+  })
+
   MicroModal.init(settings)
 
   const pageLoadModal = document.querySelector(
