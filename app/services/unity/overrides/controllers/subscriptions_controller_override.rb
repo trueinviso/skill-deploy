@@ -36,7 +36,7 @@ Unity::SubscriptionsController.class_eval do
   end
 
   def banner_message
-    "Thank you for your oder, a receipt has been sent to your email. You can now create and publish your first listing!"
+    "Thank you for your order, a receipt has been sent to your email. You can now create and publish your first listing!"
   end
 
   def verify_subscription_state
@@ -64,10 +64,10 @@ Unity::SubscriptionsController.class_eval do
     {
       name: current_user.user_profile.first_name,
       subscription_name: result.result.plan.id.gsub("_", " ").capitalize,
-      price: result.result.plan.amount / 100.0,
+      price: "$#{result.result.plan.amount / 100.0}",
       renew_date: "30 days",
       purchase_date: Time.at(result.result.start_date).strftime("%B %d, %Y"),
-      amount_paid: result.result.plan.amount / 100.0,
+      amount_paid: "$#{result.result.plan.amount / 100.0}",
     }
   end
 
