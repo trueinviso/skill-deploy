@@ -44,7 +44,7 @@
                 %button{ class: "button -outline-dark", id: "favorite-job-button", value: @job.id } Save listing
               - else
                 %div
-              - if ShowApplyButton.call(current_user, @job)
+              - if current_user.user_profile&.approved?
                 - if current_user.applied?(@job)
                   .button
                     = image_tag font_path("icon/check_applied")
