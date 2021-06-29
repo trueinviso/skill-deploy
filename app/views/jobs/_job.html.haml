@@ -9,7 +9,7 @@
       - else
         = embedded_svg("empty_photo_state_icon_3x.svg")
     .job__button_group
-      - if current_user.approved_talent? && !employer_preview_job_path(@job)
+      - if current_user.approved_talent? && !employer_preview_job_path?
         - if current_user.applied?(@job)
           .button
             = image_tag font_path("icon/check_applied")
@@ -52,7 +52,7 @@
       Job Description
     .job__description
       = job.description
-    - if current_user.approved_talent? && !employer_preview_job_path(@job)
+    - if current_user.approved_talent? && !employer_preview_job_path?
       - if current_user.applied?(@job)
         .button.job__button
           = image_tag font_path("icon/check_applied")
