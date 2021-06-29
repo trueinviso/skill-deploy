@@ -1,7 +1,12 @@
-- if !jobs.empty? 
+- if !jobs.empty?
   .manage-listings__heading
     = title
   .manage-listings_jobs
     - jobs.each do |job|
       - cache job do
         = render partial: "job", locals: { job: job }
+
+
+
+- if params[:applicants_for_job_id].present?
+  = render "application/modals/applicants_modal", job_id: params[:applicants_for_job_id]

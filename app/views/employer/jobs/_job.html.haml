@@ -28,4 +28,6 @@
         edit_employer_job_path(job.id),
         class: "job-card__action"
       - if job.published_with_applicants?
-        = react_component("Applicants", { openBtnClassName: "job-card__action", api_path: api_v1_job_applicants_path(job.id), profile_path: employer_user_profile_path(:id) })
+        = link_to "Applicants", main_app.employer_jobs_path(applicants_for_job_id: job.id ), class: 'job-card__action'
+
+
