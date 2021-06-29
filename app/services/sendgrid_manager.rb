@@ -12,6 +12,7 @@ module SendgridManager
     reset_password_instructions: "d-e021181d93c44d0ab3143ff5bf7d81d6",
     recruiter_message: "d-c5d9bd7f8a51475ea8852e84b481d25d",
     cancel_subscription: "d-c54674fd878749f3acf98688cb82d649",
+    subscription_receipt: "d-bb4ebaae730d4c36b14f5a9a7b7514c7",
   }
 
   def send(to, template_id, subsitutions = {})

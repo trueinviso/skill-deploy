@@ -4,6 +4,7 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
+      send_email(:subscription_receipt, create_subscription_data(result))
 
       flash[:banner_message] = banner_message
       redirect_to main_app.new_employer_job_path
@@ -16,7 +17,7 @@ Unity::SubscriptionsController.class_eval do
     result = cancel_subscription
 
     if result.success?
-      send_cancellation_email
+      send_email(:cancel_subscription, cancel_subscription_data)
       flash[:banner_message] = "Subscription cancelled successfully."
     else
       flash[:banner_message] = "Subscription failed to cancel."
@@ -51,15 +52,26 @@ Unity::SubscriptionsController.class_eval do
     end
   end
 
-  def send_cancellation_email
+  def send_email(template_id, data)
     SendgridManager.send(
       current_user.email,
-      SendgridManager::TEMPLATE_IDS[:cancel_subscription],
-      dynamic_template_data,
+      SendgridManager::TEMPLATE_IDS[template_id],
+      data,
     )
   end
 
-  def dynamic_template_data
+  def create_subscription_data(result)
+    {
+      name: current_user.user_profile.first_name,
+      subscription_name: result.result.plan.id.gsub("_", " ").capitalize,
+      price: result.result.plan.amount / 100.0,
+      renew_date: "30 days",
+      purchase_date: Time.at(result.result.start_date).strftime("%B %d, %Y"),
+      amount_paid: result.result.plan.amount / 100.0,
+    }
+  end
+
+  def cancel_subscription_data
     {
       name: current_user.user_profile.first_name,
       cancellation_date: current_user.subscription.cancellation_date,
