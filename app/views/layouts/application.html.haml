@@ -15,7 +15,10 @@
 
 
   %body
-    = render "layouts/nav"
+    - if employer_profile?
+      = render "application/employer_preview_profile_header"
+    - else
+      = render "layouts/nav"
     - if current_user.blank?
       = render "application/flash_messages", type: :nav_message, classes: "-no-radius"
 

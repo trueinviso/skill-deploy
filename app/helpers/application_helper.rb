@@ -71,4 +71,9 @@ module ApplicationHelper
 
     react_component("PhotoUploader", thumbnail: thumbnail, record: record, type: type, name: field_name)
   end
+
+  def employer_profile?
+    controller_name == "applied_fors"
+  end
+
 end
