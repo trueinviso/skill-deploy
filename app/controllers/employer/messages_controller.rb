@@ -10,7 +10,7 @@ module Employer
         flash[:notice] = t(".failure")
       end
 
-      redirect_to employer_applied_for_path(applied_for)
+      redirect_to employer_applicant_path(applied_for)
     end
 
     private
@@ -47,7 +47,7 @@ module Employer
       {
         name: message.recipient.first_name,
         avatar_url: message.recipient.thumbnail_url,
-        profile_url: employer_applied_for_url(applied_for),
+        profile_url: employer_applicant_path(applied_for),
         company_logo: applied_for.job.thumbnail_url,
         company_name: applied_for.job.company_name,
         body: message.body,

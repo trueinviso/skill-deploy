@@ -1,0 +1,17 @@
+.preview-profile-nav {
+  margin: 0 16px;
+  @include tablet-up {
+    margin: 0 92px;
+  }
+}
+
+.preview-profile-nav__button {
+  height: 30px;
+  line-height: 30px !important;
+  max-width: 125px;
+  @include tablet-up {
+    height: 40px;
+    line-height: 40px !important;
+    max-width: 150px;
+  }
+}

@@ -1,14 +1,6 @@
 class AppliedForsController < ApplicationController
   before_action :job, only: :create
 
-  def index
-    authorize Job
-    @jobs = JobsSerializer.build(
-      current_user,
-      AppliedJobsQuery.new(current_user),
-    )
-  end
-
   def create
     authorize(applied_for)
 

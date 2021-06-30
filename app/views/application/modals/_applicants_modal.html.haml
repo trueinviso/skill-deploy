@@ -1,0 +1,12 @@
+.modal.-wide#applicants-modal{ "aria-hidden": true,
+  "data-trigger-modal": true }
+  .modal__inner.applicant_modal__inner{ role: "dialog", "aria-modal": true,
+    "aria-labelledby": "applicants-modal" }
+    = link_to '', request.path, class: "close-button -black -round modal__close", "aria-label": "Close modal"
+    .modal__content.applicant_modal__content
+      .modal__box.applicant_modal__box
+        .modal__bg.applicant_modal__bg
+          %h2.modal__title.job__message-modal__content__title#applicants-modal-title
+            Applicants
+          %div
+            = react_component("Applicants", { api_path: api_v1_job_applicants_path(job_id), profile_path: employer_user_profile_path(:id) })
