@@ -14,6 +14,6 @@ class ApplicantsSerializer
 
   link :profile_url do |object, params|
     params[:context]
-      .employer_applied_for_path(object.applied_for.find_by(job_id: params[:job].id))
+      .employer_applicant_path(object.applied_for.find_by(job_id: params[:job].id))
   end
 end

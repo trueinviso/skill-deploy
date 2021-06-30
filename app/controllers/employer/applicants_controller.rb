@@ -1,5 +1,5 @@
 module Employer
-  class AppliedForsController < ApplicationController
+  class ApplicantsController < ApplicationController
     before_action :applied_for, only: :show
     before_action :profile, only: :show
 

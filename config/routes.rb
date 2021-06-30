@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   resources :jobs, only: [:index, :show]
   resources :favorite_jobs, only: [:index]
-  resources :applied_fors, only: [:index, :create]
+  resources :applied_fors, only: [:create]
 
   namespace :talent do
     resources :jobs, only: [] do
@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     resources :job_archives, only: [:update]
     resources :job_previews, only: [:update]
     resources :messages, only: [:create]
-    resources :applied_fors, only: [:show]
+    resources :applicants, only: [:show]
 
     resources :user_profiles,
       only: [:show],
