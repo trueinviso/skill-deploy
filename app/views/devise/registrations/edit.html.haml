@@ -24,17 +24,17 @@
               placeholder: "********************",
               class: "form--input -text-black"
           .form--field
-            .profile-settings__form__change-password.-transparent.-danger#change-password Change password
+            /.profile-settings__form__change-password.-transparent.-danger#change-password Change password
             = f.label :password,
               "New password",
-              class: "form--label -black -required hidden",
+              class: "form--label -black -required",
               id: "new-password-label"
             = f.password_field :password,
               placeholder: "********************",
-              class: "form--input -text-black hidden",
+              class: "form--input -text-black",
               id: "new-password-field"
-          = f.submit "Save new password",
-            class: "profile-settings__form__submit button hidden",
+          = f.submit "Update settings",
+            class: "profile-settings__form__submit button",
             id: "save-new-password"
       %section
         %h1.profile-settings__sub-heading Notifications
@@ -56,6 +56,6 @@
               .checkbox__label Get the weekly newsletter
 
       .div.profile-settings__close-account
-        %button.button.-outline{ data:{ "micromodal-trigger": "confirm-close-account-modal" }} Close Account
+        /%button.button.-outline{ data:{ "micromodal-trigger": "confirm-close-account-modal" }} Close Account
 
 = render "application/modals/confirm_close_account_modal"
