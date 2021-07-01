@@ -26,8 +26,8 @@
           .form--field
             /.profile-settings__form__change-password.-transparent.-danger#change-password Change password
             = f.label :password,
-              "New password",
-              class: "form--label -black -required",
+              "New password (leave blank if not updating password)",
+              class: "form--label -black",
               id: "new-password-label"
             = f.password_field :password,
               placeholder: "********************",
