@@ -147,11 +147,12 @@
   height: 100%;
   text-align: center;
   & p {
+    font-size: 18px;
+    font-weight: var(--font-regular);
     margin: auto;
   }
   @include desktop-down {
     font-size: var(--font-size-normal);
-    font-weight: var(--font-medium);
   }
 }
 

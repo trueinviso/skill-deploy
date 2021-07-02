@@ -89,8 +89,9 @@
 .form--textbox {
   @extend %base--field;
   height: 240px;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 20px;
+  font-size: 13px;
 }
 
 .form--radio-button {
