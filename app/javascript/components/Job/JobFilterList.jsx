@@ -21,7 +21,7 @@ const typeFilters = [
 ]
 
 const roleFilters = [
-  { label: "All Role Types", value: "All" },
+  { label: "All Skills", value: "All" },
   { label: "Design", value: "Design" },
   { label: "Development", value: "Development" },
   { label: "Video", value: "Video" },
@@ -80,7 +80,8 @@ const JobFilterList = ({ activeFilters, updateFilters }) => {
       <Dropdown
         name="role"
         onChange={onChangeFilter}
-        placeholder="All Role Types"
+        placeholder="All Skills"
+        contentClassName="dropdown__content--selectbox"
         options={roleFilters}
         isSelected={(filter, selected) => filter.value === selected.value}
       />
