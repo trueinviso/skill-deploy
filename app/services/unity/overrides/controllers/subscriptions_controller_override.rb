@@ -64,10 +64,11 @@ Unity::SubscriptionsController.class_eval do
     {
       name: current_user.user_profile.first_name,
       subscription_name: result.result.plan.id.gsub("_", " ").capitalize,
-      price: "$#{result.result.plan.amount / 100.0}",
+      price: "$#{result.result.plan.amount / 100.0}/month",
       renew_date: "30 days",
       purchase_date: Time.at(result.result.start_date).strftime("%B %d, %Y"),
       amount_paid: "$#{result.result.plan.amount / 100.0}",
+      login_url:  main_app.new_user_session_path,
     }
   end
 

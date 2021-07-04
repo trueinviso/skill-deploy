@@ -35,13 +35,16 @@ class AppliedForsController < ApplicationController
 
   def apply_notification_data
     {
-      name: current_user.first_name,
-      headline: job.name,
-      about: job.description&.body&.to_plain_text,
-      skills: current_user.skills,
-      avatar_url: current_user.thumbnail_url,
-      profile_url: employer_user_profile_url(current_user),
       website_url: root_url,
+      name: "#{current_user.first_name} #{current_user.last_name}",
+      profile_url: employer_user_profile_url(current_user),
+      avatar_url: current_user.thumbnail_url,
+      headline: current_user.user_profile.headline,
+      location: current_user.user_profile.location,
+      job_title: job.name,
+      company_name: job.company_name,
+      about: current_user.user_profile.bio.body&.to_plain_text,
+      skills: current_user.skills,
     }
   end
 
