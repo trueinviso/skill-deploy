@@ -49,12 +49,11 @@ class Job < ApplicationRecord
 
   enum status: [:preview, :published, :archived, :draft]
 
-  def self.job_type_name(job_type_name)
+  def self.job_type_name(names)
+    job_type_names = names.split(",")
+
     joins(:job_types)
-      .where(
-        "job_types.name = :job_type_name",
-        job_type_name: job_type_name.titleize,
-    )
+      .where(job_types: { name: job_type_names })
   end
 
   def self.job_role_name(job_role_name)
