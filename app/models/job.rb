@@ -58,6 +58,8 @@ class Job < ApplicationRecord
   end
 
   def self.job_role_name(job_role_name)
+    return all if job_role_name == "All"
+
     joins(:job_roles)
       .where(
         "job_roles.name = :job_role_name",

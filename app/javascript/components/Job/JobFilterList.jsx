@@ -21,6 +21,7 @@ const typeFilters = [
 ]
 
 const roleFilters = [
+  { label: "All Role Types", value: "All" },
   { label: "Design", value: "Design" },
   { label: "Development", value: "Development" },
   { label: "Video", value: "Video" },

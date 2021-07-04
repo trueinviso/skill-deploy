@@ -2,7 +2,7 @@ module Api
   module V1
     class JobsController < ApiController
       def index
-        # authorize Job
+        authorize Job
         jobs = JobsSerializer.build(
           current_user,
           JobsQuery.new(params),
