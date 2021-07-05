@@ -26,5 +26,6 @@ module Employer
     def email_data
       SendgridTemplateData
         .call(:published_job_notification, job)
+    end
   end
 end

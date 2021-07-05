@@ -36,10 +36,10 @@ class SendgridTemplateData
       {
         name: user.first_name,
         job_listing_name: job.name,
-        about: job.description&.body&.to_plain_text,
+        company_name: job.company_name,
         skills: skills,
-        website_url: job.company_website,
         logo_url: job.thumbnail_url,
+        button_url: root_url,
       }
     end
 
