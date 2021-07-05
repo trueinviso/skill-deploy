@@ -8,6 +8,5 @@
       = render "empty_placeholder"
     -else
       = render "jobs", jobs: @jobs.published, title: "Active job listings"
-      = render "jobs", jobs: @jobs.preview, title: "Preview job listings"
-      = render "jobs", jobs: @jobs.draft, title: "Draft job listings"
+      = render "jobs", jobs: @jobs.draft + @jobs.preview, title: "Draft job listings"
       = render "jobs", jobs: @jobs.archived, title: "Archived job listings"
