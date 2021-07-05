@@ -15,8 +15,8 @@
           %span.subscription__details__price $#{view_component.price}/mo
         %p.subscription__details__desc Post unlimited projects or listings on the job board every month.  Cancel any time.
         - if view_component.subscription.canceled_at.present?
-          %div
-            %span.renewal-message.expiration-date  Expires on
+          %div.subscription__details__renewal-message
+            %span Expires on
             %span= view_component.expiration_date
         %hr
         %div

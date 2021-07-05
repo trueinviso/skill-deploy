@@ -46,6 +46,9 @@ $payment-section-width: 535px;
     line-height: 22px;
     margin-top: 17px;
   }
+  &__renewal-message {
+    color: var(--danger-color);
+  }
 }
 
 .subscription__details__list {
