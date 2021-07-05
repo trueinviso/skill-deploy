@@ -1,8 +1,11 @@
 module Employer
   class MessagesController < ApplicationController
     before_action :applied_for, only: :create
+    before_action :validate_applied_for, only: :create
 
     def create
+      authorize [:employer, message]
+
       if message.save
         send_message_notification
         flash[:notice] = t(".success")
@@ -17,7 +20,14 @@ module Employer
 
     def applied_for
       @applied_for ||= AppliedFor
-        .find(params[:applied_for_id])
+        .find_by(id: params[:applied_for_id])
+    end
+
+    def validate_applied_for
+      if applied_for.blank?
+        flash[:error] = "This user has not applied to your job listing!"
+        redirect_to employer_user_profile_path(params[:applied_for_id])
+      end
     end
 
     def message_params
@@ -36,25 +46,12 @@ module Employer
     end
 
     def send_message_notification
-      SendgridManager.send(
-        message.recipient.email,
-        SendgridManager::TEMPLATE_IDS[:recruiter_message],
-        dynamic_template_data,
-      )
+      SendgridManagerWorker.perform_async(email_data)
     end
 
-    def dynamic_template_data
-      {
-        name: message.recipient.first_name,
-        avatar_url: message.recipient.thumbnail_url,
-        profile_url: employer_applicant_path(applied_for),
-        company_logo: applied_for.job.thumbnail_url,
-        company_name: applied_for.job.company_name,
-        body: message.body,
-        website_url: root_url,
-        reply_email: message.sender.email,
-        reply_name: message.sender.first_name,
-      }
+    def email_data
+      SendgridTemplateData
+        .call(:message, message, applied_for)
     end
   end
 end

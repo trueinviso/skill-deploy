@@ -4,7 +4,7 @@ Unity::SubscriptionsController.class_eval do
 
     if result.success?
       current_user.assign_role(:employer)
-      send_email(:subscription_receipt, create_subscription_data(result))
+      send_subscription_receipt_email(result)
 
       flash[:banner_message] = banner_message
       redirect_to main_app.new_employer_job_path
@@ -17,7 +17,7 @@ Unity::SubscriptionsController.class_eval do
     result = cancel_subscription
 
     if result.success?
-      send_email(:cancel_subscription, cancel_subscription_data)
+      send_cancel_subscription_email
       flash[:banner_message] = "Subscription cancelled successfully."
     else
       flash[:banner_message] = "Subscription failed to cancel."
@@ -52,30 +52,21 @@ Unity::SubscriptionsController.class_eval do
     end
   end
 
-  def send_email(template_id, data)
-    SendgridManager.send(
-      current_user.email,
-      SendgridManager::TEMPLATE_IDS[template_id],
-      data,
-    )
-  end
-
-  def create_subscription_data(result)
-    {
-      name: current_user.user_profile.first_name,
-      subscription_name: result.result.plan.id.gsub("_", " ").capitalize,
-      price: "$#{result.result.plan.amount / 100.0}/month",
-      renew_date: "30 days",
-      purchase_date: Time.at(result.result.start_date).strftime("%B %d, %Y"),
-      amount_paid: "$#{result.result.plan.amount / 100.0}",
-      login_url:  main_app.new_user_session_path,
-    }
+  def send_cancel_subscription_email
+    SendgridManagerWorker.perform_async(cancel_subscription_data)
   end
 
   def cancel_subscription_data
-    {
-      name: current_user.user_profile.first_name,
-      cancellation_date: current_user.subscription.cancellation_date,
-    }
+    SendgridTemplateData.call(:cancel_subscription, current_user)
+  end
+
+  def send_subscription_receipt_email(result)
+    SendgridManagerWorker
+      .perform_async(create_subscription_data(result))
+  end
+
+  def create_subscription_data(result)
+    SendgridTemplateData
+      .call(:subscription_receipt, current_user, result)
   end
 end
