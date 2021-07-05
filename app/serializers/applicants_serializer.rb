@@ -16,4 +16,13 @@ class ApplicantsSerializer
     params[:context]
       .employer_applicant_path(object.applied_for.find_by(job_id: params[:job].id))
   end
+
+  attributes :messages do |object, params|
+    object
+      .applied_for
+      .includes(:messages)
+      .where(job_id: params[:job].id)
+      .first
+      &.messages
+  end
 end
