@@ -28,6 +28,15 @@
   text-transform: capitalize;
 }
 
+.messaged {
+  color: var(--danger-color);
+  margin-left: auto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 30px;
+}
+
 .avatar {
   border: none;
   border-radius: 50%;

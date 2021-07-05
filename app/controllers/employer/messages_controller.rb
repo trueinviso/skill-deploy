@@ -1,8 +1,5 @@
 module Employer
   class MessagesController < ApplicationController
-    before_action :applied_for, only: :create
-    before_action :validate_applied_for, only: :create
-
     def create
       authorize [:employer, message]
 
@@ -13,21 +10,13 @@ module Employer
         flash[:notice] = t(".failure")
       end
 
-      redirect_to employer_applicant_path(applied_for)
+      redirect_to employer_jobs_path
     end
 
     private
 
     def applied_for
-      @applied_for ||= AppliedFor
-        .find_by(id: params[:applied_for_id])
-    end
-
-    def validate_applied_for
-      if applied_for.blank?
-        flash[:error] = "This user has not applied to your job listing!"
-        redirect_to employer_user_profile_path(params[:applied_for_id])
-      end
+      @applied_for ||= AppliedFor.find_by(id: params[:applied_for_id])
     end
 
     def message_params
@@ -41,6 +30,7 @@ module Employer
         message_params.merge(
           sender: current_user,
           recipient: applied_for.user,
+          applied_for_id: params[:applied_for_id],
         )
       )
     end

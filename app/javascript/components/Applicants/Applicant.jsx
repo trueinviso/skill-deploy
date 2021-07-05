@@ -14,6 +14,11 @@ const Applicant = ({ attributes, profilePath }) => {
         &nbsp;
         {attributes.last_name}
       </span>
+      {attributes.messages.length > 0 ?
+        <span className={styles.messaged}>
+          Message Sent
+        </span>
+        : null}
     </a>
   )
 }
