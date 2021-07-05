@@ -35,13 +35,17 @@ class SendgridTemplateData
     def dynamic_template_data
       {
         name: user.user_profile.first_name,
-        subscription_name: result.result.plan.id.gsub("_", " ").capitalize,
-        price: "$#{result.result.plan.amount / 100.0}/month",
-        renew_date: "30 days",
-        purchase_date: Time.at(result.result.start_date).strftime("%B %d, %Y"),
-        amount_paid: "$#{result.result.plan.amount / 100.0}",
+        subscription_name: subscription_presenter.subscription_name,
+        price: subscription_presenter.price,
+        renew_date: subscription_presenter.renew_date,
+        purchase_date: subscription_presenter.purchase_date,
+        amount_paid: subscription_presenter.amount_paid,
         login_url:  new_user_session_path,
       }
+    end
+
+    def subscription_presenter
+      subscription_presenter ||= Presenters::Subscription.new(result)
     end
   end
 end
