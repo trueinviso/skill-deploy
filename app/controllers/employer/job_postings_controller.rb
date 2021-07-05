@@ -4,7 +4,7 @@ module Employer
       authorize [:employer, job]
       job.published!
       send_published_job_notification
-      flash[:notice] = "Congratulations! your listing is now live. #{redirect_link}"
+      flash[:banner_message] = "Congratulations! your listing is now live. #{redirect_link}"
       redirect_to employer_jobs_path
     end
 

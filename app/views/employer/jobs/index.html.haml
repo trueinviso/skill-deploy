@@ -2,6 +2,7 @@
 .page.manage-listings
   = render "application/account_sidebar/sidebar"
   %div.page__main.manage-listings__content
+    = render "application/flash_messages", type: :page_message
     = render("application/form_errors", object: current_user)
 
     -if @jobs.empty?
