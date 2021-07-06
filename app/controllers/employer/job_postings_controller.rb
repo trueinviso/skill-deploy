@@ -18,7 +18,7 @@ module Employer
       view_context.link_to("View your listing", job_path(@job))
     end
 
-    def send_message_notification
+    def send_published_job_notification
       SendgridManagerWorker
         .perform_async(email_data)
     end
