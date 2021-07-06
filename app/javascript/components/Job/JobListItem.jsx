@@ -63,10 +63,10 @@ const JobListItem = ({
           {isApplied ? (
             <div
               style={{ minWidth: 91, marginLeft: "auto" }}
-              className="job-card__type-mark -dark hide-tablet-down"
+              className="job-card__type-mark -dark hide-flex-tablet-down"
             >
               <img src={checkIcon} alt="check-icon" />
-              Applied
+              <span>Applied</span>
             </div>
           ) : null}
         </div>
