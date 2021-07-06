@@ -16,7 +16,7 @@ module Presenters
     end
 
     def price
-      "$#{stripe_subscription.result.plan.amount / 100.0}/month"
+      "$#{"%.2f" % (stripe_subscription.result.plan.amount / 100.0)}/month"
     end
 
     def renew_date
