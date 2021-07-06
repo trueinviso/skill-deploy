@@ -28,7 +28,7 @@ module Presenters
     end
 
     def amount_paid
-      "$#{stripe_subscription.result.plan.amount / 100.0}"
+      "$#{"%.2f" % (stripe_subscription.result.plan.amount / 100.0)}"
     end
   end
 end
