@@ -31,7 +31,7 @@
           - if employer_preview_job_path?
             .nav__actions
               - if !@job.published?
-                = link_to "Publish later",
+                = link_to "Save for Later",
                   employer_jobs_path,
                   class: "button -outline-dark"
                 = link_to "Publish listing",
