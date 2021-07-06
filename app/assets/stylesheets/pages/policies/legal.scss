@@ -13,7 +13,6 @@
 }
 
 .legal__title {
-  border-bottom: 1px solid $color-dark-grey;
   padding: 76px 0 82px;
 }
 
@@ -60,4 +59,22 @@
 
 .legal__text {
   padding-bottom: 25px;
+}
+
+a {
+  &:link {
+    color: #ccc;
+  }
+
+  &:visited {
+    color: #095484;
+  }
+
+  &:hover {
+    color: #8ebf42;
+  }
+
+  &:active {
+    color: #800000;
+  }
 }
