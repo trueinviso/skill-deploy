@@ -88,9 +88,15 @@ $mobile-side-spacing: 14px;
   text-align: center;
   white-space: nowrap;
 
+  @extend %flex--vertically-centered;
+
   &.-dark {
     background-color: var(--quaternary-color);
     color: var(--primary-color);
+  }
+
+  img {
+    margin-right: 5px;
   }
 }
 
