@@ -2,14 +2,14 @@ class AppliedForsController < ApplicationController
   before_action :job, only: :create
 
   def create
-    authorize(applied_for)
+    authorize(job, policy_class: AppliedForPolicy)
 
     if applied_for.save
       send_apply_notification
       send_apply_confirmation
-      flash[:notice] = t(".success")
+      flash[:banner_message] = t(".success")
     else
-      flash[:notice] = t(".failure")
+      flash[:banner_message] = t(".failure")
     end
 
     redirect_to job_path(job)
@@ -32,7 +32,7 @@ class AppliedForsController < ApplicationController
 
   def apply_notification_data
     SendgridTemplateData
-      .call(:apply_notification, current_user, job)
+      .call(:apply_notification, current_user, job, applied_for)
   end
 
   def send_apply_confirmation

@@ -1,10 +1,11 @@
 class SendgridTemplateData
   class ApplyNotification < SendgridTemplateData
-    attr_reader :user, :job
+    attr_reader :user, :job, :applied_for
 
-    def initialize(user, job)
+    def initialize(user, job, applied_for)
       @user = user
       @job = job
+      @applied_for = applied_for
     end
 
     def call
@@ -42,7 +43,7 @@ class SendgridTemplateData
         job_title: job.name,
         location: user.user_profile.location,
         name: "#{user.first_name} #{user.last_name}",
-        profile_url: employer_user_profile_url(user),
+        profile_url: employer_applicant_url(applied_for),
         skills: skills,
         website_url: root_url,
       }

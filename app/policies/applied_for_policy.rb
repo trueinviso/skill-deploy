@@ -1,6 +1,5 @@
 class AppliedForPolicy < ApplicationPolicy
   def create?
-    return user.talent? if !record.present?
-    user.talent? && record.user_id == user.id
+    user.talent? && record.user.active_paid_subscriber?
   end
 end
