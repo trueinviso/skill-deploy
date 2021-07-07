@@ -3,7 +3,7 @@
     = title
   .manage-listings_jobs
     - jobs.each do |job|
-      - cache job do
+      - cache job, expires_in: 15.minutes do
         = render partial: "job", locals: { job: job }
 
 
