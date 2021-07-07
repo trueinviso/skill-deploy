@@ -34,13 +34,13 @@ class SendgridTemplateData
 
     def dynamic_template_data
       {
-        name: user.first_name,
+        button_url: root_url,
+        company_name: job.company_name,
         job_listing_name: job.name,
         job_listing_url: jobs_url(job),
-        company_name: job.company_name,
-        skills: skills,
         logo_url: job.thumbnail_url,
-        button_url: root_url,
+        name: user.first_name,
+        skills: skills,
       }
     end
 
