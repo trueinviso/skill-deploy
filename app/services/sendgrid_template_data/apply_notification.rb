@@ -38,7 +38,7 @@ class SendgridTemplateData
         avatar_url: user.thumbnail_url,
         company_name: job.company_name,
         headline: user.user_profile.headline,
-        job_listing_url: jobs_url(job),
+        job_listing_url: job_url(job),
         job_title: job.name,
         location: user.user_profile.location,
         name: "#{user.first_name} #{user.last_name}",

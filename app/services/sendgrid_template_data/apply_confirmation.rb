@@ -37,7 +37,7 @@ class SendgridTemplateData
         button_url: root_url,
         company_name: job.company_name,
         job_listing_name: job.name,
-        job_listing_url: jobs_url(job),
+        job_listing_url: job_url(job),
         logo_url: job.thumbnail_url,
         name: user.first_name,
         skills: skills,
