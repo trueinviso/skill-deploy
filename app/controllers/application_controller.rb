@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :set_raven_context
 
   before_action :guard_user_authenticated!,
-                :sync_subscription,
                 :guard_user_profile_reviewed!, unless: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -59,9 +58,5 @@ class ApplicationController < ActionController::Base
     )
   rescue => exception
     puts exception
-  end
-
-  def sync_subscription
-    SubscriptionSyncer.new(current_user.subscription).call
   end
 end

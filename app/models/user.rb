@@ -118,13 +118,7 @@ class User < ApplicationRecord
   end
 
   def approve!
-    talent_role = Role.find_by(name: Role::TALENT)
-
-    if !roles.include?(talent_role)
-      roles << talent_role
-    end
-
-    user_profile.approved!
+    ApproveApplicationWorker.perform_async(id)
   end
 
   def unlimited?

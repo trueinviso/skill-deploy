@@ -11,12 +11,14 @@
   = render "social_media_links_form", form: f
 
   = f.button "Save changes",
-      value: "pending",
-      name: "user[user_profile_attributes][status]",
-      type: "submit",
-      class: "profile__form__submit-button button",
-      id: "edit-profile"
-  = f.button "Save for later",
+    value: "pending",
+    name: "user[user_profile_attributes][status]",
+    type: "submit",
+    class: "profile__form__submit-button button",
+    id: "edit-profile"
+
+  - if @user_profile.draft?
+    = f.button "Save for later",
       value: "draft",
       name: "user[user_profile_attributes][status]",
       type: "submit",
