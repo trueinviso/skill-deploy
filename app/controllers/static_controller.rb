@@ -18,6 +18,9 @@ class StaticController < ApplicationController
   def privacy
   end
 
+  def cancellation_policy
+  end
+
   def terms_and_conditions
   end
 end
