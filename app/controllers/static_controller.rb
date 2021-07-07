@@ -6,6 +6,9 @@ class StaticController < ApplicationController
   def about
   end
 
+  def cancellation_policy
+  end
+
   def faq
   end
 
@@ -18,7 +21,7 @@ class StaticController < ApplicationController
   def privacy
   end
 
-  def cancellation_policy
+  def refund_policy
   end
 
   def terms_and_conditions
