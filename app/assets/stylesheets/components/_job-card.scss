@@ -126,6 +126,7 @@ $mobile-side-spacing: 14px;
 }
 
 .job-card__image {
+  border: 1px solid var(--image-border-color);
   border-radius: 100%;
   height: 75px;
   overflow: hidden;
