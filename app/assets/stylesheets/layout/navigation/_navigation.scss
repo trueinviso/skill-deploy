@@ -66,6 +66,11 @@
     height: 100%;
     width: var(--sidebar-width);
 
+    &.-nav-white-bg {
+      background-color: var(--primary-color);
+      border-right: none;
+    }
+
     & > * {
       margin: auto;
     }

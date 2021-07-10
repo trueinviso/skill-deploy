@@ -9,5 +9,10 @@ module Unity
       end
       doc.to_html.html_safe
     end
+
+    def no_side_nav?
+      current_user.blank? ||
+        current_page?(main_app.join_us_path)
+    end
   end
 end
