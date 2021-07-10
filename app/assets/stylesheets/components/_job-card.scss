@@ -142,7 +142,7 @@ $mobile-side-spacing: 14px;
   &.-empty {
     align-items: center;
     background-color: var(--tertiary-color);
-    border: 1px dashed var(--beige-color);
+    border: 1px solid var(--beige-color);
     display: flex;
     justify-content: center;
 
