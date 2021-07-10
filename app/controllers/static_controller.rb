@@ -1,8 +1,12 @@
 class StaticController < ApplicationController
   skip_before_action :guard_user_profile_reviewed!
   skip_before_action :guard_user_authenticated!
+  skip_before_action :sync_subscription
 
   def about
+  end
+
+  def cancellation_policy
   end
 
   def faq
@@ -15,6 +19,9 @@ class StaticController < ApplicationController
   end
 
   def privacy
+  end
+
+  def refund_policy
   end
 
   def terms_and_conditions

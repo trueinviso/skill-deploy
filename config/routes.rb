@@ -95,10 +95,12 @@ Rails.application.routes.draw do
     end
   end
 
-  get :about,   to: "static#about"
-  get :faq,     to: "static#faq"
-  get :help,    to: "static#help"
-  get :privacy, to: "static#privacy"
-  get :signup,  to: "static#signup"
-  get :terms,   to: "static#terms_and_conditions"
+  get :about,               to: "static#about"
+  get :cancellation_policy, to: "static#cancellation_policy"
+  get :faq,                 to: "static#faq"
+  get :help,                to: "static#help"
+  get :privacy,             to: "static#privacy"
+  get :refund_policy,       to: "static#refund_policy"
+  get :signup,              to: "static#signup"
+  get :terms,               to: "static#terms_and_conditions"
 end

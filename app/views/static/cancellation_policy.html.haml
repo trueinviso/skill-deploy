@@ -1,0 +1,36 @@
+%main.legal
+  %h1.legal__title
+    Cancellation Policy
+  .legal_container
+    .legal_content
+      .legal_intro
+        We want satisfied customers, not hostages. That’s why we make it easy for you to cancel your account directly in all of our apps — no phone calls required, no questions asked.
+        Our legal responsibility is to account owners, which means we cannot cancel an account at the request of anyone else. If for whatever reason you no longer know who the account owner is, #{ link_to "contact us", "https://www.framework.fm/#Contact" }}. We will gladly reach out to any current account owners at the email addresses we have on file.
+
+      %h2.legal__content-title
+        What happens when you cancel?
+
+      %p.legal__text
+      In most cases, you won’t be able to access your account once you cancel, so make sure you download everything you want to keep beforehand. If you have a paid account, you can cancel your subscription and keep using your account until your paid period expires. Then the account will be automatically cancelled and will become inaccesible. You can also choose to cancel your account earlier.
+
+      We’ll permanently delete your account data 30 days after cancellation from our servers and logs, and within 60 days from our backups. Retrieving data for a single account from a backup isn’t possible, so if you change your mind you’ll need to do it within the first 30 days after cancellation. **Data can’t be recovered once it has been permanently deleted.**
+
+      We won’t bill you again once you cancel. We don’t automatically prorate any unused time you may have left but if you haven’t used your account in months or just started a new billing cycle, #{ link_to "contact us", "https://www.framework.fm/#Contact" } for a #{link_to "fair refund", refund_policy_path}. We’ll treat you right.
+
+      %h2.legal__content-title
+        Framework-initiated cancellations
+
+      %p.legal__text
+        We may cancel accounts if they have been inactive for an extended period:
+        %ul
+          %li
+            For trial accounts: 30 days after a trial has expired without being upgraded
+          %li
+            For frozen accounts: 180 days after being frozen due to billing failures
+          %li
+            For free accounts: after 365 days of inactivity
+
+      %p.legal__text
+        We also retain the right to suspend or terminate accounts for any reason at any time, as outlined in our #{link_to "Terms of Service", terms_path }. In practice, this generally means we will cancel your account without notice if we have evidence that you are using our products to engage in abusive behavior.
+
+      = render "attribution"
