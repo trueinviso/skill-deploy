@@ -10,6 +10,24 @@
   @include mq($breakpoint-larger) {
     max-width: $breakpoint-larger;
   }
+
+  a {
+    &:link {
+      color: #ccc;
+    }
+
+    &:visited {
+      color: #095484;
+    }
+
+    &:hover {
+      color: #8ebf42;
+    }
+
+    &:active {
+      color: #800000;
+    }
+  }
 }
 
 .legal__title {
@@ -59,22 +77,4 @@
 
 .legal__text {
   padding-bottom: 25px;
-}
-
-a {
-  &:link {
-    color: #ccc;
-  }
-
-  &:visited {
-    color: #095484;
-  }
-
-  &:hover {
-    color: #8ebf42;
-  }
-
-  &:active {
-    color: #800000;
-  }
 }
