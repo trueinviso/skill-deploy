@@ -61,6 +61,8 @@ $color-dark-grey: #222427;
 
   --nav-height: #{$nav-height};
 
+  --static-grid-padding: 20px;
+
   @include desktop-down {
     --nav-height: 57px;
     --logo-width: 54px;

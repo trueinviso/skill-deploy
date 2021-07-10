@@ -1,10 +1,10 @@
 .legal {
   margin: 0 auto;
-  padding: 0 $grid-padding;
+  padding: 0 var(--static-grid-padding);
 
   @include mq($breakpoint-large) {
     max-width: $breakpoint-large;
-    padding-top: 0 $grid-padding;
+    padding-top: 0 var(--static-grid-padding);
   }
 
   @include mq($breakpoint-larger) {
