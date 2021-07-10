@@ -11,12 +11,6 @@
 }
 .manage-listings__content {
   .manage-listings__heading {
-    &:not(:first-child) {
-      margin-top: 55px;
-      @include desktop-up {
-        margin-top: 60px;
-      }
-    }
     margin-left: 17px;
     @include desktop-up {
       margin-left: 0;

@@ -4,8 +4,8 @@ import Modal from "./shared/Modal"
 
 /**
  * @deprecated better to use views/application/modals/send_message_modal
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
 const ApplyGig = ({ title, buttonTitle }) => {
   return (

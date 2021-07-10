@@ -8,6 +8,7 @@
 
 .thumbnailContainer {
   @extend %flex--centered;
+  border: 1px solid #d4d2ce;
   background-color: var(--tertiary-color);
   border-radius: 100%;
   height: 100px;

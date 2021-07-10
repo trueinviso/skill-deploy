@@ -11,12 +11,13 @@
   = render "work_experience_form", form: f
   = render "social_media_links_form", form: f
 
-  = f.button "Save changes",
-    value: "#{@user_profile.draft? ? :pending : @user_profile.status}",
-    name: "user[user_profile_attributes][status]",
-    type: "submit",
-    class: "profile__form__submit-button button",
-    id: "edit-profile"
+  - if !@user_profile.pending?
+    = f.button "#{@user_profile.draft? ? 'Submit your profile for review' : 'Save changes'}",
+      value: "#{@user_profile.draft? ? :pending : @user_profile.status}",
+      name: "user[user_profile_attributes][status]",
+      type: "submit",
+      class: "profile__form__submit-button button",
+      id: "edit-profile"
 
   - if @user_profile.draft?
     = f.button "Save for later",

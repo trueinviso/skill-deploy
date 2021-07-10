@@ -3,8 +3,7 @@
 - @title = "Billing Details"
 - view_component = Employer::BillingComponent.new(current_user)
 .page
-  = render "employer/shared/sidebar",
-    selected: "Billing details"
+  = render "application/account_sidebar/sidebar"
 
   %div.page__main
     .page__content

@@ -81,28 +81,25 @@
   }
 
   &__preview-image {
+    height: 190px;
+    width: 190px;
     align-items: center;
     background-color: var(--tertiary-color);
     border: 1px solid var(--image-border-color);
     border-radius: 50%;
     display: flex;
     flex-direction: column;
-    height: 292px;
     justify-content: center;
     margin-bottom: 33px;
     margin-left: auto;
     margin-right: auto;
-    width: 292px;
-
-    &--avatar {
-      background-color: transparent;
-      border: none;
-    }
 
     img {
       border-radius: 50%;
       height: 100%;
       width: 100%;
+      object-fit: fill;
+      object-position: center;
     }
   }
 

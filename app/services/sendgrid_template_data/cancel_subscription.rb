@@ -34,7 +34,7 @@ class SendgridTemplateData
     def dynamic_template_data
       {
         name: user.user_profile.first_name,
-        cancellation_date: user.subscription.cancellation_date,
+        cancellation_date: user.subscription.cancellation_date.strftime("%m-%d-%Y"),
       }
     end
   end

@@ -100,7 +100,7 @@
   &__image {
     width: 140px;
     height: 140px;
-    border: 1px dashed #d4d2ce;
+    border: 1px solid #d4d2ce;
     background-color: #f4f4f4;
     display: flex;
     flex-direction: column;
@@ -112,6 +112,13 @@
     border-bottom-left-radius: 50% 50%;
     margin-bottom: 20px;
     overflow: hidden;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: fill;
+      object-position: center;
+    }
 
     @include desktop-up {
       margin-top: 40px;

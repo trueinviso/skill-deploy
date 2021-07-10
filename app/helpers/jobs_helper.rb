@@ -41,6 +41,7 @@ module JobsHelper
 
   def go_to_last_uri?
     request.referrer.present? &&
+      URI(request.referrer).path != new_employer_job_path &&
       URI(request.referrer).to_s != request.url
   end
 

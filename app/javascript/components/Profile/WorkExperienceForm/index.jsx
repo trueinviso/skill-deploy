@@ -62,7 +62,7 @@ class WorkExperienceForm extends PureComponent {
     this.setState(prev => ({
       fields: prev.fields.map((field, index) => {
         if (name === 'current_role') {
-          return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : {...field, current_role: false}
+          return currentIndex === index ? {...field, [name]: !field.current_role, end: undefined} : field
         } else {
           return currentIndex === index ? {...field, [name]: value} : field
         }
