@@ -34,7 +34,7 @@ class SendgridTemplateData
     def dynamic_template_data
       {
         name: record.first_name,
-        brand_name: "Skill deploy",
+        brand_name: "Skill Deploy",
         account_link: new_user_session_url,
         website_url: root_url,
       }
