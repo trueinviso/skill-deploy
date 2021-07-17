@@ -7,13 +7,9 @@ $mobile-side-spacing: 14px;
   margin-bottom: 13px;
   padding: 30px $mobile-side-spacing 20px;
 
-  &.-with-favorite {
-    @include desktop-up {
-      border-radius: 10px;
-    }
-    @include tablet-up {
-      padding: 45px 54px;
-    }
+  @include tablet-up {
+    border-radius: 10px;
+    padding: 45px 54px;
   }
 }
 
@@ -166,11 +162,10 @@ $mobile-side-spacing: 14px;
 }
 
 .job_card__footer {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   @include tablet-up {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     flex-direction: row;
   }
 }
