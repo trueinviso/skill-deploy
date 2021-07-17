@@ -118,7 +118,7 @@ class User < ApplicationRecord
   end
 
   def approve!
-    ApproveApplicationWorker.perform_async(id)
+    ApproveApplicationWorker.perform_async(self.id)
   end
 
   def unlimited?

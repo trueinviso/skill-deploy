@@ -37,7 +37,7 @@ class AppliedForsController < ApplicationController
 
   def send_apply_confirmation
     SendgridManagerWorker
-      .perform_async(apply_notification_data)
+      .perform_async(apply_confirmation_data)
   end
 
   def apply_confirmation_data

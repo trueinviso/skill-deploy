@@ -45,7 +45,7 @@
           .employer-profile__work-experiences
             - @profile.user.work_experiences.each do |we|
               .employer-profile__work-experience
-                = we.title
+                = "#{we.title} at #{we.company}"
                 .employer-profile__work-experience__date
                   = "#{we.start&.strftime("%b %Y")} - #{we.current_role? ? "Current Role" : we.end&.strftime("%b %Y")}"
 
