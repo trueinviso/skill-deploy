@@ -70,8 +70,11 @@
       background-color: var(--primary-color);
       border-right: none;
     }
-
-    & > * {
+    & > a {
+      margin: auto;
+      margin-left: 93px;
+    }
+    &__no-sidebar {
       margin: auto;
     }
   }

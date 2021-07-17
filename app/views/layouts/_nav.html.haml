@@ -1,7 +1,7 @@
 %nav.nav
   .nav__container
     %div{ class: "nav__content #{'-no-logged-in' if current_user.blank? }" }
-      %div.nav__logo{ class: "#{'-nav-white-bg' if no_side_nav?} #{'hide-flex-desktop-down' if current_user.present? && !current_page?(main_app.join_us_path)}" }
+      %div.nav__logo{ class: "#{'-nav-white-bg' if no_side_nav?} #{'hide-flex-desktop-down nav__logo__no-sidebar' if current_user.present? && !current_page?(main_app.join_us_path)}" }
         = link_to main_app.root_path,"aria-label" => "logo" do
           .logo
       - if !current_user.blank?
