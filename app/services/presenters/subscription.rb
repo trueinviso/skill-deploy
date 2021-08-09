@@ -7,12 +7,9 @@ module Presenters
     end
 
     def subscription_name
-      stripe_subscription
-        .result
-        .plan
-        .id
-        .gsub("_", " ")
-        .capitalize
+      Unity::SubscriptionPlan
+        .find_by(gateway_id: ::SubscriptionPlan::UNLIMITED)
+        .name
     end
 
     def price
