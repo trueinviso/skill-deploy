@@ -1,3 +1,5 @@
+- plan = Unity::SubscriptionPlan.find_by(gateway_id: SubscriptionPlan::UNLIMITED)
+
 = form_for :subscription,
   url: unity.subscription_path,
   method: :create,
@@ -7,7 +9,7 @@
   "no-validate": "no-validate" } do |f|
   %h3.subscription__paymemnt__form__heading Payment details
   = hidden_field_tag :authenticity_token, form_authenticity_token
-  = hidden_field_tag :plan_id, Unity::SubscriptionPlan.first.gateway_id
+  = hidden_field_tag :plan_id, plan.gateway_id
   = render "unity/payment_method/card_details", f: f
   %p.text.-meta.-center.subscription__paymemnt__form__notice
     All sales are final and all prices are USD.

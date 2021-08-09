@@ -1,12 +1,7 @@
 class SubscriptionPlan < ApplicationRecord
   has_many :subscriptions
 
-  SINGLE = -"heyfam_single_project"
-  UNLIMITED = -"heyfam_unlimited_monthly"
-
-  def single?
-    gateway_id == SINGLE
-  end
+  UNLIMITED = -"price_1JMbjFFDKcWTEs2FaGE59zax"
 
   def unlimited?
     gateway_id == UNLIMITED

@@ -1,9 +1,11 @@
+- plan = Unity::SubscriptionPlan.find_by(gateway_id: SubscriptionPlan::UNLIMITED)
+
 .card.-primary
   .card__header
-  %p.text.-link= Unity::SubscriptionPlan.first.name
+  %p.text.-link= plan.name
   .card__body
-    $#{Unity::SubscriptionPlan.first.price}/month
+    $#{plan.price}/month
   .card__footer
-  %p.text.-muted.fw-regular= Unity::SubscriptionPlan.first.description
+  %p.text.-muted.fw-regular= plan.description
 
 

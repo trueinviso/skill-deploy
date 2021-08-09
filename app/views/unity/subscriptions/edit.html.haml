@@ -1,5 +1,8 @@
 -# haml-lint:disable all
 -# rubocop:disable all
+
+- plan = Unity::SubscriptionPlan.find_by(gateway_id: SubscriptionPlan::UNLIMITED)
+
 - @title = "Billing Details"
 - view_component = Employer::BillingComponent.new(current_user)
 .page
@@ -10,7 +13,7 @@
       .subscription__details
         %h1.page-heading Billing details
         %div
-          %h3.subscription__details__name #{view_component.subscription.plan.nickname} subscription
+          %h3.subscription__details__name Unlimited monthly subscription
           %span.subscription__details__price $#{view_component.price}/mo
         %p.subscription__details__desc Post unlimited projects or listings on the job board every month.  Cancel any time.
         - if view_component.subscription.canceled_at.present?
@@ -46,7 +49,7 @@
           .subscription__details__footer
             - if @subscription.pending_cancellation?
               = link_to "Resume subscription",
-                subscription_path(plan_id: Unity::SubscriptionPlan.first.gateway_id),
+                subscription_path(plan_id: plan.gateway_id),
                 method: :put,
                 class: 'button',
                 data: { disable_with: 'Please wait...'}

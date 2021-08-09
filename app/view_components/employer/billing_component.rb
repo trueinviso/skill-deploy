@@ -34,12 +34,6 @@ module Employer
         .strftime("%B %d, %Y")
     end
 
-    def plans
-      Unity::SubscriptionPlan.where(
-        gateway_id: "heyfam_unlimited_monthly",
-      )
-    end
-
     def price
       subscription.plan.amount / 100
     end
