@@ -3,7 +3,14 @@ import classNames from "classnames"
 import styles from "./styles.module"
 
 const Indicator = ({ size, value }) => {
-  const active = Math.ceil((size / 100) * value)
+  console.log(value)
+  const defaults = {
+    0: 1,
+    50: 2,
+    100: 3,
+    150: 4,
+  }
+
   return (
     <div className={styles.iconList}>
       {Array.from({ length: size }, (_, i) => (
@@ -11,7 +18,7 @@ const Indicator = ({ size, value }) => {
           key={i}
           aria-hidden="true"
           className={classNames(styles.icon, {
-            [styles.iconActive]: i < Math.floor(active)
+            [styles.iconActive]: i < defaults[value]
           })}
         />
       ))}

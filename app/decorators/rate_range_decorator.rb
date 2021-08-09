@@ -2,6 +2,12 @@ class RateRangeDecorator < Draper::Decorator
   delegate_all
 
   def label
-    "$#{from}-$#{to}/hr  or  $#{from * 10}-$#{to * 10}/day"
+    str = "$#{from}"
+    str += "-$#{to}" if to.present?
+    str += "/hr"
+    str += "  or  $#{from * 10}"
+    str += "-$#{to * 10}" if to.present?
+    str += "/day"
+    str
   end
 end

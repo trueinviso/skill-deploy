@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_05_215109) do
+ActiveRecord::Schema.define(version: 2021_08_09_194423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,11 +182,10 @@ ActiveRecord::Schema.define(version: 2021_07_05_215109) do
 
   create_table "rate_ranges", force: :cascade do |t|
     t.integer "from", null: false
-    t.integer "to", null: false
+    t.integer "to"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["from"], name: "index_rate_ranges_on_from", unique: true
-    t.index ["to"], name: "index_rate_ranges_on_to", unique: true
   end
 
   create_table "roles", force: :cascade do |t|

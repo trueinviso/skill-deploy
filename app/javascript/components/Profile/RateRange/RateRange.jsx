@@ -77,7 +77,7 @@ const RateRange = ({ options, name, defaultValue, ...props }) => {
         onChange={onChange}
         options={options}
       />
-      <Indicator value={value?.to} />
+      <Indicator value={value?.from} />
     </div>
   )
 }
