@@ -2,6 +2,7 @@ class SendgridTemplateData
   include Rails.application.routes.url_helpers
 
   SENDGRID_FROM_EMAIL  = -"admin@skilldeploy.com"
+  SENDGRID_FROM_NAME  = -"Skill Deploy"
 
   def self.call(template_type, *args)
     "SendgridTemplateData::#{template_type.to_s.camelize}"
@@ -23,7 +24,10 @@ class SendgridTemplateData
   def data
     {
       "personalizations": [personalizations],
-      "from": { "email": SENDGRID_FROM_EMAIL },
+      "from": {
+        "email": SENDGRID_FROM_EMAIL,
+        "name": SENDGRID_FROM_NAME,
+      },
       "template_id": template_id,
     }
   end
