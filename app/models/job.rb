@@ -32,20 +32,20 @@ class Job < ApplicationRecord
     :description,
     :location,
     presence: true,
-    unless: :draft?
+    unless: -> { draft? || archived? }
 
   validates :employer_job_types,
     :employer_job_roles,
     :employer_job_experiences,
     :employer_job_locations,
     length: { minimum: 1 },
-    unless: :draft?
+    unless: -> { draft? || archived? }
 
   validates :facebook,
     :instagram,
     :twitter,
     :company_website, url: true,
-    unless: :draft?
+    unless: -> { draft? || archived? }
 
   enum status: [:preview, :published, :archived, :draft]
 

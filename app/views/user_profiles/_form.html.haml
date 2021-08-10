@@ -1,7 +1,7 @@
 = form_for(current_user,
   url: user_profile_path,
   method: action,
-  html: { class: "form profile__form", data: { "form-validator-trigger": true } }) do |f|
+  html: { class: "form profile__form", autocomplete: "off", data: { "form-validator-trigger": true } }) do |f|
 
   = render("application/form_errors", object: current_user)
 
