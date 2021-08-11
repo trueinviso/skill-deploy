@@ -3,7 +3,6 @@ import classNames from "classnames"
 import styles from "./styles.module"
 
 const Indicator = ({ size, value }) => {
-  console.log(value)
   const defaults = {
     0: 1,
     50: 2,
