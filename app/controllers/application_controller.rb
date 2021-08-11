@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def guard_user_authenticated!
-    redirect_to [:new, :user, :registration] if !user_signed_in?
+    redirect_to [:new, :user, :session] if !user_signed_in?
   end
 
   def user_not_authorized
