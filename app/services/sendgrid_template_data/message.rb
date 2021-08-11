@@ -13,6 +13,17 @@ class SendgridTemplateData
 
     private
 
+    def data
+      {
+        "personalizations": [personalizations],
+        "from": {
+          "email": message.sender.email,
+          "name": SENDGRID_FROM_NAME,
+        },
+        "template_id": template_id,
+      }
+    end
+
     def personalizations
       {
         "to": to,
@@ -32,7 +43,7 @@ class SendgridTemplateData
     def bcc
       [
         {
-          "email": message.sender.email,
+          "email": SENDGRID_FROM_EMAIL,
         },
       ]
     end
