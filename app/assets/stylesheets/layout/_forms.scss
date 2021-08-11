@@ -80,6 +80,7 @@
 .form--input {
   @extend %base--field;
   height: 46px;
+  font-size: 13px;
 
   &.-text-black {
     color: var(--quaternary-color);
