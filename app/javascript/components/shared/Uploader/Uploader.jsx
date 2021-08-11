@@ -45,7 +45,7 @@ const Uploader = ({
             className={styles.input}
             name={name}
             id="profileUploadPicker"
-            accept="image/x-png,image/gif,image/jpeg"
+            accept="image/*"
             disabled={isProcessing}
             value={filePath}
           />
