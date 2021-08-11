@@ -1,7 +1,8 @@
 .logo {
   background-image: url($skill-deploy-logo);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
+  background-position: center bottom;
   height: var(--logo-height);
   width: var(--logo-width);
 }
